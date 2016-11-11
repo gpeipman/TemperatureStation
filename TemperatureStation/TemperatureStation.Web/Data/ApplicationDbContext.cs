@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Models;
 
@@ -22,5 +18,10 @@ namespace TemperatureStation.Web.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+
+        public DbSet<Sensor> Sensors { get; set; }
+        public DbSet<Measurement> Measurements { get; set; }
+        public DbSet<SensorRoleInMeasurement> SensorRoles { get; set; }
+        public DbSet<Reading> Readings { get; set; }
     }
 }
