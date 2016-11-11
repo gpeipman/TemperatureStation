@@ -1,4 +1,4 @@
-﻿{
+{
   "userSecretsId": "aspnet-TemperatureStation.Web-d6c7266d-767f-4df0-b22e-24b65ee52679",
 
   "dependencies": {
@@ -65,7 +65,12 @@
       "imports": [
         "dotnet5.6",
         "portable-net45+win8"
-      ]
+      ],
+      "dependencies": {
+        "TemperatureStation.Shared": {
+          "target": "project"
+        }
+      }
     }
   },
 
