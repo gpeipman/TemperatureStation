@@ -2,13 +2,16 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using TemperatureStation.Web.Data;
 
 namespace TemperatureStation.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161111100317_MeasurementModels")]
+    partial class MeasurementModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -140,15 +143,15 @@ namespace TemperatureStation.Web.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("ReadingTime");
+                    b.Property<int?>("MeasurementId");
 
-                    b.Property<int?>("SensorRoleId");
+                    b.Property<DateTime>("ReadingTime");
 
                     b.Property<double>("Value");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SensorRoleId");
+                    b.HasIndex("MeasurementId");
 
                     b.ToTable("Readings");
                 });
@@ -272,9 +275,9 @@ namespace TemperatureStation.Web.Data.Migrations
 
             modelBuilder.Entity("TemperatureStation.Web.Data.Reading", b =>
                 {
-                    b.HasOne("TemperatureStation.Web.Data.SensorRoleInMeasurement", "SensorRole")
+                    b.HasOne("TemperatureStation.Web.Data.Measurement", "Measurement")
                         .WithMany()
-                        .HasForeignKey("SensorRoleId");
+                        .HasForeignKey("MeasurementId");
                 });
 
             modelBuilder.Entity("TemperatureStation.Web.Data.SensorRoleInMeasurement", b =>
