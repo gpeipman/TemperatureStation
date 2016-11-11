@@ -1,2 +1,2 @@
-# TemperatureStation
-Simple temperature measuring system
+# Temperature Station
+Simple and extensible temperature measuring system. Can be used for many purposes. Suggested for home and hobby use, not tested with industrial use cases. The code is here to support my IoT presentations.
