@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TemperatureStation.Web.Data
 {
-    public class SensorRoleInMeasurement
+    public class SensorRole
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
