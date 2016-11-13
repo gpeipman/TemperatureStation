@@ -15,7 +15,7 @@ namespace TemperatureStation.IoT.Service
         public void Run(IBackgroundTaskInstance taskInstance)
         {
             taskInstance.Canceled += TaskInstance_Canceled;
-
+            
             try
             {
                 _sensorsClient = new RinsenOneWireClient();

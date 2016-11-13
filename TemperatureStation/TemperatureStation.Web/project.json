@@ -64,9 +64,15 @@
     "netcoreapp1.0": {
       "imports": [
         "dotnet5.6",
-        "netstandard1.6",
+        "netstandard1.1",
         "portable-net45+win8"
-      ]
+      ],
+      "dependencies": {
+        "TemperatureStation.Shared": {
+          "target": "project"
+        }
+
+      }
     }
   },
 

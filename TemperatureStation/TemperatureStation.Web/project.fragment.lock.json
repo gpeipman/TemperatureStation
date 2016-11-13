@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "exports": {
+    "TemperatureStation.Shared/1.0.0": {
+      "type": "project",
+      "framework": ".NETStandard,Version=v1.1",
+      "compile": {
+        "bin/Debug/TemperatureStation.Shared.dll": {}
+      },
+      "runtime": {
+        "../packages/Newtonsoft.Json.9.0.1/lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {},
+        "bin/Debug/TemperatureStation.Shared.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/TemperatureStation.Shared.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    }
+  }
+}
