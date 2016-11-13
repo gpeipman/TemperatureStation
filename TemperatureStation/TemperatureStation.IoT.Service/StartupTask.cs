@@ -1,25 +1,75 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+using TemperatureStation.IoT.Service.Measuring;
 using Windows.ApplicationModel.Background;
-
-// The Background Application template is documented at http://go.microsoft.com/fwlink/?LinkID=533884&clcid=0x409
 
 namespace TemperatureStation.IoT.Service
 {
     public sealed class StartupTask : IBackgroundTask
     {
+        private bool _isClosing;
+        private ISensorsClient _sensorsClient;
+        private Timer _timer;
+
         public void Run(IBackgroundTaskInstance taskInstance)
         {
-            // 
-            // TODO: Insert code to perform background work
-            //
-            // If you start any asynchronous methods here, prevent the task
-            // from closing prematurely by using BackgroundTaskDeferral as
-            // described in http://aka.ms/backgroundtaskdeferral
-            //
+            taskInstance.Canceled += TaskInstance_Canceled;
+
+            try
+            {
+                _sensorsClient = new RinsenOneWireClient();
+                _timer = new Timer(TemperatureCallback, null, 0, 900000);
+            }
+            catch (Exception ex)
+            {
+                // implement logging
+                throw ex;
+            }
+
+            while (!_isClosing)
+            {
+                Task.Delay(2000).Wait();
+            }
+        }
+
+        private void TemperatureCallback(object state)
+        {
+            if (_isClosing)
+                return;
+
+            try
+            {
+                var readings = _sensorsClient.ReadSensors();
+            }
+            catch (Exception ex)
+            {
+                // implement logging
+                throw ex;
+            }
+        }
+
+        private void TaskInstance_Canceled(IBackgroundTaskInstance sender, BackgroundTaskCancellationReason reason)
+        {
+            _isClosing = true;
+
+            if (_timer != null)
+            {
+                _timer.Dispose();
+                _timer = null;
+            }
+
+            if (_sensorsClient != null)
+            {
+                var disposable = _sensorsClient as IDisposable;
+                if(disposable != null)
+                {
+                    disposable.Dispose();
+                }
+                _sensorsClient = null;
+            }
+
+            sender.GetDeferral().Complete();
         }
     }
 }
