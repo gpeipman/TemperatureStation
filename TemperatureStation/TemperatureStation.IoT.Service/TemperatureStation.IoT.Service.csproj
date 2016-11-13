@@ -99,6 +99,8 @@
     <Compile Include="Measuring\ISensorsClient.cs" />
     <Compile Include="Measuring\RinsenDefensiveOneWireClient.cs" />
     <Compile Include="Measuring\RinsenOneWireClient.cs" />
+    <Compile Include="Models\SensorReading.cs" />
+    <Compile Include="Models\SensorReadings.cs" />
     <Compile Include="Reporting\IReportingClient.cs" />
     <Compile Include="Reporting\WebReportingClient.cs" />
     <Compile Include="StartupTask.cs" />
@@ -134,12 +136,7 @@
       <InProject>false</InProject>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TemperatureStation.Shared\TemperatureStation.Shared.csproj">
-      <Project>{0e980045-b456-463e-8752-0ce5619486cb}</Project>
-      <Name>TemperatureStation.Shared</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

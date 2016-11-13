@@ -43,7 +43,7 @@
     "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
       "version": "1.0.0-preview2-final",
       "type": "build"
-    }
+    }    
   },
 
   "tools": {
@@ -57,20 +57,16 @@
       "imports": [
         "portable-net45+win8"
       ]
-    }
+    }    
   },
 
   "frameworks": {
     "netcoreapp1.0": {
       "imports": [
         "dotnet5.6",
+        "netstandard1.6",
         "portable-net45+win8"
-      ],
-      "dependencies": {
-        "TemperatureStation.Shared": {
-          "target": "project"
-        }
-      }
+      ]
     }
   },
 
