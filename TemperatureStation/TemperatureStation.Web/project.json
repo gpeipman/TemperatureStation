@@ -1,4 +1,12 @@
 {
+  "version": "0.0.1",
+  "authors": [ "Gunnar Peipman" ],
+  "copyright": "Copyright (C) 2016 Gunnar Peipman",
+  "title": "TemperatureStation Web Application",
+
+  "packOptions": {
+    "owners": [ "Gunnar Peipman" ]
+  },
   "userSecretsId": "aspnet-TemperatureStation.Web-d6c7266d-767f-4df0-b22e-24b65ee52679",
 
   "dependencies": {
@@ -46,7 +54,7 @@
     },
     "BundlerMinifier.Core": "2.2.301",
     "AutoMapper": "5.1.1",
-    "Microsoft.EntityFrameworkCore": "1.0.1"    
+    "Microsoft.EntityFrameworkCore": "1.0.1"
   },
 
   "tools": {
@@ -59,7 +67,7 @@
       "imports": [
         "portable-net45+win8"
       ]
-    }    
+    }
   },
 
   "frameworks": {

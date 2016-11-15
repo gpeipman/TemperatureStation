@@ -1,4 +1,13 @@
 ﻿{
+  "version": "0.0.1",
+  "authors": [ "Gunnar Peipman" ],
+  "copyright": "Copyright (C) 2016 Gunnar Peipman",
+  "title": "TemperatureStation Shared Models",
+
+  "packOptions": {
+    "owners": [ "Gunnar Peipman" ]
+  },
+
   "supports": {},
   "dependencies": {
     "Microsoft.NETCore.Portable.Compatibility": "1.0.1",

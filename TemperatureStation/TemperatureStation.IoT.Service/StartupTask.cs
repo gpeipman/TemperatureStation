@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using TemperatureStation.IoT.Service.Measuring;
+using TemperatureStation.IoT.Service.Reporting;
 using Windows.ApplicationModel.Background;
 
 namespace TemperatureStation.IoT.Service
@@ -10,15 +11,21 @@ namespace TemperatureStation.IoT.Service
     {
         private bool _isClosing;
         private ISensorsClient _sensorsClient;
+        private IReportingClient _reportingClient;
         private Timer _timer;
 
-        public void Run(IBackgroundTaskInstance taskInstance)
+        public async void Run(IBackgroundTaskInstance taskInstance)
         {
             taskInstance.Canceled += TaskInstance_Canceled;
             
             try
             {
                 _sensorsClient = new RinsenOneWireClient();
+                _reportingClient = new WebReportingClient();
+
+                var sensorIds = _sensorsClient.ListSensors();
+                await _reportingClient.UpdateSensors(sensorIds);
+
                 _timer = new Timer(TemperatureCallback, null, 0, 900000);
             }
             catch (Exception ex)
@@ -33,7 +40,7 @@ namespace TemperatureStation.IoT.Service
             }
         }
 
-        private void TemperatureCallback(object state)
+        private async void TemperatureCallback(object state)
         {
             if (_isClosing)
                 return;
@@ -41,6 +48,7 @@ namespace TemperatureStation.IoT.Service
             try
             {
                 var readings = _sensorsClient.ReadSensors();
+                await _reportingClient.ReportReadings(readings);
             }
             catch (Exception ex)
             {
@@ -67,6 +75,16 @@ namespace TemperatureStation.IoT.Service
                     disposable.Dispose();
                 }
                 _sensorsClient = null;
+            }
+
+            if (_reportingClient != null)
+            {
+                var disposable = _reportingClient as IDisposable;
+                if (disposable != null)
+                {
+                    disposable.Dispose();
+                }
+                _reportingClient = null;
             }
 
             sender.GetDeferral().Complete();
