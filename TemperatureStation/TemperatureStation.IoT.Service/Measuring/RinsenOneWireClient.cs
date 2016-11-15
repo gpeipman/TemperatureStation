@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Rinsen.IoT.OneWire;
 using TemperatureStation.Shared.Models;
 
@@ -35,6 +36,16 @@ namespace TemperatureStation.IoT.Service.Measuring
             }
 
             return result;
+        }
+
+        public string[] ListSensors()
+        {
+            if (_devices == null)
+            {
+                _devices = _handler.GetDevices<DS18B20>();
+            }
+
+            return _devices.Select(device => device.OneWireAddressString).ToArray();
         }
 
         #region IDisposable Support

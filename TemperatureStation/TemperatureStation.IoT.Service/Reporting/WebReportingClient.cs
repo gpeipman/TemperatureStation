@@ -22,5 +22,18 @@ namespace TemperatureStation.IoT.Service.Reporting
                 var response = client.PostAsync(url, content);
             }            
         }
+
+        public void UpdateSensors(string[] sensorIds)
+        {
+            throw new NotImplementedException();
+
+            using (var client = new HttpClient())
+            {
+                var url = ServiceAddress + "UpdateSensors";
+                var body = JsonConvert.SerializeObject(sensorIds);
+                var content = new StringContent(body, Encoding.UTF8, "application/json");
+                var response = client.PostAsync(url, content);
+            }
+        }
     }
 }

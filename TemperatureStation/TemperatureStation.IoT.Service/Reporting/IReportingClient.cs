@@ -5,5 +5,6 @@ namespace TemperatureStation.IoT.Service.Reporting
     internal interface IReportingClient
     {
         void ReportReadings(SensorReadings readings);
+        void UpdateSensors(string[] sensorIds);
     }
 }

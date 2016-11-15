@@ -47,6 +47,16 @@ namespace TemperatureStation.IoT.Service.Measuring
             return result;
         }
 
+        public string[] ListSensors()
+        {
+            if (_devices == null)
+            {
+                _devices = _handler.GetDevices<DS18B20>();
+            }
+
+            return _devices.Select(device => device.OneWireAddressString).ToArray();
+        }
+
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
 

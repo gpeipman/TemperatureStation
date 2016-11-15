@@ -49,5 +49,24 @@ namespace TemperatureStation.Web.Controllers
 
             return View();
         }
+
+        public void UpdateSensors([FromBody]string[] sensorIds)
+        {
+            foreach(var sensorId in sensorIds)
+            {
+                var sensor = _dataContext.Sensors.SingleOrDefault(s => s.Id == sensorId);
+                if(sensor != null)
+                {
+                    continue;
+                }
+
+                sensor = new Sensor();
+                sensor.Id = sensorId;
+                sensor.Name = sensorId;
+
+                _dataContext.Sensors.Add(sensor);
+                _dataContext.SaveChanges();
+            }
+        }
     }
 }
