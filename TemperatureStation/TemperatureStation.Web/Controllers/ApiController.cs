@@ -1,6 +1,7 @@
-using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using TemperatureStation.Shared.Models;
 using TemperatureStation.Web.Data;
@@ -18,26 +19,28 @@ namespace TemperatureStation.Web.Controllers
             _configuration = configuration;
         }
 
-        public IActionResult Report([FromBody]SensorReadings readings)
+        public async Task<IActionResult> Report([FromBody]SensorReadings readings)
         {
             if(!IsDeviceKeyValid())
             {
                 return BadRequest();
             }
 
-            var measurement = _dataContext.Measurements.FirstOrDefault(m => m.IsActive);
+            var measurement = await _dataContext.Measurements
+                                          .Include(m => m.SensorRoles)
+                                          .ThenInclude(r => r.Sensor)
+                                          .FirstOrDefaultAsync(m => m.IsActive);
             if (measurement == null)
             {
-                throw new Exception("Cannot find active measurement");
+                return NotFound();
             }
 
-            var sensorRoles = _dataContext.SensorRoles.Where(r => r.Measurement.Id == measurement.Id);
-            if(sensorRoles.Count() == 0)
+            if(measurement.SensorRoles.Count == 0)
             {
-                return null;
+                return NoContent();
             }
 
-            foreach(var sensorRole in sensorRoles)
+            foreach(var sensorRole in measurement.SensorRoles)
             {
                 var readingForSensor = readings.Readings.FirstOrDefault(r => r.SensorId == sensorRole.Sensor.Id);
                 if(readingForSensor == null)
@@ -53,12 +56,12 @@ namespace TemperatureStation.Web.Controllers
                 _dataContext.Readings.Add(reading);
             }
 
-            _dataContext.SaveChanges();
+            await _dataContext.SaveChangesAsync();
 
-            return View();
+            return NoContent();
         }
 
-        public IActionResult UpdateSensors([FromBody]string[] sensorIds)
+        public async Task<IActionResult> UpdateSensors([FromBody]string[] sensorIds)
         {
             if (!IsDeviceKeyValid())
             {
@@ -67,7 +70,7 @@ namespace TemperatureStation.Web.Controllers
 
             foreach (var sensorId in sensorIds)
             {
-                var sensor = _dataContext.Sensors.SingleOrDefault(s => s.Id == sensorId);
+                var sensor = await _dataContext.Sensors.SingleOrDefaultAsync(s => s.Id == sensorId);
                 if(sensor != null)
                 {
                     continue;
@@ -77,9 +80,10 @@ namespace TemperatureStation.Web.Controllers
                 sensor.Id = sensorId;
                 sensor.Name = sensorId;
 
-                _dataContext.Sensors.Add(sensor);
-                _dataContext.SaveChanges();
+                _dataContext.Sensors.Add(sensor);                
             }
+
+            await _dataContext.SaveChangesAsync();
 
             return NoContent();
         }
