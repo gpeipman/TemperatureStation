@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using TemperatureStation.Web.Data;
 
 namespace TemperatureStation.Web.Data.Migrations
 {
@@ -128,7 +130,8 @@ namespace TemperatureStation.Web.Data.Migrations
 
                     b.Property<bool>("IsActive");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -142,7 +145,8 @@ namespace TemperatureStation.Web.Data.Migrations
 
                     b.Property<DateTime>("ReadingTime");
 
-                    b.Property<int?>("SensorRoleId");
+                    b.Property<int?>("SensorRoleId")
+                        .IsRequired();
 
                     b.Property<double>("Value");
 
@@ -157,23 +161,27 @@ namespace TemperatureStation.Web.Data.Migrations
                 {
                     b.Property<string>("Id");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
                     b.ToTable("Sensors");
                 });
 
-            modelBuilder.Entity("TemperatureStation.Web.Data.SensorRoleInMeasurement", b =>
+            modelBuilder.Entity("TemperatureStation.Web.Data.SensorRole", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("MeasurementId");
+                    b.Property<int?>("MeasurementId")
+                        .IsRequired();
 
-                    b.Property<string>("RoleName");
+                    b.Property<string>("RoleName")
+                        .IsRequired();
 
-                    b.Property<string>("SensorId");
+                    b.Property<string>("SensorId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -272,20 +280,23 @@ namespace TemperatureStation.Web.Data.Migrations
 
             modelBuilder.Entity("TemperatureStation.Web.Data.Reading", b =>
                 {
-                    b.HasOne("TemperatureStation.Web.Data.SensorRoleInMeasurement", "SensorRole")
+                    b.HasOne("TemperatureStation.Web.Data.SensorRole", "SensorRole")
                         .WithMany()
-                        .HasForeignKey("SensorRoleId");
+                        .HasForeignKey("SensorRoleId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("TemperatureStation.Web.Data.SensorRoleInMeasurement", b =>
+            modelBuilder.Entity("TemperatureStation.Web.Data.SensorRole", b =>
                 {
                     b.HasOne("TemperatureStation.Web.Data.Measurement", "Measurement")
-                        .WithMany()
-                        .HasForeignKey("MeasurementId");
+                        .WithMany("SensorRoles")
+                        .HasForeignKey("MeasurementId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("TemperatureStation.Web.Data.Sensor", "Sensor")
                         .WithMany()
-                        .HasForeignKey("SensorId");
+                        .HasForeignKey("SensorId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

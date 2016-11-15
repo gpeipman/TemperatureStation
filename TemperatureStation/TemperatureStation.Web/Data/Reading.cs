@@ -14,6 +14,7 @@ namespace TemperatureStation.Web.Data
 
         public double Value { get; set; }
 
+        [Required]
         public SensorRole SensorRole { get; set; }
     }
 }

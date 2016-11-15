@@ -9,10 +9,13 @@ namespace TemperatureStation.Web.Data
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [Required]
         public string RoleName { get; set; }
 
+        [Required]
         public Measurement Measurement { get; set; }
 
+        [Required]
         public Sensor Sensor { get; set; }
     }
 }

@@ -28,7 +28,6 @@ namespace TemperatureStation.Web.Controllers
             return View(measurements);
         }
 
-        // GET: Measurements/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -46,15 +45,11 @@ namespace TemperatureStation.Web.Controllers
             return View(measurement);
         }
 
-        // GET: Measurements/Create
         public IActionResult Create()
         {
             return View("Edit", new MeasurementEditViewModel());
         }
 
-        // POST: Measurements/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(MeasurementEditViewModel measurement)
@@ -80,9 +75,6 @@ namespace TemperatureStation.Web.Controllers
             return View("Edit", measurement);
         }
 
-        // POST: Measurements/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(MeasurementEditViewModel model)

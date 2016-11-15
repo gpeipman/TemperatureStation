@@ -35,6 +35,38 @@
     </div>
 </form>
 
+@if (Model.Id > 0)
+{
+    <div>
+        <h4>Sensors</h4>
+        <p>
+            <a asp-action="Create" asp-controller="SensorRoles" asp-route-measurementid="@Model.Id">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sensor</th>
+                    <th>Role</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var sensorRole in Model.SensorRoles)
+                {
+                    <tr>
+                        <td>@sensorRole.SensorName</td>
+                        <td>@sensorRole.RoleName</td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="SensorRoles" asp-route-id="@sensorRole.Id">Edit</a> |
+                            <a asp-action="Delete" asp-controller="SensorRoles" asp-route-id="@sensorRole.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
 <div>
     <a asp-action="Index">Back to List</a>
 </div>

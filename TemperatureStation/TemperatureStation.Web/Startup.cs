@@ -46,7 +46,6 @@ namespace TemperatureStation.Web
 
             services.AddMvc();
 
-            // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
         }
@@ -85,8 +84,16 @@ namespace TemperatureStation.Web
                 cfg.CreateMap<Measurement, MeasurementListItemViewModel>();
                 cfg.CreateMap<Measurement, MeasurementEditViewModel>();
                 cfg.CreateMap<SensorRole, SensorRoleViewModel>();
+                cfg.CreateMap<SensorRole, SensorRoleEditViewModel>();
 
-                cfg.CreateMap<MeasurementEditViewModel, Measurement>();
+                cfg.CreateMap<MeasurementEditViewModel, Measurement>()
+                   .ForMember(m => m.Id, m => m.Ignore())
+                   .ForMember(m => m.SensorRoles, m => m.Ignore());
+
+                cfg.CreateMap<SensorRoleEditViewModel, SensorRole>()
+                   .ForMember(m => m.Id, m => m.Ignore())
+                   .ForMember(m => m.Sensor, m => m.Ignore())
+                   .ForMember(m => m.Measurement, m => m.Ignore());
             });
         }
     }
