@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using TemperatureStation.Shared.Models;
 using TemperatureStation.Web.Data;
 
@@ -9,14 +10,21 @@ namespace TemperatureStation.Web.Controllers
     public class ApiController : Controller
     {
         private ApplicationDbContext _dataContext;
+        private IConfiguration _configuration;
 
-        public ApiController(ApplicationDbContext dataContext)
+        public ApiController(ApplicationDbContext dataContext, IConfiguration configuration)
         {
             _dataContext = dataContext;
+            _configuration = configuration;
         }
 
         public IActionResult Report([FromBody]SensorReadings readings)
         {
+            if(!IsDeviceKeyValid())
+            {
+                return BadRequest();
+            }
+
             var measurement = _dataContext.Measurements.FirstOrDefault(m => m.IsActive);
             if (measurement == null)
             {
@@ -50,9 +58,14 @@ namespace TemperatureStation.Web.Controllers
             return View();
         }
 
-        public void UpdateSensors([FromBody]string[] sensorIds)
+        public IActionResult UpdateSensors([FromBody]string[] sensorIds)
         {
-            foreach(var sensorId in sensorIds)
+            if (!IsDeviceKeyValid())
+            {
+                return BadRequest();
+            }
+
+            foreach (var sensorId in sensorIds)
             {
                 var sensor = _dataContext.Sensors.SingleOrDefault(s => s.Id == sensorId);
                 if(sensor != null)
@@ -67,6 +80,20 @@ namespace TemperatureStation.Web.Controllers
                 _dataContext.Sensors.Add(sensor);
                 _dataContext.SaveChanges();
             }
+
+            return NoContent();
+        }
+
+        private bool IsDeviceKeyValid()
+        {
+            if (!Request.Headers.ContainsKey("DeviceKey"))
+            {
+                return false;
+            }
+
+            var deviceKey = Request.Headers["DeviceKey"].First();
+
+            return (deviceKey == _configuration.GetValue<string>("DeviceKey"));
         }
     }
 }
