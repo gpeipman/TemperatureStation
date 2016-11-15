@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TemperatureStation.Web.Data
@@ -12,5 +13,12 @@ namespace TemperatureStation.Web.Data
         public string Name { get; set; }
 
         public bool IsActive { get; set; }
+
+        public IList<SensorRole> SensorRoles { get; set; }
+
+        public Measurement()
+        {
+            SensorRoles = new List<SensorRole>();
+        }
     }
 }

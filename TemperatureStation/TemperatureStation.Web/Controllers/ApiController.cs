@@ -15,7 +15,7 @@ namespace TemperatureStation.Web.Controllers
             _dataContext = dataContext;
         }
 
-        public IActionResult Report(SensorReadings readings)
+        public IActionResult Report([FromBody]SensorReadings readings)
         {
             var measurement = _dataContext.Measurements.FirstOrDefault(m => m.IsActive);
             if (measurement == null)
