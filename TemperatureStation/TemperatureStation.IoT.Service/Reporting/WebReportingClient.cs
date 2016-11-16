@@ -33,7 +33,7 @@ namespace TemperatureStation.IoT.Service.Reporting
                 var url = ServiceAddress + "UpdateSensors";
                 var body = JsonConvert.SerializeObject(sensorIds);
                 var content = new StringContent(body, Encoding.UTF8, "application/json");
-                await client.PostAsync(url, content);
+                var response = await client.PostAsync(url, content);
             }
         }
     }

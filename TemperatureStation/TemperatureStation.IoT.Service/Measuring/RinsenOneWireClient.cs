@@ -13,7 +13,7 @@ namespace TemperatureStation.IoT.Service.Measuring
 
         public RinsenOneWireClient()
         {
-            _handler = new OneWireDeviceHandler();
+            _handler = new OneWireDeviceHandler(false, false);
         }
 
         public SensorReadings ReadSensors()

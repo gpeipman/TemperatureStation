@@ -14,7 +14,7 @@ namespace TemperatureStation.IoT.Service
         private IReportingClient _reportingClient;
         private Timer _timer;
 
-        public async void Run(IBackgroundTaskInstance taskInstance)
+        public void Run(IBackgroundTaskInstance taskInstance)
         {
             taskInstance.Canceled += TaskInstance_Canceled;
             
@@ -24,7 +24,8 @@ namespace TemperatureStation.IoT.Service
                 _reportingClient = new WebReportingClient();
 
                 var sensorIds = _sensorsClient.ListSensors();
-                await _reportingClient.UpdateSensors(sensorIds);
+                var response = _reportingClient.UpdateSensors(sensorIds);
+                response.Wait();
 
                 _timer = new Timer(TemperatureCallback, null, 0, 900000);
             }
@@ -40,7 +41,7 @@ namespace TemperatureStation.IoT.Service
             }
         }
 
-        private async void TemperatureCallback(object state)
+        private void TemperatureCallback(object state)
         {
             if (_isClosing)
                 return;
@@ -48,7 +49,8 @@ namespace TemperatureStation.IoT.Service
             try
             {
                 var readings = _sensorsClient.ReadSensors();
-                await _reportingClient.ReportReadings(readings);
+                var response = _reportingClient.ReportReadings(readings);
+                response.Wait();
             }
             catch (Exception ex)
             {
