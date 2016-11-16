@@ -99,6 +99,7 @@
     <Compile Include="Measuring\ISensorsClient.cs" />
     <Compile Include="Measuring\RinsenDefensiveOneWireClient.cs" />
     <Compile Include="Measuring\RinsenOneWireClient.cs" />
+    <Compile Include="Reporting\AzureIotHubReportingClient.cs" />
     <Compile Include="Reporting\IReportingClient.cs" />
     <Compile Include="Reporting\WebReportingClient.cs" />
     <Compile Include="StartupTask.cs" />

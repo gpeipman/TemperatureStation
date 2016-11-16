@@ -7,5 +7,6 @@ namespace TemperatureStation.IoT.Service.Reporting
     {
         Task ReportReadings(SensorReadings readings);
         Task UpdateSensors(string[] sensorIds);
+        bool SupportsSensorsUpdate { get; }
     }
 }

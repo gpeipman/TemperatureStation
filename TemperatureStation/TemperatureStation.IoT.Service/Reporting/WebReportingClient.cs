@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -11,6 +10,11 @@ namespace TemperatureStation.IoT.Service.Reporting
     {
         private const string ServiceAddress = "http://metalcenter:8081/api/";
         private const string DeviceKey = "LongAndComplexKey";
+
+        public bool SupportsSensorsUpdate
+        {
+            get { return true; }
+        }
 
         public async Task ReportReadings(SensorReadings readings)
         {

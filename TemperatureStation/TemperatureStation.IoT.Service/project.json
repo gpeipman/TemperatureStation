@@ -1,14 +1,17 @@
 ﻿{
   "version": "0.0.1",
-  "authors": [ "Gunnar Peipman" ],
+  "authors": [
+    "Gunnar Peipman"
+  ],
   "copyright": "Copyright (C) 2016 Gunnar Peipman",
   "title": "TemperatureStation Windows 10 IoT Core Service",
-
   "packOptions": {
-    "owners": [ "Gunnar Peipman" ]
+    "owners": [
+      "Gunnar Peipman"
+    ]
   },
-
   "dependencies": {
+    "Microsoft.Azure.Devices.Client": "1.0.21",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
     "Newtonsoft.Json": "9.0.1",
     "Rinsen.OneWire": "0.1.5"

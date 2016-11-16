@@ -23,12 +23,15 @@ namespace TemperatureStation.IoT.Service
             try
             {
                 _sensorsClient = new RinsenOneWireClient();
-                _reportingClient = new WebReportingClient();
+                _reportingClient = new AzureIotHubReportingClient();
 
-                var sensorIds = _sensorsClient.ListSensors();
-                await _reportingClient.UpdateSensors(sensorIds);
+                if (_reportingClient.SupportsSensorsUpdate)
+                {
+                    var sensorIds = _sensorsClient.ListSensors();
+                    await _reportingClient.UpdateSensors(sensorIds);
+                }
 
-                _timer = new Timer(TemperatureCallback, null, 0, 900000);
+                _timer = new Timer(TemperatureCallback, null, 0, 10000);
             }
             catch (Exception ex)
             {
