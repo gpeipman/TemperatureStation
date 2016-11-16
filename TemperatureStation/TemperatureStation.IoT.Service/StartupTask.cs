@@ -13,9 +13,11 @@ namespace TemperatureStation.IoT.Service
         private ISensorsClient _sensorsClient;
         private IReportingClient _reportingClient;
         private Timer _timer;
+        private BackgroundTaskDeferral _deferral;
 
-        public void Run(IBackgroundTaskInstance taskInstance)
+        public async void Run(IBackgroundTaskInstance taskInstance)
         {
+            _deferral = taskInstance.GetDeferral();
             taskInstance.Canceled += TaskInstance_Canceled;
             
             try
@@ -24,8 +26,7 @@ namespace TemperatureStation.IoT.Service
                 _reportingClient = new WebReportingClient();
 
                 var sensorIds = _sensorsClient.ListSensors();
-                var response = _reportingClient.UpdateSensors(sensorIds);
-                response.Wait();
+                await _reportingClient.UpdateSensors(sensorIds);
 
                 _timer = new Timer(TemperatureCallback, null, 0, 900000);
             }
@@ -41,7 +42,7 @@ namespace TemperatureStation.IoT.Service
             }
         }
 
-        private void TemperatureCallback(object state)
+        private async void TemperatureCallback(object state)
         {
             if (_isClosing)
                 return;
@@ -49,8 +50,7 @@ namespace TemperatureStation.IoT.Service
             try
             {
                 var readings = _sensorsClient.ReadSensors();
-                var response = _reportingClient.ReportReadings(readings);
-                response.Wait();
+                await _reportingClient.ReportReadings(readings);
             }
             catch (Exception ex)
             {
@@ -89,7 +89,11 @@ namespace TemperatureStation.IoT.Service
                 _reportingClient = null;
             }
 
-            sender.GetDeferral().Complete();
+            if (_deferral != null)
+            {
+                _deferral.Complete();
+                _deferral = null;
+            }
         }
     }
 }
