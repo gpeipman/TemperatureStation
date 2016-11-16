@@ -12,9 +12,7 @@
 	<div class="col-md-6">
 		<svg id="chart" />
 	</div>
-	<div class="col-md-6">
-	@if (Model != null && Model.Measurement != null)
-	{        
+	<div class="col-md-6">       
 		<table class="table">
 			<thead>
 				<tr>
@@ -38,129 +36,90 @@
 				}
 			</tbody>
 		</table>
-	}
 	</div>
 </div>
 
-@*<div class="row">
-	<div class="col-md-3">
-		<h2>Application uses</h2>
-		<ul>
-			<li>Sample pages using ASP.NET Core MVC</li>
-			<li><a href="http://go.microsoft.com/fwlink/?LinkId=518004">Bower</a> for managing client-side libraries</li>
-			<li>Theming using <a href="http://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
-		</ul>
-	</div>
-	<div class="col-md-3">
-		<h2>How to</h2>
-		<ul>
-			<li><a href="http://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
-			<li><a href="http://go.microsoft.com/fwlink/?LinkID=699562">Add an appsetting in config and access it in app.</a></li>
-			<li><a href="http://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
-			<li><a href="http://go.microsoft.com/fwlink/?LinkId=699316">Use logging to log a message.</a></li>
-			<li><a href="http://go.microsoft.com/fwlink/?LinkId=699317">Add packages using NuGet.</a></li>
-			<li><a href="http://go.microsoft.com/fwlink/?LinkId=699318">Add client packages using Bower.</a></li>
-			<li><a href="http://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
-		</ul>
-	</div>
-	<div class="col-md-3">
-		<h2>Overview</h2>
-		<ul>
-			<li><a href="http://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET Core</a></li>
-			<li><a href="http://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET Core such as Startup and middleware.</a></li>
-			<li><a href="http://go.microsoft.com/fwlink/?LinkId=398602">Working with Data</a></li>
-			<li><a href="http://go.microsoft.com/fwlink/?LinkId=398603">Security</a></li>
-			<li><a href="http://go.microsoft.com/fwlink/?LinkID=699321">Client side development</a></li>
-			<li><a href="http://go.microsoft.com/fwlink/?LinkID=699322">Develop on different platforms</a></li>
-			<li><a href="http://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
-		</ul>
-	</div>
-	<div class="col-md-3">
-		<h2>Run & Deploy</h2>
-		<ul>
-			<li><a href="http://go.microsoft.com/fwlink/?LinkID=517851">Run your app</a></li>
-			<li><a href="http://go.microsoft.com/fwlink/?LinkID=517853">Run tools such as EF migrations and more</a></li>
-			<li><a href="http://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
-		</ul>
-	</div>
-</div>*@
-
 @section scripts {
 <script>
-var offset = @TimeZoneInfo.Local.BaseUtcOffset.TotalHours;
-var data = @Html.Raw(JsonConvert.SerializeObject(Model.Readings));
+	var offset = @TimeZoneInfo.Local.BaseUtcOffset.TotalHours;
+	var data = @Html.Raw(JsonConvert.SerializeObject(Model.Readings));
+	var strokes = ['blue','red','green','brown','orange','yellow','pink'];
 	
-// set the dimensions and margins of the graph
-var margin = {top: 20, right: 20, bottom: 30, left: 50},
-	width = $('.col-md-6').width() - margin.left - margin.right,
-	height = 200 - margin.top - margin.bottom;
+	$(document).ready(function() {
+		// set the dimensions and margins of the graph
+		var margin = {top: 20, right: 20, bottom: 30, left: 50},
+			width = $('.col-md-6').width() - margin.left - margin.right,
+			height = ($('.col-md-6').width() / 2) - margin.top - margin.bottom;
 
-// parse the date / time
-//var parseTime = d3.timeParse("%d-%b-%y");
-var parseTime = d3.timeParse("%Y-%m-%dT%H:%M:%S.%L");
+		// parse the date / time
+		var parseTime = d3.timeParse("%Y-%m-%dT%H:%M:%S.%L");
 
-// set the ranges
-var x = d3.scaleTime().range([0, width]);
-var y = d3.scaleLinear().range([height, 0]);
+		// set the ranges
+		var x = d3.scaleTime().range([0, width]);
+		var y = d3.scaleLinear().range([height, 0]);
 
-// define the 1st line
-var valueline = d3.line()
-	.x(function(d) { return x(d.date); })
-	.y(function(d) { return y(d.close); });
+		var valuelines = [];
 
-// define the 2nd line
-var valueline2 = d3.line()
-	.x(function(d) { return x(d.date); })
-	.y(function(d) { return y(d.open); });
+		for(var i = 0; i < data[0].length; i++)
+		{
+			var valueline = d3.line()
+							  .x(function(d) { return x(d.date); })
+							  .y(function(d) { return y(d['value' + i]); });
 
-// append the svg obgect to the body of the page
-// appends a 'group' element to 'svg'
-// moves the 'group' element to the top left margin
-var svg = d3.select("svg")
-	.attr("width", width + margin.left + margin.right)
-	.attr("height", height + margin.top + margin.bottom)
-	.append("g")
-	.attr("transform",
-		  "translate(" + margin.left + "," + margin.top + ")");
+			valuelines.push(valueline);
+		}
 
-data.forEach(function(d) {
-		var date = new Date();
-	date.setTime(Date.parse(d[0].ReadingTime)-60*60*1000*offset);
-	d.date = date;
-	d.dateString = d.date.toString();
-	d.ReadingTime = d[0].ReadingTime;
-	d.close = +d[0].Value;
-	d.open = +d[1].Value;
-});
+		// append the svg obgect to the body of the page
+		// appends a 'group' element to 'svg'
+		// moves the 'group' element to the top left margin
+		var svg = d3.select("svg")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+			.append("g")
+			.attr("transform",
+				  "translate(" + margin.left + "," + margin.top + ")");
 
-console.log(data);
+		data.forEach(function(d) {
+			var date = new Date();
+			date.setTime(Date.parse(d[0].ReadingTime)-60*60*1000*offset);
+			d.date = date;
 
-// Scale the range of the data
-x.domain(d3.extent(data, function(d) { return d.date; }));
-y.domain([0, d3.max(data, function(d) {
-	return Math.max(d.close, d.open); })]);
+			for(var i = 0; i < d.length; i++)
+			{
+				d['value' + i] = +d[i].Value;                
+			}
+		});
 
-// Add the valueline path.
-svg.append("path")
-	.data([data])
-	.attr("class", "line")
-	.attr("d", valueline);
+		// Scale the range of the data
+		x.domain(d3.extent(data, function(d) { return d.date; }));
+		y.domain([0, d3.max(data, function(d) {
+			var values = [];
+			for(var i=0; i<valuelines.length; i++)
+			{
+				values.push(d['value' + i]);                
+			}
+			//return Math.max(d.close, d.open); 
+			return Math.max.apply(null, values);
+		})]);
+		
+		for(var i = 0; i < valuelines.length; i++)
+		{
+			svg.append("path")
+			   .data([data])
+			   .attr("class", "line")
+			   .style("stroke", strokes[i] || 'black')
+			   .attr("d", valuelines[i]);
+		}
 
-// Add the valueline2 path.
-svg.append("path")
-	.data([data])
-	.attr("class", "line")
-	.style("stroke", "red")
-	.attr("d", valueline2);
+		// Add the X Axis
+		svg.append("g")
+			.attr("transform", "translate(0," + height + ")")
+			.call(d3.axisBottom(x));
 
-// Add the X Axis
-svg.append("g")
-	.attr("transform", "translate(0," + height + ")")
-	.call(d3.axisBottom(x));
+		// Add the Y Axis
+		svg.append("g")
+			.call(d3.axisLeft(y));
 
-// Add the Y Axis
-svg.append("g")
-	.call(d3.axisLeft(y));
-
+	});
 </script>
 }
