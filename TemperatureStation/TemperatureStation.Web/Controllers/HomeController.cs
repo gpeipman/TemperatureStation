@@ -4,6 +4,7 @@ using TemperatureStation.Web.Data;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Models;
+using AutoMapper.QueryableExtensions;
 
 namespace TemperatureStation.Web.Controllers
 {
@@ -29,6 +30,7 @@ namespace TemperatureStation.Web.Controllers
                                           .ThenInclude(sr => sr.Measurement)
                                           .Where(r => r.SensorRole.Measurement.Id == model.Measurement.Id)
                                           .OrderByDescending(r => r.ReadingTime)
+                                          .ProjectTo<ReadingViewModel>()
                                           .Take(48)
                                           .ToListAsync();
 
