@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using TemperatureStation.IoT.Service.Logging;
 using TemperatureStation.IoT.Service.Measuring;
 using TemperatureStation.IoT.Service.Reporting;
 using Windows.ApplicationModel.Background;
@@ -12,6 +13,7 @@ namespace TemperatureStation.IoT.Service
         private bool _isClosing;
         private ISensorsClient _sensorsClient;
         private IReportingClient _reportingClient;
+        private ILogger _logger;
         private Timer _timer;
         private BackgroundTaskDeferral _deferral;
 
@@ -19,7 +21,10 @@ namespace TemperatureStation.IoT.Service
         {
             _deferral = taskInstance.GetDeferral();
             taskInstance.Canceled += TaskInstance_Canceled;
-            
+
+            _logger = TemperatureStationEventSource.Log;
+            _logger.Info("Starting weather station service");
+
             try
             {
                 _sensorsClient = new RinsenOneWireClient();
@@ -27,6 +32,8 @@ namespace TemperatureStation.IoT.Service
 
                 if (_reportingClient.SupportsSensorsUpdate)
                 {
+                    _logger.Info("Sending sensors info is allowed, updating sensors info");
+
                     var sensorIds = _sensorsClient.ListSensors();
                     await _reportingClient.UpdateSensors(sensorIds);
                 }
@@ -35,8 +42,10 @@ namespace TemperatureStation.IoT.Service
             }
             catch (Exception ex)
             {
-                // implement logging
-                throw ex;
+                _logger.Critical(ex.ToString());
+
+                _deferral.Complete();
+                return;
             }
 
             while (!_isClosing)
@@ -48,17 +57,20 @@ namespace TemperatureStation.IoT.Service
         private async void TemperatureCallback(object state)
         {
             if (_isClosing)
+            {
                 return;
+            }
 
             try
             {
                 var readings = _sensorsClient.ReadSensors();
                 await _reportingClient.ReportReadings(readings);
+
+                _logger.Info(readings.ToString());
             }
             catch (Exception ex)
             {
-                // implement logging
-                throw ex;
+                _logger.Critical(ex.ToString());
             }
         }
 
@@ -90,6 +102,16 @@ namespace TemperatureStation.IoT.Service
                     disposable.Dispose();
                 }
                 _reportingClient = null;
+            }
+
+            if (_logger != null)
+            {
+                var disposable = _logger as IDisposable;
+                if (disposable != null)
+                {
+                    disposable.Dispose();
+                }
+                _logger = null;
             }
 
             if (_deferral != null)

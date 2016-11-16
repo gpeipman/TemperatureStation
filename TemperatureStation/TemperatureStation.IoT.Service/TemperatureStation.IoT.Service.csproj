@@ -96,6 +96,8 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\TemperatureStationEventSource.cs" />
     <Compile Include="Measuring\ISensorsClient.cs" />
     <Compile Include="Measuring\RinsenDefensiveOneWireClient.cs" />
     <Compile Include="Measuring\RinsenOneWireClient.cs" />
