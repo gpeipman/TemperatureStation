@@ -1,4 +1,4 @@
-﻿#﻿# Temperature Station
+# Temperature Station
 
 Simple and extensible temperature measuring system. Can be used for many purposes. Suggested for home and hobby use, not tested with industrial use cases. The solution here is fully functional. If needed then more temperature sensors can be connected to RaspberryPi without any changes to source code. The code is here to support my IoT presentations.
 
