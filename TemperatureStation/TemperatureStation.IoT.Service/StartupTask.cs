@@ -24,7 +24,7 @@ namespace TemperatureStation.IoT.Service
 
             try
             {
-                _logger = new SyslogLogger();
+                _logger = new ApplicationInsightsLogger();
                 _logger.Info("Starting weather station service");
             }
             catch(Exception ex)

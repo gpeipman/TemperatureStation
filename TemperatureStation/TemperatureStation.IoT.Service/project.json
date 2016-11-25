@@ -11,6 +11,7 @@
     ]
   },
   "dependencies": {
+    "Microsoft.ApplicationInsights": "2.1.0",
     "Microsoft.Azure.Devices.Client": "1.0.22",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
     "Newtonsoft.Json": "9.0.1",
