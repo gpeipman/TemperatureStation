@@ -5,8 +5,6 @@ namespace TemperatureStation.IoT.Service.Logging
     [EventSource(Name = "TemperatureStationEventSource")]
     internal sealed class TemperatureStationEventSource : EventSource, ILogger
     {
-        public static TemperatureStationEventSource Log = new TemperatureStationEventSource();
-
         [Event(1, Level = EventLevel.Verbose, Channel = EventChannel.Debug)]
         public void Debug(string message)
         {

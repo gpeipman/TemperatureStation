@@ -97,6 +97,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\SyslogLogger.cs" />
+    <Compile Include="Logging\SyslogLogLevel.cs" />
     <Compile Include="Logging\TemperatureStationEventSource.cs" />
     <Compile Include="Measuring\ISensorsClient.cs" />
     <Compile Include="Measuring\RinsenDefensiveOneWireClient.cs" />
