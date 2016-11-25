@@ -96,6 +96,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logging\FallbackLogger.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\SyslogLogger.cs" />
     <Compile Include="Logging\SyslogLogLevel.cs" />
