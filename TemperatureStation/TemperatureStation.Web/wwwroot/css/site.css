@@ -35,16 +35,28 @@ textarea {
     padding-left: 0.5em;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"]
-{
-    width: 100%;
-}
-
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
   /* Hide captions */
   .carousel-caption {
     display: none
   }
+}
+
+/* chart default line */
+.line {
+    fill: none;
+    stroke: black;
+    stroke-width: 1px;
+}
+
+#chartLegend {
+    list-style:none;
+    margin-left:10px;
+}
+#chartLegend span {
+    display:inline-block;
+    margin-bottom:4px;
+    width:10px;
+    height:2px;
 }

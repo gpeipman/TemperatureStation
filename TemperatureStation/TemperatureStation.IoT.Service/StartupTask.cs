@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using TemperatureStation.IoT.Service.Logging;
 using TemperatureStation.IoT.Service.Measuring;
 using TemperatureStation.IoT.Service.Reporting;
 using Windows.ApplicationModel.Background;
@@ -12,27 +13,46 @@ namespace TemperatureStation.IoT.Service
         private bool _isClosing;
         private ISensorsClient _sensorsClient;
         private IReportingClient _reportingClient;
+        private ILogger _logger;
         private Timer _timer;
+        private BackgroundTaskDeferral _deferral;
 
-        public void Run(IBackgroundTaskInstance taskInstance)
+        public async void Run(IBackgroundTaskInstance taskInstance)
         {
+            _deferral = taskInstance.GetDeferral();
             taskInstance.Canceled += TaskInstance_Canceled;
-            
+
+            try
+            {
+                _logger = new ApplicationInsightsLogger();
+                _logger.Info("Starting weather station service");
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+
             try
             {
                 _sensorsClient = new RinsenOneWireClient();
-                _reportingClient = new WebReportingClient();
+                _reportingClient = new AzureIotHubReportingClient();
 
-                var sensorIds = _sensorsClient.ListSensors();
-                var response = _reportingClient.UpdateSensors(sensorIds);
-                response.Wait();
+                if (_reportingClient.SupportsSensorsUpdate)
+                {
+                    _logger.Info("Sending sensors info is allowed, updating sensors info");
 
-                _timer = new Timer(TemperatureCallback, null, 0, 900000);
+                    var sensorIds = _sensorsClient.ListSensors();
+                    await _reportingClient.UpdateSensors(sensorIds);
+                }
+
+                _timer = new Timer(TemperatureCallback, null, 0, 10000);
             }
             catch (Exception ex)
             {
-                // implement logging
-                throw ex;
+                _logger.Critical(ex.ToString());
+
+                _deferral.Complete();
+                return;
             }
 
             while (!_isClosing)
@@ -41,21 +61,23 @@ namespace TemperatureStation.IoT.Service
             }
         }
 
-        private void TemperatureCallback(object state)
+        private async void TemperatureCallback(object state)
         {
             if (_isClosing)
+            {
                 return;
+            }
 
             try
             {
                 var readings = _sensorsClient.ReadSensors();
-                var response = _reportingClient.ReportReadings(readings);
-                response.Wait();
+                await _reportingClient.ReportReadings(readings);
+
+                _logger.Info(readings.ToString());
             }
             catch (Exception ex)
             {
-                // implement logging
-                throw ex;
+                _logger.Critical(ex.ToString());
             }
         }
 
@@ -89,7 +111,21 @@ namespace TemperatureStation.IoT.Service
                 _reportingClient = null;
             }
 
-            sender.GetDeferral().Complete();
+            if (_logger != null)
+            {
+                var disposable = _logger as IDisposable;
+                if (disposable != null)
+                {
+                    disposable.Dispose();
+                }
+                _logger = null;
+            }
+
+            if (_deferral != null)
+            {
+                _deferral.Complete();
+                _deferral = null;
+            }
         }
     }
 }

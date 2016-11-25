@@ -96,9 +96,16 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logging\ApplicationInsightsLogger.cs" />
+    <Compile Include="Logging\FallbackLogger.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\SyslogLogger.cs" />
+    <Compile Include="Logging\SyslogLogLevel.cs" />
+    <Compile Include="Logging\TemperatureStationEventSource.cs" />
     <Compile Include="Measuring\ISensorsClient.cs" />
     <Compile Include="Measuring\RinsenDefensiveOneWireClient.cs" />
     <Compile Include="Measuring\RinsenOneWireClient.cs" />
+    <Compile Include="Reporting\AzureIotHubReportingClient.cs" />
     <Compile Include="Reporting\IReportingClient.cs" />
     <Compile Include="Reporting\WebReportingClient.cs" />
     <Compile Include="StartupTask.cs" />

@@ -1,17 +1,19 @@
 ﻿{
   "version": "0.0.1",
-  "authors": [ "Gunnar Peipman" ],
+  "authors": [
+    "Gunnar Peipman"
+  ],
   "copyright": "Copyright (C) 2016 Gunnar Peipman",
   "title": "TemperatureStation Shared Models",
-
   "packOptions": {
-    "owners": [ "Gunnar Peipman" ]
+    "owners": [
+      "Gunnar Peipman"
+    ]
   },
-
   "supports": {},
   "dependencies": {
     "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-    "NETStandard.Library": "1.6.0"
+    "NETStandard.Library": "1.6.1"
   },
   "frameworks": {
     "netstandard1.1": {}

@@ -8,8 +8,13 @@ namespace TemperatureStation.IoT.Service.Reporting
 {
     internal class WebReportingClient : IReportingClient
     {
-        private const string ServiceAddress = "http://server/api/";
+        private const string ServiceAddress = "http://metalcenter:8081/api/";
         private const string DeviceKey = "LongAndComplexKey";
+
+        public bool SupportsSensorsUpdate
+        {
+            get { return true; }
+        }
 
         public async Task ReportReadings(SensorReadings readings)
         {
@@ -33,7 +38,7 @@ namespace TemperatureStation.IoT.Service.Reporting
                 var url = ServiceAddress + "UpdateSensors";
                 var body = JsonConvert.SerializeObject(sensorIds);
                 var content = new StringContent(body, Encoding.UTF8, "application/json");
-                var response = await client.PostAsync(url, content);
+                await client.PostAsync(url, content);
             }
         }
     }
