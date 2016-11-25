@@ -1,5 +1,5 @@
 {
-  "version": "0.0.1",
+  "version": "0.0.2",
   "authors": [ "Gunnar Peipman" ],
   "copyright": "Copyright (C) 2016 Gunnar Peipman",
   "title": "TemperatureStation Web Application",
@@ -51,6 +51,7 @@
   },
 
   "tools": {
+    "BundlerMinifier.Core": "2.2.281",
     "Microsoft.AspNetCore.Razor.Tools": "1.0.0-preview2-final",
     "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final",
     "Microsoft.EntityFrameworkCore.Tools": "1.0.0-preview2-final",
