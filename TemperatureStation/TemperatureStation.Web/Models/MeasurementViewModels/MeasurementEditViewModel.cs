@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace TemperatureStation.Web.Models.MeasurementViewModels
 {
@@ -9,10 +10,12 @@ namespace TemperatureStation.Web.Models.MeasurementViewModels
         public bool IsActive { get; set; }
 
         public IList<SensorRoleViewModel> SensorRoles { get; set; }
+        public IList<CalculatorEditViewModel> Calculators { get; set; }
 
         public MeasurementEditViewModel()
         {
             SensorRoles = new List<SensorRoleViewModel>();
+            Calculators = new List<CalculatorEditViewModel>();
         }
     }
 }

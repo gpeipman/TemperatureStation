@@ -105,7 +105,7 @@ namespace TemperatureStation.Web
 
                        return "<unknown>";
                    }));
-
+                cfg.CreateMap<Calculator, CalculatorEditViewModel>();
                 cfg.CreateMap<MeasurementEditViewModel, Measurement>()
                    .ForMember(m => m.Id, m => m.Ignore())
                    .ForMember(m => m.SensorRoles, m => m.Ignore());
