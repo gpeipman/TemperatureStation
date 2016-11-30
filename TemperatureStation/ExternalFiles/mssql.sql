@@ -175,6 +175,8 @@ CREATE TABLE [dbo].[Readings](
 	[MeasurementId] [int] NOT NULL,
 	[SensorRoleId] [int] NULL,
 	[CalculatorId] [int] NULL,
+	[FreezingPoint] [float] NULL,
+	[CoolingRate] [float] NULL,
  CONSTRAINT [PK_Readings] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

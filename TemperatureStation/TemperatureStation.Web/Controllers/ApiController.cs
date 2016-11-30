@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using SharedModels = TemperatureStation.Shared.Models;
 using TemperatureStation.Web.Data;
+using TemperatureStation.Web.Extensions;
 
 namespace TemperatureStation.Web.Controllers
 {
@@ -29,6 +30,7 @@ namespace TemperatureStation.Web.Controllers
             var measurement = await _dataContext.Measurements
                                           .Include(m => m.SensorRoles)
                                           .ThenInclude(r => r.Sensor)
+                                          .Include(m => m.Calculators)                                          
                                           .FirstOrDefaultAsync(m => m.IsActive);
             if (measurement == null)
             {
@@ -53,6 +55,26 @@ namespace TemperatureStation.Web.Controllers
                 reading.SensorRole = sensorRole;
                 reading.Value = readingForSensor.Reading;
                 reading.Measurement = measurement;
+
+                _dataContext.Readings.Add(reading);
+            }
+
+            var calcs = CalculatorProvider.GetCalculators();
+
+            foreach (var registeredCalculator in measurement.Calculators)
+            {
+                if(!calcs.ContainsKey(registeredCalculator.Name))
+                {
+                    continue;
+                }
+
+                var calc = calcs[registeredCalculator.Name];
+
+                var reading = new CalculatorReading();
+                reading.Calculator = registeredCalculator;
+                reading.Measurement = measurement;
+                reading.ReadingTime = readings.ReadingTime;
+                reading.Value = calc.Calculate(readings, null);
 
                 _dataContext.Readings.Add(reading);
             }

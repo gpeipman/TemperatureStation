@@ -6,9 +6,17 @@ namespace TemperatureStation.Web.Extensions
     [Calculator(Name = "Dummy calculator")]
     public class DummyCalculator : ICalculator
     {
-        public void Calculate(SensorReadings readings)
+        public bool NeedsPreviousReading
         {
-            throw new NotImplementedException();
+            get
+            {
+                return false;
+            }
+        }
+
+        public float Calculate(SensorReadings readings, SensorReading previousReadings)
+        {
+            return 1;
         }
     }
 }

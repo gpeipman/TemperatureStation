@@ -4,6 +4,7 @@ namespace TemperatureStation.Web.Extensions
 {
     public interface ICalculator
     {
-        void Calculate(SensorReadings readings);
+        float Calculate(SensorReadings readings, SensorReading previousReadings);
+        bool NeedsPreviousReading { get; }
     }
 }

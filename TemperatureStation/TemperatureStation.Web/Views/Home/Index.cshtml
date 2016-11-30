@@ -24,6 +24,10 @@
 					{
 						<th>@sensorRole.RoleName</th>
 					}
+					@foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
+					{
+						<th>@calc.Name</th>
+					}
 				</tr>
 			</thead>
 			<tbody>
@@ -49,7 +53,7 @@
 	var strokes = ['blue','red','green','brown','orange','yellow','pink'];
 	
 	$(document).ready(function() {
-	    frontPageChart();
+		frontPageChart();
 	});
 </script>
 }

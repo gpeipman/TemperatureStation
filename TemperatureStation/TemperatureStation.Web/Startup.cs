@@ -91,6 +91,20 @@ namespace TemperatureStation.Web
                    .ForMember(r => r.Source, m => m.MapFrom(r => r.SensorRole.RoleName));
                 cfg.CreateMap<CalculatorReading, ReadingViewModel>()
                    .ForMember(r => r.Source, m => m.MapFrom(r => r.Calculator.Name));
+                cfg.CreateMap<Reading, ReadingViewModel>()
+                   .ForMember(r => r.Source, m => m.ResolveUsing(r =>
+                   {
+                       if (r is SensorReading)
+                       {
+                           return ((SensorReading)r).SensorRole.RoleName;
+                       }
+                       else if (r is CalculatorReading)
+                       {
+                           return ((CalculatorReading)r).Calculator.Name;
+                       }
+
+                       return "<unknown>";
+                   }));
 
                 cfg.CreateMap<MeasurementEditViewModel, Measurement>()
                    .ForMember(m => m.Id, m => m.Ignore())

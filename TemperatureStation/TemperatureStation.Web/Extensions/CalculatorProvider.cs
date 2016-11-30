@@ -9,14 +9,51 @@ namespace TemperatureStation.Web.Extensions
 {
     public static class CalculatorProvider
     {
-        public static IEnumerable<string> ListCalculators()
-        {
-            var attrs = from a in GetReferencingAssemblies()
-                        from t in a.GetTypes()
-                        where t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>() != null
-                        select t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>();
+        private static IList<Type> CalculatorTypes;
 
-            return attrs.Select(a => a.Name).OrderBy(a => a);
+        private static object _locker = new object();
+
+        static CalculatorProvider()
+        {
+            LoadCalculatorTypes();
+        }
+
+        public static IDictionary<string,ICalculator> GetCalculators()
+        {
+            var result = new Dictionary<string, ICalculator>();
+
+            foreach(var type in CalculatorTypes)
+            {
+                var calc = (ICalculator)Activator.CreateInstance(type);
+                var name = type.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().Name;
+
+                result.Add(name, calc);
+            }
+
+            return result;
+        }
+
+        private static void LoadCalculatorTypes()
+        {
+            if(CalculatorTypes != null)
+            {
+                return;
+            }
+
+            lock (_locker)
+            {
+                if(CalculatorTypes != null)
+                {
+                    return;
+                }
+
+                var calcs = from a in GetReferencingAssemblies()
+                            from t in a.GetTypes()
+                            where t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>() != null
+                            select t;
+
+                CalculatorTypes = calcs.ToList();
+            }
         }
 
         private static IEnumerable<Assembly> GetReferencingAssemblies()

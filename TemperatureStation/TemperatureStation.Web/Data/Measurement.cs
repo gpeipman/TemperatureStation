@@ -14,6 +14,9 @@ namespace TemperatureStation.Web.Data
         public string Name { get; set; }
 
         public bool IsActive { get; set; }
+        public float? CoolingRate { get; set; }
+        public float? FreezingPoint { get; set; }
+
 
         public virtual IList<SensorRole> SensorRoles { get; set; }
         public virtual IList<Calculator> Calculators { get; set; }
