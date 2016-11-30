@@ -18,7 +18,7 @@
                           .y(function (d) { return y(d['value' + i]); });
 
         var legendItem = "<span style='background-color:" + (strokes[i] || 'black') + "'>"
-        legendItem += '</span> ' + data[0][i].SensorRoleRoleName;
+        legendItem += '</span> ' + data[0][i].Source;
         $('#chartLegend').append('<li>' + legendItem + '</li>');
         valuelines.push(valueline);
     }

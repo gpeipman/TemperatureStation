@@ -15,7 +15,10 @@ namespace TemperatureStation.Web.Data
         {
             base.OnModelCreating(builder);
 
-            // Deal with alternate keys here
+            builder.Entity<Reading>()
+                   .HasDiscriminator<string>("ReadingType")
+                   .HasValue<SensorReading>("SE")
+                   .HasValue<CalculatorReading>("CA");
         }
 
         public DbSet<Sensor> Sensors { get; set; }
