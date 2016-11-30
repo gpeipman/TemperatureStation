@@ -6,6 +6,7 @@ using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Data;
+using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Models;
 
 namespace TemperatureStation.Web.Controllers
@@ -22,7 +23,6 @@ namespace TemperatureStation.Web.Controllers
         public async Task<IActionResult> Index()
         {
             _dataContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-
 
             var model = new HomeViewModel();
             model.Measurement = await _dataContext.Measurements
