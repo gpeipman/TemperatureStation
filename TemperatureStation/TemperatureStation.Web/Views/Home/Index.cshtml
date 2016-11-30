@@ -31,7 +31,7 @@
 				{
 					<tr>
 						<td>@readingsGroup.Key</td>
-						@foreach (var reading in readingsGroup.OrderBy(r => r.SensorRoleRoleName))
+						@foreach (var reading in readingsGroup.OrderBy(r => r.Source))
 						{
 							<td>@reading.Value</td>
 						}

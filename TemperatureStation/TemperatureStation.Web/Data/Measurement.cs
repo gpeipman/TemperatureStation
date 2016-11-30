@@ -15,10 +15,12 @@ namespace TemperatureStation.Web.Data
 
         public bool IsActive { get; set; }
 
-        public IList<SensorRole> SensorRoles { get; set; }
+        public virtual IList<SensorRole> SensorRoles { get; set; }
+        public virtual IList<Calculator> Calculators { get; set; }
 
         public Measurement()
         {
+            Calculators = new List<Calculator>();
             SensorRoles = new List<SensorRole>();
         }
     }

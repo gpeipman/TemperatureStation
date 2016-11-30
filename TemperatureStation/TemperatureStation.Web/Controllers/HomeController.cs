@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +21,9 @@ namespace TemperatureStation.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
+            _dataContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+
+
             var model = new HomeViewModel();
             model.Measurement = await _dataContext.Measurements
                                                   .Include(m => m.SensorRoles)
@@ -27,15 +32,17 @@ namespace TemperatureStation.Web.Controllers
             {
                 return View("IndexEmpty");
             }
-
-            var readings = await _dataContext.Readings
-                                        .Include(r => r.SensorRole)
-                                        .ThenInclude(sr => sr.Measurement)
-                                        .Where(r => r.SensorRole.Measurement.Id == model.Measurement.Id)
+            
+            // ToDo: Separate query for calculators because EF generates only inner joins currently
+            var readings1 = await _dataContext.Readings
+                                        .Include(sr => sr.Measurement)
+                                        .Include(r => ((SensorReading)r).SensorRole)
+                                        .Where(r => r.Measurement.Id == model.Measurement.Id)
                                         .OrderByDescending(r => r.ReadingTime)
-                                        .ProjectTo<ReadingViewModel>()
                                         .Take(48)
                                         .ToListAsync();
+            var readings = new List<ReadingViewModel>();
+            Mapper.Map(readings1, readings);
 
             model.Readings = readings.OrderBy(r => r.ReadingTime)
                                      .GroupBy(r => r.ReadingTime);

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using TemperatureStation.Shared.Models;
+using SharedModels = TemperatureStation.Shared.Models;
 using TemperatureStation.Web.Data;
 
 namespace TemperatureStation.Web.Controllers
@@ -19,7 +19,7 @@ namespace TemperatureStation.Web.Controllers
             _configuration = configuration;
         }
 
-        public async Task<IActionResult> Report([FromBody]SensorReadings readings)
+        public async Task<IActionResult> Report([FromBody]SharedModels.SensorReadings readings)
         {
             if(!IsDeviceKeyValid())
             {
@@ -48,10 +48,11 @@ namespace TemperatureStation.Web.Controllers
                     continue;
                 }
 
-                var reading = new Reading();
+                var reading = new SensorReading();
                 reading.ReadingTime = readings.ReadingTime;
                 reading.SensorRole = sensorRole;
                 reading.Value = readingForSensor.Reading;
+                reading.Measurement = measurement;
 
                 _dataContext.Readings.Add(reading);
             }

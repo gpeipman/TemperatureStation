@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TemperatureStation.Web.Data
 {
-    public class Reading
+    public abstract class Reading
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -13,8 +13,8 @@ namespace TemperatureStation.Web.Data
         public DateTime ReadingTime { get; set; }
 
         public double Value { get; set; }
-
+        
         [Required]
-        public SensorRole SensorRole { get; set; }
+        public Measurement Measurement { get; set; } 
     }
 }

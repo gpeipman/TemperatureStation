@@ -10,13 +10,6 @@
       "runtime": {
         "../packages/Newtonsoft.Json.9.0.1/lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {},
         "bin/Debug/TemperatureStation.Shared.dll": {}
-      },
-      "contentFiles": {
-        "bin/Debug/TemperatureStation.Shared.pdb": {
-          "buildAction": "None",
-          "codeLanguage": "any",
-          "copyToOutput": true
-        }
       }
     }
   }
