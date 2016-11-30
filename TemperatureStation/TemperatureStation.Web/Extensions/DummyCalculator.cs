@@ -1,5 +1,6 @@
 ﻿using System;
-using TemperatureStation.Shared.Models;
+using SharedModels = TemperatureStation.Shared.Models;
+using TemperatureStation.Web.Data;
 
 namespace TemperatureStation.Web.Extensions
 {
@@ -14,9 +15,17 @@ namespace TemperatureStation.Web.Extensions
             }
         }
 
-        public float Calculate(SensorReadings readings, SensorReading previousReadings)
+        public string[] SensorInputs
         {
-            return 1;
+            get
+            {
+                return new string[] { };
+            }
+        }
+
+        public float Calculate(SharedModels.SensorReadings readings, Calculator calculatorDefiniton)
+        {
+            throw new NotImplementedException();
         }
     }
 }
