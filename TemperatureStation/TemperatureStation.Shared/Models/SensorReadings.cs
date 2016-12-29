@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TemperatureStation.Shared.Models
 {
@@ -7,6 +8,11 @@ namespace TemperatureStation.Shared.Models
     {
         public DateTime ReadingTime = DateTime.Now;
         public List<SensorReading> Readings = new List<SensorReading>();
+
+        public double? GetSensorReading(string sensorId)
+        {
+            return Readings?.FirstOrDefault(r => r.SensorId == sensorId)?.Reading;
+        }
 
         public override string ToString()
         {

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Linq;
-using SharedModels = TemperatureStation.Shared.Models;
 using TemperatureStation.Web.Data;
-using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Extensions;
+using SharedModels = TemperatureStation.Shared.Models;
 
 namespace TemperatureStation.Web.Extensions
 {
@@ -34,45 +33,74 @@ namespace TemperatureStation.Web.Extensions
             if (measurement.CoolingRate.HasValue)
             {
                 return -1000;
-            }
+            }            
 
-            var readingTime = (DateTime)readings.ReadingTime;
-            var previousAmbientReading = _dataContext.SensorReadings                   
-                                                     .Where(r => r.SensorRole.RoleName == _ambientSensorId &&
-                                                                 r.Measurement.Id == measurement.Id &&
-                                                                 r.ReadingTime < readingTime)
-                                                     .OrderByDescending(r => r.ReadingTime)
-                                                     .Take(1)
-                                                     .FirstOrDefault();
-            if(previousAmbientReading == null)
-            {
-                return -1000;
-            }
-
-            var previousLiquidReading = _dataContext.SensorReadings
-                                                    .Where(r => r.SensorRole.RoleName == _liquidSensorId &&
-                                                                 r.Measurement.Id == measurement.Id &&
-                                                                 r.ReadingTime < readingTime)
-                                                     .OrderByDescending(r => r.ReadingTime)
-                                                     .Take(1)          
-                                                     .Select(r => new { SensorId = r.SensorRole.Sensor.Id, Reading = r })                                           
-                                                     .FirstOrDefault();
-            if(previousLiquidReading == null)
+            var readingTime = readings.ReadingTime;
+            var previousAmbientReading = GetPreviousAmbientReading(measurement.Id, readingTime);
+            if (previousAmbientReading == null)
             {
                 return -1000;
             }
             
-            var currentLiquidReading = readings.Readings.FirstOrDefault(r => r.SensorId == previousLiquidReading.SensorId);
+            double? currentAmbientReading = readings.GetSensorReading(previousAmbientReading.SensorId);
+            if (currentAmbientReading == null)
+            {
+                return -1000;
+            }
+
+            readingTime = previousAmbientReading.Reading.ReadingTime;
+            var previousLiquidReading = GetPreviousLiquidReading(measurement.Id, readingTime);
+            if (previousLiquidReading == null)
+            {
+                return -1000;
+            }
+
+            double? currentLiquidReading = readings.GetSensorReading(previousLiquidReading.SensorId);
+            if(currentLiquidReading == null)
+            {
+                return -1000;
+            }
+
             var delta = (readings.ReadingTime - previousLiquidReading.Reading.ReadingTime).TotalMinutes;
 
             var coolingRate = GetCoolingRate(previousLiquidReading.Reading.Value,
-                                             previousAmbientReading.Value,
-                                             currentLiquidReading.Reading,
+                                             previousAmbientReading.Reading.Value,
+                                             currentLiquidReading.Value,
                                              delta);
 
             measurement.CoolingRate = (float)coolingRate;
 
             return -1000;
+        }
+
+        private ReadingWithSensorHack GetPreviousAmbientReading(int measurementId, DateTime backFromReadingTime)
+        {
+            return _dataContext.SensorReadings
+                                .Where(r => r.SensorRole.RoleName == _ambientSensorId &&
+                                            r.Measurement.Id == measurementId &&
+                                            r.ReadingTime < backFromReadingTime)
+                                .OrderByDescending(r => r.ReadingTime)
+                                .Take(1)
+                                .Select(r => new ReadingWithSensorHack
+                                    {
+                                        SensorId = r.SensorRole.Sensor.Id,
+                                        Reading = r
+                                    })
+                                .FirstOrDefault();
+        }
+
+        private ReadingWithSensorHack GetPreviousLiquidReading(int measurementId, DateTime readingTime)
+        {
+            return _dataContext.SensorReadings
+                                .Where(r => r.SensorRole.RoleName == _liquidSensorId &&
+                                            r.Measurement.Id == measurementId &&
+                                            r.ReadingTime == readingTime)
+                                    .OrderByDescending(r => r.ReadingTime)
+                                    .Take(1)
+                                    .Select(r => new ReadingWithSensorHack {
+                                        SensorId = r.SensorRole.Sensor.Id,
+                                        Reading = r })
+                                    .FirstOrDefault();
         }
 
         public void SetParameters(string parameters)
@@ -91,6 +119,12 @@ namespace TemperatureStation.Web.Extensions
                 return 0;
 
             return Math.Log(d1 / d2) / t;
+        }
+
+        private class ReadingWithSensorHack
+        {
+            public string SensorId;
+            public Reading Reading;
         }
     }
 }
