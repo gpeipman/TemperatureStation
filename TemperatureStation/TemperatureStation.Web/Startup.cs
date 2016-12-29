@@ -48,11 +48,7 @@ namespace TemperatureStation.Web
             services.AddMvc();
 
             services.AddSingleton<ICalculatorProvider, CalculatorProvider>();
-            services.AddCalculators(new CalculatorProvider(null)); // null here is awful hack
-            //services.AddTransient<DummyCalculator, DummyCalculator>();
-            //services.AddTransient<HeatExchangeRateCalculator, HeatExchangeRateCalculator>();
-            //services.AddTransient<AlcoholVolumeCalculator, AlcoholVolumeCalculator>();
-            //services.AddTransient<FreezingEstimateCalculator, FreezingEstimateCalculator>();
+            services.AddCalculators();
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
             services.AddSingleton<IConfiguration>(Configuration);

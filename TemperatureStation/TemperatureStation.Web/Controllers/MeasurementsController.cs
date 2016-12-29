@@ -102,7 +102,7 @@ namespace TemperatureStation.Web.Controllers
 
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException ex)
+            catch (DbUpdateConcurrencyException)
             {
                 if (model.Id > 0 && !MeasurementExists(model.Id))
                 {
