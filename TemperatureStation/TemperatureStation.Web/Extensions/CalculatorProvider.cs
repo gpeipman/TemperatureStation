@@ -27,7 +27,6 @@ namespace TemperatureStation.Web.Extensions
 
             foreach(var type in CalculatorTypes)
             {
-                //var calc = (ICalculator)Activator.CreateInstance(type);
                 var calc = (ICalculator)_serviceProvider.GetService(type);
                 var name = type.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().Name;
 
@@ -42,6 +41,11 @@ namespace TemperatureStation.Web.Extensions
             return CalculatorTypes
                     .Select(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>()?.Name)
                     .Where(t => !string.IsNullOrWhiteSpace(t));            
+        }
+
+        public IEnumerable<Type> GetTypes()
+        {
+            return CalculatorTypes.ToList();
         }
 
         private static void LoadCalculatorTypes()
@@ -63,7 +67,7 @@ namespace TemperatureStation.Web.Extensions
                             where t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>() != null
                             select t;
 
-                CalculatorTypes = calcs.ToList();
+                CalculatorTypes = calcs.OrderBy(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().Order).ToList();
             }
         }
 

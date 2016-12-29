@@ -5,7 +5,7 @@ using SharedModels = TemperatureStation.Shared.Models;
 
 namespace TemperatureStation.Web.Extensions
 {
-    [Calculator(Name = "Dummy calculator")]
+    [Calculator(Name = "Dummy calculator", Order = 1000)]
     public class DummyCalculator : ICalculator
     {
         private readonly ApplicationDbContext _dataContext;

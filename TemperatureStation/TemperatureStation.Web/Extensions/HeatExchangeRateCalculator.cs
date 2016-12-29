@@ -6,7 +6,7 @@ using SharedModels = TemperatureStation.Shared.Models;
 
 namespace TemperatureStation.Web.Extensions
 {
-    [Calculator(Name = "Heat Exchange Rate")]
+    [Calculator(Name = "Heat Exchange Rate", Order = 1)]
     public class HeatExchangeRateCalculator : ICalculator
     {
         private readonly ApplicationDbContext _dataContext;

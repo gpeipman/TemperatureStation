@@ -4,7 +4,7 @@ using System;
 
 namespace TemperatureStation.Web.Extensions
 {
-    [Calculator(Name = "Alcohol volume calculator")]
+    [Calculator(Name = "Alcohol volume calculator", Order = 0)]
     public class AlcoholVolumeCalculator : ICalculator
     {
         public bool ReturnsReading
@@ -15,11 +15,6 @@ namespace TemperatureStation.Web.Extensions
         public float Calculate(SensorReadings readings, Measurement measurement)
         {
             if(measurement == null)
-            {
-                return -1000;
-            }
-
-            if(measurement.FreezingPoint.HasValue)
             {
                 return -1000;
             }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TemperatureStation.Web.Extensions
 {
@@ -6,5 +7,6 @@ namespace TemperatureStation.Web.Extensions
     {
         IDictionary<string, ICalculator> GetCalculators();
         IEnumerable<string> GetNames();
+        IEnumerable<Type> GetTypes();
     }
 }
