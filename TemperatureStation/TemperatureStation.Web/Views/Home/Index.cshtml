@@ -97,7 +97,10 @@
 						}
 						@foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
 						{
+							if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
+							{
 							<td>@readingsGroup.FirstOrDefault(r => r.Source == calc.Name)?.Value</td>
+							}
 						}
 					</tr>
 				}
