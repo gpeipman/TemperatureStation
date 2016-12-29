@@ -13,11 +13,13 @@ namespace TemperatureStation.Web.Controllers
     {
         private ApplicationDbContext _dataContext;
         private IConfiguration _configuration;
+        private ICalculatorProvider _calculatorProvider;
 
-        public ApiController(ApplicationDbContext dataContext, IConfiguration configuration)
+        public ApiController(ApplicationDbContext dataContext, IConfiguration configuration, ICalculatorProvider calculatorProvider)
         {
             _dataContext = dataContext;
             _configuration = configuration;
+            _calculatorProvider = calculatorProvider;
         }
 
         public async Task<IActionResult> Report([FromBody]SharedModels.SensorReadings readings)
@@ -59,7 +61,7 @@ namespace TemperatureStation.Web.Controllers
                 _dataContext.Readings.Add(reading);
             }
 
-            var calcs = CalculatorProvider.GetCalculators();
+            var calcs = _calculatorProvider.GetCalculators();
 
             foreach (var registeredCalculator in measurement.Calculators)
             {
@@ -69,14 +71,22 @@ namespace TemperatureStation.Web.Controllers
                 }
 
                 var calc = calcs[registeredCalculator.Name];
+                calc.SetParameters(registeredCalculator.Parameters);
 
-                var reading = new CalculatorReading();
-                reading.Calculator = registeredCalculator;
-                reading.Measurement = measurement;
-                reading.ReadingTime = readings.ReadingTime;
-                reading.Value = calc.Calculate(readings, null);
+                if (calc.ReturnsReading)
+                {
+                    var reading = new CalculatorReading();
+                    reading.Calculator = registeredCalculator;
+                    reading.Measurement = measurement;
+                    reading.ReadingTime = readings.ReadingTime;
+                    reading.Value = calc.Calculate(readings, measurement);
 
-                _dataContext.Readings.Add(reading);
+                    _dataContext.Readings.Add(reading);
+                }
+                else
+                {
+                    calc.Calculate(readings, measurement);
+                }
             }
 
             await _dataContext.SaveChangesAsync();

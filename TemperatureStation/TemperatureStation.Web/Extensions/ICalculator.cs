@@ -1,12 +1,13 @@
-﻿using SharedModels = TemperatureStation.Shared.Models;
+﻿using System;
+using TemperatureStation.Shared.Models;
 using TemperatureStation.Web.Data;
 
 namespace TemperatureStation.Web.Extensions
 {
     public interface ICalculator
     {
-        float Calculate(SharedModels.SensorReadings readings, Calculator calculatorDefiniton);
-        bool NeedsPreviousReading { get; }   
-        string[] SensorInputs { get; }     
+        float Calculate(SensorReadings readings, Measurement measurement);
+        bool ReturnsReading { get; }
+        void SetParameters(string parameters);
     }
 }

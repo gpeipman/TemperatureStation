@@ -135,10 +135,11 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[Calculator](
+CREATE TABLE [dbo].[Calculators](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[MeasurementId] [int] NOT NULL,
-	[Name] [nvarchar](max) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[Parameters] [nvarchar](max) NULL,
  CONSTRAINT [PK_Calculator] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

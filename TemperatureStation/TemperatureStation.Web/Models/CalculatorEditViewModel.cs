@@ -7,6 +7,7 @@ namespace TemperatureStation.Web.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Parameters { get; set; }
         public int MeasurementId { get; set; }
         
         public IList<SelectListItem> Calculators { get; set; }

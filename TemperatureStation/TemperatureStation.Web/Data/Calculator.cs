@@ -11,6 +11,7 @@ namespace TemperatureStation.Web.Data
 
         [Required]
         public string Name { get; set; }
+        public string Parameters { get; set; }
 
         [Required]
         public Measurement Measurement { get; set; }

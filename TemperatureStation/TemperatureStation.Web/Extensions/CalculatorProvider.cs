@@ -7,30 +7,41 @@ using Microsoft.Extensions.DependencyModel;
 
 namespace TemperatureStation.Web.Extensions
 {
-    public static class CalculatorProvider
+    public class CalculatorProvider : ICalculatorProvider
     {
         private static IList<Type> CalculatorTypes;
-
         private static object _locker = new object();
 
-        static CalculatorProvider()
+        private IServiceProvider _serviceProvider;
+
+        public CalculatorProvider(IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
+
             LoadCalculatorTypes();
         }
 
-        public static IDictionary<string,ICalculator> GetCalculators()
+        public IDictionary<string,ICalculator> GetCalculators()
         {
             var result = new Dictionary<string, ICalculator>();
 
             foreach(var type in CalculatorTypes)
             {
-                var calc = (ICalculator)Activator.CreateInstance(type);
+                //var calc = (ICalculator)Activator.CreateInstance(type);
+                var calc = (ICalculator)_serviceProvider.GetService(type);
                 var name = type.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().Name;
 
                 result.Add(name, calc);
             }
 
             return result;
+        }
+
+        public IEnumerable<string> GetNames()
+        {
+            return CalculatorTypes
+                    .Select(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>()?.Name)
+                    .Where(t => !string.IsNullOrWhiteSpace(t));            
         }
 
         private static void LoadCalculatorTypes()

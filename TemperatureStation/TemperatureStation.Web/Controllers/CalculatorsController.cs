@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -16,10 +15,12 @@ namespace TemperatureStation.Web.Controllers
     public class CalculatorsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ICalculatorProvider _calculatorProvider;
 
-        public CalculatorsController(ApplicationDbContext context)
+        public CalculatorsController(ApplicationDbContext context, ICalculatorProvider calculatorProvider)
         {
             _context = context;
+            _calculatorProvider = calculatorProvider;
         }
 
         public IActionResult Create(int measurementId)
@@ -115,15 +116,15 @@ namespace TemperatureStation.Web.Controllers
         }
         private IList<SelectListItem> GetCalculatorsDropDown(string selectedId = null)
         {
-            return _context.Calculators
-                        .OrderBy(s => s.Name)
-                        .Select(s => new SelectListItem
-                        {
-                            Value = s.Id.ToString(),
-                            Text = s.Name,
-                            Selected = (s.Id.ToString() == selectedId)
-                        })
-                        .ToList();
+            return _calculatorProvider.GetNames()
+                                      .OrderBy(s => s)
+                                      .Select(s => new SelectListItem
+                                      {
+                                          Value = s,
+                                          Text = s,
+                                          Selected = (s == selectedId)
+                                      })
+                                      .ToList();
         }
     }
 }

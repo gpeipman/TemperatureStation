@@ -1,31 +1,32 @@
-﻿using System;
-using SharedModels = TemperatureStation.Shared.Models;
+﻿using System.Linq;
 using TemperatureStation.Web.Data;
+using TemperatureStation.Web.Extensions;
+using SharedModels = TemperatureStation.Shared.Models;
 
 namespace TemperatureStation.Web.Extensions
 {
     [Calculator(Name = "Dummy calculator")]
     public class DummyCalculator : ICalculator
     {
-        public bool NeedsPreviousReading
+        private readonly ApplicationDbContext _dataContext;
+
+        public DummyCalculator(ApplicationDbContext dataContext)
         {
-            get
-            {
-                return false;
-            }
+            _dataContext = dataContext;
         }
 
-        public string[] SensorInputs
+        public bool ReturnsReading
         {
-            get
-            {
-                return new string[] { };
-            }
+            get { return true; }
         }
 
-        public float Calculate(SharedModels.SensorReadings readings, Calculator calculatorDefiniton)
+        public float Calculate(SharedModels.SensorReadings readings, Measurement measurement)
         {
-            throw new NotImplementedException();
+            return (float)readings.Readings.First().Reading + 10f;
+        }
+
+        public void SetParameters(string parameters)
+        {
         }
     }
 }
