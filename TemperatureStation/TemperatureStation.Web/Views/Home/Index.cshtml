@@ -56,9 +56,13 @@
 				{
 					<tr>
 						<td>@readingsGroup.Key</td>
-						@foreach (var reading in readingsGroup.OrderBy(r => r.Source))
+						@foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
 						{
-							<td>@reading.Value</td>
+							<td>@readingsGroup.FirstOrDefault(r => r.Source == sensorRole.RoleName)?.Value</td>
+						}
+						@foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
+						{
+							<td>@readingsGroup.FirstOrDefault(r => r.Source == calc.Name)?.Value</td>
 						}
 					</tr>
 				}
