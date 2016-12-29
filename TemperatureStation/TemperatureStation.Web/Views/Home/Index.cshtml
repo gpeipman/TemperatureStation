@@ -47,7 +47,10 @@
 					}
 					@foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
 					{
+						if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
+						{
 						<th>@calc.Name</th>
+						}
 					}
 				</tr>
 			</thead>
