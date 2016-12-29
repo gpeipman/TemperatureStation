@@ -28,6 +28,34 @@
             </div>
         </div>
         <div class="form-group">
+            <label asp-for="CoolingRate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CoolingRate" class="form-control" />
+                <span asp-validation-for="CoolingRate" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FreezingPoint" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FreezingPoint" class="form-control" />
+                <span asp-validation-for="FreezingPoint" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="OriginalGravity" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="OriginalGravity" class="form-control" />
+                <span asp-validation-for="OriginalGravity" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FinalGravity" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FinalGravity" class="form-control" />
+                <span asp-validation-for="FinalGravity" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
@@ -98,6 +126,6 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
+@*@section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+}*@

@@ -8,6 +8,10 @@ namespace TemperatureStation.Web.Models.MeasurementViewModels
         public int Id { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
+        public double? CoolingRate { get; set; }
+        public double? FreezingPoint { get; set; }
+        public double? OriginalGravity { get; set; }
+        public double? FinalGravity { get; set; }
 
         public IList<SensorRoleViewModel> SensorRoles { get; set; }
         public IList<CalculatorEditViewModel> Calculators { get; set; }

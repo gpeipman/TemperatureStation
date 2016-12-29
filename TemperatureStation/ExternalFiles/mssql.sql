@@ -175,6 +175,8 @@ CREATE TABLE [dbo].[Measurements](
 	[Name] [nvarchar](max) NOT NULL,
 	[FreezingPoint] [float] NULL,
 	[CoolingRate] [float] NULL,
+	[OriginalGravity] [float] NULL,
+	[FinalGravity] [float] NULL,
  CONSTRAINT [PK_Measurements] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

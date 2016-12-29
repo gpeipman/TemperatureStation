@@ -86,20 +86,23 @@ namespace TemperatureStation.Web.Controllers
 
             try
             {
-                var measurement = Mapper.Map<Measurement>(model);
+                Measurement measurement;
 
                 if (model.Id == 0)
                 {
+                    measurement = new Measurement();
                     _context.Measurements.Add(measurement);
                 }
                 else
                 {
-                    _context.Update(measurement);
+                    measurement = _context.Find<Measurement>(model.Id);                    
                 }
+
+                Mapper.Map(model, measurement);
 
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException ex)
             {
                 if (model.Id > 0 && !MeasurementExists(model.Id))
                 {

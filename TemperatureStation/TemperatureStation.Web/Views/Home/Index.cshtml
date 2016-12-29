@@ -9,7 +9,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-3">
 		<dl class="dl-horizontal">
 			<dt>
 				@Html.DisplayNameFor(model => model.Measurement.CoolingRate)
@@ -25,6 +25,22 @@
 			</dt>
 			<dd>
 				@Html.DisplayFor(model => model.Measurement.FreezingPoint)
+			</dd>
+		</dl>
+	</div>
+	<div class="col-md-3">
+		<dl class="dl-horizontal">
+			<dt>
+				@Html.DisplayNameFor(model => model.Measurement.OriginalGravity)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Measurement.OriginalGravity)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Measurement.FinalGravity)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Measurement.FinalGravity)
 			</dd>
 		</dl>
 	</div>

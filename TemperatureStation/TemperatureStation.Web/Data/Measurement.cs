@@ -16,6 +16,8 @@ namespace TemperatureStation.Web.Data
         public bool IsActive { get; set; }
         public double? CoolingRate { get; set; }
         public double? FreezingPoint { get; set; }
+        public double? OriginalGravity { get; set; }
+        public double? FinalGravity { get; set; }
 
 
         public virtual IList<SensorRole> SensorRoles { get; set; }
