@@ -18,7 +18,8 @@ namespace TemperatureStation.Web.Data
         public double? FreezingPoint { get; set; }
         public double? OriginalGravity { get; set; }
         public double? FinalGravity { get; set; }
-
+        public double? AlcoholByVolume { get; set; }
+        public double? AlcoholByWeight { get; set; }
 
         public virtual IList<SensorRole> SensorRoles { get; set; }
         public virtual IList<Calculator> Calculators { get; set; }

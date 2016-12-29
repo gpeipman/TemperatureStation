@@ -10,8 +10,8 @@
     <div class="form-horizontal">
         <h4>Measurement</h4>
         <hr />
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="Id" />
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <div class="checkbox">
@@ -53,6 +53,20 @@
             <div class="col-md-10">
                 <input asp-for="FinalGravity" class="form-control" />
                 <span asp-validation-for="FinalGravity" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="AlcoholByVolume" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="AlcoholByVolume" class="form-control" />
+                <span asp-validation-for="AlcoholByVolume" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="AlcoholByWeight" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="AlcoholByWeight" class="form-control" />
+                <span asp-validation-for="AlcoholByWeight" class="text-danger" />
             </div>
         </div>
         <div class="form-group">

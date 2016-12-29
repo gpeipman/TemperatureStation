@@ -12,6 +12,8 @@ namespace TemperatureStation.Web.Models.MeasurementViewModels
         public double? FreezingPoint { get; set; }
         public double? OriginalGravity { get; set; }
         public double? FinalGravity { get; set; }
+        public double? AlcoholByVolume { get; set; }
+        public double? AlcoholByWeight { get; set; }
 
         public IList<SensorRoleViewModel> SensorRoles { get; set; }
         public IList<CalculatorEditViewModel> Calculators { get; set; }

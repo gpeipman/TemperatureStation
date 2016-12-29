@@ -50,6 +50,7 @@ namespace TemperatureStation.Web
             services.AddSingleton<ICalculatorProvider, CalculatorProvider>();
             services.AddTransient<DummyCalculator, DummyCalculator>();
             services.AddTransient<HeatExchangeRateCalculator, HeatExchangeRateCalculator>();
+            services.AddTransient<AlcoholVolumeCalculator, AlcoholVolumeCalculator>();
 
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();

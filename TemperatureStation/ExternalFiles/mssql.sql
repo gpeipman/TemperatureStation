@@ -177,6 +177,8 @@ CREATE TABLE [dbo].[Measurements](
 	[CoolingRate] [float] NULL,
 	[OriginalGravity] [float] NULL,
 	[FinalGravity] [float] NULL,
+	[AlcoholByVolume] [float] NULL,
+	[AlcoholByWeight] [float] NULL,
  CONSTRAINT [PK_Measurements] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
