@@ -10,6 +10,7 @@ using TemperatureStation.Web.Data;
 using TemperatureStation.Web.Models;
 using TemperatureStation.Web.Models.MeasurementViewModels;
 using TemperatureStation.Web.Services;
+using TemperatureStation.Web.Extensions;
 
 namespace TemperatureStation.Web
 {
@@ -46,10 +47,11 @@ namespace TemperatureStation.Web
 
             services.AddMvc();
 
+            services.AddSingleton<ICalculatorProvider, CalculatorProvider>();
+            services.AddCalculators();
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
-
-            services.AddSingleton<Microsoft.Extensions.Configuration.IConfiguration>(Configuration);
+            services.AddSingleton<IConfiguration>(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -91,7 +93,25 @@ namespace TemperatureStation.Web
                    .ForMember(r => r.Source, m => m.MapFrom(r => r.SensorRole.RoleName));
                 cfg.CreateMap<CalculatorReading, ReadingViewModel>()
                    .ForMember(r => r.Source, m => m.MapFrom(r => r.Calculator.Name));
+                cfg.CreateMap<Reading, ReadingViewModel>()
+                   .ForMember(r => r.Source, m => m.ResolveUsing(r =>
+                   {
+                       if (r is SensorReading)
+                       {
+                           return ((SensorReading)r).SensorRole.RoleName;
+                       }
+                       else if (r is CalculatorReading)
+                       {
+                           return ((CalculatorReading)r).Calculator.Name;
+                       }
 
+                       return "<unknown>";
+                   }));
+                cfg.CreateMap<Calculator, CalculatorEditViewModel>();
+                cfg.CreateMap<CalculatorEditViewModel, Calculator>()
+                   .ForMember(m => m.Id, m => m.Ignore())
+                   .ForMember(m => m.Measurement, m => m.Ignore());
+                
                 cfg.CreateMap<MeasurementEditViewModel, Measurement>()
                    .ForMember(m => m.Id, m => m.Ignore())
                    .ForMember(m => m.SensorRoles, m => m.Ignore());

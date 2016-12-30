@@ -12,6 +12,8 @@ namespace TemperatureStation.Web.Data
 
         public DateTime ReadingTime { get; set; }
 
+        public string ReadingType { get; set; }
+
         public double Value { get; set; }
         
         [Required]

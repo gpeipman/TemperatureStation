@@ -1,0 +1,13 @@
+{
+  "ReadingTime": "2016-12-25T04:28:12.6312027-08:00",
+  "Readings": [
+    {
+      "SensorId": "28-FF-6D-5E-53-15-01-AA",
+      "Reading": 22.5
+    },
+    {
+      "SensorId": "28-FF-7D-97-01-15-02-AA",
+      "Reading": 22.9375
+    }
+  ]
+}

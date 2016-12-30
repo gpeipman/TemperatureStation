@@ -8,6 +8,59 @@
 		<h2>@Model.Measurement.Name</h2>
 	</div>
 </div>
+<div class="row">
+	<div class="col-md-3">
+		<dl class="dl-horizontal">
+			<dt>
+				@Html.DisplayNameFor(model => model.Measurement.CoolingRate)
+			</dt>
+			<dd>
+				@if (Model.Measurement.CoolingRate.HasValue)
+				{
+					@Math.Round(Model.Measurement.CoolingRate.Value, 4)
+				}
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Measurement.FreezingPoint)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Measurement.FreezingPoint)
+			</dd>
+		</dl>
+	</div>
+	<div class="col-md-3">
+		<dl class="dl-horizontal">
+			<dt>
+				@Html.DisplayNameFor(model => model.Measurement.OriginalGravity)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Measurement.OriginalGravity)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Measurement.FinalGravity)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Measurement.FinalGravity)
+			</dd>
+		</dl>
+	</div>
+	<div class="col-md-3">
+		<dl class="dl-horizontal">
+			<dt>
+				@Html.DisplayNameFor(model => model.Measurement.AlcoholByVolume)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Measurement.AlcoholByVolume)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Measurement.AlcoholByWeight)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Measurement.AlcoholByWeight)
+			</dd>
+		</dl>
+	</div>
+</div>
 <div class="row">    
 	<div class="col-md-6">
 		<svg id="chart" />
@@ -24,6 +77,13 @@
 					{
 						<th>@sensorRole.RoleName</th>
 					}
+					@foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
+					{
+						if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
+						{
+						<th>@calc.Name</th>
+						}
+					}
 				</tr>
 			</thead>
 			<tbody>
@@ -31,9 +91,16 @@
 				{
 					<tr>
 						<td>@readingsGroup.Key</td>
-						@foreach (var reading in readingsGroup.OrderBy(r => r.Source))
+						@foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
 						{
-							<td>@reading.Value</td>
+							<td>@readingsGroup.FirstOrDefault(r => r.Source == sensorRole.RoleName)?.Value</td>
+						}
+						@foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
+						{
+							if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
+							{
+							<td>@readingsGroup.FirstOrDefault(r => r.Source == calc.Name)?.Value</td>
+							}
 						}
 					</tr>
 				}
@@ -49,7 +116,7 @@
 	var strokes = ['blue','red','green','brown','orange','yellow','pink'];
 	
 	$(document).ready(function() {
-	    frontPageChart();
+		frontPageChart();
 	});
 </script>
 }

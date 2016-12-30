@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using SharedModels = TemperatureStation.Shared.Models;
 using TemperatureStation.Web.Data;
+using TemperatureStation.Web.Extensions;
 
 namespace TemperatureStation.Web.Controllers
 {
@@ -12,11 +13,13 @@ namespace TemperatureStation.Web.Controllers
     {
         private ApplicationDbContext _dataContext;
         private IConfiguration _configuration;
+        private ICalculatorProvider _calculatorProvider;
 
-        public ApiController(ApplicationDbContext dataContext, IConfiguration configuration)
+        public ApiController(ApplicationDbContext dataContext, IConfiguration configuration, ICalculatorProvider calculatorProvider)
         {
             _dataContext = dataContext;
             _configuration = configuration;
+            _calculatorProvider = calculatorProvider;
         }
 
         public async Task<IActionResult> Report([FromBody]SharedModels.SensorReadings readings)
@@ -29,6 +32,7 @@ namespace TemperatureStation.Web.Controllers
             var measurement = await _dataContext.Measurements
                                           .Include(m => m.SensorRoles)
                                           .ThenInclude(r => r.Sensor)
+                                          .Include(m => m.Calculators)                                          
                                           .FirstOrDefaultAsync(m => m.IsActive);
             if (measurement == null)
             {
@@ -55,6 +59,34 @@ namespace TemperatureStation.Web.Controllers
                 reading.Measurement = measurement;
 
                 _dataContext.Readings.Add(reading);
+            }
+
+            var calcs = _calculatorProvider.GetCalculators();
+
+            foreach (var registeredCalculator in measurement.Calculators)
+            {
+                if(!calcs.ContainsKey(registeredCalculator.Name))
+                {
+                    continue;
+                }
+
+                var calc = calcs[registeredCalculator.Name];
+                calc.SetParameters(registeredCalculator.Parameters);
+
+                if (calc.ReturnsReading)
+                {
+                    var reading = new CalculatorReading();
+                    reading.Calculator = registeredCalculator;
+                    reading.Measurement = measurement;
+                    reading.ReadingTime = readings.ReadingTime;
+                    reading.Value = calc.Calculate(readings, measurement);
+
+                    _dataContext.Readings.Add(reading);
+                }
+                else
+                {
+                    calc.Calculate(readings, measurement);
+                }
             }
 
             await _dataContext.SaveChangesAsync();

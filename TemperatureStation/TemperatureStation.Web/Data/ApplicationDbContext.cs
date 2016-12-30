@@ -25,5 +25,7 @@ namespace TemperatureStation.Web.Data
         public DbSet<Measurement> Measurements { get; set; }
         public DbSet<SensorRole> SensorRoles { get; set; }
         public DbSet<Reading> Readings { get; set; }
+        public DbSet<SensorReading> SensorReadings { get; set; }
+        public DbSet<Calculator> Calculators { get; set; }
     }
 }

@@ -1,0 +1,82 @@
+﻿using System;
+using System.Linq;
+using TemperatureStation.Web.Data;
+using TemperatureStation.Shared.Models;
+
+namespace TemperatureStation.Web.Extensions
+{
+    [Calculator(Name = "Freezing estimate calculator", Order = 2)]
+    public class FreezingEstimateCalculator : ICalculator
+    {
+        private string _ambientSensorId;
+        private string _liquidSensorId;
+
+        public bool ReturnsReading
+        {
+            get { return true; }
+        }
+
+        public float Calculate(SensorReadings readings, Measurement measurement)
+        {
+            if(measurement == null)
+            {
+                throw new ArgumentNullException(nameof(measurement));
+            }
+
+            if(measurement.FreezingPoint == null)
+            {
+                return -1;
+            }
+
+            if(measurement.CoolingRate == null)
+            {
+                return -1;
+            }
+
+            var ambientSensorId = measurement.SensorRoles
+                                             .FirstOrDefault(r => r.RoleName == _ambientSensorId)
+                                             .Sensor
+                                             .Id;
+            var liquidSensorId  = measurement.SensorRoles
+                                             .FirstOrDefault(r => r.RoleName == _liquidSensorId)
+                                             .Sensor
+                                             .Id;
+
+            var ambientTemp = readings.GetSensorReading(ambientSensorId);
+            if(ambientTemp == null)
+            {
+                return -1;
+            }
+
+            var liquidTemp = readings.GetSensorReading(liquidSensorId);
+            if(liquidTemp == null)
+            {
+                return -1;
+            }
+
+            var estimate = GetCoolingEstimate(liquidTemp.Value, 
+                                              ambientTemp.Value, 
+                                              measurement.FreezingPoint.Value, 
+                                              measurement.CoolingRate.Value);
+
+            return (float)Math.Ceiling(estimate);
+        }
+        private static double GetCoolingEstimate(double T0, double Ta, double Tt, double k)
+        {
+            var d1 = T0 - Ta;
+            var d2 = Tt - Ta;
+
+            if (d2 == 0 || k == 0)
+                return -1;
+
+            return Math.Log(d1 / d2) / k;
+        }
+
+        public void SetParameters(string parameters)
+        {
+            var parts = parameters.Split(";".ToCharArray());
+            _ambientSensorId = parts[0];
+            _liquidSensorId = parts[1];
+        }
+    }
+}
