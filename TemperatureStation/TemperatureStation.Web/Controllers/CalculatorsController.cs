@@ -84,10 +84,7 @@ namespace TemperatureStation.Web.Controllers
                     {
                         _context.Calculators.Add(calculator);
                     }
-                    else
-                    {
-                        _context.Update(calculator);
-                    }
+
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -107,6 +104,41 @@ namespace TemperatureStation.Web.Controllers
             model.Calculators = GetCalculatorsDropDown(model.Id.ToString());
 
             return View(model);
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var calculator = await _context.Calculators
+                                           .Include(c => c.Measurement)
+                                           .SingleOrDefaultAsync(m => m.Id == id);
+            if (calculator == null)
+            {
+                return NotFound();
+            }
+
+            return View(calculator);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var calculator = await _context.Calculators
+                                           .Include(c => c.Measurement)
+                                           .SingleOrDefaultAsync(m => m.Id == id);
+
+            var measurementId = calculator.Measurement.Id;
+
+            _context.Database.ExecuteSqlCommand("DELETE FROM Readings WHERE CalculatorId={0}", calculator.Id);
+            _context.Calculators.Remove(calculator);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Edit", "Measurements", new { id = measurementId });
         }
 
         private bool CalculatorExists(int id)
