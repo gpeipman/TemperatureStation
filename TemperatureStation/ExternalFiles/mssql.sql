@@ -1,4 +1,6 @@
-/****** Object:  Table [dbo].[AspNetRoleClaims]    Script Date: 30.11.2016 16:41:21 ******/
+USE [TemperatureStation]
+GO
+/****** Object:  Table [dbo].[AspNetRoleClaims]    Script Date: 30.12.2016 23:47:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11,11 +13,11 @@ CREATE TABLE [dbo].[AspNetRoleClaims](
  CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF)
-)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[AspNetRoles]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Table [dbo].[AspNetRoles]    Script Date: 30.12.2016 23:47:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -28,11 +30,11 @@ CREATE TABLE [dbo].[AspNetRoles](
  CONSTRAINT [PK_AspNetRoles] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF)
-)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[AspNetUserClaims]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Table [dbo].[AspNetUserClaims]    Script Date: 30.12.2016 23:47:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -45,11 +47,11 @@ CREATE TABLE [dbo].[AspNetUserClaims](
  CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF)
-)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[AspNetUserLogins]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Table [dbo].[AspNetUserLogins]    Script Date: 30.12.2016 23:47:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -63,11 +65,11 @@ CREATE TABLE [dbo].[AspNetUserLogins](
 (
 	[LoginProvider] ASC,
 	[ProviderKey] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF)
-)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[AspNetUserRoles]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Table [dbo].[AspNetUserRoles]    Script Date: 30.12.2016 23:47:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -79,11 +81,11 @@ CREATE TABLE [dbo].[AspNetUserRoles](
 (
 	[UserId] ASC,
 	[RoleId] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF)
-)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[AspNetUsers]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Table [dbo].[AspNetUsers]    Script Date: 30.12.2016 23:47:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -107,11 +109,11 @@ CREATE TABLE [dbo].[AspNetUsers](
  CONSTRAINT [PK_AspNetUsers] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF)
-)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[AspNetUserTokens]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Table [dbo].[AspNetUserTokens]    Script Date: 30.12.2016 23:47:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -126,11 +128,11 @@ CREATE TABLE [dbo].[AspNetUserTokens](
 	[UserId] ASC,
 	[LoginProvider] ASC,
 	[Name] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF)
-)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Calculator]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Table [dbo].[Calculators]    Script Date: 30.12.2016 23:47:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -143,11 +145,11 @@ CREATE TABLE [dbo].[Calculators](
  CONSTRAINT [PK_Calculator] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF)
-)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[CalculatorSensorInput]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Table [dbo].[CalculatorSensorInput]    Script Date: 30.12.2016 23:47:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -160,11 +162,11 @@ CREATE TABLE [dbo].[CalculatorSensorInput](
  CONSTRAINT [PK_CalculatorSensorInput] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF)
-)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Measurements]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Table [dbo].[Measurements]    Script Date: 30.12.2016 23:47:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -182,11 +184,11 @@ CREATE TABLE [dbo].[Measurements](
  CONSTRAINT [PK_Measurements] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF)
-)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Readings]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Table [dbo].[Readings]    Script Date: 30.12.2016 23:47:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -194,7 +196,7 @@ GO
 CREATE TABLE [dbo].[Readings](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[ReadingType] [nvarchar](50) NOT NULL,
-	[ReadingTime] [datetime2](7) NOT NULL,
+	[ReadingTime] [datetime] NOT NULL,
 	[Value] [float] NOT NULL,
 	[MeasurementId] [int] NOT NULL,
 	[SensorRoleId] [int] NULL,
@@ -202,11 +204,11 @@ CREATE TABLE [dbo].[Readings](
  CONSTRAINT [PK_Readings] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF)
-)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[SensorRoles]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Table [dbo].[SensorRoles]    Script Date: 30.12.2016 23:47:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -219,11 +221,11 @@ CREATE TABLE [dbo].[SensorRoles](
  CONSTRAINT [PK_SensorRoles] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF)
-)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Sensors]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Table [dbo].[Sensors]    Script Date: 30.12.2016 23:47:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -234,115 +236,115 @@ CREATE TABLE [dbo].[Sensors](
  CONSTRAINT [PK_Sensors] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF)
-)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
 SET ANSI_PADDING ON
 
 GO
-/****** Object:  Index [IX_AspNetRoleClaims_RoleId]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Index [IX_AspNetRoleClaims_RoleId]    Script Date: 30.12.2016 23:47:25 ******/
 CREATE NONCLUSTERED INDEX [IX_AspNetRoleClaims_RoleId] ON [dbo].[AspNetRoleClaims]
 (
 	[RoleId] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, DROP_EXISTING = OFF, ONLINE = OFF)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
 SET ANSI_PADDING ON
 
 GO
-/****** Object:  Index [RoleNameIndex]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Index [RoleNameIndex]    Script Date: 30.12.2016 23:47:25 ******/
 CREATE UNIQUE NONCLUSTERED INDEX [RoleNameIndex] ON [dbo].[AspNetRoles]
 (
 	[NormalizedName] ASC
 )
 WHERE ([NormalizedName] IS NOT NULL)
-WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF)
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
 SET ANSI_PADDING ON
 
 GO
-/****** Object:  Index [IX_AspNetUserClaims_UserId]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Index [IX_AspNetUserClaims_UserId]    Script Date: 30.12.2016 23:47:25 ******/
 CREATE NONCLUSTERED INDEX [IX_AspNetUserClaims_UserId] ON [dbo].[AspNetUserClaims]
 (
 	[UserId] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, DROP_EXISTING = OFF, ONLINE = OFF)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
 SET ANSI_PADDING ON
 
 GO
-/****** Object:  Index [IX_AspNetUserLogins_UserId]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Index [IX_AspNetUserLogins_UserId]    Script Date: 30.12.2016 23:47:25 ******/
 CREATE NONCLUSTERED INDEX [IX_AspNetUserLogins_UserId] ON [dbo].[AspNetUserLogins]
 (
 	[UserId] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, DROP_EXISTING = OFF, ONLINE = OFF)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
 SET ANSI_PADDING ON
 
 GO
-/****** Object:  Index [IX_AspNetUserRoles_RoleId]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Index [IX_AspNetUserRoles_RoleId]    Script Date: 30.12.2016 23:47:25 ******/
 CREATE NONCLUSTERED INDEX [IX_AspNetUserRoles_RoleId] ON [dbo].[AspNetUserRoles]
 (
 	[RoleId] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, DROP_EXISTING = OFF, ONLINE = OFF)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
 SET ANSI_PADDING ON
 
 GO
-/****** Object:  Index [EmailIndex]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Index [EmailIndex]    Script Date: 30.12.2016 23:47:25 ******/
 CREATE NONCLUSTERED INDEX [EmailIndex] ON [dbo].[AspNetUsers]
 (
 	[NormalizedEmail] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, DROP_EXISTING = OFF, ONLINE = OFF)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
 SET ANSI_PADDING ON
 
 GO
-/****** Object:  Index [UserNameIndex]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Index [UserNameIndex]    Script Date: 30.12.2016 23:47:25 ******/
 CREATE UNIQUE NONCLUSTERED INDEX [UserNameIndex] ON [dbo].[AspNetUsers]
 (
 	[NormalizedUserName] ASC
 )
 WHERE ([NormalizedUserName] IS NOT NULL)
-WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF)
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Calculator_MeasurementId]    Script Date: 30.11.2016 16:41:21 ******/
-CREATE NONCLUSTERED INDEX [IX_Calculator_MeasurementId] ON [dbo].[Calculator]
+/****** Object:  Index [IX_Calculator_MeasurementId]    Script Date: 30.12.2016 23:47:25 ******/
+CREATE NONCLUSTERED INDEX [IX_Calculator_MeasurementId] ON [dbo].[Calculators]
 (
 	[MeasurementId] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, DROP_EXISTING = OFF, ONLINE = OFF)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_CalculatorSensorInput_Calculator]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Index [IX_CalculatorSensorInput_Calculator]    Script Date: 30.12.2016 23:47:25 ******/
 CREATE NONCLUSTERED INDEX [IX_CalculatorSensorInput_Calculator] ON [dbo].[CalculatorSensorInput]
 (
 	[CalculatorId] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, DROP_EXISTING = OFF, ONLINE = OFF)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_CalculatorSensorInput_SensorRole]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Index [IX_CalculatorSensorInput_SensorRole]    Script Date: 30.12.2016 23:47:25 ******/
 CREATE NONCLUSTERED INDEX [IX_CalculatorSensorInput_SensorRole] ON [dbo].[CalculatorSensorInput]
 (
 	[SensorRoleId] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, DROP_EXISTING = OFF, ONLINE = OFF)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Readings_MeasurementId]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Index [IX_Readings_MeasurementId]    Script Date: 30.12.2016 23:47:25 ******/
 CREATE NONCLUSTERED INDEX [IX_Readings_MeasurementId] ON [dbo].[Readings]
 (
 	[MeasurementId] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, DROP_EXISTING = OFF, ONLINE = OFF)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_SensorRoles_MeasurementId]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Index [IX_SensorRoles_MeasurementId]    Script Date: 30.12.2016 23:47:25 ******/
 CREATE NONCLUSTERED INDEX [IX_SensorRoles_MeasurementId] ON [dbo].[SensorRoles]
 (
 	[MeasurementId] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, DROP_EXISTING = OFF, ONLINE = OFF)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
 SET ANSI_PADDING ON
 
 GO
-/****** Object:  Index [IX_SensorRoles_SensorId]    Script Date: 30.11.2016 16:41:21 ******/
+/****** Object:  Index [IX_SensorRoles_SensorId]    Script Date: 30.12.2016 23:47:25 ******/
 CREATE NONCLUSTERED INDEX [IX_SensorRoles_SensorId] ON [dbo].[SensorRoles]
 (
 	[SensorId] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, DROP_EXISTING = OFF, ONLINE = OFF)
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[Readings] ADD  CONSTRAINT [DF__Readings__Measur__05D8E0BE]  DEFAULT ((0)) FOR [MeasurementId]
 GO
@@ -376,14 +378,14 @@ ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId]
 GO
-ALTER TABLE [dbo].[Calculator]  WITH CHECK ADD  CONSTRAINT [FK_Calculator_Measurements_MeasurementId] FOREIGN KEY([MeasurementId])
+ALTER TABLE [dbo].[Calculators]  WITH CHECK ADD  CONSTRAINT [FK_Calculator_Measurements_MeasurementId] FOREIGN KEY([MeasurementId])
 REFERENCES [dbo].[Measurements] ([Id])
 ON DELETE CASCADE
 GO
-ALTER TABLE [dbo].[Calculator] CHECK CONSTRAINT [FK_Calculator_Measurements_MeasurementId]
+ALTER TABLE [dbo].[Calculators] CHECK CONSTRAINT [FK_Calculator_Measurements_MeasurementId]
 GO
 ALTER TABLE [dbo].[CalculatorSensorInput]  WITH CHECK ADD  CONSTRAINT [FK_CalculatorSensorInput_Calculator] FOREIGN KEY([CalculatorId])
-REFERENCES [dbo].[Calculator] ([Id])
+REFERENCES [dbo].[Calculators] ([Id])
 GO
 ALTER TABLE [dbo].[CalculatorSensorInput] CHECK CONSTRAINT [FK_CalculatorSensorInput_Calculator]
 GO
@@ -393,7 +395,7 @@ GO
 ALTER TABLE [dbo].[CalculatorSensorInput] CHECK CONSTRAINT [FK_CalculatorSensorInput_SensorRoles]
 GO
 ALTER TABLE [dbo].[Readings]  WITH CHECK ADD  CONSTRAINT [FK_Readings_Calculator] FOREIGN KEY([CalculatorId])
-REFERENCES [dbo].[Calculator] ([Id])
+REFERENCES [dbo].[Calculators] ([Id])
 GO
 ALTER TABLE [dbo].[Readings] CHECK CONSTRAINT [FK_Readings_Calculator]
 GO
