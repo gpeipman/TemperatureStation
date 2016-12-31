@@ -11,6 +11,7 @@ using TemperatureStation.Web.Models;
 using TemperatureStation.Web.Models.MeasurementViewModels;
 using TemperatureStation.Web.Services;
 using TemperatureStation.Web.Extensions;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace TemperatureStation.Web
 {
@@ -58,6 +59,14 @@ namespace TemperatureStation.Web
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            if (Configuration.GetValue("UseForwardedHeaders", false))
+            {
+                app.UseForwardedHeaders(new ForwardedHeadersOptions
+                {
+                    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+                });
+            }
 
             if (env.IsDevelopment())
             {
