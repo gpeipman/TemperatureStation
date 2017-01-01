@@ -12,7 +12,6 @@ using TemperatureStation.Web.Models.MeasurementViewModels;
 using TemperatureStation.Web.Services;
 using TemperatureStation.Web.Extensions;
 using Microsoft.AspNetCore.HttpOverrides;
-using MySQL.Data.EntityFrameworkCore.Extensions;
 
 namespace TemperatureStation.Web
 {
@@ -54,7 +53,7 @@ namespace TemperatureStation.Web
             else if (databaseType == 2)
             {
                 services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseMySQL(Configuration.GetConnectionString("MysqlConnection")));
+                    options.UseMySql(Configuration.GetConnectionString("MysqlConnection")));
             }
 
             services.AddDbContext<ApplicationDbContext>(options =>

@@ -48,10 +48,9 @@
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.1.0",
     "BundlerMinifier.Core": "2.2.306",
     "AutoMapper": "5.2.0",
-    "Npgsql": "3.1.5",
-    "Npgsql.EntityFrameworkCore.PostgreSQL": "1.0.0",
-    "MySql.Data.EntityFrameworkCore": "7.0.6-IR31"
-  },
+    "Npgsql": "3.1.9",
+    "Npgsql.EntityFrameworkCore.PostgreSQL": "1.1.0",
+    "Pomelo.EntityFrameworkCore.MySql": "1.1.0"  },
 
   "tools": {
     "Microsoft.AspNetCore.Razor.Tools": "1.0.0-preview2-final",
