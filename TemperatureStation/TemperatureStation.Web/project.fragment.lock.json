@@ -9,6 +9,13 @@
       },
       "runtime": {
         "bin/Debug/TemperatureStation.Shared.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/TemperatureStation.Shared.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
       }
     }
   }

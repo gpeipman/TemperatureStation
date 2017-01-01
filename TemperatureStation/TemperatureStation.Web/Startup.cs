@@ -11,6 +11,7 @@ using TemperatureStation.Web.Models;
 using TemperatureStation.Web.Models.MeasurementViewModels;
 using TemperatureStation.Web.Services;
 using TemperatureStation.Web.Extensions;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace TemperatureStation.Web
 {
@@ -38,6 +39,23 @@ namespace TemperatureStation.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var databaseType = Configuration.GetValue("DatabaseType", 1);
+            if (databaseType == 0)
+            {
+                services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("MssqlConnection")));
+            }
+            else if (databaseType == 1)
+            {
+                services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseNpgsql(Configuration.GetConnectionString("PostgresConnection")));
+            }
+            else if (databaseType == 2)
+            {
+                services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseMySql(Configuration.GetConnectionString("MysqlConnection")));
+            }
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -58,6 +76,14 @@ namespace TemperatureStation.Web
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            if (Configuration.GetValue("UseForwardedHeaders", false))
+            {
+                app.UseForwardedHeaders(new ForwardedHeadersOptions
+                {
+                    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+                });
+            }
 
             if (env.IsDevelopment())
             {
