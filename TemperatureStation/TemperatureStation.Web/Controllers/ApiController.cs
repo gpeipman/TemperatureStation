@@ -6,6 +6,10 @@ using Microsoft.Extensions.Configuration;
 using SharedModels = TemperatureStation.Shared.Models;
 using TemperatureStation.Web.Data;
 using TemperatureStation.Web.Extensions;
+using System;
+using AutoMapper;
+using System.Collections.Generic;
+using TemperatureStation.Web.Models;
 
 namespace TemperatureStation.Web.Controllers
 {
@@ -121,6 +125,16 @@ namespace TemperatureStation.Web.Controllers
             return NoContent();
         }
 
+        public IActionResult GetNewReadings([FromQuery]DateTime newerThan, [FromQuery]int measurementId,  [FromQuery]int rowCount)
+        {
+            // Check device key
+
+            var results = _dataContext.GetReadings(measurementId, newerThan, rowCount);
+
+            return Json(results);
+        }
+
+        [NonAction]
         private bool IsDeviceKeyValid()
         {
             if (!Request.Headers.ContainsKey("DeviceKey"))

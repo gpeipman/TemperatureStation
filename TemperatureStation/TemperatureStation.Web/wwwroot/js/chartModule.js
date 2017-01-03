@@ -1,7 +1,8 @@
-﻿var frontPageChart = (function () {
+﻿var frontPageChart = function () {
     var margin = { top: 20, right: 20, bottom: 30, left: 50 };
     var width = $('.col-md-6').width() - margin.left - margin.right;
-    var height = ($('.col-md-6').width() / 2) - margin.top - margin.bottom;
+    // var height = ($('.col-md-6').width() / 2) - margin.top - margin.bottom;
+    var height = $('.col-md-6').width() / 2 - margin.top - margin.bottom;
 
     // parse the date / time
     var parseTime = d3.timeParse("%Y-%m-%dT%H:%M:%S.%L");
@@ -17,7 +18,7 @@
                           .x(function (d) { return x(d.date); })
                           .y(function (d) { return y(d['value' + i]); });
 
-        var legendItem = "<span style='background-color:" + (strokes[i] || 'black') + "'>"
+        var legendItem = "<span style='background-color:" + (strokes[i] || 'black') + "'>";
         legendItem += '</span> ' + data[0][i].Source;
         $('#chartLegend').append('<li>' + legendItem + '</li>');
         valuelines.push(valueline);
@@ -69,4 +70,4 @@
     // Add the Y Axis
     svg.append("g")
         .call(d3.axisLeft(y));
-});
+};
