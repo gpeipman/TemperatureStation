@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Rinsen.IoT.OneWire;
-using TemperatureStation.Shared.Models;
+using TemperatureStation.IoT.Service.Models;
 
 namespace TemperatureStation.IoT.Service.Measuring
 {

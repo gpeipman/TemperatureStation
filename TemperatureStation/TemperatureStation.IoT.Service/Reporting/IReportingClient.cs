@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using TemperatureStation.Shared.Models;
+using TemperatureStation.IoT.Service.Models;
 
 namespace TemperatureStation.IoT.Service.Reporting
 {

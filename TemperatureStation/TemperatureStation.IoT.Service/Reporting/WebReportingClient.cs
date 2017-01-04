@@ -2,7 +2,7 @@
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using TemperatureStation.Shared.Models;
+using TemperatureStation.IoT.Service.Models;
 
 namespace TemperatureStation.IoT.Service.Reporting
 {

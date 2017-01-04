@@ -24,7 +24,7 @@ namespace TemperatureStation.IoT.Service
 
             try
             {
-                _logger = new ApplicationInsightsLogger();
+                _logger = new SyslogLogger();
                 _logger.Info("Starting weather station service");
             }
             catch(Exception ex)
@@ -45,28 +45,38 @@ namespace TemperatureStation.IoT.Service
                     await _reportingClient.UpdateSensors(sensorIds);
                 }
 
+                _logger.Info("Initializing sensors reading timer");
                 _timer = new Timer(TemperatureCallback, null, 0, 10000);
+                _logger.Info("Timer successfully initialized");
             }
             catch (Exception ex)
             {
                 _logger.Critical(ex.ToString());
 
+                _logger.Info("Critical exception occured while reporting sensors, closing");
                 _deferral.Complete();
                 return;
             }
+
+            _logger.Info("Entering service loop");
 
             while (!_isClosing)
             {
                 Task.Delay(2000).Wait();
             }
+
+            _logger.Info("Exiting service loop");
         }
 
         private async void TemperatureCallback(object state)
-        {
+        {            
             if (_isClosing)
             {
+                _logger.Info("Timer callback: service is closing");
                 return;
             }
+
+            _logger.Info("Timer callback: reading and reporting sensors");
 
             try
             {
@@ -79,10 +89,14 @@ namespace TemperatureStation.IoT.Service
             {
                 _logger.Critical(ex.ToString());
             }
+
+            _logger.Info("Timer callback: reading and reporting is done");
         }
 
         private void TaskInstance_Canceled(IBackgroundTaskInstance sender, BackgroundTaskCancellationReason reason)
         {
+            _logger.Info("Task was cancelled, reason: "  + reason);
+
             _isClosing = true;
 
             if (_timer != null)

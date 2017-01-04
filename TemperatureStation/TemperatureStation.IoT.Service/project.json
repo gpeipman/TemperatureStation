@@ -19,7 +19,7 @@
   },
   "frameworks": {
     "uap10.0": {
-      "imports": "netstandard1.5"
+      
     }
   },
   "runtimes": {
