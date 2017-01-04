@@ -18,7 +18,9 @@
     "Rinsen.OneWire": "0.1.5"
   },
   "frameworks": {
-    "uap10.0": {}
+    "uap10.0": {
+      "imports": "netstandard1.5"
+    }
   },
   "runtimes": {
     "win10-arm": {},
