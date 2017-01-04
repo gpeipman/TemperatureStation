@@ -1,5 +1,4 @@
-﻿using System;
-using TemperatureStation.Shared.Models;
+﻿using TemperatureStation.Shared.Models;
 using TemperatureStation.Web.Data;
 
 namespace TemperatureStation.Web.Extensions

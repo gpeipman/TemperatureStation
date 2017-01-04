@@ -71,7 +71,7 @@
       "imports": [
         "dotnet5.6",
         "netstandard1.5",
-        "portable-net451+win8"
+        "portable-net45+win8"
       ],
       "dependencies": {
         "Microsoft.NETCore.App": {

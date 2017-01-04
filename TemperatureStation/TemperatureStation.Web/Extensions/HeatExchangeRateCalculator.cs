@@ -68,6 +68,11 @@ namespace TemperatureStation.Web.Extensions
                                              currentLiquidReading.Value,
                                              delta);
 
+            if(coolingRate == 0)
+            {
+                return -1000;
+            }
+
             measurement.CoolingRate = (float)coolingRate;
 
             return -1000;

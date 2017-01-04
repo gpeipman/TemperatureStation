@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using TemperatureStation.Web.Data;
-using TemperatureStation.Web.Extensions;
 using SharedModels = TemperatureStation.Shared.Models;
 
 namespace TemperatureStation.Web.Extensions
