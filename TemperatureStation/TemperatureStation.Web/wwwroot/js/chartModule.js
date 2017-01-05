@@ -45,14 +45,23 @@
     });
 
     x.domain(d3.extent(data, function (d) { return d.date; }));
-    y.domain([0, d3.max(data, function (d) {
-        var values = [];
-        for (var i = 0; i < valuelines.length; i++) {
-            values.push(d['value' + i]);
-        }
-        //return Math.max(d.close, d.open); 
-        return Math.max.apply(null, values);
-    })]);
+    //y.domain(d3.extent(data, function (d) { return d.value; }));
+    y.domain([
+        d3.min(data, function (d) {
+            var values = [];
+            for (var i = 0; i < valuelines.length; i++) {
+                values.push(d['value' + i] - 1);
+            }
+        
+            return Math.min.apply(null, values);
+        }),
+        d3.max(data, function (d) {
+            var values = [];
+            for (var i = 0; i < valuelines.length; i++) {
+                values.push(d['value' + i]);
+            }        
+            return Math.max.apply(null, values);
+        })]);
 
     for (i = 0; i < valuelines.length; i++) {
         svg.append("path")

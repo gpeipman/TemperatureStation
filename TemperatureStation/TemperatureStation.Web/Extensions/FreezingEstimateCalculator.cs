@@ -5,7 +5,7 @@ using TemperatureStation.Shared.Models;
 
 namespace TemperatureStation.Web.Extensions
 {
-    [Calculator(Name = "Freezing estimate calculator", Order = 2)]
+    [Calculator(Name = "Freezing estimate calculator", Order = 2, ShowOnChart = false)]
     public class FreezingEstimateCalculator : ICalculator
     {
         private string _ambientSensorId;

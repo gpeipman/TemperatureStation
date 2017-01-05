@@ -4,16 +4,20 @@ using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Data;
 using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Models;
+using System.Linq;
+using System.Reflection;
 
 namespace TemperatureStation.Web.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _dataContext;
+        private readonly ICalculatorProvider _calcProvider;
 
-        public HomeController(ApplicationDbContext dataContext)
+        public HomeController(ApplicationDbContext dataContext, ICalculatorProvider calcProvider)
         {
             _dataContext = dataContext;
+            _calcProvider = calcProvider;
         }
 
         public async Task<IActionResult> Index()
@@ -52,7 +56,13 @@ namespace TemperatureStation.Web.Controllers
             //                         .GroupBy(r => r.ReadingTime);
 
             model.Readings = _dataContext.GetReadings(model.Measurement.Id, null, 10);
-
+            var showOnChart = _calcProvider.GetTypes()
+                                            .Where(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>() != null)
+                                            .Where(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().ShowOnChart)
+                                            .Select(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().Name)
+                                            .ToList();
+            showOnChart.AddRange(model.Measurement.SensorRoles.Select(r => r.RoleName));
+            model.CalculatorsOnChart = showOnChart.ToArray();
             return View(model); 
         }
 

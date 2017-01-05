@@ -114,6 +114,18 @@
 	var offset = @TimeZoneInfo.Local.BaseUtcOffset.TotalHours;
 	var data = @Html.Raw(JsonConvert.SerializeObject(Model.Readings));
 	var strokes = ['blue','red','green','brown','orange','yellow','pink'];
+	var calcsOnChart = @Html.Raw(JsonConvert.SerializeObject(Model.CalculatorsOnChart));
+
+    for(var i = 0; i < data.length; i++)
+    {
+        for(var j = data[i].length-1; j >= 0; j--)
+        {
+            if($.inArray(data[i][j].Source, calcsOnChart) < 0)   
+            {
+                data[i].splice(j, 1);                
+            }
+        }        
+    }
 
 	$(document).ready(function () {
 		frontPageChart();

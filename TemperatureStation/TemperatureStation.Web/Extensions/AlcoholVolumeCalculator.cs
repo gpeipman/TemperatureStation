@@ -4,7 +4,7 @@ using System;
 
 namespace TemperatureStation.Web.Extensions
 {
-    [Calculator(Name = "Alcohol volume calculator", Order = 0)]
+    [Calculator(Name = "Alcohol volume calculator", Order = 0, ShowOnChart = false)]
     public class AlcoholVolumeCalculator : ICalculator
     {
         public bool ReturnsReading
