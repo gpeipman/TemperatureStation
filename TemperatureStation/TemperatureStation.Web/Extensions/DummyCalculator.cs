@@ -19,9 +19,9 @@ namespace TemperatureStation.Web.Extensions
             get { return true; }
         }
 
-        public float Calculate(SharedModels.SensorReadings readings, Measurement measurement)
+        public double Calculate(SharedModels.SensorReadings readings, Measurement measurement)
         {
-            return (float)readings.Readings.First().Reading + 10f;
+            return readings.Readings.First().Reading + 10f;
         }
 
         public void SetParameters(string parameters)

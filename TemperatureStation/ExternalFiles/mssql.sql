@@ -197,7 +197,7 @@ CREATE TABLE [dbo].[Readings](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[ReadingType] [nvarchar](50) NOT NULL,
 	[ReadingTime] [datetime] NOT NULL,
-	[Value] decimal(18,4) NOT NULL,
+	[Value] [float] NOT NULL,
 	[MeasurementId] [int] NOT NULL,
 	[SensorRoleId] [int] NULL,
 	[CalculatorId] [int] NULL,

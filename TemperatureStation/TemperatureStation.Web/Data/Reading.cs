@@ -14,7 +14,7 @@ namespace TemperatureStation.Web.Data
 
         public string ReadingType { get; set; }
 
-        public decimal Value { get; set; }
+        public double Value { get; set; }
         
         [Required]
         public Measurement Measurement { get; set; } 

@@ -16,7 +16,7 @@ namespace TemperatureStation.Web.Extensions
             get { return true; }
         }
 
-        public float Calculate(SensorReadings readings, Measurement measurement)
+        public double Calculate(SensorReadings readings, Measurement measurement)
         {
             if(measurement == null)
             {
@@ -25,12 +25,12 @@ namespace TemperatureStation.Web.Extensions
 
             if(measurement.FreezingPoint == null)
             {
-                return -1;
+                return -1.0;
             }
 
             if(measurement.CoolingRate == null)
             {
-                return -1;
+                return -1.0;
             }
 
             var ambientSensorId = measurement.SensorRoles
@@ -45,13 +45,13 @@ namespace TemperatureStation.Web.Extensions
             var ambientTemp = readings.GetSensorReading(ambientSensorId);
             if(ambientTemp == null)
             {
-                return -1;
+                return -1.0;
             }
 
             var liquidTemp = readings.GetSensorReading(liquidSensorId);
             if(liquidTemp == null)
             {
-                return -1;
+                return -1.0;
             }
 
             var estimate = GetCoolingEstimate(liquidTemp.Value, 
@@ -59,7 +59,12 @@ namespace TemperatureStation.Web.Extensions
                                               measurement.FreezingPoint.Value, 
                                               measurement.CoolingRate.Value);
 
-            return (float)Math.Ceiling(estimate);
+            if(double.IsNaN(estimate) || double.IsInfinity(estimate))
+            {
+                estimate = -1;
+            }
+
+            return Math.Ceiling(estimate);
         }
         private static double GetCoolingEstimate(double T0, double Ta, double Tt, double k)
         {

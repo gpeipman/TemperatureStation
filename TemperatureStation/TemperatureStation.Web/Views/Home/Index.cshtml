@@ -72,7 +72,7 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Date</th>
+					<th>Time</th>
 					@foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
 					{
 						<th>@sensorRole.RoleName</th>
@@ -90,7 +90,7 @@
 				@foreach (var readingsGroup in Model.Readings)
 				{
 					<tr>
-						<td>@readingsGroup.Key</td>
+						<td>@readingsGroup.Key.ToString("HH:mm")</td>
 						@foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
 						{
 							<td>@readingsGroup.FirstOrDefault(r => r.Source == sensorRole.RoleName)?.Value</td>
@@ -110,12 +110,13 @@
 </div>
 
 @section scripts {
-<script>
-	var offset = @TimeZoneInfo.Local.BaseUtcOffset.TotalHours;
-	var data = @Html.Raw(JsonConvert.SerializeObject(Model.Readings));
-	var strokes = ['blue','red','green','brown','orange','yellow','pink'];
-	
-	$(document).ready(function() {
+<script type="text/javascript">	
+	$(document).ready(function () {
+
+		var offset = @TimeZoneInfo.Local.BaseUtcOffset.TotalHours;
+		var data = @Html.Raw(JsonConvert.SerializeObject(Model.Readings));
+		var strokes = ['blue','red','green','brown','orange','yellow','pink'];
+
 		frontPageChart();
 	});
 </script>

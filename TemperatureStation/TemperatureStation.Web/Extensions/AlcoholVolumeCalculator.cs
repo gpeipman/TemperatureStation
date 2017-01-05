@@ -12,7 +12,7 @@ namespace TemperatureStation.Web.Extensions
             get { return false; }
         }
 
-        public float Calculate(SensorReadings readings, Measurement measurement)
+        public double Calculate(SensorReadings readings, Measurement measurement)
         {
             if(measurement == null)
             {

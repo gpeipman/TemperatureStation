@@ -46,7 +46,7 @@ namespace TemperatureStation.IoT.Service
                 }
 
                 _logger.Info("Initializing sensors reading timer");
-                _timer = new Timer(TemperatureCallback, null, 0, 10000);
+                _timer = new Timer(TemperatureCallback, null, 0, 5*60*1000);
                 _logger.Info("Timer successfully initialized");
             }
             catch (Exception ex)
