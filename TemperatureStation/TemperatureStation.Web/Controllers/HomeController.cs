@@ -34,27 +34,6 @@ namespace TemperatureStation.Web.Controllers
                 return View("IndexEmpty");
             }
 
-            //var readings1 = await _dataContext.Readings
-            //                            .Include(sr => sr.Measurement)
-            //                            .Include(r => ((SensorReading)r).SensorRole)
-            //                            .Where(r => r.Measurement.Id == model.Measurement.Id)
-            //                            .OrderByDescending(r => r.ReadingTime)                                        
-            //                            .Take(48)                                        
-            //                            .ToListAsync();
-
-            //var readings2 = await _dataContext.Readings
-            //                            .Include(sr => sr.Measurement)
-            //                            .Include(r => ((CalculatorReading)r).Calculator)
-            //                            .Where(r => r.Measurement.Id == model.Measurement.Id)
-            //                            .OrderByDescending(r => r.ReadingTime)
-            //                            .Take(48)
-            //                            .ToListAsync();
-
-            //readings1.AddRange(readings2);
-            //var readings = Mapper.Map(readings1, new List<ReadingViewModel>());
-            //model.Readings = readings.OrderBy(r => r.ReadingTime)
-            //                         .GroupBy(r => r.ReadingTime);
-
             model.Readings = _dataContext.GetReadings(model.Measurement.Id, null, 10);
             var showOnChart = _calcProvider.GetTypes()
                                             .Where(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>() != null)
@@ -63,6 +42,25 @@ namespace TemperatureStation.Web.Controllers
                                             .ToList();
             showOnChart.AddRange(model.Measurement.SensorRoles.Select(r => r.RoleName));
             model.CalculatorsOnChart = showOnChart.ToArray();
+
+            var labels = _calcProvider.GetTypes()
+                                            .Where(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>() != null)
+                                            .Select(t => new
+                                            {
+                                                Label = t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().DisplayLabel,
+                                                Name = t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().Name
+                                            })
+                                            .ToDictionary(k => k.Name, e => e.Label);
+
+            foreach (var key in labels.Keys.ToList())
+            {
+                if(string.IsNullOrEmpty(labels[key]))
+                {
+                    labels[key] = key;
+                }
+            }
+            model.Labels = labels;
+
             return View(model); 
         }
 

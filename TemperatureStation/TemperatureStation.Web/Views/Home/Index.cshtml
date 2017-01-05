@@ -81,7 +81,7 @@
 					{
 						if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
 						{
-						<th>@calc.Name</th>
+						<th>@Model.Labels[calc.Name]</th>
 						}
 					}
 				</tr>

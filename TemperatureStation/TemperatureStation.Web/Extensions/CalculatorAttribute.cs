@@ -14,5 +14,6 @@ namespace TemperatureStation.Web.Extensions
         public string Name { get; set; }
         public int Order { get; set; }
         public bool ShowOnChart { get; set; }
+        public string DisplayLabel { get; set; }
     }
 }
