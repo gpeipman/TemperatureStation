@@ -60,6 +60,8 @@ namespace TemperatureStation.Web.Controllers
                 }
             }
             model.Labels = labels;
+            model.Calculators = _calcProvider.GetCalculators();
+            
 
             return View(model); 
         }

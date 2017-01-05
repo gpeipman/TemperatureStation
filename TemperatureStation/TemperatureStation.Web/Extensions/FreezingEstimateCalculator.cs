@@ -83,5 +83,17 @@ namespace TemperatureStation.Web.Extensions
             _ambientSensorId = parts[0];
             _liquidSensorId = parts[1];
         }
+
+        public string DisplayValue(double value)
+        {
+            if(value < 0)
+            {
+                return "-";
+            }
+
+            var span = TimeSpan.FromMinutes(value);
+
+            return span.Hours + ":" + span.Minutes;
+        }
     }
 }

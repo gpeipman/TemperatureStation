@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TemperatureStation.Web.Data;
+using TemperatureStation.Web.Extensions;
 
 namespace TemperatureStation.Web.Models
 {
@@ -11,6 +12,7 @@ namespace TemperatureStation.Web.Models
         public IEnumerable<IGrouping<DateTime, ReadingViewModel>> Readings { get; set; }
         public string[] CalculatorsOnChart { get; set; }
         public IDictionary<string,string> Labels { get; set; }
+        public IDictionary<string, ICalculator> Calculators { get; set; }
 
         public HomeViewModel()
         {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using TemperatureStation.Web.Data;
-using TemperatureStation.Web.Extensions;
 using SharedModels = TemperatureStation.Shared.Models;
 
 namespace TemperatureStation.Web.Extensions
@@ -124,6 +123,11 @@ namespace TemperatureStation.Web.Extensions
                 return 0;
 
             return Math.Log(d1 / d2) / t;
+        }
+
+        public string DisplayValue(double value)
+        {
+            return value.ToString();
         }
 
         private class ReadingWithSensorHack

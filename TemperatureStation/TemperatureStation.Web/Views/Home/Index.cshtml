@@ -99,7 +99,15 @@
 						{
 							if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
 							{
-							<td>@readingsGroup.FirstOrDefault(r => r.Source == calc.Name)?.Value</td>
+								var val = readingsGroup.FirstOrDefault(r => r.Source == calc.Name)?.Value;
+								if (val == null)
+								{
+									<td></td>
+								}
+								else
+								{
+									<td>@Model.Calculators[calc.Name].DisplayValue(val.Value)</td>
+								}							
 							}
 						}
 					</tr>
@@ -116,16 +124,16 @@
 	var strokes = ['blue','red','green','brown','orange','yellow','pink'];
 	var calcsOnChart = @Html.Raw(JsonConvert.SerializeObject(Model.CalculatorsOnChart));
 
-    for(var i = 0; i < data.length; i++)
-    {
-        for(var j = data[i].length-1; j >= 0; j--)
-        {
-            if($.inArray(data[i][j].Source, calcsOnChart) < 0)   
-            {
-                data[i].splice(j, 1);                
-            }
-        }        
-    }
+	for(var i = 0; i < data.length; i++)
+	{
+		for(var j = data[i].length-1; j >= 0; j--)
+		{
+			if($.inArray(data[i][j].Source, calcsOnChart) < 0)   
+			{
+				data[i].splice(j, 1);                
+			}
+		}        
+	}
 
 	$(document).ready(function () {
 		frontPageChart();

@@ -66,5 +66,10 @@ namespace TemperatureStation.Web.Extensions
         {
             return (1.05 / 0.79) * ((og - fg) / fg) * 100;
         }
+
+        public string DisplayValue(double value)
+        {
+            return value.ToString();
+        }
     }
 }
