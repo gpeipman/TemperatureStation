@@ -2,7 +2,8 @@
     var margin = { top: 20, right: 20, bottom: 30, left: 50 };
     var width = $('.col-md-6').width() - margin.left - margin.right;
     // var height = ($('.col-md-6').width() / 2) - margin.top - margin.bottom;
-    var height = $('.col-md-6').width() / 2 - margin.top - margin.bottom;
+    //var height = $('.col-md-6').width() / 2 - margin.top - margin.bottom;
+    var height = $('.col-md-6').width() / 1.5 - margin.top - margin.bottom;
 
     // parse the date / time
     var parseTime = d3.timeParse("%Y-%m-%dT%H:%M:%S.%L");
