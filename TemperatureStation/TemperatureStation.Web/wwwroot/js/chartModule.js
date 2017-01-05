@@ -11,7 +11,7 @@
     // set the ranges
     var x = d3.scaleTime().range([0, width]);
     var y = d3.scaleLinear().range([height, 0]);
-
+    $('#chartLegend').empty('li');
     var valuelines = [];
 
     for (var i = 0; i < data[0].length; i++) {
@@ -28,7 +28,9 @@
     // append the svg obgect to the body of the page
     // appends a 'group' element to 'svg'
     // moves the 'group' element to the top left margin
-    var svg = d3.select("svg")
+    d3.select('#chartContainer').select('svg').remove();    
+
+    var svg = d3.select('#chartContainer').append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
@@ -59,7 +61,7 @@
         d3.max(data, function (d) {
             var values = [];
             for (var i = 0; i < valuelines.length; i++) {
-                values.push(d['value' + i]);
+                values.push(d['value' + i] + 1);
             }        
             return Math.max.apply(null, values);
         })]);

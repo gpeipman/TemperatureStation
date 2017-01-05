@@ -63,7 +63,8 @@
 </div>
 <div class="row">    
 	<div class="col-md-6">
-		<svg id="chart" />
+        <div  id="chartContainer"><svg id="chart" /></div>
+		
 		<ul id="chartLegend">
 			
 		</ul>
@@ -136,7 +137,11 @@
 	}
 
 	$(document).ready(function () {
-		frontPageChart();
+	    frontPageChart();
+
+	    window.addEventListener('resize', function(event){
+	        frontPageChart(); // just call it again...
+	    });
 	});
 </script>
 }
