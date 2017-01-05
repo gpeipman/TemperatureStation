@@ -10,6 +10,7 @@ namespace TemperatureStation.Web.Models
     {
         public Measurement Measurement { get; set; }
         public IEnumerable<IGrouping<DateTime, ReadingViewModel>> Readings { get; set; }
+        public IEnumerable<IGrouping<DateTime, ReadingViewModel>> ChartData { get; set; }
         public string[] CalculatorsOnChart { get; set; }
         public IDictionary<string,string> Labels { get; set; }
         public IDictionary<string, ICalculator> Calculators { get; set; }

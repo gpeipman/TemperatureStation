@@ -1,11 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Data;
 using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Models;
-using System.Linq;
-using System.Reflection;
 
 namespace TemperatureStation.Web.Controllers
 {
@@ -34,7 +35,11 @@ namespace TemperatureStation.Web.Controllers
                 return View("IndexEmpty");
             }
 
-            model.Readings = _dataContext.GetReadings(model.Measurement.Id, null, 10);
+            model.Readings = _dataContext.GetReadings(model.Measurement.Id, null, 10)
+                                         .OrderByDescending(r => r.Key)
+                                         .ToList();
+
+            model.ChartData = _dataContext.GetReadings(model.Measurement.Id, DateTime.Now.AddHours(-24), 10000);
             var showOnChart = _calcProvider.GetTypes()
                                             .Where(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>() != null)
                                             .Where(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().ShowOnChart)

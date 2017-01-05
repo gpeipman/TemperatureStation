@@ -61,6 +61,10 @@ namespace TemperatureStation.Web.Extensions
                                         .ToList();
 
             readings1.AddRange(readings2);
+            readings1 = readings1.OrderByDescending(r => r.ReadingTime)
+                                 .OrderBy(r => r.Source)
+                                 .ToList();
+
             var grouped = readings1.OrderBy(r => r.ReadingTime)
                                    .GroupBy(r => r.ReadingTime);
 

@@ -120,7 +120,7 @@
 @section scripts {
 <script type="text/javascript">	
 	var offset = @TimeZoneInfo.Local.BaseUtcOffset.TotalHours;
-	var data = @Html.Raw(JsonConvert.SerializeObject(Model.Readings));
+	var data = @Html.Raw(JsonConvert.SerializeObject(Model.ChartData));
 	var strokes = ['blue','red','green','brown','orange','yellow','pink'];
 	var calcsOnChart = @Html.Raw(JsonConvert.SerializeObject(Model.CalculatorsOnChart));
 

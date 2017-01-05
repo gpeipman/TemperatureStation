@@ -92,8 +92,12 @@ namespace TemperatureStation.Web.Extensions
             }
 
             var span = TimeSpan.FromMinutes(value);
+            if(span.Days < 1)
+            {
+                return span.ToString("hh\\:mm");
+            }
 
-            return span.Hours + ":" + span.Minutes;
+            return span.ToString("d\\.hh\\:mm");
         }
     }
 }
