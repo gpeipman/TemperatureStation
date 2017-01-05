@@ -76,6 +76,7 @@ namespace TemperatureStation.Web
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+            loggerFactory.AddFile("Logs/ts-{Date}.txt");
 
             if (Configuration.GetValue("UseForwardedHeaders", false))
             {
@@ -83,7 +84,7 @@ namespace TemperatureStation.Web
                 {
                     ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
                 });
-            }
+            }            
 
             if (env.IsDevelopment())
             {

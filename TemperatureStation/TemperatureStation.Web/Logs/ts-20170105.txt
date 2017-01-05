@@ -1,0 +1,1780 @@
+2017-01-05T01:47:10.4392103+02:00  [INF] User profile is available. Using '"C:\Users\gpeipman\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2017-01-05T01:47:10.8339758+02:00 0HL1KVG05JS47 [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T01:47:11.4359783+02:00 0HL1KVG05JS47 [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T01:47:13.0650292+02:00 0HL1KVG05JS47 [INF] Executed DbCommand (115ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T01:47:13.2405655+02:00 0HL1KVG05JS47 [INF] Executed DbCommand (61ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T01:47:13.4045182+02:00 0HL1KVG05JS47 [INF] Executed DbCommand (117ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T01:47:13.6045222+02:00 0HL1KVG05JS47 [INF] Executed DbCommand (70ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T01:47:13.6495169+02:00 0HL1KVG05JS47 [INF] Executed DbCommand (5ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T01:47:16.0745166+02:00 0HL1KVG05JS47 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T01:47:17.1075221+02:00 0HL1KVG05JS47 [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 5827.6161ms (afa2e885)
+2017-01-05T01:47:17.2565195+02:00 0HL1KVG05JS48 [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/bootstrap/dist/css/bootstrap.css   (e5be5b71)
+2017-01-05T01:47:17.2695230+02:00 0HL1KVG05JS49 [INF] Request starting HTTP/1.1 GET http://localhost:5000/css/site.css   (e5be5b71)
+2017-01-05T01:47:17.3015296+02:00 0HL1KVG05JS4A [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/d3/d3.js   (e5be5b71)
+2017-01-05T01:47:17.3145203+02:00 0HL1KVG05JS48 [INF] The file "/lib/bootstrap/dist/css/bootstrap.css" was not modified (f1f8d725)
+2017-01-05T01:47:17.3165204+02:00 0HL1KVG05JS4B [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/jquery/dist/jquery.js   (e5be5b71)
+2017-01-05T01:47:17.3245230+02:00 0HL1KVG05JS4A [INF] The file "/lib/d3/d3.js" was not modified (f1f8d725)
+2017-01-05T01:47:17.3335199+02:00 0HL1KVG05JS47 [INF] Request finished in 6484.5579ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T01:47:17.3405265+02:00 0HL1KVG05JS4B [INF] The file "/lib/jquery/dist/jquery.js" was not modified (f1f8d725)
+2017-01-05T01:47:17.3595188+02:00 0HL1KVG05JS49 [INF] The file "/css/site.css" was not modified (f1f8d725)
+2017-01-05T01:47:17.3785214+02:00 0HL1KVG05JS4A [INF] Request finished in 91.6203ms 304 application/javascript (15c52c40)
+2017-01-05T01:47:17.3905204+02:00 0HL1KVG05JS4B [INF] Request finished in 96.0397ms 304 application/javascript (15c52c40)
+2017-01-05T01:47:17.4025267+02:00 0HL1KVG05JS48 [INF] Request finished in 94.6963ms 304 text/css (15c52c40)
+2017-01-05T01:47:17.4105212+02:00 0HL1KVG05JS4C [INF] Request starting HTTP/1.1 GET http://localhost:5000/js/chartModule.js?v=p0GmsLHBzrxqmt8yqYs8fPIHUCI-W-8QMK7iLmSge7A   (e5be5b71)
+2017-01-05T01:47:17.4195232+02:00 0HL1KVG05JS4D [INF] Request starting HTTP/1.1 GET http://localhost:5000/js/site.js?v=EWaMeWsJBYWmL2g_KkgXZQ5nPe-a3Ichp0LEgzXczKo   (e5be5b71)
+2017-01-05T01:47:17.4395196+02:00 0HL1KVG05JS4E [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/bootstrap/dist/js/bootstrap.js   (e5be5b71)
+2017-01-05T01:47:17.4695205+02:00 0HL1KVG05JS49 [INF] Request finished in 115.8264ms 304 text/css (15c52c40)
+2017-01-05T01:47:17.4715224+02:00 0HL1KVG05JS4C [INF] The file "/js/chartModule.js" was not modified (f1f8d725)
+2017-01-05T01:47:17.4805372+02:00 0HL1KVG05JS4D [INF] The file "/js/site.js" was not modified (f1f8d725)
+2017-01-05T01:47:17.4865226+02:00 0HL1KVG05JS4C [INF] Request finished in 92.4492ms 304 application/javascript (15c52c40)
+2017-01-05T01:47:17.4915184+02:00 0HL1KVG05JS4E [INF] The file "/lib/bootstrap/dist/js/bootstrap.js" was not modified (f1f8d725)
+2017-01-05T01:47:17.4995231+02:00 0HL1KVG05JS4D [INF] Request finished in 143.2238ms 304 application/javascript (15c52c40)
+2017-01-05T01:47:17.5035259+02:00 0HL1KVG05JS4E [INF] Request finished in 83.963ms 304 application/javascript (15c52c40)
+2017-01-05T01:47:29.3533459+02:00 0HL1KVG05JS4F [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T01:47:29.3623440+02:00 0HL1KVG05JS4F [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T01:47:29.3943450+02:00 0HL1KVG05JS4F [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T01:47:29.4213481+02:00 0HL1KVG05JS4F [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T01:47:29.4303437+02:00 0HL1KVG05JS4F [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T01:47:29.4413420+02:00 0HL1KVG05JS4F [INF] Executed DbCommand (5ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T01:47:29.4543451+02:00 0HL1KVG05JS4F [INF] Executed DbCommand (4ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T01:47:29.4583441+02:00 0HL1KVG05JS4F [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T01:47:29.4793429+02:00 0HL1KVG05JS4F [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 120.0868ms (afa2e885)
+2017-01-05T01:47:29.4953473+02:00 0HL1KVG05JS4F [INF] Request finished in 141.6907ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T01:47:29.6263478+02:00 0HL1KVG05JS4G [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico   (e5be5b71)
+2017-01-05T01:47:29.6403516+02:00 0HL1KVG05JS4G [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Projects\TemperatureStation\TemperatureStation\TemperatureStation.Web\wwwroot\favicon.ico"' (27b0a520)
+2017-01-05T01:47:29.6623448+02:00 0HL1KVG05JS4G [INF] Request finished in 45.3664ms 200 image/x-icon (15c52c40)
+2017-01-05T01:49:19.1283437+02:00 0HL1KVG05JS4H [INF] Request starting HTTP/1.1 POST http://localhost:5000//api/Report application/json 243 (e5be5b71)
+2017-01-05T01:49:19.1483461+02:00 0HL1KVG05JS4H [INF] Request finished in 12.2532ms 404  (15c52c40)
+2017-01-05T01:49:26.2968816+02:00 0HL1KVG05JS4I [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Report application/json 243 (e5be5b71)
+2017-01-05T01:49:26.3058806+02:00 0HL1KVG05JS4I [INF] Executed action "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" in 2.8512ms (afa2e885)
+2017-01-05T01:49:26.4208824+02:00 0HL1KVG05JS4I [ERR] An unhandled exception has occurred while executing the request (cf926119)
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.Extensions.Logging.ILogger' while attempting to activate 'TemperatureStation.Web.Controllers.ApiController'.
+   at Microsoft.Extensions.Internal.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Internal.TypeActivatorCache.CreateInstance[TInstance](IServiceProvider serviceProvider, Type implementationType)
+   at Microsoft.AspNetCore.Mvc.Controllers.DefaultControllerFactory.CreateController(ControllerContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware`1.<Invoke>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware`1.<Invoke>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware`1.<Invoke>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware`1.<Invoke>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware`1.<Invoke>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware`1.<Invoke>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware`1.<Invoke>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware`1.<Invoke>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.VisualStudio.Web.BrowserLink.Runtime.BrowserLinkMiddleware.<ExecuteWithFilter>d__7.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.<Invoke>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+2017-01-05T01:49:26.5758826+02:00 0HL1KVG05JS4I [INF] Request finished in 279.6663ms 500 text/html; charset=utf-8 (15c52c40)
+2017-01-05T01:51:07.6706038+02:00  [INF] User profile is available. Using '"C:\Users\gpeipman\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2017-01-05T01:51:09.1056305+02:00 0HL1KVI75UA4D [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T01:51:09.6276331+02:00 0HL1KVI75UA4D [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T01:51:11.1896252+02:00 0HL1KVI75UA4D [INF] Executed DbCommand (59ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T01:51:11.3176271+02:00 0HL1KVI75UA4D [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T01:51:11.3586279+02:00 0HL1KVI75UA4D [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T01:51:11.5436287+02:00 0HL1KVI75UA4D [INF] Executed DbCommand (54ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T01:51:11.5956248+02:00 0HL1KVI75UA4D [INF] Executed DbCommand (5ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T01:51:13.7956301+02:00 0HL1KVI75UA4D [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T01:51:14.8756266+02:00 0HL1KVI75UA4D [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 5426.0183ms (afa2e885)
+2017-01-05T01:51:14.9886287+02:00 0HL1KVI75UA4E [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/bootstrap/dist/css/bootstrap.css   (e5be5b71)
+2017-01-05T01:51:14.9906288+02:00 0HL1KVI75UA4F [INF] Request starting HTTP/1.1 GET http://localhost:5000/css/site.css   (e5be5b71)
+2017-01-05T01:51:14.9976268+02:00 0HL1KVI75UA4G [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/bootstrap/dist/js/bootstrap.js   (e5be5b71)
+2017-01-05T01:51:14.9996287+02:00 0HL1KVI75UA4D [INF] Request finished in 5901.4567ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T01:51:15.0076300+02:00 0HL1KVI75UA4H [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/jquery/dist/jquery.js   (e5be5b71)
+2017-01-05T01:51:15.0216312+02:00 0HL1KVI75UA4I [INF] Request starting HTTP/1.1 GET http://localhost:5000/js/site.js?v=EWaMeWsJBYWmL2g_KkgXZQ5nPe-a3Ichp0LEgzXczKo   (e5be5b71)
+2017-01-05T01:51:15.0346309+02:00 0HL1KVI75UA4F [INF] The file "/css/site.css" was not modified (f1f8d725)
+2017-01-05T01:51:15.0426309+02:00 0HL1KVI75UA4I [INF] The file "/js/site.js" was not modified (f1f8d725)
+2017-01-05T01:51:15.0616297+02:00 0HL1KVI75UA4E [INF] The file "/lib/bootstrap/dist/css/bootstrap.css" was not modified (f1f8d725)
+2017-01-05T01:51:15.0696314+02:00 0HL1KVI75UA4I [INF] Request finished in 37.2882ms 304 application/javascript (15c52c40)
+2017-01-05T01:51:15.0836288+02:00 0HL1KVI75UA4F [INF] Request finished in 77.4776ms 304 text/css (15c52c40)
+2017-01-05T01:51:15.1136297+02:00 0HL1KVI75UA4H [INF] The file "/lib/jquery/dist/jquery.js" was not modified (f1f8d725)
+2017-01-05T01:51:15.1296298+02:00 0HL1KVI75UA4J [INF] Request starting HTTP/1.1 GET http://localhost:5000/js/chartModule.js?v=p0GmsLHBzrxqmt8yqYs8fPIHUCI-W-8QMK7iLmSge7A   (e5be5b71)
+2017-01-05T01:51:15.1426308+02:00 0HL1KVI75UA4G [INF] The file "/lib/bootstrap/dist/js/bootstrap.js" was not modified (f1f8d725)
+2017-01-05T01:51:15.1586300+02:00 0HL1KVI75UA4E [INF] Request finished in 103.3416ms 304 text/css (15c52c40)
+2017-01-05T01:51:15.1726300+02:00 0HL1KVI75UA4K [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/d3/d3.js   (e5be5b71)
+2017-01-05T01:51:15.1756312+02:00 0HL1KVI75UA4J [INF] The file "/js/chartModule.js" was not modified (f1f8d725)
+2017-01-05T01:51:15.2026330+02:00 0HL1KVI75UA4H [INF] Request finished in 127.2708ms 304 application/javascript (15c52c40)
+2017-01-05T01:51:15.2286315+02:00 0HL1KVI75UA4K [INF] The file "/lib/d3/d3.js" was not modified (f1f8d725)
+2017-01-05T01:51:15.2496308+02:00 0HL1KVI75UA4J [INF] Request finished in 106.0497ms 304 application/javascript (15c52c40)
+2017-01-05T01:51:15.2656283+02:00 0HL1KVI75UA4G [INF] Request finished in 156.4709ms 304 application/javascript (15c52c40)
+2017-01-05T01:51:15.2726306+02:00 0HL1KVI75UA4K [INF] Request finished in 118.6584ms 304 application/javascript (15c52c40)
+2017-01-05T01:51:36.1777215+02:00 0HL1KVI75UA4L [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Report application/json 243 (e5be5b71)
+2017-01-05T01:51:36.3347244+02:00 0HL1KVI75UA4L [INF] Executing action method "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" with arguments (["25.12.2017 17:32:12:  28-FF-6D-5E-53-15-01-AA: -11,5, 28-FF-7D-97-01-15-02-AA: 17,6"]) - ModelState is Valid (ba7f4ac2)
+2017-01-05T01:51:36.4037205+02:00 0HL1KVI75UA4L [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T01:51:36.4267212+02:00 0HL1KVI75UA4L [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T01:51:36.4347221+02:00 0HL1KVI75UA4L [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId], [s0].[Id], [s0].[Name]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+INNER JOIN [Sensors] AS [s0] ON [s].[SensorId] = [s0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T01:51:36.7427233+02:00 0HL1KVI75UA4L [INF] Executed DbCommand (30ms) [Parameters=[@p0='?', @p1='?', @p2='?' (Size = 4000), @p3='?', @p4='?', @p5='?', @p6='?', @p7='?' (Size = 4000), @p8='?', @p9='?', @p10='?', @p11='?', @p12='?' (Size = 4000), @p13='?', @p14='?'], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+DECLARE @toInsert0 TABLE ([MeasurementId] int, [ReadingTime] datetime2, [ReadingType] nvarchar(max), [Value] float, [SensorRoleId] int, [_Position] [int]);
+INSERT INTO @toInsert0
+VALUES (@p0, @p1, @p2, @p3, @p4, 0),
+(@p5, @p6, @p7, @p8, @p9, 1);
+
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [Readings] USING @toInsert0 AS i ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([MeasurementId], [ReadingTime], [ReadingType], [Value], [SensorRoleId])
+VALUES (i.[MeasurementId], i.[ReadingTime], i.[ReadingType], i.[Value], i.[SensorRoleId])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [Readings] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+
+INSERT INTO [Readings] ([MeasurementId], [ReadingTime], [ReadingType], [Value], [CalculatorId])
+VALUES (@p10, @p11, @p12, @p13, @p14);
+SELECT [Id]
+FROM [Readings]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity(); (6438bdd5)
+2017-01-05T01:51:36.7847288+02:00 0HL1KVI75UA4L [INF] Executing HttpStatusCodeResult, setting HTTP status code 204 (e28ccfae)
+2017-01-05T01:51:36.7877240+02:00 0HL1KVI75UA4L [INF] Executed action "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" in 604.3209ms (afa2e885)
+2017-01-05T01:51:36.7937235+02:00 0HL1KVI75UA4L [INF] Request finished in 615.9926ms 204  (15c52c40)
+2017-01-05T01:51:51.9127396+02:00 0HL1KVI75UA4M [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Report application/json 243 (e5be5b71)
+2017-01-05T01:51:51.9246993+02:00 0HL1KVI75UA4M [INF] Executing action method "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" with arguments (["25.12.2017 17:32:12:  28-FF-6D-5E-53-15-01-AA: -11,5, 28-FF-7D-97-01-15-02-AA: 17,6"]) - ModelState is Valid (ba7f4ac2)
+2017-01-05T01:51:51.9416975+02:00 0HL1KVI75UA4M [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T01:51:51.9496980+02:00 0HL1KVI75UA4M [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T01:51:51.9586978+02:00 0HL1KVI75UA4M [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId], [s0].[Id], [s0].[Name]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+INNER JOIN [Sensors] AS [s0] ON [s].[SensorId] = [s0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T01:51:51.9836991+02:00 0HL1KVI75UA4M [INF] Executed DbCommand (13ms) [Parameters=[@p0='?', @p1='?', @p2='?' (Size = 4000), @p3='?', @p4='?', @p5='?', @p6='?', @p7='?' (Size = 4000), @p8='?', @p9='?', @p10='?', @p11='?', @p12='?' (Size = 4000), @p13='?', @p14='?'], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+DECLARE @toInsert0 TABLE ([MeasurementId] int, [ReadingTime] datetime2, [ReadingType] nvarchar(max), [Value] float, [SensorRoleId] int, [_Position] [int]);
+INSERT INTO @toInsert0
+VALUES (@p0, @p1, @p2, @p3, @p4, 0),
+(@p5, @p6, @p7, @p8, @p9, 1);
+
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [Readings] USING @toInsert0 AS i ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([MeasurementId], [ReadingTime], [ReadingType], [Value], [SensorRoleId])
+VALUES (i.[MeasurementId], i.[ReadingTime], i.[ReadingType], i.[Value], i.[SensorRoleId])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [Readings] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+
+INSERT INTO [Readings] ([MeasurementId], [ReadingTime], [ReadingType], [Value], [CalculatorId])
+VALUES (@p10, @p11, @p12, @p13, @p14);
+SELECT [Id]
+FROM [Readings]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity(); (6438bdd5)
+2017-01-05T01:51:55.0711120+02:00 0HL1KVI75UA4M [INF] Executing HttpStatusCodeResult, setting HTTP status code 204 (e28ccfae)
+2017-01-05T01:51:55.0761133+02:00 0HL1KVI75UA4M [INF] Executed action "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" in 3157.6293ms (afa2e885)
+2017-01-05T01:51:55.0891177+02:00 0HL1KVI75UA4M [INF] Request finished in 3169.2646ms 204  (15c52c40)
+2017-01-05T01:52:34.9881433+02:00  [INF] User profile is available. Using '"C:\Users\gpeipman\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2017-01-05T01:52:36.3928397+02:00 0HL1KVJ16C89H [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T01:52:36.8688358+02:00 0HL1KVJ16C89H [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T01:52:38.3808454+02:00 0HL1KVJ16C89H [INF] Executed DbCommand (63ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T01:52:38.5088482+02:00 0HL1KVJ16C89H [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T01:52:38.5418443+02:00 0HL1KVJ16C89H [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T01:52:38.7028488+02:00 0HL1KVJ16C89H [INF] Executed DbCommand (50ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T01:52:38.7568468+02:00 0HL1KVJ16C89H [INF] Executed DbCommand (4ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T01:52:40.9428452+02:00 0HL1KVJ16C89H [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T01:52:41.9328489+02:00 0HL1KVJ16C89H [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 5226.5228ms (afa2e885)
+2017-01-05T01:52:42.0548496+02:00 0HL1KVJ16C89I [INF] Request starting HTTP/1.1 GET http://localhost:5000/css/site.css   (e5be5b71)
+2017-01-05T01:52:42.0568475+02:00 0HL1KVJ16C89J [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/jquery/dist/jquery.js   (e5be5b71)
+2017-01-05T01:52:42.0648489+02:00 0HL1KVJ16C89K [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/bootstrap/dist/js/bootstrap.js   (e5be5b71)
+2017-01-05T01:52:42.0698519+02:00 0HL1KVJ16C89L [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/d3/d3.js   (e5be5b71)
+2017-01-05T01:52:42.0798504+02:00 0HL1KVJ16C89M [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/bootstrap/dist/css/bootstrap.css   (e5be5b71)
+2017-01-05T01:52:42.0868561+02:00 0HL1KVJ16C89H [INF] Request finished in 5713.6919ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T01:52:42.1168480+02:00 0HL1KVJ16C89I [INF] The file "/css/site.css" was not modified (f1f8d725)
+2017-01-05T01:52:42.1238457+02:00 0HL1KVJ16C89M [INF] The file "/lib/bootstrap/dist/css/bootstrap.css" was not modified (f1f8d725)
+2017-01-05T01:52:42.1288487+02:00 0HL1KVJ16C89J [INF] The file "/lib/jquery/dist/jquery.js" was not modified (f1f8d725)
+2017-01-05T01:52:42.1338509+02:00 0HL1KVJ16C89K [INF] The file "/lib/bootstrap/dist/js/bootstrap.js" was not modified (f1f8d725)
+2017-01-05T01:52:42.1378490+02:00 0HL1KVJ16C89N [INF] Request starting HTTP/1.1 GET http://localhost:5000/js/site.js?v=EWaMeWsJBYWmL2g_KkgXZQ5nPe-a3Ichp0LEgzXczKo   (e5be5b71)
+2017-01-05T01:52:42.1658473+02:00 0HL1KVJ16C89J [INF] Request finished in 94.3084ms 304 application/javascript (15c52c40)
+2017-01-05T01:52:42.1808500+02:00 0HL1KVJ16C89L [INF] The file "/lib/d3/d3.js" was not modified (f1f8d725)
+2017-01-05T01:52:42.2038495+02:00 0HL1KVJ16C89N [INF] The file "/js/site.js" was not modified (f1f8d725)
+2017-01-05T01:52:42.2118542+02:00 0HL1KVJ16C89I [INF] Request finished in 94.4549ms 304 text/css (15c52c40)
+2017-01-05T01:52:42.2168483+02:00 0HL1KVJ16C89K [INF] Request finished in 92.9175ms 304 application/javascript (15c52c40)
+2017-01-05T01:52:42.2218650+02:00 0HL1KVJ16C89O [INF] Request starting HTTP/1.1 GET http://localhost:5000/js/chartModule.js?v=p0GmsLHBzrxqmt8yqYs8fPIHUCI-W-8QMK7iLmSge7A   (e5be5b71)
+2017-01-05T01:52:42.2258482+02:00 0HL1KVJ16C89N [INF] Request finished in 108.7642ms 304 application/javascript (15c52c40)
+2017-01-05T01:52:42.2358492+02:00 0HL1KVJ16C89M [INF] Request finished in 92.2715ms 304 text/css (15c52c40)
+2017-01-05T01:52:42.2388491+02:00 0HL1KVJ16C89L [INF] Request finished in 136.1036ms 304 application/javascript (15c52c40)
+2017-01-05T01:52:42.2428502+02:00 0HL1KVJ16C89O [INF] The file "/js/chartModule.js" was not modified (f1f8d725)
+2017-01-05T01:52:42.2508477+02:00 0HL1KVJ16C89O [INF] Request finished in 77.3819ms 304 application/javascript (15c52c40)
+2017-01-05T01:52:56.2189856+02:00 0HL1KVJ16C89P [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Report application/json 243 (e5be5b71)
+2017-01-05T01:52:56.3739892+02:00 0HL1KVJ16C89P [INF] Executing action method "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" with arguments (["25.12.2017 17:32:12:  28-FF-6D-5E-53-15-01-AA: -11,5, 28-FF-7D-97-01-15-02-AA: 17,6"]) - ModelState is Valid (ba7f4ac2)
+2017-01-05T01:52:56.4859872+02:00 0HL1KVJ16C89P [ERR] System.Exception: BUU!
+   at TemperatureStation.Web.Controllers.ApiController.<Report>d__5.MoveNext() in C:\Projects\TemperatureStation\TemperatureStation\TemperatureStation.Web\Controllers\ApiController.cs:line 39 (8349e88c)
+2017-01-05T01:52:56.5659859+02:00 0HL1KVJ16C89P [INF] Executed action "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" in 342.1467ms (afa2e885)
+2017-01-05T01:52:56.6369864+02:00 0HL1KVJ16C89P [ERR] An unhandled exception has occurred while executing the request (cf926119)
+System.Exception: BUU!
+   at TemperatureStation.Web.Controllers.ApiController.<Report>d__5.MoveNext() in C:\Projects\TemperatureStation\TemperatureStation\TemperatureStation.Web\Controllers\ApiController.cs:line 112
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__27.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__25.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware`1.<Invoke>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware`1.<Invoke>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware`1.<Invoke>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware`1.<Invoke>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware`1.<Invoke>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware`1.<Invoke>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware`1.<Invoke>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware`1.<Invoke>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.VisualStudio.Web.BrowserLink.Runtime.BrowserLinkMiddleware.<ExecuteWithFilter>d__7.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.<Invoke>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.<Invoke>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.<Invoke>d__7.MoveNext()
+2017-01-05T01:52:56.7999841+02:00 0HL1KVJ16C89P [INF] Request finished in 581.8799ms 500 text/html; charset=utf-8 (15c52c40)
+2017-01-05T02:04:32.8431547+02:00  [INF] User profile is available. Using '"C:\Users\gpeipman\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2017-01-05T02:04:33.2965897+02:00 0HL1KVPMR9T9D [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T02:04:33.7545864+02:00 0HL1KVPMR9T9D [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:04:35.1975927+02:00 0HL1KVPMR9T9D [INF] Executed DbCommand (55ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:04:35.3455907+02:00 0HL1KVPMR9T9D [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:04:35.3755890+02:00 0HL1KVPMR9T9D [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:04:35.5705159+02:00 0HL1KVPMR9T9D [INF] Executed DbCommand (57ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:04:35.6115181+02:00 0HL1KVPMR9T9D [INF] Executed DbCommand (5ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:04:37.7255162+02:00 0HL1KVPMR9T9D [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T02:04:38.6795161+02:00 0HL1KVPMR9T9D [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 5057.9469ms (afa2e885)
+2017-01-05T02:04:38.8035139+02:00 0HL1KVPMR9T9E [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/bootstrap/dist/css/bootstrap.css   (e5be5b71)
+2017-01-05T02:04:38.8035139+02:00 0HL1KVPMR9T9F [INF] Request starting HTTP/1.1 GET http://localhost:5000/css/site.css   (e5be5b71)
+2017-01-05T02:04:38.8065130+02:00 0HL1KVPMR9T9G [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/d3/d3.js   (e5be5b71)
+2017-01-05T02:04:38.8115173+02:00 0HL1KVPMR9T9H [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/jquery/dist/jquery.js   (e5be5b71)
+2017-01-05T02:04:38.8155141+02:00 0HL1KVPMR9T9I [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/bootstrap/dist/js/bootstrap.js   (e5be5b71)
+2017-01-05T02:04:38.8345142+02:00 0HL1KVPMR9T9F [INF] The file "/css/site.css" was not modified (f1f8d725)
+2017-01-05T02:04:38.8435158+02:00 0HL1KVPMR9T9H [INF] The file "/lib/jquery/dist/jquery.js" was not modified (f1f8d725)
+2017-01-05T02:04:38.8515162+02:00 0HL1KVPMR9T9I [INF] The file "/lib/bootstrap/dist/js/bootstrap.js" was not modified (f1f8d725)
+2017-01-05T02:04:38.8515162+02:00 0HL1KVPMR9T9D [INF] Request finished in 5563.6131ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T02:04:38.8605140+02:00 0HL1KVPMR9T9G [INF] The file "/lib/d3/d3.js" was not modified (f1f8d725)
+2017-01-05T02:04:38.8605140+02:00 0HL1KVPMR9T9E [INF] The file "/lib/bootstrap/dist/css/bootstrap.css" was not modified (f1f8d725)
+2017-01-05T02:04:38.9005167+02:00 0HL1KVPMR9T9I [INF] Request finished in 67.413ms 304 application/javascript (15c52c40)
+2017-01-05T02:04:38.9135160+02:00 0HL1KVPMR9T9G [INF] Request finished in 67.2579ms 304 application/javascript (15c52c40)
+2017-01-05T02:04:38.9315179+02:00 0HL1KVPMR9T9J [INF] Request starting HTTP/1.1 GET http://localhost:5000/js/site.js?v=EWaMeWsJBYWmL2g_KkgXZQ5nPe-a3Ichp0LEgzXczKo   (e5be5b71)
+2017-01-05T02:04:38.9405169+02:00 0HL1KVPMR9T9H [INF] Request finished in 68.2111ms 304 application/javascript (15c52c40)
+2017-01-05T02:04:38.9485195+02:00 0HL1KVPMR9T9F [INF] Request finished in 73.7338ms 304 text/css (15c52c40)
+2017-01-05T02:04:38.9685168+02:00 0HL1KVPMR9T9K [INF] Request starting HTTP/1.1 GET http://localhost:5000/js/chartModule.js?v=p0GmsLHBzrxqmt8yqYs8fPIHUCI-W-8QMK7iLmSge7A   (e5be5b71)
+2017-01-05T02:04:38.9715151+02:00 0HL1KVPMR9T9E [INF] Request finished in 73.6881ms 304 text/css (15c52c40)
+2017-01-05T02:04:38.9785161+02:00 0HL1KVPMR9T9J [INF] The file "/js/site.js" was not modified (f1f8d725)
+2017-01-05T02:04:38.9835158+02:00 0HL1KVPMR9T9K [INF] The file "/js/chartModule.js" was not modified (f1f8d725)
+2017-01-05T02:04:38.9905147+02:00 0HL1KVPMR9T9J [INF] Request finished in 96.3576ms 304 application/javascript (15c52c40)
+2017-01-05T02:04:38.9965146+02:00 0HL1KVPMR9T9K [INF] Request finished in 82.7132ms 304 application/javascript (15c52c40)
+2017-01-05T02:05:15.9471163+02:00 0HL1KVPMR9T9L [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Report application/json 138 (e5be5b71)
+2017-01-05T02:05:16.1151175+02:00 0HL1KVPMR9T9L [INF] Executing action method "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" with arguments (["05.01.2017 1:37:16:  01AA: -9, 02AA: -9,3125"]) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:05:16.1841166+02:00 0HL1KVPMR9T9L [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:05:16.2141128+02:00 0HL1KVPMR9T9L [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:05:16.2221129+02:00 0HL1KVPMR9T9L [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId], [s0].[Id], [s0].[Name]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+INNER JOIN [Sensors] AS [s0] ON [s].[SensorId] = [s0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:05:16.4841118+02:00 0HL1KVPMR9T9L [INF] Executed DbCommand (13ms) [Parameters=[@p0='?', @p1='?', @p2='?' (Size = 4000), @p3='?', @p4='?'], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Readings] ([MeasurementId], [ReadingTime], [ReadingType], [Value], [CalculatorId])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [Readings]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity(); (6438bdd5)
+2017-01-05T02:05:16.5201148+02:00 0HL1KVPMR9T9L [INF] Executing HttpStatusCodeResult, setting HTTP status code 204 (e28ccfae)
+2017-01-05T02:05:16.5231430+02:00 0HL1KVPMR9T9L [INF] Executed action "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" in 568.9657ms (afa2e885)
+2017-01-05T02:05:16.5291164+02:00 0HL1KVPMR9T9L [INF] Request finished in 581.2809ms 204  (15c52c40)
+2017-01-05T02:05:24.0265574+02:00 0HL1KVPMR9T9M [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T02:05:24.0315583+02:00 0HL1KVPMR9T9M [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:05:24.0465551+02:00 0HL1KVPMR9T9M [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:05:24.0565600+02:00 0HL1KVPMR9T9M [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:05:24.0665571+02:00 0HL1KVPMR9T9M [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:05:24.0795551+02:00 0HL1KVPMR9T9M [INF] Executed DbCommand (6ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:05:24.0935564+02:00 0HL1KVPMR9T9M [INF] Executed DbCommand (4ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:05:24.0995580+02:00 0HL1KVPMR9T9M [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T02:05:24.1645551+02:00 0HL1KVPMR9T9M [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 133.078ms (afa2e885)
+2017-01-05T02:05:24.1865598+02:00 0HL1KVPMR9T9M [INF] Request finished in 146.6737ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T02:05:24.3595594+02:00 0HL1KVPMR9T9N [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico   (e5be5b71)
+2017-01-05T02:05:24.3775622+02:00 0HL1KVPMR9T9N [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Projects\TemperatureStation\TemperatureStation\TemperatureStation.Web\wwwroot\favicon.ico"' (27b0a520)
+2017-01-05T02:05:24.3975582+02:00 0HL1KVPMR9T9N [INF] Request finished in 43.6137ms 200 image/x-icon (15c52c40)
+2017-01-05T02:05:25.6119616+02:00 0HL1KVPMR9T9O [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T02:05:25.6169591+02:00 0HL1KVPMR9T9O [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:05:25.6269571+02:00 0HL1KVPMR9T9O [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:05:25.6369573+02:00 0HL1KVPMR9T9O [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:05:25.6449646+02:00 0HL1KVPMR9T9O [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:05:25.6589590+02:00 0HL1KVPMR9T9O [INF] Executed DbCommand (5ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:05:25.6739597+02:00 0HL1KVPMR9T9O [INF] Executed DbCommand (5ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:05:25.6789687+02:00 0HL1KVPMR9T9O [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T02:05:25.6969586+02:00 0HL1KVPMR9T9O [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 80.3016ms (afa2e885)
+2017-01-05T02:05:25.7039610+02:00 0HL1KVPMR9T9O [INF] Request finished in 92.0241ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T02:05:25.8449613+02:00 0HL1KVPMR9T9P [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico   (e5be5b71)
+2017-01-05T02:05:25.8579605+02:00 0HL1KVPMR9T9P [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Projects\TemperatureStation\TemperatureStation\TemperatureStation.Web\wwwroot\favicon.ico"' (27b0a520)
+2017-01-05T02:05:25.8669600+02:00 0HL1KVPMR9T9P [INF] Request finished in 27.1235ms 200 image/x-icon (15c52c40)
+2017-01-05T02:05:27.2003244+02:00 0HL1KVPMR9T9Q [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T02:05:27.2063286+02:00 0HL1KVPMR9T9Q [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:05:27.2173273+02:00 0HL1KVPMR9T9Q [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:05:27.2263272+02:00 0HL1KVPMR9T9Q [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:05:27.2343251+02:00 0HL1KVPMR9T9Q [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:05:27.2473273+02:00 0HL1KVPMR9T9Q [INF] Executed DbCommand (6ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:05:27.2623250+02:00 0HL1KVPMR9T9Q [INF] Executed DbCommand (5ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:05:27.2663252+02:00 0HL1KVPMR9T9Q [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T02:05:27.2853231+02:00 0HL1KVPMR9T9Q [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 81.3125ms (afa2e885)
+2017-01-05T02:05:27.2993261+02:00 0HL1KVPMR9T9Q [INF] Request finished in 96.2751ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T02:05:27.4533260+02:00 0HL1KVPMR9T9R [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico   (e5be5b71)
+2017-01-05T02:05:27.4653272+02:00 0HL1KVPMR9T9R [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Projects\TemperatureStation\TemperatureStation\TemperatureStation.Web\wwwroot\favicon.ico"' (27b0a520)
+2017-01-05T02:05:27.4773257+02:00 0HL1KVPMR9T9R [INF] Request finished in 23.5339ms 200 image/x-icon (15c52c40)
+2017-01-05T02:05:56.7714501+02:00  [INF] User profile is available. Using '"C:\Users\gpeipman\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2017-01-05T02:05:57.8249661+02:00 0HL1KVQG1E7G4 [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T02:05:58.2979750+02:00 0HL1KVQG1E7G4 [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:05:59.9970137+02:00 0HL1KVQG1E7G4 [INF] Executed DbCommand (334ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:06:00.1990720+02:00 0HL1KVQG1E7G4 [INF] Executed DbCommand (57ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:06:00.2670712+02:00 0HL1KVQG1E7G4 [INF] Executed DbCommand (39ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:06:00.5142700+02:00 0HL1KVQG1E7G4 [INF] Executed DbCommand (88ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:06:00.5542685+02:00 0HL1KVQG1E7G4 [INF] Executed DbCommand (6ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:06:02.8852661+02:00 0HL1KVQG1E7G4 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T02:06:03.9922670+02:00 0HL1KVQG1E7G4 [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 5861.6612ms (afa2e885)
+2017-01-05T02:06:04.0852773+02:00 0HL1KVQG1E7G5 [INF] Request starting HTTP/1.1 GET http://localhost:5000/css/site.css   (e5be5b71)
+2017-01-05T02:06:04.0912751+02:00 0HL1KVQG1E7G6 [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/jquery/dist/jquery.js   (e5be5b71)
+2017-01-05T02:06:04.0922664+02:00 0HL1KVQG1E7G7 [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/bootstrap/dist/js/bootstrap.js   (e5be5b71)
+2017-01-05T02:06:04.1172676+02:00 0HL1KVQG1E7G8 [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/bootstrap/dist/css/bootstrap.css   (e5be5b71)
+2017-01-05T02:06:04.1222681+02:00 0HL1KVQG1E7G9 [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/d3/d3.js   (e5be5b71)
+2017-01-05T02:06:04.1412652+02:00 0HL1KVQG1E7G6 [INF] The file "/lib/jquery/dist/jquery.js" was not modified (f1f8d725)
+2017-01-05T02:06:04.1482688+02:00 0HL1KVQG1E7G4 [INF] Request finished in 6336.2066ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T02:06:04.1522694+02:00 0HL1KVQG1E7G8 [INF] The file "/lib/bootstrap/dist/css/bootstrap.css" was not modified (f1f8d725)
+2017-01-05T02:06:04.1592726+02:00 0HL1KVQG1E7G5 [INF] The file "/css/site.css" was not modified (f1f8d725)
+2017-01-05T02:06:04.1622670+02:00 0HL1KVQG1E7G9 [INF] The file "/lib/d3/d3.js" was not modified (f1f8d725)
+2017-01-05T02:06:04.1902682+02:00 0HL1KVQG1E7G7 [INF] The file "/lib/bootstrap/dist/js/bootstrap.js" was not modified (f1f8d725)
+2017-01-05T02:06:04.2402690+02:00 0HL1KVQG1E7GA [INF] Request starting HTTP/1.1 GET http://localhost:5000/js/site.js?v=EWaMeWsJBYWmL2g_KkgXZQ5nPe-a3Ichp0LEgzXczKo   (e5be5b71)
+2017-01-05T02:06:04.2552684+02:00 0HL1KVQG1E7G6 [INF] Request finished in 106.465ms 304 application/javascript (15c52c40)
+2017-01-05T02:06:04.2992688+02:00 0HL1KVQG1E7G8 [INF] Request finished in 106.4633ms 304 text/css (15c52c40)
+2017-01-05T02:06:04.3112699+02:00 0HL1KVQG1E7G5 [INF] Request finished in 106.474ms 304 text/css (15c52c40)
+2017-01-05T02:06:04.3172698+02:00 0HL1KVQG1E7G9 [INF] Request finished in 106.1745ms 304 application/javascript (15c52c40)
+2017-01-05T02:06:04.3292688+02:00 0HL1KVQG1E7G7 [INF] Request finished in 109.1022ms 304 application/javascript (15c52c40)
+2017-01-05T02:06:04.3392711+02:00 0HL1KVQG1E7GA [INF] The file "/js/site.js" was not modified (f1f8d725)
+2017-01-05T02:06:04.3442691+02:00 0HL1KVQG1E7GB [INF] Request starting HTTP/1.1 GET http://localhost:5000/js/chartModule.js?v=p0GmsLHBzrxqmt8yqYs8fPIHUCI-W-8QMK7iLmSge7A   (e5be5b71)
+2017-01-05T02:06:04.3482680+02:00 0HL1KVQG1E7GA [INF] Request finished in 176.0764ms 304 application/javascript (15c52c40)
+2017-01-05T02:06:04.3522683+02:00 0HL1KVQG1E7GB [INF] The file "/js/chartModule.js" was not modified (f1f8d725)
+2017-01-05T02:06:04.3592680+02:00 0HL1KVQG1E7GB [INF] Request finished in 96.9857ms 304 application/javascript (15c52c40)
+2017-01-05T02:06:49.7929770+02:00 0HL1KVQG1E7GC [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Report application/json 138 (e5be5b71)
+2017-01-05T02:06:49.9669637+02:00 0HL1KVQG1E7GC [INF] Executing action method "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" with arguments (["05.01.2017 1:37:16:  01AA: -9, 02AA: -9,3125"]) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:06:50.0289656+02:00 0HL1KVQG1E7GC [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:06:50.0479652+02:00 0HL1KVQG1E7GC [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:06:50.0599667+02:00 0HL1KVQG1E7GC [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId], [s0].[Id], [s0].[Name]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+INNER JOIN [Sensors] AS [s0] ON [s].[SensorId] = [s0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:06:50.3239650+02:00 0HL1KVQG1E7GC [INF] Executed DbCommand (21ms) [Parameters=[@p0='?', @p1='?', @p2='?' (Size = 4000), @p3='?', @p4='?'], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Readings] ([MeasurementId], [ReadingTime], [ReadingType], [Value], [CalculatorId])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [Readings]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity(); (6438bdd5)
+2017-01-05T02:06:50.3669681+02:00 0HL1KVQG1E7GC [INF] Executing HttpStatusCodeResult, setting HTTP status code 204 (e28ccfae)
+2017-01-05T02:06:50.3699638+02:00 0HL1KVQG1E7GC [INF] Executed action "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" in 570.8218ms (afa2e885)
+2017-01-05T02:06:50.3769670+02:00 0HL1KVQG1E7GC [INF] Request finished in 592.1813ms 204  (15c52c40)
+2017-01-05T02:06:51.6844132+02:00 0HL1KVQG1E7GD [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Report application/json 138 (e5be5b71)
+2017-01-05T02:06:51.6904122+02:00 0HL1KVQG1E7GD [INF] Executing action method "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" with arguments (["05.01.2017 1:37:16:  01AA: -9, 02AA: -9,3125"]) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:06:51.7404121+02:00 0HL1KVQG1E7GD [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:06:51.7454118+02:00 0HL1KVQG1E7GD [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:06:51.7524163+02:00 0HL1KVQG1E7GD [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId], [s0].[Id], [s0].[Name]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+INNER JOIN [Sensors] AS [s0] ON [s].[SensorId] = [s0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:06:51.7644229+02:00 0HL1KVQG1E7GD [INF] Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?', @p2='?' (Size = 4000), @p3='?', @p4='?'], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Readings] ([MeasurementId], [ReadingTime], [ReadingType], [Value], [CalculatorId])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [Readings]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity(); (6438bdd5)
+2017-01-05T02:06:51.7694136+02:00 0HL1KVQG1E7GD [INF] Executing HttpStatusCodeResult, setting HTTP status code 204 (e28ccfae)
+2017-01-05T02:06:51.7724204+02:00 0HL1KVQG1E7GD [INF] Executed action "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" in 84.2851ms (afa2e885)
+2017-01-05T02:06:51.7764117+02:00 0HL1KVQG1E7GD [INF] Request finished in 92.189ms 204  (15c52c40)
+2017-01-05T02:06:52.9052361+02:00 0HL1KVQG1E7GE [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Report application/json 138 (e5be5b71)
+2017-01-05T02:06:52.9102101+02:00 0HL1KVQG1E7GE [INF] Executing action method "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" with arguments (["05.01.2017 1:37:16:  01AA: -9, 02AA: -9,3125"]) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:06:52.9232141+02:00 0HL1KVQG1E7GE [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:06:52.9312098+02:00 0HL1KVQG1E7GE [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:06:52.9372114+02:00 0HL1KVQG1E7GE [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId], [s0].[Id], [s0].[Name]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+INNER JOIN [Sensors] AS [s0] ON [s].[SensorId] = [s0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:06:52.9462113+02:00 0HL1KVQG1E7GE [INF] Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?', @p2='?' (Size = 4000), @p3='?', @p4='?'], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Readings] ([MeasurementId], [ReadingTime], [ReadingType], [Value], [CalculatorId])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [Readings]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity(); (6438bdd5)
+2017-01-05T02:06:52.9522091+02:00 0HL1KVQG1E7GE [INF] Executing HttpStatusCodeResult, setting HTTP status code 204 (e28ccfae)
+2017-01-05T02:06:52.9562098+02:00 0HL1KVQG1E7GE [INF] Executed action "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" in 46.526ms (afa2e885)
+2017-01-05T02:06:52.9622118+02:00 0HL1KVQG1E7GE [INF] Request finished in 55.5447ms 204  (15c52c40)
+2017-01-05T02:06:59.1189528+02:00 0HL1KVQG1E7GF [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T02:06:59.1239508+02:00 0HL1KVQG1E7GF [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:06:59.1329690+02:00 0HL1KVQG1E7GF [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:06:59.1419501+02:00 0HL1KVQG1E7GF [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:06:59.1539500+02:00 0HL1KVQG1E7GF [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:06:59.1689523+02:00 0HL1KVQG1E7GF [INF] Executed DbCommand (8ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:06:59.1839530+02:00 0HL1KVQG1E7GF [INF] Executed DbCommand (6ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:06:59.1899525+02:00 0HL1KVQG1E7GF [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T02:06:59.2559516+02:00 0HL1KVQG1E7GF [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 132.0914ms (afa2e885)
+2017-01-05T02:06:59.2679532+02:00 0HL1KVQG1E7GF [INF] Request finished in 147.5509ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T02:07:03.9199522+02:00 0HL1KVQG1E7GG [INF] Request starting HTTP/1.1 GET http://localhost:5000/Account/Login   (e5be5b71)
+2017-01-05T02:07:03.9509520+02:00 0HL1KVQG1E7GG [INF] Executing action method "TemperatureStation.Web.Controllers.AccountController.Login (TemperatureStation.Web)" with arguments ([""]) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:07:04.1439507+02:00 0HL1KVQG1E7GG [INF] Executing ViewResult, running view at path "/Views/Account/Login.cshtml". (9707eebe)
+2017-01-05T02:07:04.5112401+02:00 0HL1KVQG1E7GG [INF] Executed action "TemperatureStation.Web.Controllers.AccountController.Login (TemperatureStation.Web)" in 578.9543ms (afa2e885)
+2017-01-05T02:07:04.5172413+02:00 0HL1KVQG1E7GG [INF] Request finished in 599.2738ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T02:07:04.5402399+02:00 0HL1KVQG1E7GH [INF] Request starting HTTP/1.1 GET http://localhost:5000/lib/jquery-validation/dist/jquery.validate.js   (e5be5b71)
+2017-01-05T02:07:04.5442401+02:00 0HL1KVQG1E7GH [INF] The file "/lib/jquery-validation/dist/jquery.validate.js" was not modified (f1f8d725)
+2017-01-05T02:07:04.5522431+02:00 0HL1KVQG1E7GH [INF] Request finished in 16.902ms 304 application/javascript (15c52c40)
+2017-01-05T02:07:11.4232482+02:00 0HL1KVQG1E7GI [INF] Request starting HTTP/1.1 POST http://localhost:5000/Account/Login application/x-www-form-urlencoded 253 (e5be5b71)
+2017-01-05T02:07:11.5162453+02:00 0HL1KVQG1E7GI [INF] Executing action method "TemperatureStation.Web.Controllers.AccountController.Login (TemperatureStation.Web)" with arguments (["TemperatureStation.Web.Models.AccountViewModels.LoginViewModel", ""]) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:07:11.5637490+02:00 0HL1KVQG1E7GI [INF] Executed DbCommand (10ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0 (6438bdd5)
+2017-01-05T02:07:11.8167490+02:00 0HL1KVQG1E7GI [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-01-05T02:07:11.8577512+02:00 0HL1KVQG1E7GI [INF] Executed DbCommand (5ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-01-05T02:07:11.8907469+02:00 0HL1KVQG1E7GI [INF] AuthenticationScheme: "Identity.Application" signed in. (c66dd7e7)
+2017-01-05T02:07:11.8957504+02:00 0HL1KVQG1E7GI [INF] User logged in. (fdce0db4)
+2017-01-05T02:07:11.9027493+02:00 0HL1KVQG1E7GI [INF] Executing RedirectResult, redirecting to "/". (d98d540e)
+2017-01-05T02:07:11.9067487+02:00 0HL1KVQG1E7GI [INF] Executed action "TemperatureStation.Web.Controllers.AccountController.Login (TemperatureStation.Web)" in 476.8634ms (afa2e885)
+2017-01-05T02:07:11.9107515+02:00 0HL1KVQG1E7GI [INF] Request finished in 488.2475ms 302  (15c52c40)
+2017-01-05T02:07:11.9137506+02:00 0HL1KVQG1E7GJ [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T02:07:11.9297485+02:00 0HL1KVQG1E7GJ [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-01-05T02:07:11.9357514+02:00 0HL1KVQG1E7GJ [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:07:11.9417483+02:00 0HL1KVQG1E7GJ [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:07:11.9507478+02:00 0HL1KVQG1E7GJ [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:07:11.9567482+02:00 0HL1KVQG1E7GJ [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:07:11.9667483+02:00 0HL1KVQG1E7GJ [INF] Executed DbCommand (4ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:11.9757478+02:00 0HL1KVQG1E7GJ [INF] Executed DbCommand (4ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:11.9787511+02:00 0HL1KVQG1E7GJ [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T02:07:12.0097493+02:00 0HL1KVQG1E7GJ [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 76.5406ms (afa2e885)
+2017-01-05T02:07:12.0367519+02:00 0HL1KVQG1E7GJ [INF] Request finished in 101.6012ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T02:07:19.3456548+02:00 0HL1KVQG1E7GK [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T02:07:19.3526614+02:00 0HL1KVQG1E7GK [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-01-05T02:07:19.3576533+02:00 0HL1KVQG1E7GK [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:07:19.3656546+02:00 0HL1KVQG1E7GK [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:07:19.3716537+02:00 0HL1KVQG1E7GK [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:07:19.3776523+02:00 0HL1KVQG1E7GK [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:07:19.3886540+02:00 0HL1KVQG1E7GK [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:19.3966528+02:00 0HL1KVQG1E7GK [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:19.4036568+02:00 0HL1KVQG1E7GK [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T02:07:19.4216540+02:00 0HL1KVQG1E7GK [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 64.6245ms (afa2e885)
+2017-01-05T02:07:19.4276565+02:00 0HL1KVQG1E7GK [INF] Request finished in 82.047ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T02:07:19.5446554+02:00 0HL1KVQG1E7GL [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico   (e5be5b71)
+2017-01-05T02:07:19.5606555+02:00 0HL1KVQG1E7GL [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Projects\TemperatureStation\TemperatureStation\TemperatureStation.Web\wwwroot\favicon.ico"' (27b0a520)
+2017-01-05T02:07:19.5826781+02:00 0HL1KVQG1E7GL [INF] Request finished in 36.34ms 200 image/x-icon (15c52c40)
+2017-01-05T02:07:20.4011320+02:00 0HL1KVQG1E7GM [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T02:07:20.4061317+02:00 0HL1KVQG1E7GM [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-01-05T02:07:20.4091308+02:00 0HL1KVQG1E7GM [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:07:20.4171308+02:00 0HL1KVQG1E7GM [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:07:20.4221313+02:00 0HL1KVQG1E7GM [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:07:20.4271310+02:00 0HL1KVQG1E7GM [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:07:20.4351314+02:00 0HL1KVQG1E7GM [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:20.4411326+02:00 0HL1KVQG1E7GM [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:20.4441326+02:00 0HL1KVQG1E7GM [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T02:07:20.4691326+02:00 0HL1KVQG1E7GM [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 60.1637ms (afa2e885)
+2017-01-05T02:07:20.4831355+02:00 0HL1KVQG1E7GM [INF] Request finished in 74.1726ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T02:07:20.5771337+02:00 0HL1KVQG1E7GN [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico   (e5be5b71)
+2017-01-05T02:07:20.5941340+02:00 0HL1KVQG1E7GN [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Projects\TemperatureStation\TemperatureStation\TemperatureStation.Web\wwwroot\favicon.ico"' (27b0a520)
+2017-01-05T02:07:20.6051336+02:00 0HL1KVQG1E7GN [INF] Request finished in 22.179ms 200 image/x-icon (15c52c40)
+2017-01-05T02:07:21.2975609+02:00 0HL1KVQG1E7GO [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T02:07:21.3025734+02:00 0HL1KVQG1E7GO [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-01-05T02:07:21.3065702+02:00 0HL1KVQG1E7GO [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:07:21.3135709+02:00 0HL1KVQG1E7GO [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:07:21.3205762+02:00 0HL1KVQG1E7GO [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:07:21.3265705+02:00 0HL1KVQG1E7GO [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:07:21.3335733+02:00 0HL1KVQG1E7GO [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:21.3415712+02:00 0HL1KVQG1E7GO [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:21.3455706+02:00 0HL1KVQG1E7GO [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T02:07:21.3605712+02:00 0HL1KVQG1E7GO [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 54.6658ms (afa2e885)
+2017-01-05T02:07:21.3745750+02:00 0HL1KVQG1E7GO [INF] Request finished in 74.8328ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T02:07:21.4995731+02:00 0HL1KVQG1E7GP [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico   (e5be5b71)
+2017-01-05T02:07:21.5135748+02:00 0HL1KVQG1E7GP [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Projects\TemperatureStation\TemperatureStation\TemperatureStation.Web\wwwroot\favicon.ico"' (27b0a520)
+2017-01-05T02:07:21.5235724+02:00 0HL1KVQG1E7GP [INF] Request finished in 24.7952ms 200 image/x-icon (15c52c40)
+2017-01-05T02:07:26.4846079+02:00 0HL1KVQG1E7GQ [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Report application/json 138 (e5be5b71)
+2017-01-05T02:07:26.4895901+02:00 0HL1KVQG1E7GQ [INF] Executing action method "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" with arguments (["05.01.2017 1:37:16:  01AA: -9, 02AA: -9,3125"]) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:07:26.4985869+02:00 0HL1KVQG1E7GQ [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:07:26.5085867+02:00 0HL1KVQG1E7GQ [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:07:26.5175857+02:00 0HL1KVQG1E7GQ [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId], [s0].[Id], [s0].[Name]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+INNER JOIN [Sensors] AS [s0] ON [s].[SensorId] = [s0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:07:26.5285925+02:00 0HL1KVQG1E7GQ [INF] Executed DbCommand (2ms) [Parameters=[@p0='?', @p1='?', @p2='?' (Size = 4000), @p3='?', @p4='?'], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Readings] ([MeasurementId], [ReadingTime], [ReadingType], [Value], [CalculatorId])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [Readings]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity(); (6438bdd5)
+2017-01-05T02:07:26.5335862+02:00 0HL1KVQG1E7GQ [INF] Executing HttpStatusCodeResult, setting HTTP status code 204 (e28ccfae)
+2017-01-05T02:07:26.5365836+02:00 0HL1KVQG1E7GQ [INF] Executed action "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" in 48.1173ms (afa2e885)
+2017-01-05T02:07:26.5405864+02:00 0HL1KVQG1E7GQ [INF] Request finished in 57.5158ms 204  (15c52c40)
+2017-01-05T02:07:27.1991698+02:00 0HL1KVQG1E7GR [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Report application/json 138 (e5be5b71)
+2017-01-05T02:07:27.2041699+02:00 0HL1KVQG1E7GR [INF] Executing action method "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" with arguments (["05.01.2017 1:37:16:  01AA: -9, 02AA: -9,3125"]) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:07:27.2111705+02:00 0HL1KVQG1E7GR [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:07:27.2171726+02:00 0HL1KVQG1E7GR [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:07:27.2221722+02:00 0HL1KVQG1E7GR [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId], [s0].[Id], [s0].[Name]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+INNER JOIN [Sensors] AS [s0] ON [s].[SensorId] = [s0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:07:27.2291707+02:00 0HL1KVQG1E7GR [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?', @p2='?' (Size = 4000), @p3='?', @p4='?'], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Readings] ([MeasurementId], [ReadingTime], [ReadingType], [Value], [CalculatorId])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [Readings]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity(); (6438bdd5)
+2017-01-05T02:07:27.2341682+02:00 0HL1KVQG1E7GR [INF] Executing HttpStatusCodeResult, setting HTTP status code 204 (e28ccfae)
+2017-01-05T02:07:27.2371691+02:00 0HL1KVQG1E7GR [INF] Executed action "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" in 34.0156ms (afa2e885)
+2017-01-05T02:07:27.2441722+02:00 0HL1KVQG1E7GR [INF] Request finished in 43.2022ms 204  (15c52c40)
+2017-01-05T02:07:27.7592840+02:00 0HL1KVQG1E7GS [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Report application/json 138 (e5be5b71)
+2017-01-05T02:07:27.7652835+02:00 0HL1KVQG1E7GS [INF] Executing action method "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" with arguments (["05.01.2017 1:37:16:  01AA: -9, 02AA: -9,3125"]) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:07:27.7722854+02:00 0HL1KVQG1E7GS [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:07:27.7782853+02:00 0HL1KVQG1E7GS [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:07:27.7842865+02:00 0HL1KVQG1E7GS [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId], [s0].[Id], [s0].[Name]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+INNER JOIN [Sensors] AS [s0] ON [s].[SensorId] = [s0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:07:27.7902830+02:00 0HL1KVQG1E7GS [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?', @p2='?' (Size = 4000), @p3='?', @p4='?'], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Readings] ([MeasurementId], [ReadingTime], [ReadingType], [Value], [CalculatorId])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [Readings]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity(); (6438bdd5)
+2017-01-05T02:07:27.7942824+02:00 0HL1KVQG1E7GS [INF] Executing HttpStatusCodeResult, setting HTTP status code 204 (e28ccfae)
+2017-01-05T02:07:27.7982831+02:00 0HL1KVQG1E7GS [INF] Executed action "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" in 33.7374ms (afa2e885)
+2017-01-05T02:07:27.8032844+02:00 0HL1KVQG1E7GS [INF] Request finished in 43.139ms 204  (15c52c40)
+2017-01-05T02:07:27.9562854+02:00 0HL1KVQG1E7GT [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Report application/json 138 (e5be5b71)
+2017-01-05T02:07:27.9602861+02:00 0HL1KVQG1E7GT [INF] Executing action method "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" with arguments (["05.01.2017 1:37:16:  01AA: -9, 02AA: -9,3125"]) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:07:27.9672841+02:00 0HL1KVQG1E7GT [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:07:27.9742839+02:00 0HL1KVQG1E7GT [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:07:27.9792852+02:00 0HL1KVQG1E7GT [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId], [s0].[Id], [s0].[Name]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+INNER JOIN [Sensors] AS [s0] ON [s].[SensorId] = [s0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:07:27.9852852+02:00 0HL1KVQG1E7GT [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?', @p2='?' (Size = 4000), @p3='?', @p4='?'], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Readings] ([MeasurementId], [ReadingTime], [ReadingType], [Value], [CalculatorId])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [Readings]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity(); (6438bdd5)
+2017-01-05T02:07:27.9892858+02:00 0HL1KVQG1E7GT [INF] Executing HttpStatusCodeResult, setting HTTP status code 204 (e28ccfae)
+2017-01-05T02:07:27.9952977+02:00 0HL1KVQG1E7GT [INF] Executed action "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" in 32.7055ms (afa2e885)
+2017-01-05T02:07:28.0032892+02:00 0HL1KVQG1E7GT [INF] Request finished in 45.0558ms 204  (15c52c40)
+2017-01-05T02:07:28.1512901+02:00 0HL1KVQG1E7GU [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Report application/json 138 (e5be5b71)
+2017-01-05T02:07:28.1592859+02:00 0HL1KVQG1E7GU [INF] Executing action method "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" with arguments (["05.01.2017 1:37:16:  01AA: -9, 02AA: -9,3125"]) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:07:28.1812850+02:00 0HL1KVQG1E7GU [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:07:28.1882844+02:00 0HL1KVQG1E7GU [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:07:28.1942864+02:00 0HL1KVQG1E7GU [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId], [s0].[Id], [s0].[Name]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+INNER JOIN [Sensors] AS [s0] ON [s].[SensorId] = [s0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:07:28.2043054+02:00 0HL1KVQG1E7GU [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?', @p2='?' (Size = 4000), @p3='?', @p4='?'], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Readings] ([MeasurementId], [ReadingTime], [ReadingType], [Value], [CalculatorId])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [Readings]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity(); (6438bdd5)
+2017-01-05T02:07:28.2082855+02:00 0HL1KVQG1E7GU [INF] Executing HttpStatusCodeResult, setting HTTP status code 204 (e28ccfae)
+2017-01-05T02:07:28.2122849+02:00 0HL1KVQG1E7GU [INF] Executed action "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" in 55.5499ms (afa2e885)
+2017-01-05T02:07:28.2202888+02:00 0HL1KVQG1E7GU [INF] Request finished in 70.2031ms 204  (15c52c40)
+2017-01-05T02:07:28.3522858+02:00 0HL1KVQG1E7GV [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Report application/json 138 (e5be5b71)
+2017-01-05T02:07:28.3562873+02:00 0HL1KVQG1E7GV [INF] Executing action method "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" with arguments (["05.01.2017 1:37:16:  01AA: -9, 02AA: -9,3125"]) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:07:28.3642865+02:00 0HL1KVQG1E7GV [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:07:28.3752865+02:00 0HL1KVQG1E7GV [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:07:28.3862843+02:00 0HL1KVQG1E7GV [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId], [s0].[Id], [s0].[Name]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+INNER JOIN [Sensors] AS [s0] ON [s].[SensorId] = [s0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:07:28.3942869+02:00 0HL1KVQG1E7GV [INF] Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?', @p2='?' (Size = 4000), @p3='?', @p4='?'], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Readings] ([MeasurementId], [ReadingTime], [ReadingType], [Value], [CalculatorId])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [Readings]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity(); (6438bdd5)
+2017-01-05T02:07:28.4012850+02:00 0HL1KVQG1E7GV [INF] Executing HttpStatusCodeResult, setting HTTP status code 204 (e28ccfae)
+2017-01-05T02:07:28.4052835+02:00 0HL1KVQG1E7GV [INF] Executed action "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" in 48.8556ms (afa2e885)
+2017-01-05T02:07:28.4092842+02:00 0HL1KVQG1E7GV [INF] Request finished in 57.2504ms 204  (15c52c40)
+2017-01-05T02:07:28.5342844+02:00 0HL1KVQG1E7H0 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Report application/json 138 (e5be5b71)
+2017-01-05T02:07:28.5392862+02:00 0HL1KVQG1E7H0 [INF] Executing action method "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" with arguments (["05.01.2017 1:37:16:  01AA: -9, 02AA: -9,3125"]) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:07:28.5452835+02:00 0HL1KVQG1E7H0 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:07:28.5492829+02:00 0HL1KVQG1E7H0 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:07:28.5552854+02:00 0HL1KVQG1E7H0 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId], [s0].[Id], [s0].[Name]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+INNER JOIN [Sensors] AS [s0] ON [s].[SensorId] = [s0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:07:28.5612836+02:00 0HL1KVQG1E7H0 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?', @p2='?' (Size = 4000), @p3='?', @p4='?'], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Readings] ([MeasurementId], [ReadingTime], [ReadingType], [Value], [CalculatorId])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [Readings]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity(); (6438bdd5)
+2017-01-05T02:07:28.5652873+02:00 0HL1KVQG1E7H0 [INF] Executing HttpStatusCodeResult, setting HTTP status code 204 (e28ccfae)
+2017-01-05T02:07:28.5692853+02:00 0HL1KVQG1E7H0 [INF] Executed action "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" in 30.6533ms (afa2e885)
+2017-01-05T02:07:28.5752840+02:00 0HL1KVQG1E7H0 [INF] Request finished in 40.8962ms 204  (15c52c40)
+2017-01-05T02:07:30.2505657+02:00 0HL1KVQG1E7H1 [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T02:07:30.2555619+02:00 0HL1KVQG1E7H1 [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-01-05T02:07:30.2585662+02:00 0HL1KVQG1E7H1 [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:07:30.2675665+02:00 0HL1KVQG1E7H1 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:07:30.2725653+02:00 0HL1KVQG1E7H1 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:07:30.2785622+02:00 0HL1KVQG1E7H1 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:07:30.2875621+02:00 0HL1KVQG1E7H1 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:30.2945627+02:00 0HL1KVQG1E7H1 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:30.3015633+02:00 0HL1KVQG1E7H1 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T02:07:30.3155641+02:00 0HL1KVQG1E7H1 [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 56.2168ms (afa2e885)
+2017-01-05T02:07:30.3235667+02:00 0HL1KVQG1E7H1 [INF] Request finished in 71.426ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T02:07:30.4235670+02:00 0HL1KVQG1E7H2 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico   (e5be5b71)
+2017-01-05T02:07:30.4355634+02:00 0HL1KVQG1E7H2 [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Projects\TemperatureStation\TemperatureStation\TemperatureStation.Web\wwwroot\favicon.ico"' (27b0a520)
+2017-01-05T02:07:30.4425628+02:00 0HL1KVQG1E7H2 [INF] Request finished in 22.2418ms 200 image/x-icon (15c52c40)
+2017-01-05T02:07:32.0341152+02:00 0HL1KVQG1E7H3 [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T02:07:32.0391157+02:00 0HL1KVQG1E7H3 [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-01-05T02:07:32.0431151+02:00 0HL1KVQG1E7H3 [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:07:32.0501161+02:00 0HL1KVQG1E7H3 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:07:32.0561135+02:00 0HL1KVQG1E7H3 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:07:32.0611148+02:00 0HL1KVQG1E7H3 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:07:32.0711154+02:00 0HL1KVQG1E7H3 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:32.0781173+02:00 0HL1KVQG1E7H3 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:32.0831161+02:00 0HL1KVQG1E7H3 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T02:07:32.1041154+02:00 0HL1KVQG1E7H3 [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 59.7812ms (afa2e885)
+2017-01-05T02:07:32.1161165+02:00 0HL1KVQG1E7H3 [INF] Request finished in 80.202ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T02:07:32.2551193+02:00 0HL1KVQG1E7H4 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico   (e5be5b71)
+2017-01-05T02:07:32.2611145+02:00 0HL1KVQG1E7H4 [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Projects\TemperatureStation\TemperatureStation\TemperatureStation.Web\wwwroot\favicon.ico"' (27b0a520)
+2017-01-05T02:07:32.2691167+02:00 0HL1KVQG1E7H4 [INF] Request finished in 21.5799ms 200 image/x-icon (15c52c40)
+2017-01-05T02:07:48.1206590+02:00 0HL1KVQG1E7H5 [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T02:07:48.1246588+02:00 0HL1KVQG1E7H5 [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-01-05T02:07:48.1286641+02:00 0HL1KVQG1E7H5 [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:07:48.1386596+02:00 0HL1KVQG1E7H5 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:07:48.1436575+02:00 0HL1KVQG1E7H5 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:07:48.1496570+02:00 0HL1KVQG1E7H5 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:07:48.1556591+02:00 0HL1KVQG1E7H5 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:48.1636617+02:00 0HL1KVQG1E7H5 [INF] Executed DbCommand (0ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:48.1676594+02:00 0HL1KVQG1E7H5 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T02:07:48.1926593+02:00 0HL1KVQG1E7H5 [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 65.0646ms (afa2e885)
+2017-01-05T02:07:48.2266613+02:00 0HL1KVQG1E7H5 [INF] Request finished in 106.0834ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T02:07:48.3916617+02:00 0HL1KVQG1E7H6 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico   (e5be5b71)
+2017-01-05T02:07:48.4076613+02:00 0HL1KVQG1E7H6 [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Projects\TemperatureStation\TemperatureStation\TemperatureStation.Web\wwwroot\favicon.ico"' (27b0a520)
+2017-01-05T02:07:48.4166608+02:00 0HL1KVQG1E7H6 [INF] Request finished in 33.2247ms 200 image/x-icon (15c52c40)
+2017-01-05T02:07:49.2075386+02:00 0HL1KVQG1E7H7 [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T02:07:49.2115401+02:00 0HL1KVQG1E7H7 [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-01-05T02:07:49.2155404+02:00 0HL1KVQG1E7H7 [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:07:49.2235396+02:00 0HL1KVQG1E7H7 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:07:49.2315409+02:00 0HL1KVQG1E7H7 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:07:49.2365380+02:00 0HL1KVQG1E7H7 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:07:49.2415397+02:00 0HL1KVQG1E7H7 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:49.2495612+02:00 0HL1KVQG1E7H7 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:49.2545484+02:00 0HL1KVQG1E7H7 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T02:07:49.2695427+02:00 0HL1KVQG1E7H7 [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 55.1303ms (afa2e885)
+2017-01-05T02:07:49.2755396+02:00 0HL1KVQG1E7H7 [INF] Request finished in 67.1801ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T02:07:49.4195428+02:00 0HL1KVQG1E7H8 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico   (e5be5b71)
+2017-01-05T02:07:49.4255419+02:00 0HL1KVQG1E7H8 [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Projects\TemperatureStation\TemperatureStation\TemperatureStation.Web\wwwroot\favicon.ico"' (27b0a520)
+2017-01-05T02:07:49.4335424+02:00 0HL1KVQG1E7H8 [INF] Request finished in 18.7902ms 200 image/x-icon (15c52c40)
+2017-01-05T02:07:50.4311556+02:00 0HL1KVQG1E7H9 [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T02:07:50.4351515+02:00 0HL1KVQG1E7H9 [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-01-05T02:07:50.4381523+02:00 0HL1KVQG1E7H9 [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:07:50.4431528+02:00 0HL1KVQG1E7H9 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:07:50.4511529+02:00 0HL1KVQG1E7H9 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:07:50.4561529+02:00 0HL1KVQG1E7H9 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:07:50.4621520+02:00 0HL1KVQG1E7H9 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:50.4691535+02:00 0HL1KVQG1E7H9 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:50.4721505+02:00 0HL1KVQG1E7H9 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T02:07:50.4871507+02:00 0HL1KVQG1E7H9 [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 49.6914ms (afa2e885)
+2017-01-05T02:07:50.4931532+02:00 0HL1KVQG1E7H9 [INF] Request finished in 73.5509ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T02:07:50.6261556+02:00 0HL1KVQG1E7HA [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico   (e5be5b71)
+2017-01-05T02:07:50.6381541+02:00 0HL1KVQG1E7HA [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Projects\TemperatureStation\TemperatureStation\TemperatureStation.Web\wwwroot\favicon.ico"' (27b0a520)
+2017-01-05T02:07:50.6521571+02:00 0HL1KVQG1E7HA [INF] Request finished in 25.9297ms 200 image/x-icon (15c52c40)
+2017-01-05T02:07:51.4186105+02:00 0HL1KVQG1E7HB [INF] Request starting HTTP/1.1 GET http://localhost:5000/   (e5be5b71)
+2017-01-05T02:07:51.4236084+02:00 0HL1KVQG1E7HB [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-01-05T02:07:51.4266105+02:00 0HL1KVQG1E7HB [INF] Executing action method "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:07:51.4356100+02:00 0HL1KVQG1E7HB [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:07:51.4416103+02:00 0HL1KVQG1E7HB [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:07:51.4476128+02:00 0HL1KVQG1E7HB [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(2) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:07:51.4546109+02:00 0HL1KVQG1E7HB [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [SensorRoles] AS [s] ON [sr].[SensorRoleId] = [s].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:51.4626101+02:00 0HL1KVQG1E7HB [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?', @__model_Measurement_Id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [sr].[Id], [sr].[MeasurementId], [sr].[ReadingTime], [sr].[ReadingType], [sr].[Value], [sr].[CalculatorId], [sr].[SensorRoleId], [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity], [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Readings] AS [sr]
+INNER JOIN [Measurements] AS [m] ON [sr].[MeasurementId] = [m].[Id]
+INNER JOIN [Calculators] AS [c] ON [sr].[CalculatorId] = [c].[Id]
+WHERE [sr].[ReadingType] IN (N'SE', N'CA') AND ([sr].[MeasurementId] = @__model_Measurement_Id_0)
+ORDER BY [sr].[ReadingTime] DESC (6438bdd5)
+2017-01-05T02:07:51.4666124+02:00 0HL1KVQG1E7HB [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2017-01-05T02:07:51.4816105+02:00 0HL1KVQG1E7HB [INF] Executed action "TemperatureStation.Web.Controllers.HomeController.Index (TemperatureStation.Web)" in 54.1979ms (afa2e885)
+2017-01-05T02:07:51.4866106+02:00 0HL1KVQG1E7HB [INF] Request finished in 69.0772ms 200 text/html; charset=utf-8 (15c52c40)
+2017-01-05T02:07:51.6136101+02:00 0HL1KVQG1E7HC [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico   (e5be5b71)
+2017-01-05T02:07:51.6206124+02:00 0HL1KVQG1E7HC [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Projects\TemperatureStation\TemperatureStation\TemperatureStation.Web\wwwroot\favicon.ico"' (27b0a520)
+2017-01-05T02:07:51.6296196+02:00 0HL1KVQG1E7HC [INF] Request finished in 31.1891ms 200 image/x-icon (15c52c40)
+2017-01-05T02:08:03.1366505+02:00 0HL1KVQG1E7HD [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/Report application/json 138 (e5be5b71)
+2017-01-05T02:08:03.1406503+02:00 0HL1KVQG1E7HD [INF] Executing action method "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" with arguments (["05.01.2017 1:37:16:  01AA: -9, 02AA: -9,3125"]) - ModelState is Valid (ba7f4ac2)
+2017-01-05T02:08:03.1526497+02:00 0HL1KVQG1E7HD [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [m].[Id], [m].[AlcoholByVolume], [m].[AlcoholByWeight], [m].[CoolingRate], [m].[FinalGravity], [m].[FreezingPoint], [m].[IsActive], [m].[Name], [m].[OriginalGravity]
+FROM [Measurements] AS [m]
+WHERE [m].[IsActive] = 1
+ORDER BY [m].[Id] (6438bdd5)
+2017-01-05T02:08:03.1656528+02:00 0HL1KVQG1E7HD [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[MeasurementId], [c].[Name], [c].[Parameters]
+FROM [Calculators] AS [c]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m1] ON [c].[MeasurementId] = [m1].[Id]
+ORDER BY [m1].[Id] (6438bdd5)
+2017-01-05T02:08:03.1856510+02:00 0HL1KVQG1E7HD [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[Id], [s].[MeasurementId], [s].[RoleName], [s].[SensorId], [s0].[Id], [s0].[Name]
+FROM [SensorRoles] AS [s]
+INNER JOIN (
+    SELECT DISTINCT TOP(1) [m].[Id]
+    FROM [Measurements] AS [m]
+    WHERE [m].[IsActive] = 1
+    ORDER BY [m].[Id]
+) AS [m0] ON [s].[MeasurementId] = [m0].[Id]
+INNER JOIN [Sensors] AS [s0] ON [s].[SensorId] = [s0].[Id]
+ORDER BY [m0].[Id] (6438bdd5)
+2017-01-05T02:08:03.2066537+02:00 0HL1KVQG1E7HD [INF] Executed DbCommand (10ms) [Parameters=[@p0='?', @p1='?', @p2='?' (Size = 4000), @p3='?', @p4='?'], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Readings] ([MeasurementId], [ReadingTime], [ReadingType], [Value], [CalculatorId])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT [Id]
+FROM [Readings]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity(); (6438bdd5)
+2017-01-05T02:08:03.2126498+02:00 0HL1KVQG1E7HD [INF] Executing HttpStatusCodeResult, setting HTTP status code 204 (e28ccfae)
+2017-01-05T02:08:03.2156506+02:00 0HL1KVQG1E7HD [INF] Executed action "TemperatureStation.Web.Controllers.ApiController.Report (TemperatureStation.Web)" in 75.0673ms (afa2e885)
+2017-01-05T02:08:03.2196517+02:00 0HL1KVQG1E7HD [INF] Request finished in 85.6165ms 204  (15c52c40)

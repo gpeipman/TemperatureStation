@@ -35,7 +35,7 @@ namespace TemperatureStation.IoT.Service
             try
             {
                 _sensorsClient = new RinsenOneWireClient();
-                _reportingClient = new WebReportingClient();
+                _reportingClient = new WebReportingClient(_logger);
 
                 if (_reportingClient.SupportsSensorsUpdate)
                 {

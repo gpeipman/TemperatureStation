@@ -2,6 +2,7 @@
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using TemperatureStation.IoT.Service.Logging;
 using TemperatureStation.IoT.Service.Models;
 
 namespace TemperatureStation.IoT.Service.Reporting
@@ -10,6 +11,13 @@ namespace TemperatureStation.IoT.Service.Reporting
     {
         private const string ServiceAddress = "http://metalcenter:8081/api/";
         private const string DeviceKey = "LongAndComplexKey";
+
+        private ILogger _logger;
+
+        public WebReportingClient(ILogger logger)
+        {
+            _logger = logger;
+        }
 
         public bool SupportsSensorsUpdate
         {
@@ -24,8 +32,18 @@ namespace TemperatureStation.IoT.Service.Reporting
 
                 var url = ServiceAddress + "report";
                 var body = JsonConvert.SerializeObject(readings);
+                _logger.Info("Web reporting client: " + body);
                 var content = new StringContent(body, Encoding.UTF8, "application/json");
-                await client.PostAsync(url, content);
+
+                var response = await client.PostAsync(url, content);
+                body = "";
+
+                if(response.Content != null)
+                {
+                    body = await response.Content.ReadAsStringAsync();
+                }
+
+                _logger.Info("Web reporting client: " + response.StatusCode + " " + body);
             }            
         }
 

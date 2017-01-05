@@ -13,5 +13,25 @@ namespace TemperatureStation.IoT.Service.Models
             ReadingTime = DateTime.Now;
             Readings = new List<SensorReading>();
         }
+
+        public override string ToString()
+        {
+            var asString = "";
+
+            if (Readings != null)
+                foreach (var reading in Readings)
+                {
+                    asString += ", " + reading.SensorId + ": " + reading.Reading;
+                }
+
+            if (asString.StartsWith(","))
+            {
+                asString = asString.Substring(1);
+            }
+
+            asString = ReadingTime + ": " + asString;
+
+            return asString;
+        }
     }
 }
