@@ -66,7 +66,7 @@ namespace TemperatureStation.Web.Controllers
             }
             model.Labels = labels;
             model.Calculators = _calcProvider.GetCalculators();
-            
+            model.Statistics = _dataContext.GetMeasurementStats(model.Measurement.Id);
 
             return View(model); 
         }

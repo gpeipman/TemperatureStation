@@ -14,6 +14,7 @@ namespace TemperatureStation.Web.Models
         public string[] CalculatorsOnChart { get; set; }
         public IDictionary<string,string> Labels { get; set; }
         public IDictionary<string, ICalculator> Calculators { get; set; }
+        public IDictionary<string, Tuple<double, double>> Statistics { get; set; }
 
         public HomeViewModel()
         {
