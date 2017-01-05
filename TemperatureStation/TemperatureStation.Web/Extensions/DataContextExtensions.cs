@@ -11,24 +11,27 @@ namespace TemperatureStation.Web.Extensions
         public static IEnumerable<IGrouping<DateTime,ReadingViewModel>> GetReadings(this ApplicationDbContext context, int? measurementId, DateTime? newerThan, int? rowCount)
         {
             DateTime[] dates = null;
+            IQueryable<DateTime> datesQuery;
 
-            if (newerThan.HasValue)
+            datesQuery = context.Readings
+                                .Where(r =>
+                                        (measurementId == null || r.Measurement.Id == measurementId)
+                                        && (newerThan == null || r.ReadingTime > newerThan))
+                                .OrderByDescending(r => r.ReadingTime)
+                                .Select(r => r.ReadingTime)
+                                .Distinct();
+
+            if (rowCount.HasValue && rowCount.Value > 0)
             {
-                var datesQuery = context.Readings
-                                        .Where(r =>
-                                                (measurementId == null || r.Measurement.Id == measurementId)
-                                                && (newerThan == null || r.ReadingTime > newerThan))
-                                        .Select(r => r.ReadingTime)
-                                        .Distinct();
-
-                if(rowCount.HasValue && rowCount.Value > 0)
-                {
-                    datesQuery = datesQuery.Take(rowCount.Value);
-                }
-
-                dates = datesQuery.ToArray();
+                datesQuery = datesQuery.Take(rowCount.Value);
+            }
+            else
+            {
+                datesQuery = datesQuery.Take(10);
             }
 
+            dates = datesQuery.ToArray();
+            
             var readings1 = context.SensorReadings
                                         .Where(r =>
                                                 (measurementId == null || r.Measurement.Id == measurementId)

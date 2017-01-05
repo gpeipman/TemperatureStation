@@ -111,12 +111,11 @@
 
 @section scripts {
 <script type="text/javascript">	
+	var offset = @TimeZoneInfo.Local.BaseUtcOffset.TotalHours;
+	var data = @Html.Raw(JsonConvert.SerializeObject(Model.Readings));
+	var strokes = ['blue','red','green','brown','orange','yellow','pink'];
+
 	$(document).ready(function () {
-
-		var offset = @TimeZoneInfo.Local.BaseUtcOffset.TotalHours;
-		var data = @Html.Raw(JsonConvert.SerializeObject(Model.Readings));
-		var strokes = ['blue','red','green','brown','orange','yellow','pink'];
-
 		frontPageChart();
 	});
 </script>

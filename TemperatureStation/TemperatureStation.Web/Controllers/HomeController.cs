@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Data;
+using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Models;
 
 namespace TemperatureStation.Web.Controllers
@@ -32,26 +30,29 @@ namespace TemperatureStation.Web.Controllers
                 return View("IndexEmpty");
             }
 
-            var readings1 = await _dataContext.Readings
-                                        .Include(sr => sr.Measurement)
-                                        .Include(r => ((SensorReading)r).SensorRole)
-                                        .Where(r => r.Measurement.Id == model.Measurement.Id)
-                                        .OrderByDescending(r => r.ReadingTime)                                        
-                                        .Take(48)                                        
-                                        .ToListAsync();
+            //var readings1 = await _dataContext.Readings
+            //                            .Include(sr => sr.Measurement)
+            //                            .Include(r => ((SensorReading)r).SensorRole)
+            //                            .Where(r => r.Measurement.Id == model.Measurement.Id)
+            //                            .OrderByDescending(r => r.ReadingTime)                                        
+            //                            .Take(48)                                        
+            //                            .ToListAsync();
 
-            var readings2 = await _dataContext.Readings
-                                        .Include(sr => sr.Measurement)
-                                        .Include(r => ((CalculatorReading)r).Calculator)
-                                        .Where(r => r.Measurement.Id == model.Measurement.Id)
-                                        .OrderByDescending(r => r.ReadingTime)
-                                        .Take(48)
-                                        .ToListAsync();
+            //var readings2 = await _dataContext.Readings
+            //                            .Include(sr => sr.Measurement)
+            //                            .Include(r => ((CalculatorReading)r).Calculator)
+            //                            .Where(r => r.Measurement.Id == model.Measurement.Id)
+            //                            .OrderByDescending(r => r.ReadingTime)
+            //                            .Take(48)
+            //                            .ToListAsync();
 
-            readings1.AddRange(readings2);
-            var readings = Mapper.Map(readings1, new List<ReadingViewModel>());
-            model.Readings = readings.OrderBy(r => r.ReadingTime)
-                                     .GroupBy(r => r.ReadingTime);
+            //readings1.AddRange(readings2);
+            //var readings = Mapper.Map(readings1, new List<ReadingViewModel>());
+            //model.Readings = readings.OrderBy(r => r.ReadingTime)
+            //                         .GroupBy(r => r.ReadingTime);
+
+            model.Readings = _dataContext.GetReadings(model.Measurement.Id, null, 10);
+
             return View(model); 
         }
 
