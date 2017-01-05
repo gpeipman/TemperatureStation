@@ -6,7 +6,7 @@ namespace TemperatureStation.Web.Models
     {
         public int Id { get; set; }
         public DateTime ReadingTime { get; set; }
-        public double Value { get; set; }
+        public decimal Value { get; set; }
         public string Source { get; set; }
     }
 }

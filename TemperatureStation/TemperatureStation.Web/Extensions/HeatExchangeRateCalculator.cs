@@ -63,8 +63,8 @@ namespace TemperatureStation.Web.Extensions
 
             var delta = (readings.ReadingTime - previousLiquidReading.Reading.ReadingTime).TotalMinutes;
 
-            var coolingRate = GetCoolingRate(previousLiquidReading.Reading.Value,
-                                             previousAmbientReading.Reading.Value,
+            var coolingRate = GetCoolingRate((double)previousLiquidReading.Reading.Value,
+                                             (double)previousAmbientReading.Reading.Value,
                                              currentLiquidReading.Value,
                                              delta);
 

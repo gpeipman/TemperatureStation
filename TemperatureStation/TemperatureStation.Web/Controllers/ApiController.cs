@@ -67,7 +67,7 @@ namespace TemperatureStation.Web.Controllers
                     var reading = new SensorReading();
                     reading.ReadingTime = readings.ReadingTime;
                     reading.SensorRole = sensorRole;
-                    reading.Value = readingForSensor.Reading;
+                    reading.Value = (decimal)readingForSensor.Reading;
                     reading.Measurement = measurement;
 
                     _dataContext.Readings.Add(reading);
@@ -91,7 +91,7 @@ namespace TemperatureStation.Web.Controllers
                         reading.Calculator = registeredCalculator;
                         reading.Measurement = measurement;
                         reading.ReadingTime = readings.ReadingTime;
-                        reading.Value = calc.Calculate(readings, measurement);
+                        reading.Value = (decimal)calc.Calculate(readings, measurement);
 
                         _dataContext.Readings.Add(reading);
                     }
