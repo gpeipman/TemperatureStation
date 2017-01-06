@@ -62,7 +62,7 @@
 	</div>
 </div>
 <div class="row">    
-	<div class="col-md-6">
+	<div style="float:left">
 		<div  id="chartContainer"><svg id="chart" /></div>
 		
 		<ul id="chartLegend">
@@ -114,36 +114,36 @@
 					</tr>
 				}
 			</tbody>
-            <tfoot>
-                <tr>
-                    <th>Min</th>
-                    @foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
-                    {
-                        <td>@Model.Statistics[sensorRole.RoleName].Item1</td>
-                    }
-                    @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
-                    {
-                        if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
-                        {
-                            <td>@Model.Statistics[calc.Name].Item1</td>
-                        }
-                    }
-                </tr>
-                <tr>
-                    <th>Max</th>
-                    @foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
-                    {
-                        <td>@Model.Statistics[sensorRole.RoleName].Item2</td>
-                    }
-                    @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
-                    {
-                        if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
-                        {
-                            <td>@Model.Statistics[calc.Name].Item2</td>
-                        }
-                    }
-                </tr>
-            </tfoot>
+			<tfoot>
+				<tr>
+					<th>Min</th>
+					@foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
+					{
+						<td>@Model.Statistics[sensorRole.RoleName].Item1</td>
+					}
+					@foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
+					{
+						if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
+						{
+							<th>@Model.Statistics[calc.Name].Item1</th>
+						}
+					}
+				</tr>
+				<tr>
+					<th>Max</th>
+					@foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
+					{
+						<th>@Model.Statistics[sensorRole.RoleName].Item2</th>
+					}
+					@foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
+					{
+						if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
+						{
+							<th>@Model.Statistics[calc.Name].Item2</th>
+						}
+					}
+				</tr>
+			</tfoot>
 		</table>
 	</div>
 </div>
@@ -154,6 +154,7 @@
 	var data = @Html.Raw(JsonConvert.SerializeObject(Model.ChartData));
 	var strokes = ['blue','red','green','brown','orange','yellow','pink'];
 	var calcsOnChart = @Html.Raw(JsonConvert.SerializeObject(Model.CalculatorsOnChart));
+	var refreshUrl = '@Url.Action()';
 
 	for(var i = 0; i < data.length; i++)
 	{
@@ -170,8 +171,12 @@
 		frontPageChart();
 
 		window.addEventListener('resize', function(event){
-			frontPageChart(); // just call it again...
+			frontPageChart();
 		});
+
+		setTimeout(function() {
+			document.location.href = refreshUrl + '?tmp=' + new Date().getTime();
+		}, 5*60*1000);
 	});
 </script>
 }

@@ -1,16 +1,13 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using SharedModels = TemperatureStation.Shared.Models;
+using Microsoft.Extensions.Logging;
 using TemperatureStation.Web.Data;
 using TemperatureStation.Web.Extensions;
-using System;
-using AutoMapper;
-using System.Collections.Generic;
-using TemperatureStation.Web.Models;
-using Microsoft.Extensions.Logging;
+using SharedModels = TemperatureStation.Shared.Models;
 
 namespace TemperatureStation.Web.Controllers
 {
@@ -141,7 +138,10 @@ namespace TemperatureStation.Web.Controllers
 
         public IActionResult GetNewReadings([FromQuery]DateTime newerThan, [FromQuery]int measurementId,  [FromQuery]int rowCount)
         {
-            // Check device key
+            if (!IsDeviceKeyValid())
+            {
+                return BadRequest();
+            }
 
             var results = _dataContext.GetReadings(measurementId, newerThan, rowCount);
 
