@@ -72,7 +72,12 @@ namespace TemperatureStation.Web.Extensions
                 return -1000;
             }
 
-            measurement.CoolingRate = (float)coolingRate;
+            if(double.IsNaN(coolingRate) || double.IsInfinity(coolingRate))
+            {
+                return -1000;
+            }
+
+            measurement.CoolingRate = coolingRate;
 
             return -1000;
         }

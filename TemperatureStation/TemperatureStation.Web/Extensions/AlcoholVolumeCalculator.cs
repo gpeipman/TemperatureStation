@@ -29,15 +29,27 @@ namespace TemperatureStation.Web.Extensions
 
             if (measurement.AlcoholByVolume == null)
             {
-                measurement.AlcoholByVolume = Math.Round(GetAlcVol(og, fg), 1);
+                var alcVol = Math.Round(GetAlcVol(og, fg), 1);
+                if (!double.IsNaN(alcVol) && !double.IsInfinity(alcVol))
+                {
+                    measurement.AlcoholByVolume = alcVol;
+                }
             }
             if (measurement.AlcoholByWeight == null)
             {
-                measurement.AlcoholByWeight = Math.Round(AbvToAbw(GetAlcVol(og, fg)), 1);
+                var abw = Math.Round(AbvToAbw(GetAlcVol(og, fg)), 1);
+                if (!double.IsNaN(abw) && !double.IsInfinity(abw))
+                {
+                    measurement.AlcoholByWeight = abw;
+                }
             }
             if (measurement.FreezingPoint == null)
             {
-                measurement.FreezingPoint = Math.Ceiling(GetFreezingPoint(og, fg));
+                var fp = Math.Ceiling(GetFreezingPoint(og, fg));
+                if (!double.IsNaN(fp) && !double.IsInfinity(fp))
+                {
+                    measurement.FreezingPoint = fp;
+                }
             }
 
             return -1000;
