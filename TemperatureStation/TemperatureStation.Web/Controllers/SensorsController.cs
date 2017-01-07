@@ -1,11 +1,13 @@
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Data;
 
 namespace TemperatureStation.Web.Controllers
 {
+    [Authorize]
     public class SensorsController : Controller
     {
         private readonly ApplicationDbContext _context;

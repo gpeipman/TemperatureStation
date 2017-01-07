@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Data;
 using TemperatureStation.Web.Extensions;
@@ -21,15 +22,22 @@ namespace TemperatureStation.Web.Controllers
             _calcProvider = calcProvider;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? measurementId)
         {
+            if(!User.Identity.IsAuthenticated)
+            {
+                return View("IndexPublic");
+            }
+
             _dataContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             
             var model = new HomeViewModel();
             model.Measurement = await _dataContext.Measurements
                                                   .Include(m => m.SensorRoles)
                                                   .Include(m => m.Calculators)
-                                                  .SingleOrDefaultAsync(m => m.IsActive);
+                                                  .Where(m => measurementId == null || m.Id == measurementId)
+                                                  .OrderByDescending(m => m.IsActive)
+                                                  .FirstOrDefaultAsync();
             if(model.Measurement == null)
             {
                 return View("IndexEmpty");
@@ -39,7 +47,8 @@ namespace TemperatureStation.Web.Controllers
                                          .OrderByDescending(r => r.Key)
                                          .ToList();
 
-            model.ChartData = _dataContext.GetReadings(model.Measurement.Id, DateTime.Now.AddHours(-24), 10000);
+            //model.ChartData = _dataContext.GetReadings(model.Measurement.Id, DateTime.Now.AddHours(-24), 10000);
+            model.ChartData = _dataContext.GetReadings(model.Measurement.Id, null, 10000);
             var showOnChart = _calcProvider.GetTypes()
                                             .Where(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>() != null)
                                             .Where(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().ShowOnChart)
@@ -67,6 +76,16 @@ namespace TemperatureStation.Web.Controllers
             model.Labels = labels;
             model.Calculators = _calcProvider.GetCalculators();
             model.Statistics = _dataContext.GetMeasurementStats(model.Measurement.Id);
+            model.Measurements = _dataContext.Measurements
+                                             .OrderByDescending(m => m.IsActive)
+                                             .ThenBy(m => m.Name)
+                                             .Select(m => new SelectListItem
+                                             {
+                                                 Text = m.Name,
+                                                 Value = m.Id.ToString(),
+                                                 Selected = (m.Id == model.Measurement.Id)
+                                             })
+                                             .ToList();
 
             return View(model); 
         }

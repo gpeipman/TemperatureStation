@@ -7,6 +7,9 @@
 	<div class="col-md-6">
 		<h2>@Model.Measurement.Name</h2>
 	</div>
+	<div class="col-md-6" style="margin-top:20px;font-size:21px">
+		@Html.DropDownList("MeasurementId", Model.Measurements)
+	</div>
 </div>
 <div class="row">
 	<div class="col-md-3">
@@ -125,7 +128,7 @@
 					{
 						if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
 						{
-							<th>@Model.Statistics[calc.Name].Item1</th>
+							<th>@Model.Calculators[calc.Name].DisplayValue(Model.Statistics[calc.Name].Item1)</th>
 						}
 					}
 				</tr>
@@ -139,7 +142,7 @@
 					{
 						if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
 						{
-							<th>@Model.Statistics[calc.Name].Item2</th>
+							<th>@Model.Calculators[calc.Name].DisplayValue(Model.Statistics[calc.Name].Item2)</th>
 						}
 					}
 				</tr>
@@ -168,14 +171,27 @@
 	}
 
 	$(document).ready(function () {
-		frontPageChart();
 
-		window.addEventListener('resize', function(event){
-			frontPageChart();
+	    if(data.length > 0)
+	    {
+	        frontPageChart();
+	    }
+
+	    window.addEventListener('resize', function(event){
+	        if(data.length > 0)
+	        {
+	            frontPageChart();
+	        }
 		});
 
+		$('#MeasurementId').change(function() {
+		    var measurementId = $(this).val();
+			document.location.href = refreshUrl + '?measurementId=' + measurementId;
+		})
+
 		setTimeout(function() {
-			document.location.href = refreshUrl + '?tmp=' + new Date().getTime();
+		    var measurementId = $('#MeasurementId').val();
+		    document.location.href = refreshUrl + '?measurementId=' + measurementId + '&tmp=' + new Date().getTime();
 		}, 5*60*1000);
 	});
 </script>
