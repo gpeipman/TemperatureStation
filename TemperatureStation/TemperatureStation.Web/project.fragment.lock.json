@@ -5,13 +5,13 @@
       "type": "project",
       "framework": ".NETStandard,Version=v1.4",
       "compile": {
-        "bin/Release/TemperatureStation.Shared.dll": {}
+        "bin/Debug/TemperatureStation.Shared.dll": {}
       },
       "runtime": {
-        "bin/Release/TemperatureStation.Shared.dll": {}
+        "bin/Debug/TemperatureStation.Shared.dll": {}
       },
       "contentFiles": {
-        "bin/Release/TemperatureStation.Shared.pdb": {
+        "bin/Debug/TemperatureStation.Shared.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true

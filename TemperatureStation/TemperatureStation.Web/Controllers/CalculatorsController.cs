@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using TemperatureStation.Web.Calculators;
 using TemperatureStation.Web.Data;
-using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Models;
 
 namespace TemperatureStation.Web.Controllers

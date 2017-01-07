@@ -3,7 +3,7 @@ using System.Linq;
 using TemperatureStation.Web.Data;
 using SharedModels = TemperatureStation.Shared.Models;
 
-namespace TemperatureStation.Web.Extensions
+namespace TemperatureStation.Web.Calculators
 {
     [Calculator(Name = "Heat Exchange Rate", Order = 1, ShowOnChart = false)]
     public class HeatExchangeRateCalculator : ICalculator

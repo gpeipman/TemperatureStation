@@ -3,7 +3,7 @@ using System.Linq;
 using TemperatureStation.Web.Data;
 using TemperatureStation.Shared.Models;
 
-namespace TemperatureStation.Web.Extensions
+namespace TemperatureStation.Web.Calculators
 {
     [Calculator(Name = "Freezing estimate calculator", Order = 2, ShowOnChart = false, DisplayLabel = "Freezing estimate")]
     public class FreezingEstimateCalculator : ICalculator

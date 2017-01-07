@@ -1,7 +1,7 @@
 ﻿using TemperatureStation.Shared.Models;
 using TemperatureStation.Web.Data;
 
-namespace TemperatureStation.Web.Extensions
+namespace TemperatureStation.Web.Calculators
 {
     public interface ICalculator
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TemperatureStation.Web.Extensions
+namespace TemperatureStation.Web.Calculators
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
     public class CalculatorAttribute : Attribute

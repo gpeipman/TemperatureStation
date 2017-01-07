@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.DependencyModel;
 
-namespace TemperatureStation.Web.Extensions
+namespace TemperatureStation.Web.Calculators
 {
     public static class CalculatorsLoader
     {

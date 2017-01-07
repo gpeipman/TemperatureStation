@@ -10,7 +10,7 @@ using TemperatureStation.Web.Data;
 using TemperatureStation.Web.Models;
 using TemperatureStation.Web.Models.MeasurementViewModels;
 using TemperatureStation.Web.Services;
-using TemperatureStation.Web.Extensions;
+using TemperatureStation.Web.Calculators;
 using Microsoft.AspNetCore.HttpOverrides;
 
 namespace TemperatureStation.Web

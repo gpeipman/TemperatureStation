@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using TemperatureStation.Web.Calculators;
 using TemperatureStation.Web.Data;
 using TemperatureStation.Web.Extensions;
 using SharedModels = TemperatureStation.Shared.Models;
