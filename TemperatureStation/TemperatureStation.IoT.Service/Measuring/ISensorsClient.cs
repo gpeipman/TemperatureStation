@@ -1,4 +1,4 @@
-﻿using TemperatureStation.Shared.Models;
+﻿using TemperatureStation.IoT.Service.Models;
 
 namespace TemperatureStation.IoT.Service.Measuring
 {

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Linq;
 using TemperatureStation.Web.Data;
-using TemperatureStation.Web.Extensions;
 using SharedModels = TemperatureStation.Shared.Models;
 
 namespace TemperatureStation.Web.Extensions
 {
-    [Calculator(Name = "Heat Exchange Rate", Order = 1)]
+    [Calculator(Name = "Heat Exchange Rate", Order = 1, ShowOnChart = false)]
     public class HeatExchangeRateCalculator : ICalculator
     {
         private readonly ApplicationDbContext _dataContext;
@@ -23,7 +22,7 @@ namespace TemperatureStation.Web.Extensions
             get { return false; }
         }
 
-        public float Calculate(SharedModels.SensorReadings readings, Measurement measurement)
+        public double Calculate(SharedModels.SensorReadings readings, Measurement measurement)
         {
             if (measurement == null)
             {
@@ -63,12 +62,22 @@ namespace TemperatureStation.Web.Extensions
 
             var delta = (readings.ReadingTime - previousLiquidReading.Reading.ReadingTime).TotalMinutes;
 
-            var coolingRate = GetCoolingRate(previousLiquidReading.Reading.Value,
-                                             previousAmbientReading.Reading.Value,
+            var coolingRate = GetCoolingRate((double)previousLiquidReading.Reading.Value,
+                                             (double)previousAmbientReading.Reading.Value,
                                              currentLiquidReading.Value,
                                              delta);
 
-            measurement.CoolingRate = (float)coolingRate;
+            if(coolingRate == 0)
+            {
+                return -1000;
+            }
+
+            if(double.IsNaN(coolingRate) || double.IsInfinity(coolingRate))
+            {
+                return -1000;
+            }
+
+            measurement.CoolingRate = coolingRate;
 
             return -1000;
         }
@@ -119,6 +128,11 @@ namespace TemperatureStation.Web.Extensions
                 return 0;
 
             return Math.Log(d1 / d2) / t;
+        }
+
+        public string DisplayValue(double value)
+        {
+            return value.ToString();
         }
 
         private class ReadingWithSensorHack

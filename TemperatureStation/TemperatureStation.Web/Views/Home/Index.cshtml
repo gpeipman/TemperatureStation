@@ -7,6 +7,9 @@
 	<div class="col-md-6">
 		<h2>@Model.Measurement.Name</h2>
 	</div>
+	<div class="col-md-6" style="margin-top:20px;font-size:21px">
+		@Html.DropDownList("MeasurementId", Model.Measurements)
+	</div>
 </div>
 <div class="row">
 	<div class="col-md-3">
@@ -62,8 +65,9 @@
 	</div>
 </div>
 <div class="row">    
-	<div class="col-md-6">
-		<svg id="chart" />
+	<div style="float:left">
+		<div  id="chartContainer"><svg id="chart" /></div>
+		
 		<ul id="chartLegend">
 			
 		</ul>
@@ -72,7 +76,7 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Date</th>
+					<th>Time</th>
 					@foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
 					{
 						<th>@sensorRole.RoleName</th>
@@ -81,7 +85,7 @@
 					{
 						if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
 						{
-						<th>@calc.Name</th>
+						<th>@Model.Labels[calc.Name]</th>
 						}
 					}
 				</tr>
@@ -90,7 +94,7 @@
 				@foreach (var readingsGroup in Model.Readings)
 				{
 					<tr>
-						<td>@readingsGroup.Key</td>
+						<td>@readingsGroup.Key.ToString("HH:mm")</td>
 						@foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
 						{
 							<td>@readingsGroup.FirstOrDefault(r => r.Source == sensorRole.RoleName)?.Value</td>
@@ -99,24 +103,96 @@
 						{
 							if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
 							{
-							<td>@readingsGroup.FirstOrDefault(r => r.Source == calc.Name)?.Value</td>
+								var val = readingsGroup.FirstOrDefault(r => r.Source == calc.Name)?.Value;
+								if (val == null)
+								{
+									<td></td>
+								}
+								else
+								{
+									<td>@Model.Calculators[calc.Name].DisplayValue(val.Value)</td>
+								}							
 							}
 						}
 					</tr>
 				}
 			</tbody>
+			<tfoot>
+				<tr>
+					<th>Min</th>
+					@foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
+					{
+						<td>@Model.Statistics[sensorRole.RoleName].Item1</td>
+					}
+					@foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
+					{
+						if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
+						{
+							<th>@Model.Calculators[calc.Name].DisplayValue(Model.Statistics[calc.Name].Item1)</th>
+						}
+					}
+				</tr>
+				<tr>
+					<th>Max</th>
+					@foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
+					{
+						<th>@Model.Statistics[sensorRole.RoleName].Item2</th>
+					}
+					@foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
+					{
+						if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
+						{
+							<th>@Model.Calculators[calc.Name].DisplayValue(Model.Statistics[calc.Name].Item2)</th>
+						}
+					}
+				</tr>
+			</tfoot>
 		</table>
 	</div>
 </div>
 
 @section scripts {
-<script>
+<script type="text/javascript">	
 	var offset = @TimeZoneInfo.Local.BaseUtcOffset.TotalHours;
-	var data = @Html.Raw(JsonConvert.SerializeObject(Model.Readings));
+	var data = @Html.Raw(JsonConvert.SerializeObject(Model.ChartData));
 	var strokes = ['blue','red','green','brown','orange','yellow','pink'];
-	
-	$(document).ready(function() {
-		frontPageChart();
+	var calcsOnChart = @Html.Raw(JsonConvert.SerializeObject(Model.CalculatorsOnChart));
+	var refreshUrl = '@Url.Action()';
+
+	for(var i = 0; i < data.length; i++)
+	{
+		for(var j = data[i].length-1; j >= 0; j--)
+		{
+			if($.inArray(data[i][j].Source, calcsOnChart) < 0)   
+			{
+				data[i].splice(j, 1);                
+			}
+		}        
+	}
+
+	$(document).ready(function () {
+
+	    if(data.length > 0)
+	    {
+	        frontPageChart();
+	    }
+
+	    window.addEventListener('resize', function(event){
+	        if(data.length > 0)
+	        {
+	            frontPageChart();
+	        }
+		});
+
+		$('#MeasurementId').change(function() {
+		    var measurementId = $(this).val();
+			document.location.href = refreshUrl + '?measurementId=' + measurementId;
+		})
+
+		setTimeout(function() {
+		    var measurementId = $('#MeasurementId').val();
+		    document.location.href = refreshUrl + '?measurementId=' + measurementId + '&tmp=' + new Date().getTime();
+		}, 5*60*1000);
 	});
 </script>
 }

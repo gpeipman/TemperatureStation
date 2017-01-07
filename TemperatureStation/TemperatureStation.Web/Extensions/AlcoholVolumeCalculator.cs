@@ -4,7 +4,7 @@ using System;
 
 namespace TemperatureStation.Web.Extensions
 {
-    [Calculator(Name = "Alcohol volume calculator", Order = 0)]
+    [Calculator(Name = "Alcohol volume calculator", Order = 0, ShowOnChart = false)]
     public class AlcoholVolumeCalculator : ICalculator
     {
         public bool ReturnsReading
@@ -12,7 +12,7 @@ namespace TemperatureStation.Web.Extensions
             get { return false; }
         }
 
-        public float Calculate(SensorReadings readings, Measurement measurement)
+        public double Calculate(SensorReadings readings, Measurement measurement)
         {
             if(measurement == null)
             {
@@ -29,15 +29,27 @@ namespace TemperatureStation.Web.Extensions
 
             if (measurement.AlcoholByVolume == null)
             {
-                measurement.AlcoholByVolume = Math.Round(GetAlcVol(og, fg), 1);
+                var alcVol = Math.Round(GetAlcVol(og, fg), 1);
+                if (!double.IsNaN(alcVol) && !double.IsInfinity(alcVol))
+                {
+                    measurement.AlcoholByVolume = alcVol;
+                }
             }
             if (measurement.AlcoholByWeight == null)
             {
-                measurement.AlcoholByWeight = Math.Round(AbvToAbw(GetAlcVol(og, fg)), 1);
+                var abw = Math.Round(AbvToAbw(GetAlcVol(og, fg)), 1);
+                if (!double.IsNaN(abw) && !double.IsInfinity(abw))
+                {
+                    measurement.AlcoholByWeight = abw;
+                }
             }
             if (measurement.FreezingPoint == null)
             {
-                measurement.FreezingPoint = Math.Ceiling(GetFreezingPoint(og, fg));
+                var fp = Math.Ceiling(GetFreezingPoint(og, fg));
+                if (!double.IsNaN(fp) && !double.IsInfinity(fp))
+                {
+                    measurement.FreezingPoint = fp;
+                }
             }
 
             return -1000;
@@ -65,6 +77,11 @@ namespace TemperatureStation.Web.Extensions
         private static double GetAlcVol(double og, double fg)
         {
             return (1.05 / 0.79) * ((og - fg) / fg) * 100;
+        }
+
+        public string DisplayValue(double value)
+        {
+            return value.ToString();
         }
     }
 }

@@ -11,8 +11,7 @@
   {
     "outputFileName": "wwwroot/js/site.min.js",
     "inputFiles": [
-      "wwwroot/js/site.js",
-      "wwwroot/js/chartModule.js"
+      "wwwroot/js/site.js"
     ],
     // Optionally specify minification options
     "minify": {

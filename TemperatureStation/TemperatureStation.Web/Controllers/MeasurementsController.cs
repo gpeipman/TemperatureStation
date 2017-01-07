@@ -142,6 +142,32 @@ namespace TemperatureStation.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<IActionResult> Clear(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var measurement = await _context.Measurements.SingleOrDefaultAsync(m => m.Id == id);
+            if (measurement == null)
+            {
+                return NotFound();
+            }
+
+            return View(measurement);
+        }
+
+        [HttpPost, ActionName("Clear")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ClearConfirmed(int id)
+        {
+            var measurement = await _context.Measurements.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Database.ExecuteSqlCommand("DELETE FROM Readings WHERE MeasurementId={0}", measurement.Id);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
         private bool MeasurementExists(int id)
         {
             return _context.Measurements.Any(e => e.Id == id);

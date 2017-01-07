@@ -3,7 +3,7 @@
   "exports": {
     "TemperatureStation.Shared/1.0.0": {
       "type": "project",
-      "framework": ".NETStandard,Version=v1.1",
+      "framework": ".NETStandard,Version=v1.5",
       "compile": {
         "bin/Debug/TemperatureStation.Shared.dll": {}
       },
