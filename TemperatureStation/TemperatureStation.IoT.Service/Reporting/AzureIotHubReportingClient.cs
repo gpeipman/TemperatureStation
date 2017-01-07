@@ -3,7 +3,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Devices.Client;
 using Newtonsoft.Json;
-using TemperatureStation.IoT.Service.Models;
+using TemperatureStation.Shared.Models;
 
 namespace TemperatureStation.IoT.Service.Reporting
 {
