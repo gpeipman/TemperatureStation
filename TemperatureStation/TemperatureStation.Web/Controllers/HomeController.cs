@@ -23,9 +23,14 @@ namespace TemperatureStation.Web.Controllers
             _calcProvider = calcProvider;
         }
 
+        public class TempMeasurementModel
+        {
+            public int Id;
+            public string Name;
+        }
         public async Task<IActionResult> Index(int? measurementId)
         {
-            if(!User.Identity.IsAuthenticated)
+            if (!User.Identity.IsAuthenticated)
             {
                 return View("IndexPublic");
             }
@@ -48,7 +53,6 @@ namespace TemperatureStation.Web.Controllers
                                          .OrderByDescending(r => r.Key)
                                          .ToList();
 
-            //model.ChartData = _dataContext.GetReadings(model.Measurement.Id, DateTime.Now.AddHours(-24), 10000);
             model.ChartData = _dataContext.GetReadings(model.Measurement.Id, null, 10000);
             var showOnChart = _calcProvider.GetTypes()
                                             .Where(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>() != null)

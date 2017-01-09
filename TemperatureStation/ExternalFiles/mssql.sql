@@ -149,23 +149,7 @@ CREATE TABLE [dbo].[Calculators](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[CalculatorSensorInput]    Script Date: 30.12.2016 23:47:25 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[CalculatorSensorInput](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[CalculatorId] [int] NOT NULL,
-	[SensorRoleId] [int] NOT NULL,
-	[Name] [nvarchar](50) NOT NULL,
- CONSTRAINT [PK_CalculatorSensorInput] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
 
-GO
 /****** Object:  Table [dbo].[Measurements]    Script Date: 30.12.2016 23:47:25 ******/
 SET ANSI_NULLS ON
 GO
@@ -313,12 +297,6 @@ CREATE NONCLUSTERED INDEX [IX_Calculator_MeasurementId] ON [dbo].[Calculators]
 	[MeasurementId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_CalculatorSensorInput_Calculator]    Script Date: 30.12.2016 23:47:25 ******/
-CREATE NONCLUSTERED INDEX [IX_CalculatorSensorInput_Calculator] ON [dbo].[CalculatorSensorInput]
-(
-	[CalculatorId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
 /****** Object:  Index [IX_CalculatorSensorInput_SensorRole]    Script Date: 30.12.2016 23:47:25 ******/
 CREATE NONCLUSTERED INDEX [IX_CalculatorSensorInput_SensorRole] ON [dbo].[CalculatorSensorInput]
 (
@@ -383,16 +361,6 @@ REFERENCES [dbo].[Measurements] ([Id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[Calculators] CHECK CONSTRAINT [FK_Calculator_Measurements_MeasurementId]
-GO
-ALTER TABLE [dbo].[CalculatorSensorInput]  WITH CHECK ADD  CONSTRAINT [FK_CalculatorSensorInput_Calculator] FOREIGN KEY([CalculatorId])
-REFERENCES [dbo].[Calculators] ([Id])
-GO
-ALTER TABLE [dbo].[CalculatorSensorInput] CHECK CONSTRAINT [FK_CalculatorSensorInput_Calculator]
-GO
-ALTER TABLE [dbo].[CalculatorSensorInput]  WITH CHECK ADD  CONSTRAINT [FK_CalculatorSensorInput_SensorRoles] FOREIGN KEY([SensorRoleId])
-REFERENCES [dbo].[SensorRoles] ([Id])
-GO
-ALTER TABLE [dbo].[CalculatorSensorInput] CHECK CONSTRAINT [FK_CalculatorSensorInput_SensorRoles]
 GO
 ALTER TABLE [dbo].[Readings]  WITH CHECK ADD  CONSTRAINT [FK_Readings_Calculator] FOREIGN KEY([CalculatorId])
 REFERENCES [dbo].[Calculators] ([Id])
