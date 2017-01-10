@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Data;
-using TemperatureStation.Web.Models;
+using TemperatureStation.Web.Models.UserViewModels;
 
 namespace TemperatureStation.Web.Controllers
 {
@@ -23,10 +23,17 @@ namespace TemperatureStation.Web.Controllers
         {
             var model = _dataContext.Users
                                     .OrderBy(u => u.UserName)
+                                    .Select(u => new UserListViewModel
+                                    {
+                                        Id = u.Id,
+                                        UserName = u.UserName,
+                                        Role = (u.Roles.FirstOrDefault() ?? new IdentityUserRole<string>()).RoleId
+                                    })
                                     .ToList();
             return View(model);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Edit(string id)
         {
             var model = await _dataContext.Users
@@ -34,7 +41,7 @@ namespace TemperatureStation.Web.Controllers
                                    {
                                        Id = u.Id,
                                        UserName = u.UserName,
-                                       Roles = u.Roles.Select(r => r.RoleId).ToArray()
+                                       Role = (u.Roles.FirstOrDefault() ?? new IdentityUserRole<string>()).RoleId
                                    })
                                    .FirstOrDefaultAsync();
 
@@ -49,11 +56,45 @@ namespace TemperatureStation.Web.Controllers
                                         {
                                             Value = r.Id,
                                             Text = r.Name,
-                                            Selected = model.Roles.Contains(r.Id)
+                                            Selected = (r.Id == model.Role)
                                         })
                                         .ToListAsync();                                        
 
             return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(UserEditViewModel model)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            if (string.IsNullOrEmpty(model.Id))
+            {
+                ModelState.AddModelError("Id", "User id cannot be empty");
+                return View(model);
+            }
+
+            var user = await _dataContext.Users.FirstOrDefaultAsync(u => u.Id == model.Id);
+            if(user == null)
+            {
+                ModelState.AddModelError("Id", "Cannot find user");
+                return View(model);
+            }
+
+            if(user.Roles.FirstOrDefault()?.RoleId == model.Role)
+            {
+                return RedirectToAction("Index");
+            }
+
+            user.Roles.Clear();
+            user.Roles.Add(new IdentityUserRole<string> { RoleId = model.Role, UserId = model.Id });
+            await _dataContext.SaveChangesAsync();
+
+            return RedirectToAction("Index");
         }
 
         private bool IsOnlyAdminAccount(string id)

@@ -34,6 +34,7 @@ namespace TemperatureStation.Web.Calculators
             var calcs = from a in GetReferencingAssemblies()
                         from t in a.GetTypes()
                         where t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>() != null
+                              && t.GetTypeInfo().ImplementedInterfaces.Contains(typeof(ICalculator))
                         select t;
 
             _calculatorTypes = calcs.OrderBy(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().Order).ToList();
@@ -43,6 +44,7 @@ namespace TemperatureStation.Web.Calculators
         {
             var assemblies = new List<Assembly>();
             var dependencies = DependencyContext.Default.RuntimeLibraries;
+
             foreach (var library in dependencies)
             {
                 try
@@ -52,10 +54,6 @@ namespace TemperatureStation.Web.Calculators
                 }
                 catch (FileNotFoundException)
                 { }
-                catch (Exception)
-                {
-                    throw;
-                }
             }
             return assemblies;
         }

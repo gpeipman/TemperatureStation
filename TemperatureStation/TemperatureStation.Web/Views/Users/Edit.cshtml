@@ -1,4 +1,4 @@
-﻿@model TemperatureStation.Web.Models.UserEditViewModel
+﻿@model UserEditViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -10,7 +10,7 @@
     <div class="form-horizontal">
         <h4>User</h4>
         <hr />
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div asp-validation-summary="All" class="text-danger"></div>
         <input type="hidden" asp-for="Id" />
         <div class="form-group">
             <label asp-for="UserName" class="col-md-2 control-label"></label>
@@ -19,13 +19,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Roles" class="col-md-2 control-label">Role</label>
+            <label asp-for="Role" class="col-md-2 control-label">Role</label>
             <div class="col-md-10">
-                @*@foreach(var item in Model.AllRoles)
-                {
-
-                }
-                <span asp-validation-for="Name" class="text-danger" />*@
+                <select asp-for="Role" class="form-control" asp-items="@Model.AllRoles"></select>
+                <span asp-validation-for="Role" class="text-danger" />
             </div>
         </div>
         <div class="form-group">

@@ -23,11 +23,6 @@ namespace TemperatureStation.Web.Controllers
             _calcProvider = calcProvider;
         }
 
-        public class TempMeasurementModel
-        {
-            public int Id;
-            public string Name;
-        }
         public async Task<IActionResult> Index(int? measurementId)
         {
             if (!User.Identity.IsAuthenticated)
