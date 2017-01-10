@@ -98,12 +98,16 @@ namespace TemperatureStation.Web.Controllers
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var admins = await _userManager.GetUsersInRoleAsync("Administrator");
                 var hasAdmin = admins.Count() > 0;
-                var assignToRole = hasAdmin ? "Guest" : "Administrator";
+                var assignToRole = hasAdmin ? "" : "Administrator";
                 
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await _userManager.AddToRoleAsync(user, assignToRole);
+                    if (!string.IsNullOrEmpty(assignToRole))
+                    {
+                        await _userManager.AddToRoleAsync(user, assignToRole);
+                    }
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link
                     //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

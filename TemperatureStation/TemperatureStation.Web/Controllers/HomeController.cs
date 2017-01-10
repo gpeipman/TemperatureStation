@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +28,12 @@ namespace TemperatureStation.Web.Controllers
             {
                 return View("IndexPublic");
             }
+
+            if(!User.IsInRole("Administrator") && !User.IsInRole("PowerUser"))
+            {
+                return View("IndexGuest");
+            }
+
 
             _dataContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             

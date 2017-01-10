@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,6 +11,7 @@ using TemperatureStation.Web.Models.UserViewModels;
 
 namespace TemperatureStation.Web.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class UsersController : Controller
     {
         private readonly ApplicationDbContext _dataContext;
@@ -37,6 +39,7 @@ namespace TemperatureStation.Web.Controllers
         public async Task<IActionResult> Edit(string id)
         {
             var model = await _dataContext.Users
+                                   .Where(u => u.Id == id)
                                    .Select(u => new UserEditViewModel
                                    {
                                        Id = u.Id,
@@ -58,8 +61,8 @@ namespace TemperatureStation.Web.Controllers
                                             Text = r.Name,
                                             Selected = (r.Id == model.Role)
                                         })
-                                        .ToListAsync();                                        
-
+                                        .ToListAsync();
+            model.AllRoles.Insert(0, new SelectListItem { Text = "", Value = "" });
             return View(model);
         }
 
@@ -90,8 +93,17 @@ namespace TemperatureStation.Web.Controllers
                 return RedirectToAction("Index");
             }
 
-            user.Roles.Clear();
-            user.Roles.Add(new IdentityUserRole<string> { RoleId = model.Role, UserId = model.Id });
+            var userRoles = _dataContext.UserRoles.Where(ur => ur.UserId == model.Id);
+            foreach(var userRole in userRoles)
+            {
+                _dataContext.UserRoles.Remove(userRole);
+            }
+
+            if (!string.IsNullOrEmpty(model.Role))
+            {
+                user.Roles.Add(new IdentityUserRole<string> { RoleId = model.Role, UserId = model.Id });
+            }
+
             await _dataContext.SaveChangesAsync();
 
             return RedirectToAction("Index");

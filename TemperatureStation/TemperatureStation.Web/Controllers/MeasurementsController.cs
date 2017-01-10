@@ -10,7 +10,7 @@ using TemperatureStation.Web.Models.MeasurementViewModels;
 
 namespace TemperatureStation.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator, PowerUser")]
     public class MeasurementsController : Controller
     {
         private readonly ApplicationDbContext _context;
