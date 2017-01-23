@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureStation.IoT.Serv
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalFiles", "ExternalFiles", "{B76D77AA-D68F-4FD5-B760-BE2EC012D8B3}"
 	ProjectSection(SolutionItems) = preProject
+		ExternalFiles\mssql-with-sample-data.sql = ExternalFiles\mssql-with-sample-data.sql
 		ExternalFiles\mssql.sql = ExternalFiles\mssql.sql
 		ExternalFiles\mysql.sql = ExternalFiles\mysql.sql
 		ExternalFiles\postgre.sql = ExternalFiles\postgre.sql

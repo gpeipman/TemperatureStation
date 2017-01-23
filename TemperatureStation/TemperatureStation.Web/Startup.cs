@@ -72,6 +72,8 @@ namespace TemperatureStation.Web
             services.AddSingleton<IConfiguration>(Configuration);
         }
 
+
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
