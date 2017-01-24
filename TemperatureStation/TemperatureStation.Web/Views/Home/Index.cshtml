@@ -94,7 +94,7 @@
 				@foreach (var readingsGroup in Model.Readings)
 				{
 					<tr>
-						<td>@readingsGroup.Key.ToString("HH:mm")</td>
+						<td>@readingsGroup.Key@*@readingsGroup.Key.ToString("HH:mm")*@</td>
 						@foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
 						{
 							<td>@readingsGroup.FirstOrDefault(r => r.Source == sensorRole.RoleName)?.Value</td>
