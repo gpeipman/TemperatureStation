@@ -10,7 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalFiles", "ExternalFi
 		ExternalFiles\mssql-with-sample-data.sql = ExternalFiles\mssql-with-sample-data.sql
 		ExternalFiles\mssql.sql = ExternalFiles\mssql.sql
 		ExternalFiles\mysql.sql = ExternalFiles\mysql.sql
+		ExternalFiles\mysql-with-sample-data.sql = ExternalFiles\mysql-with-sample-data.sql
 		ExternalFiles\postgre.sql = ExternalFiles\postgre.sql
+		ExternalFiles\postgresql-with-sample-data.sql = ExternalFiles\postgresql-with-sample-data.sql
 		..\README.md = ..\README.md
 		ExternalFiles\sample-readings-request.json = ExternalFiles\sample-readings-request.json
 	EndProjectSection
