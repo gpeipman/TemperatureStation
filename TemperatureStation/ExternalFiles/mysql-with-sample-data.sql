@@ -73,10 +73,6 @@ CREATE TABLE IF NOT EXISTS `AspNetUserRoles` (
   CONSTRAINT `FK_AspNetUserRoles_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `AspNetUsers` (`Id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-/*!40000 ALTER TABLE `AspNetUserRoles` DISABLE KEYS */;
-INSERT INTO `AspNetUserRoles` (`UserId`, `RoleId`) VALUES
-	('0897140c-f85d-43b2-8bfa-42a9d0a8f7f7', 'Administrator');
-/*!40000 ALTER TABLE `AspNetUserRoles` ENABLE KEYS */;
 
 DROP TABLE IF EXISTS `AspNetUsers`;
 CREATE TABLE IF NOT EXISTS `AspNetUsers` (
@@ -99,11 +95,6 @@ CREATE TABLE IF NOT EXISTS `AspNetUsers` (
   UNIQUE KEY `UserNameIndex` (`NormalizedUserName`),
   KEY `EmailIndex` (`NormalizedEmail`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/*!40000 ALTER TABLE `AspNetUsers` DISABLE KEYS */;
-INSERT INTO `AspNetUsers` (`Id`, `AccessFailedCount`, `ConcurrencyStamp`, `Email`, `EmailConfirmed`, `LockoutEnabled`, `LockoutEnd`, `NormalizedEmail`, `NormalizedUserName`, `PasswordHash`, `PhoneNumber`, `PhoneNumberConfirmed`, `SecurityStamp`, `TwoFactorEnabled`, `UserName`) VALUES
-	('0897140c-f85d-43b2-8bfa-42a9d0a8f7f7', 0, '52b5873a-36b0-483b-8851-6f97057b4d6b', 'gpeipman@hotmail.com', b'0', b'1', '2016-12-14 16:39:21', 'GPEIPMAN@HOTMAIL.COM', 'GPEIPMAN@HOTMAIL.COM', 'AQAAAAEAACcQAAAAEOXDFvEiZ0/qanOHIxUsET1LKENmQXM9mAfXxClDHtTSGuk096lCBXyU9rA7gnyUug==', NULL, b'0', '08fc6d77-209c-4f3d-9119-8a46c36d2864', b'0', 'gpeipman@hotmail.com');
-/*!40000 ALTER TABLE `AspNetUsers` ENABLE KEYS */;
 
 DROP TABLE IF EXISTS `AspNetUserTokens`;
 CREATE TABLE IF NOT EXISTS `AspNetUserTokens` (
