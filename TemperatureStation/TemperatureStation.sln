@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureStation.IoT.Service", "TemperatureStation.IoT.Service\TemperatureStation.IoT.Service.csproj", "{F9363188-70C3-4AE1-99DF-3C72E5E0364C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalFiles", "ExternalFiles", "{B76D77AA-D68F-4FD5-B760-BE2EC012D8B3}"
 	ProjectSection(SolutionItems) = preProject
 		ExternalFiles\mssql.sql = ExternalFiles\mssql.sql
@@ -14,7 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalFiles", "ExternalFi
 		ExternalFiles\sample-readings-request.json = ExternalFiles\sample-readings-request.json
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TemperatureStation.Web", "TemperatureStation.Web\TemperatureStation.Web.xproj", "{2947760D-DC97-48D5-884D-8B305533A614}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureStation.IoT.Service", "TemperatureStation.IoT.Service\TemperatureStation.IoT.Service.csproj", "{F9363188-70C3-4AE1-99DF-3C72E5E0364C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemperatureStation.Web", "TemperatureStation.Web\TemperatureStation.Web.csproj", "{2947760D-DC97-48D5-884D-8B305533A614}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureStation.Shared", "TemperatureStation.Shared\TemperatureStation.Shared.csproj", "{9C8729BF-E7A9-40E9-BA9F-B26EE4DD34D1}"
 EndProject
@@ -85,5 +85,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {284CE8BE-1C89-4B62-BBB9-7DD32A6F4BE5}
 	EndGlobalSection
 EndGlobal
