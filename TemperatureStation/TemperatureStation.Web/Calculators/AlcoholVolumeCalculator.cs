@@ -2,7 +2,7 @@
 using TemperatureStation.Shared.Models;
 using System;
 
-namespace TemperatureStation.Web.Extensions
+namespace TemperatureStation.Web.Calculators
 {
     [Calculator(Name = "Alcohol volume calculator", Order = 0, ShowOnChart = false)]
     public class AlcoholVolumeCalculator : ICalculator

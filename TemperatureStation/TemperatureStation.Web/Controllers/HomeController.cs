@@ -1,10 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using TemperatureStation.Web.Calculators;
 using TemperatureStation.Web.Data;
 using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Models;
@@ -24,10 +24,16 @@ namespace TemperatureStation.Web.Controllers
 
         public async Task<IActionResult> Index(int? measurementId)
         {
-            if(!User.Identity.IsAuthenticated)
+            if (!User.Identity.IsAuthenticated)
             {
                 return View("IndexPublic");
             }
+
+            if(!User.IsInRole("Administrator") && !User.IsInRole("PowerUser"))
+            {
+                return View("IndexGuest");
+            }
+
 
             _dataContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             
@@ -47,7 +53,6 @@ namespace TemperatureStation.Web.Controllers
                                          .OrderByDescending(r => r.Key)
                                          .ToList();
 
-            //model.ChartData = _dataContext.GetReadings(model.Measurement.Id, DateTime.Now.AddHours(-24), 10000);
             model.ChartData = _dataContext.GetReadings(model.Measurement.Id, null, 10000);
             var showOnChart = _calcProvider.GetTypes()
                                             .Where(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>() != null)

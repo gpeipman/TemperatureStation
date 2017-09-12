@@ -94,7 +94,7 @@
 				@foreach (var readingsGroup in Model.Readings)
 				{
 					<tr>
-						<td>@readingsGroup.Key.ToString("HH:mm")</td>
+						<td>@readingsGroup.Key@*@readingsGroup.Key.ToString("HH:mm")*@</td>
 						@foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
 						{
 							<td>@readingsGroup.FirstOrDefault(r => r.Source == sensorRole.RoleName)?.Value</td>
@@ -122,7 +122,10 @@
 					<th>Min</th>
 					@foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
 					{
-						<td>@Model.Statistics[sensorRole.RoleName].Item1</td>
+						@if (Model.Statistics.ContainsKey(sensorRole.RoleName))
+						{
+							<td>@Model.Statistics[sensorRole.RoleName].Item1</td>
+						}
 					}
 					@foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
 					{
@@ -136,7 +139,10 @@
 					<th>Max</th>
 					@foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
 					{
-						<th>@Model.Statistics[sensorRole.RoleName].Item2</th>
+						@if (Model.Statistics.ContainsKey(sensorRole.RoleName))
+						{
+							<td>@Model.Statistics[sensorRole.RoleName].Item2</td>
+						}
 					}
 					@foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
 					{
@@ -172,26 +178,26 @@
 
 	$(document).ready(function () {
 
-	    if(data.length > 0)
-	    {
-	        frontPageChart();
-	    }
+		if(data.length > 0)
+		{
+			frontPageChart();
+		}
 
-	    window.addEventListener('resize', function(event){
-	        if(data.length > 0)
-	        {
-	            frontPageChart();
-	        }
+		window.addEventListener('resize', function(event){
+			if(data.length > 0)
+			{
+				frontPageChart();
+			}
 		});
 
 		$('#MeasurementId').change(function() {
-		    var measurementId = $(this).val();
+			var measurementId = $(this).val();
 			document.location.href = refreshUrl + '?measurementId=' + measurementId;
 		})
 
 		setTimeout(function() {
-		    var measurementId = $('#MeasurementId').val();
-		    document.location.href = refreshUrl + '?measurementId=' + measurementId + '&tmp=' + new Date().getTime();
+			var measurementId = $('#MeasurementId').val();
+			document.location.href = refreshUrl + '?measurementId=' + measurementId + '&tmp=' + new Date().getTime();
 		}, 5*60*1000);
 	});
 </script>

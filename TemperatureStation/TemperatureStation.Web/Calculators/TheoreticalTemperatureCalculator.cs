@@ -3,7 +3,7 @@ using System.Linq;
 using TemperatureStation.Shared.Models;
 using TemperatureStation.Web.Data;
 
-namespace TemperatureStation.Web.Extensions
+namespace TemperatureStation.Web.Calculators
 {
     [Calculator(Name = "Theoretical temperature calculator", Order = 3, ShowOnChart = true, DisplayLabel = "Theoretical temperature")]
     public class TheoreticalTemperatureCalculator : ICalculator

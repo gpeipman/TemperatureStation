@@ -31,11 +31,14 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    @if (User.Identity.IsAuthenticated)
+                    @if (User.IsInRole("Administrator") || User.IsInRole("PowerUser"))
                     {
                         <li><a asp-area="" asp-controller="Measurements" asp-action="Index">Measurements</a></li>
                         <li><a asp-area="" asp-controller="Sensors" asp-action="Index">Sensors</a></li>
-
+                    }
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li><a asp-area="" asp-controller="Users" asp-action="Index">Users</a></li>
                     }
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")

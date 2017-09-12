@@ -7,7 +7,7 @@ using TemperatureStation.Web.Data;
 
 namespace TemperatureStation.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator,PowerUser")]
     public class SensorsController : Controller
     {
         private readonly ApplicationDbContext _context;

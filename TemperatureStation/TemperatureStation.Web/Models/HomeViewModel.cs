@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using TemperatureStation.Web.Calculators;
 using TemperatureStation.Web.Data;
-using TemperatureStation.Web.Extensions;
 
 namespace TemperatureStation.Web.Models
 {

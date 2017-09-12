@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using TemperatureStation.Web.Calculators;
 using TemperatureStation.Web.Data;
 using TemperatureStation.Web.Extensions;
 using SharedModels = TemperatureStation.Shared.Models;
@@ -16,17 +17,17 @@ namespace TemperatureStation.Web.Controllers
         private ApplicationDbContext _dataContext;
         private IConfiguration _configuration;
         private ICalculatorProvider _calculatorProvider;
-        private ILogger<ApiController> _log;
+        private ILogger _log;
 
         public ApiController(ApplicationDbContext dataContext, 
                              IConfiguration configuration, 
                              ICalculatorProvider calculatorProvider,
-                             ILogger<ApiController> log)
+                             ILoggerFactory loggerFactory)
         {
             _dataContext = dataContext;
             _configuration = configuration;
             _calculatorProvider = calculatorProvider;
-            _log = log;
+            _log = loggerFactory.CreateLogger(typeof(ApiController));
         }
 
         public async Task<IActionResult> Report([FromBody]SharedModels.SensorReadings readings)
