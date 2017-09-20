@@ -15,3 +15,9 @@
     width:10px;
     height:2px;
 }
+.carousel-slider .carousel-item-eight {
+    background: url(../assets/pages/img/frontend-slider/winter.jpg);
+}
+.carousel-slider .item {
+    min-height: 380px;
+}
