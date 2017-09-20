@@ -1,13 +1,24 @@
-﻿<!DOCTYPE html>
+﻿@inject PageContext pageContext
+@{ 
+    var homeMenuClass = (pageContext.ActiveMenu == "Home" ? "active" : "");
+    var creditsMenuClass = (pageContext.ActiveMenu == "Credits" ? "active" : "");
+    var title = "TemperatureStation";
+
+    if(!string.IsNullOrEmpty(pageContext.Title))
+    {
+        title = pageContext.Title + " | " + title;
+    }
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>TemperatureStation</title>
+    <title>@title</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta content="Gunnar Peipman" name="author">
     <meta property="og:site_name" content="TemperatureStation">
-    <meta property="og:title" content="Home">
+    <meta property="og:title" content="@pageContext.Title">
     <meta property="og:description" content="-CUSTOMER VALUE-">
     <meta property="og:type" content="website">
     @*<meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->*@
@@ -68,25 +79,9 @@
             <!-- BEGIN NAVIGATION -->
             <div class="header-navigation font-transform-inherit">
                 <ul>
-                    <li class="active"><a href="@Url.Content("~/")">Home</a></li>
-                    <li><a href="@Url.Action("Credits", "Home")">Credits</a></li>
+                    <li class="@homeMenuClass"><a href="@Url.Content("~/")">Home</a></li>
+                    <li class="@creditsMenuClass"><a href="@Url.Action("Credits", "Home")">Credits</a></li>
                     <li><a href="https://github.com/gpeipman/TemperatureStation">Source code</a></li>
-                    <!-- BEGIN TOP SEARCH -->
-                    @*<li class="menu-search">
-                        <span class="sep"></span>
-                        <i class="fa fa-search search-btn"></i>
-                        <div class="search-box">
-                            <form action="#">
-                                <div class="input-group">
-                                    <input type="text" placeholder="Search" class="form-control">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-primary" type="submit">Search</button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>
-                    </li>*@
-                    <!-- END TOP SEARCH -->
                 </ul>
             </div>
             <!-- END NAVIGATION -->

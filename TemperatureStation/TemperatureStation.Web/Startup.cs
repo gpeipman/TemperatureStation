@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using TemperatureStation.Web.Calculators;
 using TemperatureStation.Web.Data;
+using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Models;
 using TemperatureStation.Web.Models.MeasurementViewModels;
 using TemperatureStation.Web.Services;
@@ -63,6 +64,11 @@ namespace TemperatureStation.Web
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddRouting(opt =>
+            {
+                opt.LowercaseUrls = true;
+            });
+
             services.AddMvc();
 
             services.AddSingleton<ICalculatorProvider, CalculatorProvider>();
@@ -70,9 +76,8 @@ namespace TemperatureStation.Web
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
             services.AddSingleton<IConfiguration>(Configuration);
+            services.AddScoped<PageContext, PageContext>();
         }
-
-
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
@@ -104,6 +109,21 @@ namespace TemperatureStation.Web
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                    name: "credits",
+                    template: "credits",
+                    defaults: new { Controller = "Home", Action = "Credits" });
+
+                routes.MapRoute(
+                    name: "login",
+                    template: "login",
+                    defaults: new { Controller = "Account", Action = "Login" });
+
+                routes.MapRoute(
+                    name: "register",
+                    template: "register",
+                    defaults: new { Controller = "Account", Action = "Register" });
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
