@@ -2,6 +2,9 @@
 @{ 
     var homeMenuClass = (pageContext.ActiveMenu == "Home" ? "active" : "");
     var creditsMenuClass = (pageContext.ActiveMenu == "Credits" ? "active" : "");
+    var measurementsMenuClass = (pageContext.ActiveMenu == "Measurements" ? "active" : "");
+    var sensorsMenuClass = (pageContext.ActiveMenu == "Sensors" ? "active" : "");
+    var usersMenuClass = (pageContext.ActiveMenu == "Users" ? "active" : "");
     var title = "TemperatureStation";
 
     if(!string.IsNullOrEmpty(pageContext.Title))
@@ -53,16 +56,24 @@
                 <!-- BEGIN TOP BAR LEFT PART -->
                 <div class="col-md-6 col-sm-6 additional-shop-info">
                     <ul class="list-unstyled list-inline">
-                        <li><i class="fa fa-phone"></i><span>+1 456 6717</span></li>
-                        <li><i class="fa fa-envelope-o"></i><span>info@keenthemes.com</span></li>
+                        @*<li><i class="fa fa-phone"></i><span>+1 456 6717</span></li>*@
+                        <li><i class="fa fa-envelope-o"></i><a href="http://gunnarpeipman.com">http://gunnarpeipman.com</a></li>
                     </ul>
                 </div>
                 <!-- END TOP BAR LEFT PART -->
                 <!-- BEGIN TOP BAR MENU -->
                 <div class="col-md-6 col-sm-6 additional-nav">
                     <ul class="list-unstyled list-inline pull-right">
-                        <li><a href="@Url.Action("Login", "Account")">Log In</a></li>
-                        <li><a href="@Url.Action("Register", "Account")">Registration</a></li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>Hello, @User.Identity.Name</li>
+                            <li><a href="@Url.Action("LogOff", "Account")">Log out</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@Url.Action("Login", "Account")">Log In</a></li>
+                            <li><a href="@Url.Action("Register", "Account")">Registration</a></li>
+                        }
                     </ul>
                 </div>
                 <!-- END TOP BAR MENU -->
@@ -79,7 +90,16 @@
             <!-- BEGIN NAVIGATION -->
             <div class="header-navigation font-transform-inherit">
                 <ul>
-                    <li class="@homeMenuClass"><a href="@Url.Content("~/")">Home</a></li>
+                    <li class="@homeMenuClass"><a href="@Url.Content("~/")">Home</a></li>                    
+                    @if (User.IsInRole("Administrator") || User.IsInRole("PowerUser"))
+                    {
+                        <li class="@measurementsMenuClass"><a asp-area="" asp-controller="Measurements" asp-action="Index">Measurements</a></li>
+                        <li class="@sensorsMenuClass"><a asp-area="" asp-controller="Sensors" asp-action="Index">Sensors</a></li>
+                    }
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li class="@usersMenuClass"><a asp-area="" asp-controller="Users" asp-action="Index">Users</a></li>
+                    }
                     <li class="@creditsMenuClass"><a href="@Url.Action("Credits", "Home")">Credits</a></li>
                     <li><a href="https://github.com/gpeipman/TemperatureStation">Source code</a></li>
                 </ul>
@@ -181,8 +201,6 @@
             Layout.initNavScrolling();
         });
     </script>
-    <script src="~/lib/d3/d3.js" charset="utf-8"></script>    
-    <script src="~/js/chartModule.js" asp-append-version="true"></script>    
     @*<environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>

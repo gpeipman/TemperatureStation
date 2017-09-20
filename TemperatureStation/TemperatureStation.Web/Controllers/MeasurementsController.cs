@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Data;
+using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Models.MeasurementViewModels;
 
 namespace TemperatureStation.Web.Controllers
@@ -14,10 +15,14 @@ namespace TemperatureStation.Web.Controllers
     public class MeasurementsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly PageContext _pageContext;
 
-        public MeasurementsController(ApplicationDbContext context)
+        public MeasurementsController(ApplicationDbContext context, PageContext pageContext)
         {
-            _context = context;    
+            _context = context;
+            _pageContext = pageContext;
+
+            _pageContext.ActiveMenu = "Measurements";
         }
 
         public async Task<IActionResult> Index()

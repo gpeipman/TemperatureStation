@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Data;
+using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Models.UserViewModels;
 
 namespace TemperatureStation.Web.Controllers
@@ -15,10 +16,14 @@ namespace TemperatureStation.Web.Controllers
     public class UsersController : Controller
     {
         private readonly ApplicationDbContext _dataContext;
+        private readonly PageContext _pageContext;
 
-        public UsersController(ApplicationDbContext dataContext)
+        public UsersController(ApplicationDbContext dataContext, PageContext pageContext)
         {
             _dataContext = dataContext;
+            _pageContext = pageContext;
+
+            _pageContext.ActiveMenu = "Users";
         }
 
         public IActionResult Index()

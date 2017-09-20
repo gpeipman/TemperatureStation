@@ -120,6 +120,11 @@ namespace TemperatureStation.Web
                     defaults: new { Controller = "Account", Action = "Login" });
 
                 routes.MapRoute(
+                    name: "logout",
+                    template: "logout",
+                    defaults: new { Controller = "Account", Action = "LogOff" });
+
+                routes.MapRoute(
                     name: "register",
                     template: "register",
                     defaults: new { Controller = "Account", Action = "Register" });

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Data;
+using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Models.MeasurementViewModels;
 
 namespace TemperatureStation.Web.Controllers
@@ -16,14 +17,20 @@ namespace TemperatureStation.Web.Controllers
     public class SensorRolesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly PageContext _pageContext;
 
-        public SensorRolesController(ApplicationDbContext context)
+        public SensorRolesController(ApplicationDbContext context, PageContext pageContext)
         {
-            _context = context;    
+            _context = context;
+            _pageContext = pageContext;
+
+            _pageContext.ActiveMenu = "Measurements";
         }
 
         public IActionResult Create(int measurementId)
         {
+            _pageContext.Title = "Add sensor role";
+
             var model = new SensorRoleEditViewModel();
             model.MeasurementId = measurementId;
             model.Sensors = GetSensorsDropDown();
@@ -40,6 +47,8 @@ namespace TemperatureStation.Web.Controllers
 
         public async Task<IActionResult> Edit(int? id)
         {
+            _pageContext.Title = "Edit sensor role";
+
             if (id == null)
             {
                 return NotFound();
@@ -62,6 +71,8 @@ namespace TemperatureStation.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(SensorRoleEditViewModel model)
         {
+            _pageContext.Title = "Edit sensor role";
+
             if (ModelState.IsValid)
             {
                 try
@@ -112,6 +123,8 @@ namespace TemperatureStation.Web.Controllers
 
         public async Task<IActionResult> Delete(int? id)
         {
+            _pageContext.Title = "Delete sensor role";
+
             if (id == null)
             {
                 return NotFound();

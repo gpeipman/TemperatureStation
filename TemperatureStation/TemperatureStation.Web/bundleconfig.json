@@ -10,8 +10,8 @@
       "wwwroot/assets/corporate/css/style.css",
       "wwwroot/assets/corporate/css/style-responsive.css",
       "wwwroot/assets/corporate/css/themes/red.css",
-      "wwwroot/assets/corporate/css/custom.css"
-      //"wwwroot/css/site.css"
+      "wwwroot/assets/corporate/css/custom.css",
+      "wwwroot/css/site.css"
     ]
   },
   {
@@ -22,7 +22,8 @@
       "wwwroot/assets/plugins/bootstrap/js/bootstrap.min.js",
       "wwwroot/assets/corporate/scripts/back-to-top.js",
       "wwwroot/assets/corporate/scripts/layout.js",
-      "wwwroot/js/site.js"
+      "wwwroot/lib/d3/d3.js",
+      "wwwroot/js/chartModule.js"
     ],
     // Optionally specify minification options
     "minify": {
