@@ -1,23 +1,143 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - TemperatureStation</title>
+    <meta charset="utf-8">
+    <title>TemperatureStation</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="Gunnar Peipman" name="author">
+    <meta property="og:site_name" content="TemperatureStation">
+    <meta property="og:title" content="Home">
+    <meta property="og:description" content="-CUSTOMER VALUE-">
+    <meta property="og:type" content="website">
+    @*<meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->*@
+    <meta property="og:url" content="-CUSTOMER VALUE-">
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Fonts START -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
+    <!-- Fonts END -->
+    <link rel="stylesheet" href="~/css/site.min.css" />
 
-    <environment names="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment names="Staging,Production">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
+    <!-- VANA  -->
+    @*<meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - TemperatureStation</title>
+
+        <environment names="Development">
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+            <link rel="stylesheet" href="~/css/site.css" />
+        </environment>
+        <environment names="Staging,Production">
+            <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        </environment>*@
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+<body class="corporate">
+    <!-- BEGIN TOP BAR -->
+    <div class="pre-header">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN TOP BAR LEFT PART -->
+                <div class="col-md-6 col-sm-6 additional-shop-info">
+                    <ul class="list-unstyled list-inline">
+                        <li><i class="fa fa-phone"></i><span>+1 456 6717</span></li>
+                        <li><i class="fa fa-envelope-o"></i><span>info@keenthemes.com</span></li>
+                    </ul>
+                </div>
+                <!-- END TOP BAR LEFT PART -->
+                <!-- BEGIN TOP BAR MENU -->
+                <div class="col-md-6 col-sm-6 additional-nav">
+                    <ul class="list-unstyled list-inline pull-right">
+                        <li><a href="@Url.Action("Login", "Account")">Log In</a></li>
+                        <li><a href="@Url.Action("Register", "Account")">Registration</a></li>
+                    </ul>
+                </div>
+                <!-- END TOP BAR MENU -->
+            </div>
+        </div>
+    </div>
+    <!-- END TOP BAR -->
+
+    <!-- BEGIN HEADER -->
+    <div class="header">
+        <div class="container">
+            <a class="site-logo" href="@Url.Content("~/")"><img src="@Url.Content("~/assets/corporate/img/logos/logo-corp-red.png")" alt="Metronic FrontEnd"></a>
+            <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+            <!-- BEGIN NAVIGATION -->
+            <div class="header-navigation font-transform-inherit">
+                <ul>
+                    <li class="active"><a href="@Url.Content("~/")">Home</a></li>
+                    <li><a href="@Url.Action("Credits", "Home")">Credits</a></li>
+                    <li><a href="https://github.com/gpeipman/TemperatureStation">Source code</a></li>
+                    <!-- BEGIN TOP SEARCH -->
+                    @*<li class="menu-search">
+                        <span class="sep"></span>
+                        <i class="fa fa-search search-btn"></i>
+                        <div class="search-box">
+                            <form action="#">
+                                <div class="input-group">
+                                    <input type="text" placeholder="Search" class="form-control">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary" type="submit">Search</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </li>*@
+                    <!-- END TOP SEARCH -->
+                </ul>
+            </div>
+            <!-- END NAVIGATION -->
+        </div>
+    </div>
+    <!-- Header END -->
+    <div class="main">
+       <div class="container">
+            <div class="row margin-bottom-40">
+                <div class="col-md-12 col-sm-12">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BEGIN FOOTER -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN COPYRIGHT -->
+                <div class="col-md-4 col-sm-4 powered">
+                    2016 © Gunnar Peipman. ALL Rights Reserved.
+                </div>
+                <!-- END COPYRIGHT -->
+                <!-- BEGIN PAYMENTS -->
+                <div class="col-md-4 col-sm-4">
+                    @*<ul class="social-footer list-unstyled list-inline pull-right">
+                        <li><a href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="javascript:;"><i class="fa fa-dribbble"></i></a></li>
+                        <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="javascript:;"><i class="fa fa-skype"></i></a></li>
+                        <li><a href="javascript:;"><i class="fa fa-github"></i></a></li>
+                        <li><a href="javascript:;"><i class="fa fa-youtube"></i></a></li>
+                        <li><a href="javascript:;"><i class="fa fa-dropbox"></i></a></li>
+                    </ul>*@
+                </div>
+                <!-- END PAYMENTS -->
+                <!-- BEGIN POWERED -->
+                <div class="col-md-4 col-sm-4 text-right">
+                    @*<p class="powered">Powered by: <a href="http://www.keenthemes.com/">KeenThemes.com</a></p>*@
+                </div>
+                <!-- END POWERED -->
+            </div>
+        </div>
+    </div>
+    <!-- END FOOTER -->
+
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -51,9 +171,24 @@
         <footer>
             <p>&copy; 2016 - TemperatureStation.Web</p>
         </footer>
-    </div>
+    </div>*@
 
-    <environment names="Development">
+    <!--[if lt IE 9]>
+    <script src="assets/plugins/respond.min.js"></script>
+    <![endif]-->
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            Layout.init();
+            //Layout.initOWL();
+            //Layout.initTwitter();
+            Layout.initFixHeaderWithPreHeader(); /* Switch On Header Fixing (only if you have pre-header) */
+            Layout.initNavScrolling();
+        });
+    </script>
+    <script src="~/lib/d3/d3.js" charset="utf-8"></script>    
+    <script src="~/js/chartModule.js" asp-append-version="true"></script>    
+    @*<environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/lib/d3/d3.js" charset="utf-8"></script>
@@ -72,7 +207,7 @@
         <script src="~/lib/d3/d3.min.js" charset="utf-8"></script>
         <script src="~/js/chartModule.js" asp-append-version="true"></script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+    </environment>*@
 
     @RenderSection("scripts", required: false)
 </body>

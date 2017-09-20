@@ -13,6 +13,7 @@ namespace TemperatureStation.Web.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            var cstr = this.Database.GetDbConnection().ConnectionString;
             base.OnModelCreating(builder);
 
             builder.Entity<Reading>()

@@ -95,6 +95,11 @@ namespace TemperatureStation.Web.Controllers
             return View(model); 
         }
 
+        public IActionResult Credits()
+        {
+            return View();
+        }
+
         public IActionResult Error()
         {
             return View();
