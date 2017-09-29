@@ -256,3 +256,4 @@ paket-files/
 =======
 *.txt
 >>>>>>> a7051883d28b802d7dceadd359caeceb78c0bf47
+/TemperatureStation/TemperatureStation.Web/appsettings.development.json

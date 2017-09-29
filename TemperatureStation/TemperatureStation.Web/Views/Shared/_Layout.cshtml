@@ -67,6 +67,7 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li>Hello, @User.Identity.Name</li>
+                            <li><a href="@Url.Action("Index", "Manage")">Account</a></li>
                             <li><a href="@Url.Action("LogOff", "Account")">Log out</a></li>
                         }
                         else

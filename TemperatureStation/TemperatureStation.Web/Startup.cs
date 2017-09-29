@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.Twitter;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -26,11 +27,6 @@ namespace TemperatureStation.Web
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
-
-            if (env.IsDevelopment())
-            {
-                builder.AddUserSecrets();
-            }
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
@@ -106,6 +102,17 @@ namespace TemperatureStation.Web
 
             app.UseStaticFiles();
             app.UseIdentity();
+
+            var twitterKey = Configuration.GetValue("Authentication:Twitter:ConsumerKey", "");
+            if (!string.IsNullOrEmpty(twitterKey))
+            {
+                var twitterSecret = Configuration.GetValue("Authentication:Twitter:ConsumerSecret", "");
+
+                app.UseTwitterAuthentication(new TwitterOptions {
+                    ConsumerKey = twitterKey,
+                    ConsumerSecret = twitterSecret
+                });
+            }
 
             app.UseMvc(routes =>
             {
