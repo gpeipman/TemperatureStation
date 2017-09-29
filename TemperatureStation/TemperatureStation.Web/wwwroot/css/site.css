@@ -1,4 +1,7 @@
 ﻿/* chart default line */
+label {
+    font-weight:unset;
+}
 .line {
     fill: none;
     stroke: black;
