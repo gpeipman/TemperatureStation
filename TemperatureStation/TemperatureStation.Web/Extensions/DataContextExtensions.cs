@@ -8,7 +8,7 @@ namespace TemperatureStation.Web.Extensions
 {
     public static class DataContextExtensions
     {
-        public static IEnumerable<IGrouping<DateTime,ReadingViewModel>> GetReadings(this ApplicationDbContext context, int? measurementId, DateTime? newerThan, int? rowCount)
+        public static IEnumerable<IGrouping<DateTime,ReadingViewModel>> GetReadings(this ApplicationDbContext context, int? measurementId, DateTime? newerThan, int? rowCount, bool groupForHours=true)
         {
             DateTime[] dates = null;
             IQueryable<DateTime> datesQuery;
@@ -25,17 +25,14 @@ namespace TemperatureStation.Web.Extensions
             {
                 datesQuery = datesQuery.Take(rowCount.Value);
             }
-            else
-            {
-                datesQuery = datesQuery.Take(10);
-            }
 
             dates = datesQuery.ToArray();
-            
+
             var readings1 = context.SensorReadings
                                         .Where(r =>
                                                 (measurementId == null || r.Measurement.Id == measurementId)
-                                               && (dates == null || dates.Contains(r.ReadingTime)))
+                                               && (dates == null || dates.Contains(r.ReadingTime))
+                                               )
                                         .OrderByDescending(r => r.ReadingTime)
                                         .Select(r => new ReadingViewModel
                                         {
@@ -49,7 +46,8 @@ namespace TemperatureStation.Web.Extensions
             var readings2 = context.CalculatorReadings
                                         .Where(r =>
                                                 (measurementId == null || r.Measurement.Id == measurementId)
-                                               && (dates == null || dates.Contains(r.ReadingTime)))
+                                               && (dates == null || dates.Contains(r.ReadingTime))
+                                               )
                                         .OrderByDescending(r => r.ReadingTime)
                                         .Select(r => new ReadingViewModel
                                         {

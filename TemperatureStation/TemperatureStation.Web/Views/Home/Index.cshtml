@@ -7,60 +7,78 @@
 	<div class="col-md-6">
 		<h2>@Model.Measurement.Name</h2>
 	</div>
-	<div class="col-md-6" style="margin-top:20px;font-size:21px">
+	<div class="col-md-6" style="margin-top:0px;font-size:21px">
 		@Html.DropDownList("MeasurementId", Model.Measurements)
 	</div>
 </div>
 <div class="row">
 	<div class="col-md-3">
 		<dl class="dl-horizontal">
-			<dt>
-				@Html.DisplayNameFor(model => model.Measurement.CoolingRate)
-			</dt>
-			<dd>
-				@if (Model.Measurement.CoolingRate.HasValue)
-				{
-					@Math.Round(Model.Measurement.CoolingRate.Value, 4)
-				}
-			</dd>
-			<dt>
-				@Html.DisplayNameFor(model => model.Measurement.FreezingPoint)
-			</dt>
-			<dd>
-				@Html.DisplayFor(model => model.Measurement.FreezingPoint)
-			</dd>
+            @if (Model.Measurement.CoolingRate.HasValue)
+            {
+			    <dt>
+				    @Html.DisplayNameFor(model => model.Measurement.CoolingRate)
+			    </dt>
+			    <dd>
+				    @if (Model.Measurement.CoolingRate.HasValue)
+                    {
+					    @Math.Round(Model.Measurement.CoolingRate.Value, 4)
+                    }
+			    </dd>
+            }
+            @if (Model.Measurement.FreezingPoint.HasValue)
+            {
+			    <dt>
+				    @Html.DisplayNameFor(model => model.Measurement.FreezingPoint)
+			    </dt>
+			    <dd>
+				    @Html.DisplayFor(model => model.Measurement.FreezingPoint)
+			    </dd>
+            }
 		</dl>
 	</div>
 	<div class="col-md-3">
 		<dl class="dl-horizontal">
-			<dt>
-				@Html.DisplayNameFor(model => model.Measurement.OriginalGravity)
-			</dt>
-			<dd>
-				@Html.DisplayFor(model => model.Measurement.OriginalGravity)
-			</dd>
-			<dt>
-				@Html.DisplayNameFor(model => model.Measurement.FinalGravity)
-			</dt>
-			<dd>
-				@Html.DisplayFor(model => model.Measurement.FinalGravity)
-			</dd>
+            @if (Model.Measurement.OriginalGravity.HasValue)
+            {
+			    <dt>
+				    @Html.DisplayNameFor(model => model.Measurement.OriginalGravity)
+			    </dt>
+			    <dd>
+				    @Html.DisplayFor(model => model.Measurement.OriginalGravity)
+			    </dd>
+            }
+            @if (Model.Measurement.FinalGravity.HasValue)
+            {
+			    <dt>
+				    @Html.DisplayNameFor(model => model.Measurement.FinalGravity)
+			    </dt>
+			    <dd>
+				    @Html.DisplayFor(model => model.Measurement.FinalGravity)
+			    </dd>
+            }
 		</dl>
 	</div>
 	<div class="col-md-3">
 		<dl class="dl-horizontal">
-			<dt>
-				@Html.DisplayNameFor(model => model.Measurement.AlcoholByVolume)
-			</dt>
-			<dd>
-				@Html.DisplayFor(model => model.Measurement.AlcoholByVolume)
-			</dd>
-			<dt>
-				@Html.DisplayNameFor(model => model.Measurement.AlcoholByWeight)
-			</dt>
-			<dd>
-				@Html.DisplayFor(model => model.Measurement.AlcoholByWeight)
-			</dd>
+            @if (Model.Measurement.AlcoholByVolume.HasValue)
+            {
+			    <dt>
+				    @Html.DisplayNameFor(model => model.Measurement.AlcoholByVolume)
+			    </dt>
+			    <dd>
+				    @Html.DisplayFor(model => model.Measurement.AlcoholByVolume)
+			    </dd>
+            }
+            @if (Model.Measurement.AlcoholByWeight.HasValue)
+            {
+			    <dt>
+				    @Html.DisplayNameFor(model => model.Measurement.AlcoholByWeight)
+			    </dt>
+			    <dd>
+				    @Html.DisplayFor(model => model.Measurement.AlcoholByWeight)
+			    </dd>
+            }
 		</dl>
 	</div>
 </div>
@@ -69,7 +87,6 @@
 		<div  id="chartContainer"><svg id="chart" /></div>
 		
 		<ul id="chartLegend">
-			
 		</ul>
 	</div>
 	<div class="col-md-6">       
@@ -94,7 +111,7 @@
 				@foreach (var readingsGroup in Model.Readings)
 				{
 					<tr>
-						<td>@readingsGroup.Key@*@readingsGroup.Key.ToString("HH:mm")*@</td>
+						<td>@readingsGroup.Key.ToString("HH:mm")</td>
 						@foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
 						{
 							<td>@readingsGroup.FirstOrDefault(r => r.Source == sensorRole.RoleName)?.Value</td>
@@ -124,7 +141,7 @@
 					{
 						@if (Model.Statistics.ContainsKey(sensorRole.RoleName))
 						{
-							<td>@Model.Statistics[sensorRole.RoleName].Item1</td>
+							<th>@Model.Statistics[sensorRole.RoleName].Item1</th>
 						}
 					}
 					@foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
@@ -141,7 +158,7 @@
 					{
 						@if (Model.Statistics.ContainsKey(sensorRole.RoleName))
 						{
-							<td>@Model.Statistics[sensorRole.RoleName].Item2</td>
+							<th>@Model.Statistics[sensorRole.RoleName].Item2</th>
 						}
 					}
 					@foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
