@@ -27,8 +27,7 @@
       "wwwroot/assets/plugins/owl.carousel/owl.carousel.min.js",
       "wwwroot/assets/corporate/scripts/layout.js",
       "wwwroot/assets/pages/scripts/bs-carousel.js",
-      "wwwroot/lib/d3/d3.js",
-      "wwwroot/js/chartModule.js"
+      "wwwroot/lib/d3/d3.js"
     ],
     // Optionally specify minification options
     "minify": {

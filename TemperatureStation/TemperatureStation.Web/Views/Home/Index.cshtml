@@ -2,179 +2,124 @@
 @{
 	ViewData["Title"] = "Home Page";
 }
-
+<style>
+    .svg-container {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        padding-bottom: 0%; /* aspect ratio */
+        vertical-align: top;
+        overflow: hidden;
+    }
+    .svg-content-responsive {
+        display: inline-block;
+        position: absolute;
+        top: 0px;
+        left: 0;
+    }
+</style>
 <div class="row">
-	<div class="col-md-6">
-		<h2>@Model.Measurement.Name</h2>
+	<div class="col-md-6 col-sm-6">
+		<h1>@Model.Measurement.Name</h1>
 	</div>
 	<div class="col-md-6" style="margin-top:0px;font-size:21px">
 		@Html.DropDownList("MeasurementId", Model.Measurements)
 	</div>
 </div>
+@Html.Partial("_IndexIndicators")
 <div class="row">
-	<div class="col-md-3">
-		<dl class="dl-horizontal">
-            @if (Model.Measurement.CoolingRate.HasValue)
-            {
-			    <dt>
-				    @Html.DisplayNameFor(model => model.Measurement.CoolingRate)
-			    </dt>
-			    <dd>
-				    @if (Model.Measurement.CoolingRate.HasValue)
+    
+    <div style="display:block; overflow:auto;min-width:50%; float:left">
+        <div id="chartContainer"></div>
+        <ul id="chartLegend"></ul>
+    </div>
+    <div style="float:left; margin-left:30px">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    @foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
                     {
-					    @Math.Round(Model.Measurement.CoolingRate.Value, 4)
+                        <th>@sensorRole.RoleName</th>
                     }
-			    </dd>
-            }
-            @if (Model.Measurement.FreezingPoint.HasValue)
+                    @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
+                    {
+                        if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
+                        {
+                            <th>@Model.Labels[calc.Name]</th>
+                        }
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var readingsGroup in Model.Readings)
             {
-			    <dt>
-				    @Html.DisplayNameFor(model => model.Measurement.FreezingPoint)
-			    </dt>
-			    <dd>
-				    @Html.DisplayFor(model => model.Measurement.FreezingPoint)
-			    </dd>
+                    <tr>
+                        <td>@readingsGroup.Key.ToString("HH:mm")</td>
+                        @foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
+                    {
+                            <td>@readingsGroup.FirstOrDefault(r => r.Source == sensorRole.RoleName)?.Value</td>
+                    }
+                        @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
+                    {
+                        if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
+                        {
+                            var val = readingsGroup.FirstOrDefault(r => r.Source == calc.Name)?.Value;
+                            if (val == null)
+                            {
+                                    <td></td>
+                            }
+                            else
+                            {
+                                    <td>@Model.Calculators[calc.Name].DisplayValue(val.Value)</td>
+                            }
+                        }
+                    }
+                    </tr>
             }
-		</dl>
-	</div>
-	<div class="col-md-3">
-		<dl class="dl-horizontal">
-            @if (Model.Measurement.OriginalGravity.HasValue)
-            {
-			    <dt>
-				    @Html.DisplayNameFor(model => model.Measurement.OriginalGravity)
-			    </dt>
-			    <dd>
-				    @Html.DisplayFor(model => model.Measurement.OriginalGravity)
-			    </dd>
-            }
-            @if (Model.Measurement.FinalGravity.HasValue)
-            {
-			    <dt>
-				    @Html.DisplayNameFor(model => model.Measurement.FinalGravity)
-			    </dt>
-			    <dd>
-				    @Html.DisplayFor(model => model.Measurement.FinalGravity)
-			    </dd>
-            }
-		</dl>
-	</div>
-	<div class="col-md-3">
-		<dl class="dl-horizontal">
-            @if (Model.Measurement.AlcoholByVolume.HasValue)
-            {
-			    <dt>
-				    @Html.DisplayNameFor(model => model.Measurement.AlcoholByVolume)
-			    </dt>
-			    <dd>
-				    @Html.DisplayFor(model => model.Measurement.AlcoholByVolume)
-			    </dd>
-            }
-            @if (Model.Measurement.AlcoholByWeight.HasValue)
-            {
-			    <dt>
-				    @Html.DisplayNameFor(model => model.Measurement.AlcoholByWeight)
-			    </dt>
-			    <dd>
-				    @Html.DisplayFor(model => model.Measurement.AlcoholByWeight)
-			    </dd>
-            }
-		</dl>
-	</div>
-</div>
-<div class="row">    
-	<div style="float:left">
-		<div  id="chartContainer"><svg id="chart" /></div>
-		
-		<ul id="chartLegend">
-		</ul>
-	</div>
-	<div class="col-md-6">       
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Time</th>
-					@foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
-					{
-						<th>@sensorRole.RoleName</th>
-					}
-					@foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
-					{
-						if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
-						{
-						<th>@Model.Labels[calc.Name]</th>
-						}
-					}
-				</tr>
-			</thead>
-			<tbody>
-				@foreach (var readingsGroup in Model.Readings)
-				{
-					<tr>
-						<td>@readingsGroup.Key.ToString("HH:mm")</td>
-						@foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
-						{
-							<td>@readingsGroup.FirstOrDefault(r => r.Source == sensorRole.RoleName)?.Value</td>
-						}
-						@foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
-						{
-							if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
-							{
-								var val = readingsGroup.FirstOrDefault(r => r.Source == calc.Name)?.Value;
-								if (val == null)
-								{
-									<td></td>
-								}
-								else
-								{
-									<td>@Model.Calculators[calc.Name].DisplayValue(val.Value)</td>
-								}							
-							}
-						}
-					</tr>
-				}
-			</tbody>
-			<tfoot>
-				<tr>
-					<th>Min</th>
-					@foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
-					{
-						@if (Model.Statistics.ContainsKey(sensorRole.RoleName))
-						{
-							<th>@Model.Statistics[sensorRole.RoleName].Item1</th>
-						}
-					}
-					@foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
-					{
-						if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
-						{
-							<th>@Model.Calculators[calc.Name].DisplayValue(Model.Statistics[calc.Name].Item1)</th>
-						}
-					}
-				</tr>
-				<tr>
-					<th>Max</th>
-					@foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
-					{
-						@if (Model.Statistics.ContainsKey(sensorRole.RoleName))
-						{
-							<th>@Model.Statistics[sensorRole.RoleName].Item2</th>
-						}
-					}
-					@foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
-					{
-						if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
-						{
-							<th>@Model.Calculators[calc.Name].DisplayValue(Model.Statistics[calc.Name].Item2)</th>
-						}
-					}
-				</tr>
-			</tfoot>
-		</table>
-	</div>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Min</th>
+                    @foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
+                {
+                        @if (Model.Statistics.ContainsKey(sensorRole.RoleName))
+                    {
+                            <th>@Model.Statistics[sensorRole.RoleName].Item1</th>
+                    }
+                }
+                    @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
+                {
+                    if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
+                    {
+                            <th>@Model.Calculators[calc.Name].DisplayValue(Model.Statistics[calc.Name].Item1)</th>
+                    }
+                }
+                </tr>
+                <tr>
+                    <th>Max</th>
+                    @foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
+                {
+                        @if (Model.Statistics.ContainsKey(sensorRole.RoleName))
+                    {
+                            <th>@Model.Statistics[sensorRole.RoleName].Item2</th>
+                    }
+                }
+                    @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
+                {
+                    if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
+                    {
+                            <th>@Model.Calculators[calc.Name].DisplayValue(Model.Statistics[calc.Name].Item2)</th>
+                    }
+                }
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 </div>
 
 @section scripts {
+<script src="@Url.Content("~/js/chartModule.js")"></script>
 <script type="text/javascript">	
 	var offset = @TimeZoneInfo.Local.BaseUtcOffset.TotalHours;
 	var data = @Html.Raw(JsonConvert.SerializeObject(Model.ChartData));

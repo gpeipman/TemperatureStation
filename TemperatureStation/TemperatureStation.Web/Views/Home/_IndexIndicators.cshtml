@@ -1,0 +1,74 @@
+﻿@model HomeViewModel
+<style>
+    .indicator {
+        border: 1px solid black;
+        float: left;
+        font-size: 20pt;
+        margin-bottom: 10px;
+        margin-right:10px;
+        padding: 10px;
+        text-align:center;
+    }
+    .indicator-label {
+        font-size: 10px;
+        text-align: center
+    }
+</style>
+<div class="row">
+    <div class="col-lg-12" style="margin-left:15px">
+        @if (Model.Measurement.CoolingRate.HasValue)
+        {
+            <div class="indicator">
+                @Model.Measurement.CoolingRate.Value.ToString("0.0000")
+                <div class="indicator-label">
+                    @Html.DisplayNameFor(model => model.Measurement.CoolingRate)
+                </div>
+            </div>
+        }
+        @if (Model.Measurement.FreezingPoint.HasValue)
+        {
+            <div class="indicator">
+                @Model.Measurement.FreezingPoint.Value.ToString("0")°
+                <div class="indicator-label">
+                    @Html.DisplayNameFor(model => model.Measurement.FreezingPoint)
+                </div>
+            </div>
+        }
+        @if (Model.Measurement.OriginalGravity.HasValue)
+        {
+            <div class="indicator">
+                @Model.Measurement.OriginalGravity.Value.ToString("0.000")
+                <div class="indicator-label">
+                    @Html.DisplayNameFor(model => model.Measurement.OriginalGravity)
+                </div>
+            </div>
+        }
+        @if (Model.Measurement.FinalGravity.HasValue)
+        {
+            <div class="indicator">
+                @Model.Measurement.FinalGravity.Value.ToString("0.000")
+                <div class="indicator-label">
+                    @Html.DisplayNameFor(model => model.Measurement.FinalGravity)
+                </div>
+            </div>
+        }
+        @if (Model.Measurement.AlcoholByVolume.HasValue)
+        {
+            <div class="indicator">
+                @Model.Measurement.AlcoholByVolume.Value.ToString("0.0")%
+                <div class="indicator-label">
+                    @Html.DisplayNameFor(model => model.Measurement.AlcoholByVolume)
+                </div>
+            </div>
+        }
+        @if (Model.Measurement.AlcoholByWeight.HasValue)
+        {
+            <div class="indicator">
+                @Model.Measurement.AlcoholByWeight.Value.ToString("0.0")%
+                <div class="indicator-label">
+                    @Html.DisplayNameFor(model => model.Measurement.AlcoholByWeight)
+                </div>
+            </div>
+        }
+    </div>
+</div>
