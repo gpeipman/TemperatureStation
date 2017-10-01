@@ -1,86 +1,94 @@
 @model TemperatureStation.Web.Data.Measurement
-
 @{
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<div class="row margin-bottom-40">
+    <div class="col-md-6 col-sm-6">
+        <h1>@Model.Name</h1>
 
-<div>
-    <h4>Measurement</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CoolingRate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CoolingRate)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.FreezingPoint)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FreezingPoint)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.OriginalGravity)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.OriginalGravity)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.FinalGravity)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FinalGravity)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AlcoholByVolume)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AlcoholByVolume)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AlcoholByWeight)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AlcoholByWeight)
-        </dd>
-    </dl>
-</div>
-<div>
-    <h4>Sensors</h4>
-    <table>
-        <thead>
-            <tr>
-                <th>Sensor</th>
-                <th>Role</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var sensorRole in Model.SensorRoles)
-            {
+        <table class="table">
+            <tbody>
                 <tr>
-                    <td>@sensorRole.Sensor.Name</td>
-                    <td>@sensorRole.RoleName</td>
+                    <td><strong>@Html.DisplayNameFor(model => model.Name)</strong></td>
+                    <td>@Model.Name</td>
                 </tr>
-            }
-        </tbody>
-    </table>    
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+                <tr>
+                    <td><strong>@Html.DisplayNameFor(model => model.IsActive)</strong></td>
+                    <td>@Html.DisplayFor(model => model.IsActive)</td>
+                </tr>
+                <tr>
+                    <td><strong>@Html.DisplayNameFor(model => model.CoolingRate)</strong></td>
+                    <td>@Html.DisplayFor(model => model.CoolingRate)</td>
+                </tr>
+                <tr>
+                    <td><strong>@Html.DisplayNameFor(model => model.FreezingPoint)</strong></td>
+                    <td>@Html.DisplayFor(model => model.FreezingPoint)</td>
+                </tr>
+                <tr>
+                    <td><strong>@Html.DisplayNameFor(model => model.OriginalGravity)</strong></td>
+                    <td>@Html.DisplayFor(model => model.OriginalGravity)</td>
+                </tr>
+                <tr>
+                    <td><strong>@Html.DisplayNameFor(model => model.FinalGravity)</strong></td>
+                    <td>@Html.DisplayFor(model => model.FinalGravity)</td>
+                </tr>
+                <tr>
+                    <td><strong>@Html.DisplayNameFor(model => model.AlcoholByVolume)</strong></td>
+                    <td>@Html.DisplayFor(model => model.AlcoholByVolume)</td>
+                </tr>
+                <tr>
+                    <td><strong>@Html.DisplayNameFor(model => model.AlcoholByWeight)</strong></td>
+                    <td>@Html.DisplayFor(model => model.AlcoholByWeight)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        @if (Model.SensorRoles.Count > 0)
+        {
+        <h2>Sensors</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var sensorRole in Model.SensorRoles)
+                {
+                    <tr>
+                        <td>@sensorRole.Sensor.Name</td>
+                        <td>@sensorRole.RoleName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        }
+
+        @if (Model.Calculators.Count > 0)
+        {
+        <h2>Calculators</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var calc in Model.Calculators)
+                {
+                    <tr>
+                        <td>@calc.Name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        }
+
+        <div>
+            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+            <a class="btn btn-primary" asp-action="Index">Back to List</a>
+        </div>
+    </div>
 </div>

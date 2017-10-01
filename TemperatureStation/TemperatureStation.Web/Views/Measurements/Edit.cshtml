@@ -4,13 +4,11 @@
     ViewData["Title"] = "Edit";
 }
 <div class="row margin-bottom-40">
-    <div class="col-md-12 col-sm-12">
+    <div class="col-md-6 col-sm-6">
         <h1>Edit</h1>
 
         <form asp-action="Edit">
             <div class="form-horizontal">
-                <h2>Measurement</h2>
-                <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <input type="hidden" asp-for="Id" />
                 <div class="form-group">
@@ -99,7 +97,7 @@
                             <tr>
                                 <td>@sensorRole.SensorName</td>
                                 <td>@sensorRole.RoleName</td>
-                                <td>
+                                <td style="text-align:right">
                                     <a asp-action="Edit" asp-controller="SensorRoles" asp-route-id="@sensorRole.Id">Edit</a> |
                                     <a asp-action="Delete" asp-controller="SensorRoles" asp-route-id="@sensorRole.Id">Delete</a>
                                 </td>
@@ -126,7 +124,7 @@
                         {
                             <tr>
                                 <td>@calculator.Name</td>
-                                <td>
+                                <td style="text-align:right">
                                     <a asp-action="Edit" asp-controller="Calculators" asp-route-id="@calculator.Id">Edit</a> |
                                     <a asp-action="Delete" asp-controller="Calculators" asp-route-id="@calculator.Id">Delete</a>
                                 </td>

@@ -40,7 +40,11 @@ namespace TemperatureStation.Web.Controllers
                 return NotFound();
             }
 
-            var measurement = await _context.Measurements.SingleOrDefaultAsync(m => m.Id == id);
+            var measurement = await _context.Measurements
+                                            .Include(m => m.Calculators)
+                                            .Include(m => m.SensorRoles)
+                                            .ThenInclude(s => s.Sensor)
+                                            .SingleOrDefaultAsync(m => m.Id == id);
             
             if (measurement == null)
             {
