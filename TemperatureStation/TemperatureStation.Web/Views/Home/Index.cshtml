@@ -28,24 +28,25 @@
 </div>
 @Html.Partial("_IndexIndicators")
 <div class="row margin-bottom-40">    
-    <div style="display:block; overflow:auto;min-width:50%; float:left">
+    <div style="display:block; overflow:auto; min-width:70%;float:left">
         <div id="chartContainer"></div>
         <ul id="chartLegend"></ul>
     </div>
-    <div style="float:left; margin-left:30px">
-        <table class="table">
+    @*<div style="float:left; margin-left:30px; min-width:30%">*@
+    <div style="float:left; min-width:30%; padding-left:30px; padding-right:15px">
+        <table class="table" style="float:left">
             <thead>
                 <tr>
                     <th>Time</th>
                     @foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
                     {
-                        <th>@sensorRole.RoleName</th>
+                    <th>@sensorRole.RoleName</th>
                     }
                     @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
                     {
                         if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
                         {
-                            <th>@Model.Labels[calc.Name]</th>
+                    <th>@Model.Labels[calc.Name]</th>
                         }
                     }
                 </tr>
@@ -53,28 +54,28 @@
             <tbody>
                 @foreach (var readingsGroup in Model.Readings)
             {
-                    <tr>
-                        <td>@readingsGroup.Key.ToString("HH:mm")</td>
-                        @foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
+                <tr>
+                    <td>@readingsGroup.Key.ToString("HH:mm")</td>
+                    @foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
                     {
-                            <td>@readingsGroup.FirstOrDefault(r => r.Source == sensorRole.RoleName)?.Value</td>
+                        <td>@readingsGroup.FirstOrDefault(r => r.Source == sensorRole.RoleName)?.Value</td>
                     }
-                        @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
+                    @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
                     {
                         if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
                         {
                             var val = readingsGroup.FirstOrDefault(r => r.Source == calc.Name)?.Value;
                             if (val == null)
                             {
-                                    <td></td>
+                        <td></td>
                             }
                             else
                             {
-                                    <td>@Model.Calculators[calc.Name].DisplayValue(val.Value)</td>
+                        <td>@Model.Calculators[calc.Name].DisplayValue(val.Value)</td>
                             }
                         }
                     }
-                    </tr>
+                </tr>
             }
             </tbody>
             <tfoot>
@@ -82,16 +83,16 @@
                     <th>Min</th>
                     @foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
                 {
-                        @if (Model.Statistics.ContainsKey(sensorRole.RoleName))
+                    @if (Model.Statistics.ContainsKey(sensorRole.RoleName))
                     {
-                            <th>@Model.Statistics[sensorRole.RoleName].Item1</th>
+                    <th>@Model.Statistics[sensorRole.RoleName].Item1</th>
                     }
                 }
                     @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
                 {
                     if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
                     {
-                            <th>@Model.Calculators[calc.Name].DisplayValue(Model.Statistics[calc.Name].Item1)</th>
+                    <th>@Model.Calculators[calc.Name].DisplayValue(Model.Statistics[calc.Name].Item1)</th>
                     }
                 }
                 </tr>
@@ -99,16 +100,16 @@
                     <th>Max</th>
                     @foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
                 {
-                        @if (Model.Statistics.ContainsKey(sensorRole.RoleName))
+                    @if (Model.Statistics.ContainsKey(sensorRole.RoleName))
                     {
-                            <th>@Model.Statistics[sensorRole.RoleName].Item2</th>
+                    <th>@Model.Statistics[sensorRole.RoleName].Item2</th>
                     }
                 }
                     @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
                 {
                     if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
                     {
-                            <th>@Model.Calculators[calc.Name].DisplayValue(Model.Statistics[calc.Name].Item2)</th>
+                    <th>@Model.Calculators[calc.Name].DisplayValue(Model.Statistics[calc.Name].Item2)</th>
                     }
                 }
                 </tr>
@@ -148,7 +149,7 @@
 			if(data.length > 0)
 			{
 				frontPageChart();
-			}
+            }
 		});
 
 		$('#MeasurementId').change(function() {
