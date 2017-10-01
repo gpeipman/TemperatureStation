@@ -28,12 +28,11 @@
 </div>
 @Html.Partial("_IndexIndicators")
 <div class="row margin-bottom-40">    
-    <div style="display:block; overflow:auto; min-width:70%;float:left">
+    <div style="display:block; overflow:auto; min-width:70%;float:left;">
         <div id="chartContainer"></div>
         <ul id="chartLegend"></ul>
     </div>
-    @*<div style="float:left; margin-left:30px; min-width:30%">*@
-    <div style="float:left; min-width:30%; padding-left:30px; padding-right:15px">
+    <div style="float:left; min-width:30%; padding-left:30px; padding-right:15px;">
         <table class="table" style="float:left">
             <thead>
                 <tr>
@@ -145,7 +144,8 @@
 			frontPageChart();
 		}
 
-		window.addEventListener('resize', function(event){
+        window.addEventListener('resize', function (event) {
+            console.log("Resize!");
 			if(data.length > 0)
 			{
 				frontPageChart();
