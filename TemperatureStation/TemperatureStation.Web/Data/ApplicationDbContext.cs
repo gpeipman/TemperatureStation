@@ -13,13 +13,19 @@ namespace TemperatureStation.Web.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            var cstr = this.Database.GetDbConnection().ConnectionString;
             base.OnModelCreating(builder);
 
             builder.Entity<Reading>()
                    .HasDiscriminator<string>("ReadingType")
                    .HasValue<SensorReading>("SE")
                    .HasValue<CalculatorReading>("CA");
+
+            builder.Entity<ApplicationUser>()
+                   .HasMany(e => e.Roles)
+                   .WithOne()
+                   .HasForeignKey(e => e.UserId)
+                   .IsRequired()
+                   .OnDelete(DeleteBehavior.Cascade);
         }
 
         public DbSet<Sensor> Sensors { get; set; }

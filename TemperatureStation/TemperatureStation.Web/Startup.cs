@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.Twitter;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -60,6 +61,17 @@ namespace TemperatureStation.Web
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            var twitterKey = Configuration.GetValue("Authentication:Twitter:ConsumerKey", "");
+            if (!string.IsNullOrEmpty(twitterKey))
+            {
+                var twitterSecret = Configuration.GetValue("Authentication:Twitter:ConsumerSecret", "");
+                services.AddAuthentication().AddTwitter(o =>
+                {
+                    o.ConsumerKey = twitterKey;
+                    o.ConsumerSecret = twitterSecret;
+                });
+            }
+
             services.AddRouting(opt =>
             {
                 opt.LowercaseUrls = true;
@@ -100,19 +112,20 @@ namespace TemperatureStation.Web
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseAuthentication();
             app.UseStaticFiles();
-            app.UseIdentity();
+            //app.UseIdentity();
 
-            var twitterKey = Configuration.GetValue("Authentication:Twitter:ConsumerKey", "");
-            if (!string.IsNullOrEmpty(twitterKey))
-            {
-                var twitterSecret = Configuration.GetValue("Authentication:Twitter:ConsumerSecret", "");
+            //var twitterKey = Configuration.GetValue("Authentication:Twitter:ConsumerKey", "");
+            //if (!string.IsNullOrEmpty(twitterKey))
+            //{
+            //    var twitterSecret = Configuration.GetValue("Authentication:Twitter:ConsumerSecret", "");
 
-                app.UseTwitterAuthentication(new TwitterOptions {
-                    ConsumerKey = twitterKey,
-                    ConsumerSecret = twitterSecret
-                });
-            }
+            //    app.UseTwitterAuthentication(new TwitterOptions {
+            //        ConsumerKey = twitterKey,
+            //        ConsumerSecret = twitterSecret
+            //    });
+            //}
 
             app.UseMvc(routes =>
             {
