@@ -25,11 +25,10 @@ namespace TemperatureStation.Web.Controllers
             _pageContext.ActiveMenu = "Measurements";
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int page = 1)
         {
-            var measurements = await _context.Measurements
-                                             .ProjectTo<MeasurementListItemViewModel>()
-                                             .ToListAsync();
+            var measurements = _context.Measurements.GetPaged(page, 10);
+
             return View(measurements);
         }
 
@@ -74,6 +73,9 @@ namespace TemperatureStation.Web.Controllers
             }
 
             var measurement = await _context.Measurements
+                                            .Include(m => m.Calculators)
+                                            .Include(m => m.SensorRoles)
+                                            .ThenInclude(s => s.Sensor)
                                             .ProjectTo<MeasurementEditViewModel>()
                                             .SingleOrDefaultAsync(m => m.Id == id);
             if (measurement == null)
@@ -174,6 +176,7 @@ namespace TemperatureStation.Web.Controllers
             var measurement = await _context.Measurements.SingleOrDefaultAsync(m => m.Id == id);
             _context.Database.ExecuteSqlCommand("DELETE FROM Readings WHERE MeasurementId={0}", measurement.Id);
             await _context.SaveChangesAsync();
+
             return RedirectToAction("Index");
         }
 
