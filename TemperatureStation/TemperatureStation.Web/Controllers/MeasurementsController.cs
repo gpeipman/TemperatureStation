@@ -27,6 +27,8 @@ namespace TemperatureStation.Web.Controllers
 
         public IActionResult Index(int page = 1)
         {
+            _pageContext.Title = "Measurements, page " + page;
+
             var measurements = _context.Measurements.GetPaged(page, 10);
 
             return View(measurements);
@@ -36,6 +38,7 @@ namespace TemperatureStation.Web.Controllers
         {
             if (id == null)
             {
+                _pageContext.Title = "Measurement not found";
                 return NotFound();
             }
 
@@ -47,14 +50,19 @@ namespace TemperatureStation.Web.Controllers
             
             if (measurement == null)
             {
+                _pageContext.Title = "Measurement not found";
                 return NotFound();
             }
+
+            _pageContext.Title = measurement.Name;
 
             return View(measurement);
         }
 
         public IActionResult Create()
         {
+            _pageContext.Title = "Create measurement";
+
             return View("Edit", new MeasurementEditViewModel());
         }
 
@@ -69,6 +77,7 @@ namespace TemperatureStation.Web.Controllers
         {
             if (id == null)
             {
+                _pageContext.Title = "Measurement not found";
                 return NotFound();
             }
 
@@ -80,8 +89,11 @@ namespace TemperatureStation.Web.Controllers
                                             .SingleOrDefaultAsync(m => m.Id == id);
             if (measurement == null)
             {
+                _pageContext.Title = "Measurement not found";
                 return NotFound();
             }
+
+            _pageContext.Title = "Edit " + measurement.Name;
 
             return View("Edit", measurement);
         }
@@ -92,6 +104,15 @@ namespace TemperatureStation.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
+                if(model.Id == 0)
+                {
+                    _pageContext.Title = "Edit " + model.Name;
+                }
+                else
+                {
+                    _pageContext.Title = "Create measurement";
+                }
+
                 return View("Edit", model);
             }
 
@@ -117,6 +138,7 @@ namespace TemperatureStation.Web.Controllers
             {
                 if (model.Id > 0 && !MeasurementExists(model.Id))
                 {
+                    _pageContext.Title = "Edit " + model.Name;
                     return NotFound();
                 }
                 else
@@ -124,6 +146,7 @@ namespace TemperatureStation.Web.Controllers
                     throw;
                 }
             }
+
             return RedirectToAction("Index");          
         }
 
@@ -131,14 +154,18 @@ namespace TemperatureStation.Web.Controllers
         {
             if (id == null)
             {
+                _pageContext.Title = "Measurement not found";
                 return NotFound();
             }
 
             var measurement = await _context.Measurements.SingleOrDefaultAsync(m => m.Id == id);
             if (measurement == null)
             {
+                _pageContext.Title = "Measurement not found";
                 return NotFound();
             }
+
+            _pageContext.Title = "Delete " + measurement.Name;
 
             return View(measurement);
         }
@@ -157,14 +184,18 @@ namespace TemperatureStation.Web.Controllers
         {
             if (id == null)
             {
+                _pageContext.Title = "Measurement not found";
                 return NotFound();
             }
 
             var measurement = await _context.Measurements.SingleOrDefaultAsync(m => m.Id == id);
             if (measurement == null)
             {
+                _pageContext.Title = "Measurement not found";
                 return NotFound();
             }
+
+            _pageContext.Title = "Clear measurement " + measurement.Name;
 
             return View(measurement);
         }

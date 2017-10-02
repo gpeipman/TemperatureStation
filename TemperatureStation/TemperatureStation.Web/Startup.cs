@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Authentication.Twitter;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -53,9 +51,6 @@ namespace TemperatureStation.Web
                 services.AddDbContext<ApplicationDbContext>(options =>
                     options.UseMySql(Configuration.GetConnectionString("MysqlConnection")));
             }
-
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -114,18 +109,6 @@ namespace TemperatureStation.Web
 
             app.UseAuthentication();
             app.UseStaticFiles();
-            //app.UseIdentity();
-
-            //var twitterKey = Configuration.GetValue("Authentication:Twitter:ConsumerKey", "");
-            //if (!string.IsNullOrEmpty(twitterKey))
-            //{
-            //    var twitterSecret = Configuration.GetValue("Authentication:Twitter:ConsumerSecret", "");
-
-            //    app.UseTwitterAuthentication(new TwitterOptions {
-            //        ConsumerKey = twitterKey,
-            //        ConsumerSecret = twitterSecret
-            //    });
-            //}
 
             app.UseMvc(routes =>
             {
