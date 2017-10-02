@@ -24,3 +24,6 @@ label {
 .carousel-slider .item {
     min-height: 380px;
 }
+.social-icons li .microsoft {
+    background: url(../assets/pages/img/social/liveid.png) no-repeat;
+}

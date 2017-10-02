@@ -72,20 +72,6 @@
                                         <li><a href="javascript:;" data-original-title="Linkedin" class="linkedin" title="LinkedIn"></a></li>
                                     </ul>
                                 </div>*@
-
-                            @*@if (loginProviders.Count > 0)
-                                {
-                                    <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-                                        <div>
-                                            <p>
-                                                @foreach (var provider in loginProviders)
-                                                {
-                                                    <button type="submit" class="btn btn-default" name="provider" value="@provider.AuthenticationScheme" title="Log in using your @provider.DisplayName account">@provider.AuthenticationScheme</button>
-                                                }
-                                            </p>
-                                        </div>
-                                    </form>
-                                }*@
                         </div>
                     </div>
 
@@ -111,8 +97,14 @@
                                     <ul class="social-icons">
                                         @foreach (var provider in loginProviders)
                                         {
-                                            @*<button type="submit" class="btn btn-default" name="provider" value="@provider.AuthenticationScheme" title="Log in using your @provider.DisplayName account">@provider.AuthenticationScheme</button>*@
-                                            <li><a href="#" onclick="$('#provider').val('@provider.Name'); $('#externalAuthForm').submit()" data-original-title="@provider.Name" class="@provider.Name.ToLower()" title="@provider.Name"></a></li>
+                                            @if (provider.Name.ToLower() == "google")
+                                            {
+                                                <li><a href="#" onclick="$('#provider').val('@provider.Name'); $('#externalAuthForm').submit()" data-original-title="@provider.Name" class="googleplus" title="@provider.Name"></a></li>
+                                            }
+                                            else
+                                            {
+                                                <li><a href="#" onclick="$('#provider').val('@provider.Name'); $('#externalAuthForm').submit()" data-original-title="@provider.Name" class="@provider.Name.ToLower()" title="@provider.Name"></a></li>
+                                            }
                                         }
                                         @*<li><a href="javascript:;" data-original-title="facebook" class="facebook" title="facebook"></a></li>
                                             <li><a href="javascript:;" data-original-title="Twitter" class="twitter" title="Twitter"></a></li>

@@ -67,11 +67,40 @@ namespace TemperatureStation.Web
                 });
             }
 
-            services.AddRouting(opt =>
+            var facebookKey = Configuration.GetValue("Authentication:Facebook:AppId", "");
+            if (!string.IsNullOrEmpty(facebookKey))
             {
-                opt.LowercaseUrls = true;
-            });
+                var facebookSecret = Configuration.GetValue("Authentication:Facebook:AppSecret", "");
+                services.AddAuthentication().AddFacebook(o =>
+                {
+                    o.AppId = facebookKey;
+                    o.AppSecret = facebookSecret;
+                });
+            }
 
+            var googleKey = Configuration.GetValue("Authentication:Google:ClientId", "");
+            if (!string.IsNullOrEmpty(googleKey))
+            {
+                var googleSecret = Configuration.GetValue("Authentication:Google:ClientSecret", "");
+                services.AddAuthentication().AddGoogle(o =>
+                {
+                    o.ClientId = googleKey;
+                    o.ClientSecret = googleSecret;
+                });
+            }
+
+            var microsoftKey = Configuration.GetValue("Authentication:MicrosoftAccount:ClientId", "");
+            if (!string.IsNullOrEmpty(microsoftKey))
+            {
+                var microsoftSecret = Configuration.GetValue("Authentication:MicrosoftAccount:ClientSecret", "");
+                services.AddAuthentication().AddMicrosoftAccount(o =>
+                {
+                    o.ClientId = microsoftKey;
+                    o.ClientSecret = microsoftSecret;
+                });
+            }
+
+            services.AddRouting(opt => { opt.LowercaseUrls = true; });
             services.AddMvc();
 
             services.AddSingleton<ICalculatorProvider, CalculatorProvider>();
