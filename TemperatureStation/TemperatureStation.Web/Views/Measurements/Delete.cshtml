@@ -1,14 +1,10 @@
-@model TemperatureStation.Web.Data.Measurement
+@model Measurement
 
-<div class="row">
-    <div class="col-md-6 col-sm-6">
-        <h1>Delete</h1>
-    </div>
-</div>
 <div class="row margin-bottom-40">
     <div class="col-md-6 col-sm-6">
+        <h1>Delete</h1>
 
-        <div class="alert alert-danger">Are you sure you want to delete all readings of measurement <strong>@Model.Name</strong>&nbsp;?</div>
+        <div class="alert alert-danger">Are you sure you want to delete measurement <strong>@Model.Name</strong>&nbsp;?</div>
         <div>
             <form asp-action="Delete">
                 <div class="form-actions no-color">

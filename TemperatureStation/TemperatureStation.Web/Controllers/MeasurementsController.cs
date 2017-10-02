@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -27,6 +28,7 @@ namespace TemperatureStation.Web.Controllers
 
         public IActionResult Index(int page = 1)
         {
+            page = Math.Max(1, page);
             _pageContext.Title = "Measurements, page " + page;
 
             var measurements = _context.Measurements.GetPaged(page, 10);

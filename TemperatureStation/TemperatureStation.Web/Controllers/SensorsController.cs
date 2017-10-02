@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -22,31 +23,40 @@ namespace TemperatureStation.Web.Controllers
             _pageContext.ActiveMenu = "Sensors";
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int page = 1)
         {
-            return View(await _context.Sensors.ToListAsync());
+            page = Math.Max(1, page);
+            _pageContext.Title = "Sensors";
+
+            var sensors = _context.Sensors.GetPaged(page, 10);
+
+            return View(sensors);
         }
 
-        // GET: Sensors/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
+                _pageContext.Title = "Sensor not found";
                 return NotFound();
             }
 
             var sensor = await _context.Sensors.SingleOrDefaultAsync(m => m.Id == id);
             if (sensor == null)
             {
+                _pageContext.Title = "Sensor not found";
                 return NotFound();
             }
 
+            _pageContext.Title = "Sensor " + sensor.Name;
             return View(sensor);
         }
 
         public IActionResult Create()
         {
-            return View();
+            _pageContext.Title = "Create sensor";
+
+            return View("Edit", new Sensor());
         }
 
         [HttpPost]
@@ -59,21 +69,26 @@ namespace TemperatureStation.Web.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(sensor);
+
+            return await Edit("", sensor);
         }
 
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
+                _pageContext.Title = "Sensor not found";
                 return NotFound();
             }
 
             var sensor = await _context.Sensors.SingleOrDefaultAsync(m => m.Id == id);
             if (sensor == null)
             {
+                _pageContext.Title = "Sensor not found";
                 return NotFound();
             }
+
+            _pageContext.Title = "Edit " + sensor.Name;
             return View(sensor);
         }
 
@@ -83,6 +98,7 @@ namespace TemperatureStation.Web.Controllers
         {
             if (id != sensor.Id)
             {
+                _pageContext.Title = "Sensor not found";
                 return NotFound();
             }
 
@@ -97,6 +113,7 @@ namespace TemperatureStation.Web.Controllers
                 {
                     if (!SensorExists(sensor.Id))
                     {
+                        _pageContext.Title = "Sensor not found";
                         return NotFound();
                     }
                     else
@@ -104,8 +121,19 @@ namespace TemperatureStation.Web.Controllers
                         throw;
                     }
                 }
+
                 return RedirectToAction("Index");
             }
+
+            if (string.IsNullOrEmpty(sensor.Id))
+            {
+                _pageContext.Title = "Create sensor";
+            }
+            else
+            {
+                _pageContext.Title = "Edit sensor " + sensor.Name;
+            }
+
             return View(sensor);
         }
 
@@ -113,15 +141,18 @@ namespace TemperatureStation.Web.Controllers
         {
             if (id == null)
             {
+                _pageContext.Title = "Sensor not found";
                 return NotFound();
             }
 
             var sensor = await _context.Sensors.SingleOrDefaultAsync(m => m.Id == id);
             if (sensor == null)
             {
+                _pageContext.Title = "Sensor not found";
                 return NotFound();
             }
 
+            _pageContext.Title = "Delete sensor " + sensor.Name;
             return View(sensor);
         }
 
