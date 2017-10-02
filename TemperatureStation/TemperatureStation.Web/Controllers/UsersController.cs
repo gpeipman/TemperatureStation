@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +28,8 @@ namespace TemperatureStation.Web.Controllers
 
         public IActionResult Index()
         {
+            _pageContext.Title = "Users";
+
             var model = _dataContext.Users
                                     .OrderBy(u => u.UserName)
                                     .Select(u => new UserListViewModel
@@ -56,6 +57,7 @@ namespace TemperatureStation.Web.Controllers
 
             if(model == null)
             {
+                _pageContext.Title = "User not found";
                 return NotFound();
             }
 
@@ -69,6 +71,8 @@ namespace TemperatureStation.Web.Controllers
                                         })
                                         .ToListAsync();
             model.AllRoles.Insert(0, new SelectListItem { Text = "", Value = "" });
+
+            _pageContext.Title = "Edit user " + model.UserName;
             return View(model);
         }
 
@@ -78,6 +82,7 @@ namespace TemperatureStation.Web.Controllers
         {
             if(!ModelState.IsValid)
             {
+                _pageContext.Title = "Edit user " + model.UserName;
                 return View(model);
             }
 
