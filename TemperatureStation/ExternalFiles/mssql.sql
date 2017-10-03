@@ -390,3 +390,34 @@ ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[SensorRoles] CHECK CONSTRAINT [FK_SensorRoles_Sensors_SensorId]
 GO
+
+CREATE VIEW [dbo].[SensorStats]
+AS
+SELECT        
+	sr.RoleName As Name,
+	sr.MeasurementId,
+	MIN(r.Value) As [Min],
+	MAX(r.Value) As [Max]
+FROM
+	dbo.Readings r
+	INNER JOIN dbo.SensorRoles sr ON 
+		r.SensorRoleId = sr.Id
+GROUP BY
+	sr.RoleName,
+	sr.MeasurementId
+
+UNION
+
+SELECT
+	c.Name,
+	c.MeasurementId,
+	MIN(r.Value) As [Min],
+	MAX(r.Value) As [Max]
+FROM 
+	dbo.Readings r 
+	INNER JOIN dbo.Calculators c ON
+		r.CalculatorId = c.Id
+GROUP BY
+	c.Name,
+	c.MeasurementId
+GO
