@@ -27,3 +27,29 @@ label {
 .social-icons li .microsoft {
     background: url(../assets/pages/img/social/liveid.png) no-repeat;
 }
+a.site-logo {
+    display: block;
+    float: left;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+div.brand-name {
+    color: #3e4d5c;
+    font-size: 23px;
+    font-weight: 600;
+    margin: 0px;
+    padding: 0px;
+    line-height: 26px;
+}
+div.brand-slogan {
+    color: #616b76;
+    font-weight: unset;
+    font-size: 11px;
+    line-height: 12px;
+    margin: 0px;
+    padding: 0px;
+}
+span.brand-red {
+    color:#E6400C;
+}

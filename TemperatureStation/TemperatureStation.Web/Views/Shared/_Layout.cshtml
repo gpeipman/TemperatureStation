@@ -13,7 +13,7 @@
     }
 }
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">    
 <head>
     <meta charset="utf-8">
     <title>@title</title>
@@ -86,7 +86,15 @@
     <!-- BEGIN HEADER -->
     <div class="header">
         <div class="container">
-            <a class="site-logo" href="@Url.Content("~/")"><img src="@Url.Content("~/assets/corporate/img/logos/logo-corp-red.png")" alt="Metronic FrontEnd"></a>
+            @*<a class="site-logo" href="@Url.Content("~/")"><img src="@Url.Content("~/assets/corporate/img/logos/logo-corp-red.png")" alt="Metronic FrontEnd"></a>*@
+
+            <a class="site-logo" href="@Url.Content("~/")">
+                <div class="brand-name">
+                    T°<span class="brand-red">Station</span>
+                </div>
+                <div class="brand-slogan">Is it hot or not</div>
+            </a>
+
             <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
             <!-- BEGIN NAVIGATION -->
             <div class="header-navigation font-transform-inherit">
