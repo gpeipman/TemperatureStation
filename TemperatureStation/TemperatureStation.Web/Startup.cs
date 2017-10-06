@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.IO;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -8,8 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using TemperatureStation.Web.Calculators;
+using TemperatureStation.Web.Calculators.Emhi;
 using TemperatureStation.Web.Data;
 using TemperatureStation.Web.Extensions;
+using TemperatureStation.Web.Extensions.Storage;
 using TemperatureStation.Web.Models;
 using TemperatureStation.Web.Models.MeasurementViewModels;
 using TemperatureStation.Web.Services;
@@ -100,9 +103,15 @@ namespace TemperatureStation.Web
                 });
             }
 
+            var emhiSettings = new EmhiCalculatorSettings();
+            emhiSettings.ObservationsUrl = Configuration.GetValue("EmhiCalculatorSettings:ObservationsUrl", "");
+            emhiSettings.RefreshInterval = Configuration.GetValue("EmhiCalculatorSettings:RefreshInterval", 60);
+
             services.AddRouting(opt => { opt.LowercaseUrls = true; });
             services.AddMvc();
 
+            services.AddScoped<IFileClient, LocalFileClient>();
+            services.AddSingleton(emhiSettings);
             services.AddSingleton<ICalculatorProvider, CalculatorProvider>();
             services.AddCalculators();
             services.AddTransient<IEmailSender, AuthMessageSender>();

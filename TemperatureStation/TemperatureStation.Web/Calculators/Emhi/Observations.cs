@@ -19,5 +19,13 @@ namespace TemperatureStation.Web.Calculators.Emhi
                 return TimeStamp.FromUnixTime();
             }
         }
+
+        public double ObservationAge
+        {
+            get
+            {
+                return (DateTime.Now - ObservationTime).TotalMinutes;
+            }
+        }
     }
 }

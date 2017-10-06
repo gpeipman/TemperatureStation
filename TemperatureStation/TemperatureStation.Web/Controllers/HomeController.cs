@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Calculators;
-using TemperatureStation.Web.Calculators.Emhi;
 using TemperatureStation.Web.Data;
 using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Models;
@@ -29,6 +28,10 @@ namespace TemperatureStation.Web.Controllers
 
         public async Task<IActionResult> Index(int? measurementId)
         {
+            var calc = _calcProvider.GetCalculators().FirstOrDefault(c => c.Key.ToLower().Contains("emhi"));
+            calc.Value.SetParameters("Tallinn-Harku");
+            var x = calc.Value.Calculate(null, null);
+
             _pageContext.Title = "Home";
             _pageContext.ActiveMenu = "Home";
 
