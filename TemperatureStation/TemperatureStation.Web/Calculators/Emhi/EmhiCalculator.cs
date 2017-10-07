@@ -10,7 +10,7 @@ using TemperatureStation.Web.Extensions.Storage;
 
 namespace TemperatureStation.Web.Calculators.Emhi
 {
-    [Calculator(Name = "EMHI current weather", Order = 1000)]
+    [Calculator(Name = "EMHI current weather", Order = 1000, ShowOnChart =true, DisplayLabel = "EMHI t°")]
     public class EmhiCalculator : ICalculator
     {
         private string _city = "";
@@ -102,7 +102,7 @@ loadObservations:
 
         public string DisplayValue(double value)
         {
-            return "";   
+            return value.ToString();
         }
 
         public void SetParameters(string parameters)

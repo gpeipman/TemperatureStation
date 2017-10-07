@@ -31,7 +31,9 @@ namespace TemperatureStation.Web.Controllers
             page = Math.Max(1, page);
             _pageContext.Title = "Measurements, page " + page;
 
-            var measurements = _context.Measurements.GetPaged(page, 10);
+            var measurements = _context.Measurements
+                                       .OrderBy(m => m.Name)
+                                       .GetPaged(page, 10);
 
             return View(measurements);
         }

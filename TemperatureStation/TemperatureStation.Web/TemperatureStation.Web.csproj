@@ -12,7 +12,7 @@
     <PackageId>TemperatureStation.Web</PackageId>
     <UserSecretsId>aspnet-TemperatureStation.Web-d6c7266d-767f-4df0-b22e-24b65ee52679</UserSecretsId>
     <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;netstandard1.5;portable-net45+win8</PackageTargetFallback>
-    <Version>0.0.7</Version>
+    <Version>0.0.8</Version>
   </PropertyGroup>
 
   <ItemGroup>
