@@ -127,12 +127,16 @@ namespace TemperatureStation.Web.Controllers
 
             if (id == null)
             {
+                _pageContext.Title = "Sensor role not found";
                 return NotFound();
             }
 
-            var sensorRole = await _context.SensorRoles.SingleOrDefaultAsync(m => m.Id == id);
+            var sensorRole = await _context.SensorRoles
+                                           .Include(sr => sr.Measurement)
+                                           .SingleOrDefaultAsync(m => m.Id == id);
             if (sensorRole == null)
             {
+                _pageContext.Title = "Sensor role not found";
                 return NotFound();
             }
 
@@ -143,7 +147,10 @@ namespace TemperatureStation.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var sensorRole = await _context.SensorRoles.SingleOrDefaultAsync(m => m.Id == id);
+            var sensorRole = await _context.SensorRoles
+                                           .Include(sr => sr.Measurement)
+                                           .SingleOrDefaultAsync(m => m.Id == id);
+
             var measurementId = sensorRole.Measurement.Id;
             _context.SensorRoles.Remove(sensorRole);
             await _context.SaveChangesAsync();

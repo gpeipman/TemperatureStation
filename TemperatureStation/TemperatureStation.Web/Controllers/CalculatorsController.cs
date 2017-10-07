@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Calculators;
 using TemperatureStation.Web.Data;
+using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Models;
 
 namespace TemperatureStation.Web.Controllers
@@ -17,16 +18,22 @@ namespace TemperatureStation.Web.Controllers
     public class CalculatorsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly PageContext _pageContext;
         private readonly ICalculatorProvider _calculatorProvider;
 
-        public CalculatorsController(ApplicationDbContext context, ICalculatorProvider calculatorProvider)
+        public CalculatorsController(ApplicationDbContext context, 
+                                     PageContext pageContext,
+                                     ICalculatorProvider calculatorProvider)
         {
             _context = context;
+            _pageContext = pageContext;
             _calculatorProvider = calculatorProvider;
         }
 
         public IActionResult Create(int measurementId)
         {
+            _pageContext.Title = "Create calculator";
+
             var model = new CalculatorEditViewModel();
             model.MeasurementId = measurementId;
             model.Calculators = GetCalculatorsDropDown();
@@ -45,14 +52,17 @@ namespace TemperatureStation.Web.Controllers
         {
             if (id == null)
             {
+                _pageContext.Title = "Calculator not found";
                 return NotFound();
             }
 
             var calculator = await _context.Calculators
+                                           .Include(m => m.Measurement)
                                            .ProjectTo<CalculatorEditViewModel>()
                                            .SingleOrDefaultAsync(m => m.Id == id);
             if (calculator == null)
             {
+                _pageContext.Title = "Calculator not found";
                 return NotFound();
             }
 
@@ -74,10 +84,16 @@ namespace TemperatureStation.Web.Controllers
                     {
                         calculator = new Calculator();
                         calculator.Measurement = _context.Measurements.FirstOrDefault(m => m.Id == model.MeasurementId);
+
+                        _pageContext.Title = "Create calculator";
                     }
                     else
                     {
-                        calculator = _context.Calculators.FirstOrDefault(s => s.Id == model.Id);
+                        calculator = _context.Calculators
+                                             .Include(m => m.Measurement)
+                                             .FirstOrDefault(s => s.Id == model.Id);
+
+                        _pageContext.Title = "Edit calculator " + calculator.Name;
                     }
 
                     Mapper.Map(model, calculator);
@@ -93,6 +109,7 @@ namespace TemperatureStation.Web.Controllers
                 {
                     if (model.Id > 0 && !CalculatorExists(model.Id))
                     {
+                        _pageContext.Title = "Calculator not found";
                         return NotFound();
                     }
                     else
@@ -100,6 +117,7 @@ namespace TemperatureStation.Web.Controllers
                         throw;
                     }
                 }
+
                 return RedirectToAction("Edit", "Measurements", new { id = model.MeasurementId });
             }
 
@@ -112,6 +130,7 @@ namespace TemperatureStation.Web.Controllers
         {
             if (id == null)
             {
+                _pageContext.Title = "Calculator not found";
                 return NotFound();
             }
 
@@ -120,8 +139,11 @@ namespace TemperatureStation.Web.Controllers
                                            .SingleOrDefaultAsync(m => m.Id == id);
             if (calculator == null)
             {
+                _pageContext.Title = "Calculator not found";
                 return NotFound();
             }
+
+            _pageContext.Title = "Delete calculator " + calculator.Name;
 
             return View(calculator);
         }
