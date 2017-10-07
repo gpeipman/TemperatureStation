@@ -541,6 +541,34 @@ ALTER TABLE ONLY "SensorRoles"
 ALTER TABLE ONLY "SensorRoles"
     ADD CONSTRAINT "FK_SensorRoles_Sensors" FOREIGN KEY ("SensorId") REFERENCES "Sensors"("Id");
 
+CREATE VIEW MeasurementStats AS
+	SELECT        
+		sr.RoleName As Name,
+		sr.MeasurementId,
+		MIN(r.Value) As Min,
+		MAX(r.Value) As Max
+	FROM
+		Readings r
+		INNER JOIN SensorRoles sr ON 
+			r.SensorRoleId = sr.Id
+	GROUP BY
+		sr.RoleName,
+		sr.MeasurementId
+
+	UNION
+
+	SELECT
+		c.Name,
+		c.MeasurementId,
+		MIN(r.Value) As Min,
+		MAX(r.Value) As Max
+	FROM 
+		Readings r 
+		INNER JOIN Calculators c ON
+			r.CalculatorId = c.Id
+	GROUP BY
+		c.Name,
+		c.MeasurementId;
 
 --
 -- TOC entry 2247 (class 0 OID 0)

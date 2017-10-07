@@ -1,28 +1,17 @@
-@model TemperatureStation.Web.Data.SensorRole
+@model SensorRole
 
-@{
-    ViewData["Title"] = "Delete";
-}
+<div class="row margin-bottom-40">
+    <div class="col-md-6 col-sm-6">
+        <h1>Delete</h1>
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>SensorRole</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.RoleName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.RoleName)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            <a asp-action="Edit" asp-controller="Measurements" asp-route-id="@Model.Measurement.Id">Back to List</a>
+        <div class="alert alert-danger">Are you sure you want to delete sensor role <strong>@Model.RoleName</strong>&nbsp;?</div>
+        <div>
+            <form asp-action="Delete">
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-primary" />
+                    <a href="@Url.Action("Edit", "Measurements", new { id = Model.Measurement.Id })" class="btn btn-primary">Back to measurement</a>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>

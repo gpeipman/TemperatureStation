@@ -9,7 +9,7 @@
 * [API Reference](https://github.com/d3/d3/blob/master/API.md)
 * [Release Notes](https://github.com/d3/d3/releases)
 * [Gallery](https://github.com/d3/d3/wiki/Gallery)
-* [Examples](http://bl.ocks.org/mbostock)
+* [Examples](https://bl.ocks.org/mbostock)
 * [Wiki](https://github.com/d3/d3/wiki)
 
 ## Installing
@@ -32,7 +32,7 @@ You can also use the standalone D3 microlibraries. For example, [d3-selection](h
 <script src="https://d3js.org/d3-selection.v1.js"></script>
 ```
 
-D3 is written using [ES2015 modules](http://www.2ality.com/2014/09/es6-modules-final.html). Create a [custom bundle using Rollup](http://bl.ocks.org/mbostock/bb09af4c39c79cffcde4), Webpack, or your preferred bundler. To import D3 into an ES2015 application, either import specific symbols from specific D3 modules:
+D3 is written using [ES2015 modules](http://www.2ality.com/2014/09/es6-modules-final.html). Create a [custom bundle using Rollup](https://bl.ocks.org/mbostock/bb09af4c39c79cffcde4), Webpack, or your preferred bundler. To import D3 into an ES2015 application, either import specific symbols from specific D3 modules:
 
 ```js
 import {scaleLinear} from "d3-scale";
@@ -42,4 +42,16 @@ Or import everything into a namespace (here, `d3`):
 
 ```js
 import * as d3 from "d3";
+```
+
+In Node:
+
+```js
+var d3 = require("d3");
+```
+
+You can also require individual modules and combine them into a `d3` object using [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign):
+
+```js
+var d3 = Object.assign({}, require("d3-format"), require("d3-geo"), require("d3-geo-projection"));
 ```

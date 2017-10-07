@@ -1,145 +1,141 @@
 @model MeasurementEditViewModel
 
-@{
-    ViewData["Title"] = "Edit";
-}
+<div class="row margin-bottom-40">
+    <div class="col-md-6 col-sm-6">
+        <h1>Edit</h1>
 
-<h2>Edit</h2>
-
-<form asp-action="Edit">
-    <div class="form-horizontal">
-        <h4>Measurement</h4>
-        <hr />
-        <div asp-validation-summary="All" class="text-danger"></div>
-        <input type="hidden" asp-for="Id" />
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <div class="checkbox">
-                    <input asp-for="IsActive" />
-                    <label asp-for="IsActive"></label>
+        <form asp-action="Edit">
+            <div class="form-horizontal">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                
+                <div class="form-group">
+                    <label asp-for="Name" class="col-md-3 control-label"></label>
+                    <div class="col-md-9">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CoolingRate" class="col-md-3 control-label"></label>
+                    <div class="col-md-9">
+                        <input asp-for="CoolingRate" class="form-control" />
+                        <span asp-validation-for="CoolingRate" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FreezingPoint" class="col-md-3 control-label"></label>
+                    <div class="col-md-9">
+                        <input asp-for="FreezingPoint" class="form-control" />
+                        <span asp-validation-for="FreezingPoint" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="OriginalGravity" class="col-md-3 control-label"></label>
+                    <div class="col-md-9">
+                        <input asp-for="OriginalGravity" class="form-control" />
+                        <span asp-validation-for="OriginalGravity" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FinalGravity" class="col-md-3 control-label"></label>
+                    <div class="col-md-9">
+                        <input asp-for="FinalGravity" class="form-control" />
+                        <span asp-validation-for="FinalGravity" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AlcoholByVolume" class="col-md-3 control-label"></label>
+                    <div class="col-md-9">
+                        <input asp-for="AlcoholByVolume" class="form-control" />
+                        <span asp-validation-for="AlcoholByVolume" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AlcoholByWeight" class="col-md-3 control-label"></label>
+                    <div class="col-md-9">
+                        <input asp-for="AlcoholByWeight" class="form-control" />
+                        <span asp-validation-for="AlcoholByWeight" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-9">
+                        <div class="checkbox">
+                            <input asp-for="IsActive" style="margin-left:0px;" />
+                            <label asp-for="IsActive"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-9">
+                        <input type="submit" value="Save" class="btn btn-primary" /> 
+                        <a href="@Url.Action("Index")" class="btn btn-primary">Back to list</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Name" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="CoolingRate" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="CoolingRate" class="form-control" />
-                <span asp-validation-for="CoolingRate" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="FreezingPoint" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="FreezingPoint" class="form-control" />
-                <span asp-validation-for="FreezingPoint" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="OriginalGravity" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="OriginalGravity" class="form-control" />
-                <span asp-validation-for="OriginalGravity" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="FinalGravity" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="FinalGravity" class="form-control" />
-                <span asp-validation-for="FinalGravity" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="AlcoholByVolume" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="AlcoholByVolume" class="form-control" />
-                <span asp-validation-for="AlcoholByVolume" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="AlcoholByWeight" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="AlcoholByWeight" class="form-control" />
-                <span asp-validation-for="AlcoholByWeight" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-</form>
+        </form>
 
-@if (Model.Id > 0)
-{
-    <div>
-        <h4>Sensors</h4>
-        <p>
-            <a asp-action="Create" asp-controller="SensorRoles" asp-route-measurementid="@Model.Id">Create New</a>
-        </p>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Sensor</th>
-                    <th>Role</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var sensorRole in Model.SensorRoles)
-                {
-                    <tr>
-                        <td>@sensorRole.SensorName</td>
-                        <td>@sensorRole.RoleName</td>
-                        <td>
-                            <a asp-action="Edit" asp-controller="SensorRoles" asp-route-id="@sensorRole.Id">Edit</a> |
-                            <a asp-action="Delete" asp-controller="SensorRoles" asp-route-id="@sensorRole.Id">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+        @if (Model.Id > 0)
+        {
+            <div>
+                <h2>Sensors</h2>
+                <p>
+                    <a class="btn btn-primary" asp-action="Create" asp-controller="SensorRoles" asp-route-measurementid="@Model.Id">Create New</a>
+                </p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Sensor</th>
+                            <th>Role</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var sensorRole in Model.SensorRoles)
+                        {
+                            <tr>
+                                <td>@sensorRole.SensorName</td>
+                                <td>@sensorRole.RoleName</td>
+                                <td style="text-align:right">
+                                    <a asp-action="Edit" asp-controller="SensorRoles" asp-route-id="@sensorRole.Id">Edit</a> |
+                                    <a asp-action="Delete" asp-controller="SensorRoles" asp-route-id="@sensorRole.Id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
 
-    <div>
-        <h4>Calculators</h4>
-        <p>
-            <a asp-action="Create" asp-controller="Calculators" asp-route-measurementid="@Model.Id">Create New</a>
-        </p>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Calculator</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var calculator in Model.Calculators)
-                {
-                    <tr>
-                        <td>@calculator.Name</td>
-                        <td>
-                            <a asp-action="Edit" asp-controller="Calculators" asp-route-id="@calculator.Id">Edit</a> |
-                            <a asp-action="Delete" asp-controller="Calculators" asp-route-id="@calculator.Id">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-}
+            <div>
+                <h2>Calculators</h2>
+                <p>
+                    <a class="btn btn-primary" asp-action="Create" asp-controller="Calculators" asp-route-measurementid="@Model.Id">Create New</a>
+                </p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Calculator</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var calculator in Model.Calculators)
+                        {
+                            <tr>
+                                <td>@calculator.Name</td>
+                                <td style="text-align:right">
+                                    <a asp-action="Edit" asp-controller="Calculators" asp-route-id="@calculator.Id">Edit</a> |
+                                    <a asp-action="Delete" asp-controller="Calculators" asp-route-id="@calculator.Id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+            <div>
+                <a class="btn btn-primary" asp-action="Index">Back to List</a>
+            </div>
+        }
+    </div>
 </div>
-
-@*@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}*@

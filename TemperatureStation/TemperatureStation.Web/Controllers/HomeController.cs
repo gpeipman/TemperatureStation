@@ -15,15 +15,26 @@ namespace TemperatureStation.Web.Controllers
     {
         private readonly ApplicationDbContext _dataContext;
         private readonly ICalculatorProvider _calcProvider;
+        private readonly PageContext _pageContext;
 
-        public HomeController(ApplicationDbContext dataContext, ICalculatorProvider calcProvider)
+        public HomeController(ApplicationDbContext dataContext, 
+                              ICalculatorProvider calcProvider,
+                              PageContext pageContext)
         {
             _dataContext = dataContext;
             _calcProvider = calcProvider;
+            _pageContext = pageContext;
         }
 
         public async Task<IActionResult> Index(int? measurementId)
         {
+            var calc = _calcProvider.GetCalculators().FirstOrDefault(c => c.Key.ToLower().Contains("emhi"));
+            calc.Value.SetParameters("Tallinn-Harku");
+            var x = calc.Value.Calculate(null, null);
+
+            _pageContext.Title = "Home";
+            _pageContext.ActiveMenu = "Home";
+
             if (!User.Identity.IsAuthenticated)
             {
                 return View("IndexPublic");
@@ -95,8 +106,18 @@ namespace TemperatureStation.Web.Controllers
             return View(model); 
         }
 
+        public IActionResult Credits()
+        {
+            _pageContext.Title = "Credits";
+            _pageContext.ActiveMenu = "Credits";
+
+            return View();
+        }
+
         public IActionResult Error()
         {
+            _pageContext.Title = "Error";
+
             return View();
         }
     }

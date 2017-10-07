@@ -1,27 +1,20 @@
 ﻿@model TemperatureStation.Web.Data.Measurement
 
-@{
-    ViewData["Title"] = "Clear";
-}
-
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete all readings of this measurement?</h3>
-<div>
-    <h4>Measurement</h4>
-    <hr />
-    <dl class="dl-horizontal">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-    </dl>
-
-    <form asp-action="Clear">
-        <div class="form-actions no-color">
-            <input type="submit" value="Clear" class="btn btn-default" /> |
-            <a asp-action="Index">Back to List</a>
+<div class="row">
+    <div class="col-md-6 col-sm-6">
+        <h1>Clear</h1>
+    </div>
+</div>
+<div class="row margin-bottom-40">
+    <div class="col-md-6 col-sm-6">
+        <div class="alert alert-danger">Are you sure you want to delete all readings of measurement <strong>@Model.Name&nbsp;?</strong></div>
+        <div>
+            <form asp-action="Clear">
+                <div class="form-actions no-color">
+                    <input type="submit" value="Clear" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-default">Back to List</a>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>

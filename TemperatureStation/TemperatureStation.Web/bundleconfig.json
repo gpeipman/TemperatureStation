@@ -5,13 +5,29 @@
     "outputFileName": "wwwroot/css/site.min.css",
     // An array of relative input file paths. Globbing patterns supported
     "inputFiles": [
+      "wwwroot/assets/plugins/font-awesome/css/font-awesome.min.css",
+      "wwwroot/assets/plugins/bootstrap/css/bootstrap.min.css",
+      "wwwroot/assets/plugins/owl.carousel/assets/owl.carousel.css",
+      "wwwroot/assets/pages/css/components.css",
+      "wwwroot/assets/pages/css/slider.css",
+      "wwwroot/assets/corporate/css/style.css",
+      "wwwroot/assets/corporate/css/style-responsive.css",
+      "wwwroot/assets/corporate/css/themes/red.css",
+      "wwwroot/assets/corporate/css/custom.css",
       "wwwroot/css/site.css"
     ]
   },
   {
     "outputFileName": "wwwroot/js/site.min.js",
     "inputFiles": [
-      "wwwroot/js/site.js"
+      "wwwroot/assets/plugins/jquery.min.js",
+      "wwwroot/assets/plugins/jquery-migrate.min.js",
+      "wwwroot/assets/plugins/bootstrap/js/bootstrap.min.js",
+      "wwwroot/assets/corporate/scripts/back-to-top.js",
+      "wwwroot/assets/plugins/owl.carousel/owl.carousel.min.js",
+      "wwwroot/assets/corporate/scripts/layout.js",
+      "wwwroot/assets/pages/scripts/bs-carousel.js",
+      "wwwroot/lib/d3/d3.js"
     ],
     // Optionally specify minification options
     "minify": {

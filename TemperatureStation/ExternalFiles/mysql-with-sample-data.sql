@@ -168,6 +168,11 @@ CREATE TABLE IF NOT EXISTS `Readings` (
   CONSTRAINT `FK_Readings_SensorRoles` FOREIGN KEY (`SensorRoleId`) REFERENCES `SensorRoles` (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2179 DEFAULT CHARSET=utf8;
 
+-- Dumping structure for view temperaturestation.measurementstats
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `measurementstats`;
+CREATE VIEW `measurementstats` AS select `sr`.`RoleName` AS `Name`,`sr`.`MeasurementId` AS `MeasurementId`,min(`r`.`Value`) AS `Min`,max(`r`.`Value`) AS `Max` from (`readings` `r` join `sensorroles` `sr` on((`r`.`SensorRoleId` = `sr`.`Id`))) group by `sr`.`RoleName`,`sr`.`MeasurementId` union select `c`.`Name` AS `Name`,`c`.`MeasurementId` AS `MeasurementId`,min(`r`.`Value`) AS `Min`,max(`r`.`Value`) AS `Max` from (`readings` `r` join `calculators` `c` on((`r`.`CalculatorId` = `c`.`Id`))) group by `c`.`Name`,`c`.`MeasurementId`;
+
 /*!40000 ALTER TABLE `Readings` DISABLE KEYS */;
 INSERT INTO `Readings` (`Id`, `ReadingType`, `ReadingTime`, `Value`, `MeasurementId`, `SensorRoleId`, `CalculatorId`) VALUES
 	(67, 'SE', '2017-01-05 07:44:31', -8.5, 1, 1, NULL),

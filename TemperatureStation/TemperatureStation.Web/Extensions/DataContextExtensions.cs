@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Data;
 using TemperatureStation.Web.Models;
 
@@ -8,7 +9,7 @@ namespace TemperatureStation.Web.Extensions
 {
     public static class DataContextExtensions
     {
-        public static IEnumerable<IGrouping<DateTime,ReadingViewModel>> GetReadings(this ApplicationDbContext context, int? measurementId, DateTime? newerThan, int? rowCount)
+        public static IEnumerable<IGrouping<DateTime,ReadingViewModel>> GetReadings(this ApplicationDbContext context, int? measurementId, DateTime? newerThan, int? rowCount, bool groupForHours=true)
         {
             DateTime[] dates = null;
             IQueryable<DateTime> datesQuery;
@@ -25,17 +26,14 @@ namespace TemperatureStation.Web.Extensions
             {
                 datesQuery = datesQuery.Take(rowCount.Value);
             }
-            else
-            {
-                datesQuery = datesQuery.Take(10);
-            }
 
             dates = datesQuery.ToArray();
-            
+
             var readings1 = context.SensorReadings
                                         .Where(r =>
                                                 (measurementId == null || r.Measurement.Id == measurementId)
-                                               && (dates == null || dates.Contains(r.ReadingTime)))
+                                               && (dates == null || dates.Contains(r.ReadingTime))
+                                               )
                                         .OrderByDescending(r => r.ReadingTime)
                                         .Select(r => new ReadingViewModel
                                         {
@@ -49,7 +47,8 @@ namespace TemperatureStation.Web.Extensions
             var readings2 = context.CalculatorReadings
                                         .Where(r =>
                                                 (measurementId == null || r.Measurement.Id == measurementId)
-                                               && (dates == null || dates.Contains(r.ReadingTime)))
+                                               && (dates == null || dates.Contains(r.ReadingTime))
+                                               )
                                         .OrderByDescending(r => r.ReadingTime)
                                         .Select(r => new ReadingViewModel
                                         {
@@ -73,30 +72,40 @@ namespace TemperatureStation.Web.Extensions
 
         public static IDictionary<string, Tuple<double, double>> GetMeasurementStats(this ApplicationDbContext context, int measurementId)
         {
-            var stats1 = context.SensorReadings
-                                .Where(r => r.Measurement.Id == measurementId)
-                                .GroupBy(r => r.SensorRole.RoleName)
-                                .Select(r => new
-                                {
-                                    Name = r.Key,
-                                    Min = r.Min(s => s.Value),
-                                    Max = r.Max(s => s.Value)
-                                })
-                                .ToList();
+            // NB!
+            // Until EF Core starts supporting GROUP BY the code here uses special view in database for
+            // sensor and calculator stats
 
-            var stats2 = context.CalculatorReadings
-                                .Where(r => r.Measurement.Id == measurementId)
-                                .GroupBy(r => r.Calculator.Name)
-                                .Select(r => new
-                                {
-                                    Name = r.Key,
-                                    Min = r.Min(s => s.Value),
-                                    Max = r.Max(s => s.Value)
-                                })
-                                .ToList();
 
-            stats1.AddRange(stats2);
-            
+
+            //var stats1 = context.SensorReadings
+            //                    .Where(r => r.Measurement.Id == measurementId)
+            //                    .GroupBy(r => r.SensorRole.RoleName)
+            //                    .Select(r => new SensorStats
+            //                    {
+            //                        Name = r.Key,
+            //                        MeasurementId = measurementId,
+            //                        Min = r.Min(s => s.Value),
+            //                        Max = r.Max(s => s.Value)
+            //                    })
+            //                    .ToList();
+
+            //var stats2 = context.CalculatorReadings
+            //                    .Where(r => r.Measurement.Id == measurementId)
+            //                    .GroupBy(r => r.Calculator.Name)
+            //                    .Select(r => new SensorStats
+            //                    {
+            //                        Name = r.Key,
+            //                        MeasurementId = measurementId,
+            //                        Min = r.Min(s => s.Value),
+            //                        Max = r.Max(s => s.Value)
+            //                    })
+            //                    .ToList();
+
+            //stats1.AddRange(stats2);
+
+            var stats1 = context.MeasurementStats.Where(s => s.MeasurementId == measurementId).ToList();
+
             return stats1.ToDictionary(k => k.Name, v => new Tuple<double, double>(v.Min, v.Max));
         }
     }

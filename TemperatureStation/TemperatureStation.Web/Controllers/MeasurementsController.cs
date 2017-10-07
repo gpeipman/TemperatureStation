@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Data;
+using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Models.MeasurementViewModels;
 
 namespace TemperatureStation.Web.Controllers
@@ -14,17 +16,23 @@ namespace TemperatureStation.Web.Controllers
     public class MeasurementsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly PageContext _pageContext;
 
-        public MeasurementsController(ApplicationDbContext context)
+        public MeasurementsController(ApplicationDbContext context, PageContext pageContext)
         {
-            _context = context;    
+            _context = context;
+            _pageContext = pageContext;
+
+            _pageContext.ActiveMenu = "Measurements";
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int page = 1)
         {
-            var measurements = await _context.Measurements
-                                             .ProjectTo<MeasurementListItemViewModel>()
-                                             .ToListAsync();
+            page = Math.Max(1, page);
+            _pageContext.Title = "Measurements, page " + page;
+
+            var measurements = _context.Measurements.GetPaged(page, 10);
+
             return View(measurements);
         }
 
@@ -32,21 +40,31 @@ namespace TemperatureStation.Web.Controllers
         {
             if (id == null)
             {
+                _pageContext.Title = "Measurement not found";
                 return NotFound();
             }
 
-            var measurement = await _context.Measurements.SingleOrDefaultAsync(m => m.Id == id);
+            var measurement = await _context.Measurements
+                                            .Include(m => m.Calculators)
+                                            .Include(m => m.SensorRoles)
+                                            .ThenInclude(s => s.Sensor)
+                                            .SingleOrDefaultAsync(m => m.Id == id);
             
             if (measurement == null)
             {
+                _pageContext.Title = "Measurement not found";
                 return NotFound();
             }
+
+            _pageContext.Title = measurement.Name;
 
             return View(measurement);
         }
 
         public IActionResult Create()
         {
+            _pageContext.Title = "Create measurement";
+
             return View("Edit", new MeasurementEditViewModel());
         }
 
@@ -61,16 +79,23 @@ namespace TemperatureStation.Web.Controllers
         {
             if (id == null)
             {
+                _pageContext.Title = "Measurement not found";
                 return NotFound();
             }
 
             var measurement = await _context.Measurements
+                                            .Include(m => m.Calculators)
+                                            .Include(m => m.SensorRoles)
+                                            .ThenInclude(s => s.Sensor)
                                             .ProjectTo<MeasurementEditViewModel>()
                                             .SingleOrDefaultAsync(m => m.Id == id);
             if (measurement == null)
             {
+                _pageContext.Title = "Measurement not found";
                 return NotFound();
             }
+
+            _pageContext.Title = "Edit " + measurement.Name;
 
             return View("Edit", measurement);
         }
@@ -81,6 +106,15 @@ namespace TemperatureStation.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
+                if(model.Id == 0)
+                {
+                    _pageContext.Title = "Edit " + model.Name;
+                }
+                else
+                {
+                    _pageContext.Title = "Create measurement";
+                }
+
                 return View("Edit", model);
             }
 
@@ -106,6 +140,7 @@ namespace TemperatureStation.Web.Controllers
             {
                 if (model.Id > 0 && !MeasurementExists(model.Id))
                 {
+                    _pageContext.Title = "Edit " + model.Name;
                     return NotFound();
                 }
                 else
@@ -113,6 +148,7 @@ namespace TemperatureStation.Web.Controllers
                     throw;
                 }
             }
+
             return RedirectToAction("Index");          
         }
 
@@ -120,14 +156,18 @@ namespace TemperatureStation.Web.Controllers
         {
             if (id == null)
             {
+                _pageContext.Title = "Measurement not found";
                 return NotFound();
             }
 
             var measurement = await _context.Measurements.SingleOrDefaultAsync(m => m.Id == id);
             if (measurement == null)
             {
+                _pageContext.Title = "Measurement not found";
                 return NotFound();
             }
+
+            _pageContext.Title = "Delete " + measurement.Name;
 
             return View(measurement);
         }
@@ -146,14 +186,18 @@ namespace TemperatureStation.Web.Controllers
         {
             if (id == null)
             {
+                _pageContext.Title = "Measurement not found";
                 return NotFound();
             }
 
             var measurement = await _context.Measurements.SingleOrDefaultAsync(m => m.Id == id);
             if (measurement == null)
             {
+                _pageContext.Title = "Measurement not found";
                 return NotFound();
             }
+
+            _pageContext.Title = "Clear measurement " + measurement.Name;
 
             return View(measurement);
         }
@@ -165,6 +209,7 @@ namespace TemperatureStation.Web.Controllers
             var measurement = await _context.Measurements.SingleOrDefaultAsync(m => m.Id == id);
             _context.Database.ExecuteSqlCommand("DELETE FROM Readings WHERE MeasurementId={0}", measurement.Id);
             await _context.SaveChangesAsync();
+
             return RedirectToAction("Index");
         }
 

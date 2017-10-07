@@ -1,14 +1,18 @@
-﻿using AutoMapper;
+﻿using System.IO;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using TemperatureStation.Web.Calculators;
+using TemperatureStation.Web.Calculators.Emhi;
 using TemperatureStation.Web.Data;
+using TemperatureStation.Web.Extensions;
+using TemperatureStation.Web.Extensions.Storage;
 using TemperatureStation.Web.Models;
 using TemperatureStation.Web.Models.MeasurementViewModels;
 using TemperatureStation.Web.Services;
@@ -25,11 +29,6 @@ namespace TemperatureStation.Web
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
-
-            if (env.IsDevelopment())
-            {
-                builder.AddUserSecrets();
-            }
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
@@ -56,23 +55,71 @@ namespace TemperatureStation.Web
                     options.UseMySql(Configuration.GetConnectionString("MysqlConnection")));
             }
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            var twitterKey = Configuration.GetValue("Authentication:Twitter:ConsumerKey", "");
+            if (!string.IsNullOrEmpty(twitterKey))
+            {
+                var twitterSecret = Configuration.GetValue("Authentication:Twitter:ConsumerSecret", "");
+                services.AddAuthentication().AddTwitter(o =>
+                {
+                    o.ConsumerKey = twitterKey;
+                    o.ConsumerSecret = twitterSecret;
+                });
+            }
+
+            var facebookKey = Configuration.GetValue("Authentication:Facebook:AppId", "");
+            if (!string.IsNullOrEmpty(facebookKey))
+            {
+                var facebookSecret = Configuration.GetValue("Authentication:Facebook:AppSecret", "");
+                services.AddAuthentication().AddFacebook(o =>
+                {
+                    o.AppId = facebookKey;
+                    o.AppSecret = facebookSecret;
+                });
+            }
+
+            var googleKey = Configuration.GetValue("Authentication:Google:ClientId", "");
+            if (!string.IsNullOrEmpty(googleKey))
+            {
+                var googleSecret = Configuration.GetValue("Authentication:Google:ClientSecret", "");
+                services.AddAuthentication().AddGoogle(o =>
+                {
+                    o.ClientId = googleKey;
+                    o.ClientSecret = googleSecret;
+                });
+            }
+
+            var microsoftKey = Configuration.GetValue("Authentication:MicrosoftAccount:ClientId", "");
+            if (!string.IsNullOrEmpty(microsoftKey))
+            {
+                var microsoftSecret = Configuration.GetValue("Authentication:MicrosoftAccount:ClientSecret", "");
+                services.AddAuthentication().AddMicrosoftAccount(o =>
+                {
+                    o.ClientId = microsoftKey;
+                    o.ClientSecret = microsoftSecret;
+                });
+            }
+
+            var emhiSettings = new EmhiCalculatorSettings();
+            emhiSettings.ObservationsUrl = Configuration.GetValue("EmhiCalculatorSettings:ObservationsUrl", "");
+            emhiSettings.RefreshInterval = Configuration.GetValue("EmhiCalculatorSettings:RefreshInterval", 60);
+
+            services.AddRouting(opt => { opt.LowercaseUrls = true; });
             services.AddMvc();
 
+            
+            services.AddScoped<IFileClient, LocalFileClient>();
+            services.AddSingleton(emhiSettings);
             services.AddSingleton<ICalculatorProvider, CalculatorProvider>();
             services.AddCalculators();
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
             services.AddSingleton<IConfiguration>(Configuration);
+            services.AddScoped<PageContext, PageContext>();
         }
-
-
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
@@ -99,11 +146,31 @@ namespace TemperatureStation.Web
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseAuthentication();
             app.UseStaticFiles();
-            app.UseIdentity();
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                    name: "credits",
+                    template: "credits",
+                    defaults: new { Controller = "Home", Action = "Credits" });
+
+                routes.MapRoute(
+                    name: "login",
+                    template: "login",
+                    defaults: new { Controller = "Account", Action = "Login" });
+
+                routes.MapRoute(
+                    name: "logout",
+                    template: "logout",
+                    defaults: new { Controller = "Account", Action = "LogOff" });
+
+                routes.MapRoute(
+                    name: "register",
+                    template: "register",
+                    defaults: new { Controller = "Account", Action = "Register" });
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

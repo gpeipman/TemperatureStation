@@ -1,12 +1,21 @@
-﻿var frontPageChart = function () {
+﻿//function updateWindow() {
+//    frontPageChart();
+//}
+
+var frontPageChart = function () {
     var margin = { top: 20, right: 20, bottom: 30, left: 50 };
-    var width = $('.col-md-6').width() - margin.left - margin.right;
+    //var margin = { top: 0, right: 0, bottom: 0, left: 0 };
+    //var width = $('.col-md-6').width() - margin.left - margin.right;
+    var width = $('#chartContainer').width() - 30 - margin.left - margin.right;
+    
     // var height = ($('.col-md-6').width() / 2) - margin.top - margin.bottom;
     //var height = $('.col-md-6').width() / 2 - margin.top - margin.bottom;
-    var height = $('.col-md-6').width() / 1.5 - margin.top - margin.bottom;
-
+    var height = $('#chartContainer').width() / 1.5 - margin.top - margin.bottom;
+    //var height = $('#chartContainer').width() / 1.5 - margin.top - margin.bottom;
     // parse the date / time
-    var parseTime = d3.timeParse("%Y-%m-%dT%H:%M:%S.%L");
+    var parseTime = d3.timeParse("%Y-%m-%dT%H:%M:%S.%L");    
+
+    //d3.select(window).on('resize.updatesvg', updateWindow);
 
     // set the ranges
     var x = d3.scaleTime().range([0, width]);
@@ -28,14 +37,40 @@
     // append the svg obgect to the body of the page
     // appends a 'group' element to 'svg'
     // moves the 'group' element to the top left margin
-    d3.select('#chartContainer').select('svg').remove();    
+    //d3.select('#chartContainer').select('svg').remove();    
+    d3.select('#chartContainer').select('div').remove();  
 
-    var svg = d3.select('#chartContainer').append("svg")
+    //var svg = d3.select('#chartContainer')
+    //    .append("div")
+    //    .classed("svg-container", true)
+    //    .append("svg")
+    //    .attr("width", width + margin.left + margin.right)
+    //    .attr("height", height + margin.top + margin.bottom)
+    //    .append("g")
+    //    .attr("transform",
+    //    "translate(" + margin.left + "," + margin.top + ")");
+
+    var svg = d3.select('#chartContainer')
+        .append("div")
+        .classed("svg-container", true)
+        .append("svg")
+        //.attr("width", width + margin.left + margin.right)
+        //.attr("height", height + margin.top + margin.bottom)
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform",
-              "translate(" + margin.left + "," + margin.top + ")");
+        "translate(" + margin.left + "," + margin.top + ")");
+
+    //var svg = d3.select('#chartContainer')
+    //    .append("div")
+    //    .classed("svg-container", true) //container class to make it responsive
+    //    .append("svg")
+    //    //responsive SVG needs these 2 attributes and no width and height attr
+    //    .attr("preserveAspectRatio", "xMinYMin meet")
+    //    .attr("viewBox", "0 0 600 400")
+    //    //class to make it responsive
+    //    .classed("svg-content-responsive", true); 
 
     data.forEach(function (d) {
         var date = new Date();
