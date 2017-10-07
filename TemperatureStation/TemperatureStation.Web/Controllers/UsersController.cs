@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Data;
 using TemperatureStation.Web.Extensions;
+using TemperatureStation.Web.Models;
 using TemperatureStation.Web.Models.UserViewModels;
 
 namespace TemperatureStation.Web.Controllers
@@ -17,10 +18,14 @@ namespace TemperatureStation.Web.Controllers
     {
         private readonly ApplicationDbContext _dataContext;
         private readonly PageContext _pageContext;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public UsersController(ApplicationDbContext dataContext, PageContext pageContext)
+        public UsersController(ApplicationDbContext dataContext,
+                               UserManager<ApplicationUser> userManager,
+                               PageContext pageContext)
         {
             _dataContext = dataContext;
+            _userManager = userManager;
             _pageContext = pageContext;
 
             _pageContext.ActiveMenu = "Users";
@@ -46,6 +51,7 @@ namespace TemperatureStation.Web.Controllers
         public async Task<IActionResult> Edit(string id)
         {
             var model = await _dataContext.Users
+                                   .Include(u => u.Roles)
                                    .Where(u => u.Id == id)
                                    .Select(u => new UserEditViewModel
                                    {
@@ -92,27 +98,23 @@ namespace TemperatureStation.Web.Controllers
                 return View(model);
             }
 
-            var user = await _dataContext.Users.FirstOrDefaultAsync(u => u.Id == model.Id);
-            if(user == null)
-            {
-                ModelState.AddModelError("Id", "Cannot find user");
-                return View(model);
-            }
+            var user = await _dataContext.Users.Include(u => u.Roles).FirstOrDefaultAsync(u => u.Id == model.Id);
 
-            if(user.Roles.FirstOrDefault()?.RoleId == model.Role)
+            if (user.Roles.FirstOrDefault()?.RoleId == model.Role)
             {
                 return RedirectToAction("Index");
             }
 
-            var userRoles = _dataContext.UserRoles.Where(ur => ur.UserId == model.Id);
-            foreach(var userRole in userRoles)
-            {
-                _dataContext.UserRoles.Remove(userRole);
-            }
-
+            user.Roles.Clear();
+            
             if (!string.IsNullOrEmpty(model.Role))
             {
-                user.Roles.Add(new IdentityUserRole<string> { RoleId = model.Role, UserId = model.Id });
+                var userRole = _dataContext.UserRoles.FirstOrDefault(ur => ur.UserId == model.Id && ur.RoleId == model.Role);
+                if(userRole == null)
+                {
+                    userRole = new IdentityUserRole<string> { RoleId = model.Role, UserId = model.Id };
+                }
+                user.Roles.Add(userRole);
             }
 
             await _dataContext.SaveChangesAsync();

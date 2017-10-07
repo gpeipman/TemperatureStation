@@ -110,6 +110,7 @@ namespace TemperatureStation.Web
             services.AddRouting(opt => { opt.LowercaseUrls = true; });
             services.AddMvc();
 
+            
             services.AddScoped<IFileClient, LocalFileClient>();
             services.AddSingleton(emhiSettings);
             services.AddSingleton<ICalculatorProvider, CalculatorProvider>();
