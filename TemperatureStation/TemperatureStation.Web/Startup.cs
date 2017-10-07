@@ -15,7 +15,7 @@ using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Extensions.Storage;
 using TemperatureStation.Web.Models;
 using TemperatureStation.Web.Models.MeasurementViewModels;
-using TemperatureStation.Web.Services;
+//using TemperatureStation.Web.Services;
 
 namespace TemperatureStation.Web
 {
@@ -115,8 +115,6 @@ namespace TemperatureStation.Web
             services.AddSingleton(emhiSettings);
             services.AddSingleton<ICalculatorProvider, CalculatorProvider>();
             services.AddCalculators();
-            services.AddTransient<IEmailSender, AuthMessageSender>();
-            services.AddTransient<ISmsSender, AuthMessageSender>();
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddScoped<PageContext, PageContext>();
         }

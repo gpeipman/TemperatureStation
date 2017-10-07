@@ -4,7 +4,7 @@ using System.Linq;
 using TemperatureStation.Web.Data;
 using TemperatureStation.Web.Extensions;
 
-namespace TemperatureStation.Web.Models
+namespace TemperatureStation.Web.Models.DataViewModels
 {
     public class DataViewModel
     {

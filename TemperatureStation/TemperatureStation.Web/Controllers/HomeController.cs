@@ -28,10 +28,6 @@ namespace TemperatureStation.Web.Controllers
 
         public async Task<IActionResult> Index(int? measurementId)
         {
-            var calc = _calcProvider.GetCalculators().FirstOrDefault(c => c.Key.ToLower().Contains("emhi"));
-            calc.Value.SetParameters("Tallinn-Harku");
-            var x = calc.Value.Calculate(null, null);
-
             _pageContext.Title = "Home";
             _pageContext.ActiveMenu = "Home";
 

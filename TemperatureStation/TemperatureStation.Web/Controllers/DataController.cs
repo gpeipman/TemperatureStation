@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Calculators;
 using TemperatureStation.Web.Data;
 using TemperatureStation.Web.Extensions;
-using TemperatureStation.Web.Models;
+using TemperatureStation.Web.Models.DataViewModels;
 
 namespace TemperatureStation.Web.Controllers
 {

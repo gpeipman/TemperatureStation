@@ -34,8 +34,11 @@
                         {
                             <td>@label.Value</td>
                         }
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@readingGroup.Key">Edit</a> |
+                            <a asp-action="Delete" asp-route-id="@readingGroup.Key">Delete</a>
+                        </td>
                     </tr>
-
                 }
             </tbody>
         </table>

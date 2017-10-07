@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using TemperatureStation.Web.Models;
 using TemperatureStation.Web.Models.AccountViewModels;
-using TemperatureStation.Web.Services;
+//using TemperatureStation.Web.Services;
 
 namespace TemperatureStation.Web.Controllers
 {
@@ -17,21 +17,21 @@ namespace TemperatureStation.Web.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly IEmailSender _emailSender;
-        private readonly ISmsSender _smsSender;
+        //private readonly IEmailSender _emailSender;
+        //private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            IEmailSender emailSender,
-            ISmsSender smsSender,
+            //IEmailSender emailSender,
+            //ISmsSender smsSender,
             ILoggerFactory loggerFactory)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _emailSender = emailSender;
-            _smsSender = smsSender;
+            //_emailSender = emailSender;
+            //_smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
 
@@ -351,11 +351,11 @@ namespace TemperatureStation.Web.Controllers
             var message = "Your security code is: " + code;
             if (model.SelectedProvider == "Email")
             {
-                await _emailSender.SendEmailAsync(await _userManager.GetEmailAsync(user), "Security Code", message);
+                //await _emailSender.SendEmailAsync(await _userManager.GetEmailAsync(user), "Security Code", message);
             }
             else if (model.SelectedProvider == "Phone")
             {
-                await _smsSender.SendSmsAsync(await _userManager.GetPhoneNumberAsync(user), message);
+                //await _smsSender.SendSmsAsync(await _userManager.GetPhoneNumberAsync(user), message);
             }
 
             return RedirectToAction(nameof(VerifyCode), new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
