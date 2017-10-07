@@ -39,13 +39,13 @@
                     <th>Time</th>
                     @foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
                     {
-                    <th>@sensorRole.RoleName</th>
+                        <th>@sensorRole.RoleName</th>
                     }
                     @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
                     {
                         if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
                         {
-                    <th>@Model.Labels[calc.Name]</th>
+                            <th>@Model.Labels[calc.Name]</th>
                         }
                     }
                 </tr>
