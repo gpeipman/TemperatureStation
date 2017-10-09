@@ -1,9 +1,12 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Xml.Linq;
 using System.Xml.Serialization;
+using Microsoft.Extensions.Logging;
 using TemperatureStation.Shared.Models;
 using TemperatureStation.Web.Data;
 using TemperatureStation.Web.Extensions.Storage;
@@ -17,13 +20,17 @@ namespace TemperatureStation.Web.Calculators.Emhi
         private Observations _observation;
         private readonly IFileClient _fileClient;
         private readonly EmhiCalculatorSettings _settings;
+        private readonly ILogger _logger;
 
         public bool ReturnsReading => true;
 
-        public EmhiCalculator(EmhiCalculatorSettings settings, IFileClient fileClient)
+        public EmhiCalculator(EmhiCalculatorSettings settings, 
+                              IFileClient fileClient,
+                              ILogger<EmhiCalculator> logger)
         {
             _settings = settings;
             _fileClient = fileClient;
+            _logger = logger;
 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         }
@@ -96,6 +103,17 @@ loadObservations:
             var utf = Encoding.UTF8;
 
             xml = utf.GetString(Encoding.Convert(estEncoding, utf, estEncoding.GetBytes(xml)));
+
+            try
+            {
+                XDocument.Parse(xml);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, "Error loading EMHI data");
+                return;
+            }
+
             _fileClient.SaveFile("cache", "emhi.xml", Encoding.UTF8.GetBytes(xml));
 
         }

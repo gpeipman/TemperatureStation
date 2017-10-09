@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using System;
+using System.Linq;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using TemperatureStation.Web.Data.Queries;
+using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Models;
 
 namespace TemperatureStation.Web.Data
@@ -37,5 +41,16 @@ namespace TemperatureStation.Web.Data
         public DbSet<Calculator> Calculators { get; set; }
         public DbSet<MeasurementStats> MeasurementStats { get; set; }
 
+        public PagedResult<IGrouping<DateTime, Reading>> GetReadings(ReadingsQuery query)
+        {
+            var dates = Readings.Where(r => r.Measurement.Id == query.MeasurementId &&
+                                            (query.FromTime == null || r.ReadingTime >= query.FromTime) &&
+                                            (query.ToTime == null || r.ReadingTime <= query.ToTime))
+                                .Select(r => r.ReadingTime)
+                                .Distinct()
+                                .ToList();
+
+            return null;
+        }
     }
 }

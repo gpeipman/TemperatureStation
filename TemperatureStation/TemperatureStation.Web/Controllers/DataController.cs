@@ -74,5 +74,21 @@ namespace TemperatureStation.Web.Controllers
                                         .ToDictionary(k => k.Name, e => e.Label ?? e.Name);
             return View(model);
         }
+
+        public IActionResult Edit(int id, DateTime readingDate)
+        {
+            var model = new DataEditModel();
+            model.Measurement = _context.Measurements
+                                        .Include(m => m.SensorRoles)
+                                        .Include(m => m.Calculators)
+                                        .FirstOrDefault();
+
+            if(model.Measurement == null)
+            {
+                return NotFound();
+            }
+
+            return View(model);
+        }
     }
 }
