@@ -6,7 +6,7 @@ var frontPageChart = function () {
     var margin = { top: 20, right: 20, bottom: 30, left: 50 };
     //var margin = { top: 0, right: 0, bottom: 0, left: 0 };
     //var width = $('.col-md-6').width() - margin.left - margin.right;
-    var width = $('#chartContainer').width() - 30 - margin.left - margin.right;
+    var width = $('#chartContainer').width() - margin.left - margin.right;
     
     // var height = ($('.col-md-6').width() / 2) - margin.top - margin.bottom;
     //var height = $('.col-md-6').width() / 2 - margin.top - margin.bottom;
