@@ -40,16 +40,6 @@ var frontPageChart = function () {
     //d3.select('#chartContainer').select('svg').remove();    
     d3.select('#chartContainer').select('div').remove();  
 
-    //var svg = d3.select('#chartContainer')
-    //    .append("div")
-    //    .classed("svg-container", true)
-    //    .append("svg")
-    //    .attr("width", width + margin.left + margin.right)
-    //    .attr("height", height + margin.top + margin.bottom)
-    //    .append("g")
-    //    .attr("transform",
-    //    "translate(" + margin.left + "," + margin.top + ")");
-
     var svg = d3.select('#chartContainer')
         .append("div")
         .classed("svg-container", true)
@@ -61,16 +51,6 @@ var frontPageChart = function () {
         .append("g")
         .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
-
-    //var svg = d3.select('#chartContainer')
-    //    .append("div")
-    //    .classed("svg-container", true) //container class to make it responsive
-    //    .append("svg")
-    //    //responsive SVG needs these 2 attributes and no width and height attr
-    //    .attr("preserveAspectRatio", "xMinYMin meet")
-    //    .attr("viewBox", "0 0 600 400")
-    //    //class to make it responsive
-    //    .classed("svg-content-responsive", true); 
 
     data.forEach(function (d) {
         var date = new Date();
@@ -117,4 +97,34 @@ var frontPageChart = function () {
     // Add the Y Axis
     svg.append("g")
         .call(d3.axisLeft(y));
+
+    var lastDate = null;
+    var isFirstDate = true;
+    var dates = [];
+
+    for (var i = 0; i < data.length; i++)
+    {
+        var date = new Date(data[i][0].ReadingTime);
+        date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        if (!dates.contains(date))
+        {
+            dates.push(date);
+        }
+    }
+
+    for (var i = 0; i < dates.length; i++)
+    {
+        var date = dates[i];
+        //var today = new Date();
+        //today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+        //console.log(height);
+        svg.append("line")
+            .attr("x1", x(date))  //<<== change your code here
+            .attr("y1", y(0) - 395)
+            .attr("x2", x(date))  //<<== and here
+            .attr("y2", height - 440 - margin.top - margin.bottom)
+            .style("stroke-width", 1)
+            .style("stroke", "green")
+            .style("fill", "none");
+    }
 };
