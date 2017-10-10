@@ -43,14 +43,55 @@ namespace TemperatureStation.Web.Data
 
         public PagedResult<IGrouping<DateTime, Reading>> GetReadings(ReadingsQuery query)
         {
-            var dates = Readings.Where(r => r.Measurement.Id == query.MeasurementId &&
+            var datesPaged = Readings.Where(r => r.Measurement.Id == query.MeasurementId &&
                                             (query.FromTime == null || r.ReadingTime >= query.FromTime) &&
-                                            (query.ToTime == null || r.ReadingTime <= query.ToTime))
-                                .Select(r => r.ReadingTime)
-                                .Distinct()
+                                            (query.ToTime == null || r.ReadingTime <= query.ToTime) &&
+                                            (query.NewerThan == null || r.ReadingTime > query.NewerThan))
+                                 .OrderByIf(r => r.ReadingTime, () => query.Ascending)
+                                 .Select(r => r.ReadingTime)
+                                 .Distinct()
+                                 .GetPaged(query.Page, query.PageSize);
+            var dates = datesPaged.Results;
+
+            var readings1 = SensorReadings
+                                .Where(r =>
+                                        (r.Measurement.Id == query.MeasurementId)
+                                        && (dates == null || dates.Contains(r.ReadingTime))
+                                        )
+                                .OrderByIf(r => r.ReadingTime, () => query.Ascending)
+                                .Select(r => (Reading)r)
                                 .ToList();
 
-            return null;
+            var readings2 = CalculatorReadings
+                                .Where(r =>
+                                        (r.Measurement.Id == query.MeasurementId)
+                                        && (dates == null || dates.Contains(r.ReadingTime))
+                                        )
+                                .OrderByIf(r => r.ReadingTime, () => query.Ascending)
+                                .Select(r => (Reading)r)
+                                .ToList();
+
+            readings1.AddRange(readings2);
+            readings1 = readings1.AsQueryable()
+                                 .OrderByIf(r => r.ReadingTime, () => query.Ascending)
+                                 //.OrderByDescending(r => r.ReadingTime)
+                                 .OrderBy(r => r.Name)
+                                 .ToList();
+
+            var grouped = readings1.AsQueryable()
+                                   .OrderByIf(r => r.ReadingTime, () => query.Ascending)
+                                   //.OrderBy(r => r.ReadingTime)
+                                   .GroupBy(r => r.ReadingTime)
+                                   .ToList();
+
+            var result = new PagedResult<IGrouping<DateTime, Reading>>();
+            result.CurrentPage = datesPaged.CurrentPage;
+            result.PageCount = datesPaged.PageCount;
+            result.PageSize = datesPaged.PageSize;
+            result.RowCount = datesPaged.RowCount;
+            result.Results = grouped;
+
+            return result;
         }
     }
 }

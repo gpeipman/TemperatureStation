@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Calculators;
 using TemperatureStation.Web.Data;
+using TemperatureStation.Web.Data.Queries;
 using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Models.DataViewModels;
 
@@ -30,40 +31,9 @@ namespace TemperatureStation.Web.Controllers
                                         .Include(m => m.Calculators)
                                         .FirstOrDefault(m => m.Id == id);
 
-            var dates = _context.Readings
-                                .Where(r => r.Measurement.Id == id)
-                                .OrderByDescending(r => r.ReadingTime)
-                                .Select(r => r.ReadingTime)
-                                .Distinct()
-                                .GetPaged(page, 10);
+            var query = new ReadingsQuery { MeasurementId = id, Page = page, PageSize = 10 };
+            model.Data = _context.GetReadings(query);
 
-            var readings = new List<Reading>();
-
-            var sensorReadings = _context.SensorReadings
-                                   .Include(sr => sr.SensorRole)
-                                   .Where(r => r.Measurement.Id == id && dates.Results.Contains(r.ReadingTime))
-                                   .OrderByDescending(r => r.ReadingTime);
-
-            var calculatorReadings = _context.CalculatorReadings
-                                   .Include(sr => sr.Calculator)
-                                   .Where(r => r.Measurement.Id == id && dates.Results.Contains(r.ReadingTime))
-                                   .OrderByDescending(r => r.ReadingTime);
-
-            readings.AddRange(sensorReadings.ToList());
-            readings.AddRange(calculatorReadings.ToList());
-
-            var grouped = readings.OrderByDescending(r => r.ReadingTime)
-                                  .GroupBy(r => r.ReadingTime)
-                                  .ToList();
-
-            var result = new PagedResult<IGrouping<DateTime,Reading>>();
-            result.CurrentPage = dates.CurrentPage;
-            result.PageCount = dates.PageCount;
-            result.PageSize = dates.PageSize;
-            result.RowCount = dates.RowCount;
-            result.Results = grouped;
-
-            model.Data = result;
             model.Labels = _calcProvider.GetTypes()
                                         .Where(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>() != null)
                                         .Select(t => new

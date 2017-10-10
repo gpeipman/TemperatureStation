@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using TemperatureStation.Web.Data;
 using TemperatureStation.Web.Models;
 
@@ -9,6 +9,22 @@ namespace TemperatureStation.Web.Extensions
 {
     public static class DataContextExtensions
     {
+        public static IQueryable<T> OrderByIf<T, TKey>(this IQueryable<T> query, Expression<Func<T, TKey>> expression, Func<bool?> orderAction)
+        {
+            var actionValue = orderAction();
+
+            if(actionValue == null)
+            {
+                return query;
+            }
+
+            if(actionValue.Value)
+            {
+                return query.OrderBy(expression);
+            }
+
+            return query.OrderByDescending(expression);
+        }
         public static IEnumerable<IGrouping<DateTime,ReadingViewModel>> GetReadings(this ApplicationDbContext context, int? measurementId, DateTime? newerThan, int? rowCount, bool groupForHours=true)
         {
             DateTime[] dates = null;

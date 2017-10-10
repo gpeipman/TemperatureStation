@@ -1,8 +1,8 @@
 ﻿// Write your Javascript code.
-Array.prototype.contains = function (obj) {
+Array.prototype.containsDate = function (obj) {
     var i = this.length;
     while (i--) {
-        if (this[i] === obj) {
+        if (this[i].getTime() === obj.getTime()) {
             return true;
         }
     }

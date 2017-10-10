@@ -1,5 +1,4 @@
-﻿using System.IO;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -103,13 +102,15 @@ namespace TemperatureStation.Web
                 });
             }
 
+            var siteSettings = new SiteSettings();
+            siteSettings.FrontPageRefreshMethod = Configuration.GetValue("FrontPageRefreshMethod", "AJAX").ToLower();
+
             var emhiSettings = new EmhiCalculatorSettings();
             emhiSettings.ObservationsUrl = Configuration.GetValue("EmhiCalculatorSettings:ObservationsUrl", "");
             emhiSettings.RefreshInterval = Configuration.GetValue("EmhiCalculatorSettings:RefreshInterval", 60);
 
             services.AddRouting(opt => { opt.LowercaseUrls = true; });
             services.AddMvc();
-
             
             services.AddScoped<IFileClient, LocalFileClient>();
             services.AddSingleton(emhiSettings);
@@ -117,6 +118,7 @@ namespace TemperatureStation.Web
             services.AddCalculators();
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddScoped<PageContext, PageContext>();
+            services.AddSingleton<SiteSettings>(siteSettings);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

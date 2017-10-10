@@ -7,13 +7,13 @@ var frontPageChart = function () {
     //var margin = { top: 0, right: 0, bottom: 0, left: 0 };
     //var width = $('.col-md-6').width() - margin.left - margin.right;
     var width = $('#chartContainer').width() - margin.left - margin.right;
-    
+
     // var height = ($('.col-md-6').width() / 2) - margin.top - margin.bottom;
     //var height = $('.col-md-6').width() / 2 - margin.top - margin.bottom;
     var height = $('#chartContainer').width() / 1.5 - margin.top - margin.bottom;
     //var height = $('#chartContainer').width() / 1.5 - margin.top - margin.bottom;
     // parse the date / time
-    var parseTime = d3.timeParse("%Y-%m-%dT%H:%M:%S.%L");    
+    var parseTime = d3.timeParse("%Y-%m-%dT%H:%M:%S.%L");
 
     //d3.select(window).on('resize.updatesvg', updateWindow);
 
@@ -25,8 +25,8 @@ var frontPageChart = function () {
 
     for (var i = 0; i < data[0].length; i++) {
         var valueline = d3.line()
-                          .x(function (d) { return x(d.date); })
-                          .y(function (d) { return y(d['value' + i]); });
+            .x(function (d) { return x(d.date); })
+            .y(function (d) { return y(d['value' + i]); });
 
         var legendItem = "<span style='background-color:" + (strokes[i] || 'black') + "'>";
         legendItem += '</span> ' + data[0][i].Source;
@@ -38,7 +38,7 @@ var frontPageChart = function () {
     // appends a 'group' element to 'svg'
     // moves the 'group' element to the top left margin
     //d3.select('#chartContainer').select('svg').remove();    
-    d3.select('#chartContainer').select('div').remove();  
+    d3.select('#chartContainer').select('div').remove();
 
     var svg = d3.select('#chartContainer')
         .append("div")
@@ -70,23 +70,23 @@ var frontPageChart = function () {
             for (var i = 0; i < valuelines.length; i++) {
                 values.push(d['value' + i] - 1);
             }
-        
+
             return Math.min.apply(null, values);
         }),
         d3.max(data, function (d) {
             var values = [];
             for (var i = 0; i < valuelines.length; i++) {
                 values.push(d['value' + i] + 1);
-            }        
+            }
             return Math.max.apply(null, values);
         })]);
 
     for (i = 0; i < valuelines.length; i++) {
         svg.append("path")
-           .data([data])
-           .attr("class", "line")
-           .style("stroke", strokes[i] || 'black')
-           .attr("d", valuelines[i]);
+            .data([data])
+            .attr("class", "line")
+            .style("stroke", strokes[i] || 'black')
+            .attr("d", valuelines[i]);
     }
 
     // Add the X Axis
@@ -102,12 +102,10 @@ var frontPageChart = function () {
     var isFirstDate = true;
     var dates = [];
 
-    for (var i = 0; i < data.length; i++)
-    {
+    for (var i = 0; i < data.length; i++) {
         var date = new Date(data[i][0].ReadingTime);
         date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-        if (!dates.contains(date))
-        {
+        if (!dates.containsDate(date)) {
             dates.push(date);
         }
     }
@@ -115,9 +113,6 @@ var frontPageChart = function () {
     for (var i = 0; i < dates.length; i++)
     {
         var date = dates[i];
-        //var today = new Date();
-        //today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-        //console.log(height);
         svg.append("line")
             .attr("x1", x(date))  //<<== change your code here
             .attr("y1", y(0) - 395)
