@@ -5,7 +5,7 @@ label {
 .line {
     fill: none;
     stroke: black;
-    stroke-width: 2px;
+    stroke-width: 1px;
 }
 
 #chartLegend {
@@ -19,6 +19,28 @@ label {
     width:10px;
     height:2px;
 }
+p.chartTooltip {
+    position: absolute;
+    text-align: center;
+    width: 120px;
+    height: 38px;
+    padding: 5px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px !important;
+    pointer-events: none;
+}
+.overlay {
+    fill: none;
+    pointer-events: all;
+}
+
+.focus circle {
+    fill: none;
+    stroke: steelblue;
+}
+
 .carousel-slider .carousel-item-eight {
     background: url(../assets/pages/img/frontend-slider/winter.jpg);
 }

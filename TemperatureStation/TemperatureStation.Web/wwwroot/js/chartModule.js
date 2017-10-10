@@ -1,16 +1,9 @@
 ﻿var frontPageChart = function () {
     var margin = { top: 20, right: 20, bottom: 30, left: 50 };
-    //var margin = { top: 0, right: 0, bottom: 0, left: 0 };
-    //var width = $('.col-md-6').width() - margin.left - margin.right;
     var width = $('#chartContainer').width() - margin.left - margin.right;
-
-    // var height = ($('.col-md-6').width() / 2) - margin.top - margin.bottom;
-    //var height = $('.col-md-6').width() / 2 - margin.top - margin.bottom;
     var height = $('#chartContainer').width() / 1.5 - margin.top - margin.bottom;
-    //var height = $('#chartContainer').width() / 1.5 - margin.top - margin.bottom;
-    // parse the date / time
     var parseTime = d3.timeParse("%Y-%m-%dT%H:%M:%S.%L");
-
+    bisectDate = d3.bisector(function (d) { return d.date; }).left;
     //d3.select(window).on('resize.updatesvg', updateWindow);
 
     // set the ranges
@@ -33,6 +26,7 @@
     for (var i = 0; i < data[dataIndex].length; i++) {
         
         var valueline = d3.line()
+            .curve(d3.curveMonotoneX)
             .x(function (d) { return x(d.date); })
             .y(function (d) { return y(d['value' + i]); });
 
@@ -43,6 +37,7 @@
     }
  
     d3.select('#chartContainer').select('div').remove();
+    d3.select('.chartTooltip').remove();
 
     var svg = d3.select('#chartContainer')
         .append("div")
@@ -95,6 +90,74 @@
             .attr("d", valuelines[i]);
     }
 
+    // Dots
+    var div = d3.select("body").append("p")
+                .attr("class", "chartTooltip");
+    var formatTime = d3.timeFormat("%e %B");
+    var focusPoints = new Array();
+
+    for (var i = 0; i < dataAttrs; i++)
+    {
+        var focus = svg.append("g")
+            .attr("class", "focus")
+            .style("display", "none");
+
+        focus.append("circle")
+            .attr("r", 3)
+            .style("stroke", strokes[i] || 'black')
+            .style("stroke-width", '3pt')
+            .style("opacity", 0.4);
+
+        focus.append("circle")
+            .attr("r", 1)
+            .style("stroke", strokes[i] || 'black');
+
+        focusPoints.push(focus);
+    }
+
+    svg.append("rect")
+        .attr("class", "overlay")
+        .attr("width", width)
+        .attr("height", height)
+        .on("mouseover", function () {
+            for (var i = 0; i < dataAttrs; i++)
+            {
+                focusPoints[i].style("display", null);
+            }
+            $('.chartTooltip').show();
+        })
+        .on("mouseout", function () {            
+            for (var i = 0; i < dataAttrs; i++)
+            {
+                focusPoints[i].style("display", 'none');
+            }
+            $('.chartTooltip').hide();
+        })
+        .on("mousemove", mousemove);
+
+    function mousemove() {
+
+        var x0 = x.invert(d3.mouse(this)[0]),
+            i = bisectDate(data, x0, 1),
+            d0 = data[i - 1],
+            d1 = data[i],
+            d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+
+        for (var j = 0; j < dataAttrs; j++)
+        {
+            var focusPoint = focusPoints[j];
+            focusPoint.attr("transform", "translate(" + x(d.date) + "," + y(d['value' + j]) + ")");
+        }
+
+        var left = $('#chartContainer').position().left;
+        var top = $('#chartContainer').position().top;
+        div.html(formatTime(d.date) + "<br/>" + d.value0);
+
+        div.style("left", (x(d.date)+left+60) + "px")
+           .style("top", (y(d.value0)+top-28) + "px");
+    }
+
+
     // Add the X Axis
     svg.append("g")
         .attr("transform", "translate(0," + height + ")")
@@ -131,6 +194,7 @@
             .attr("y2", height + margin.top - margin.bottom + 10)
             .style("stroke-width", 1)
             .style("stroke", "green")
+            .style("stroke-dasharray", "5,5")
             .style("fill", "none");
     }
 };
