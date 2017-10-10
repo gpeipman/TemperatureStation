@@ -70,13 +70,13 @@ namespace TemperatureStation.Web.Controllers
             model.CalculatorsOnChart = showOnChart.ToArray();
 
             var labels = _calcProvider.GetTypes()
-                                            .Where(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>() != null)
-                                            .Select(t => new
-                                            {
-                                                Label = t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().DisplayLabel,
-                                                Name = t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().Name
-                                            })
-                                            .ToDictionary(k => k.Name, e => e.Label);
+                                        .Where(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>() != null)
+                                        .Select(t => new
+                                        {
+                                            Label = t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().DisplayLabel,
+                                            Name = t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().Name
+                                        })
+                                        .ToDictionary(k => k.Name, e => e.Label);
 
             foreach (var key in labels.Keys.ToList())
             {
@@ -99,7 +99,6 @@ namespace TemperatureStation.Web.Controllers
                                                  Selected = (m.Id == model.Measurement.Id)
                                              })
                                              .ToList();
-
             return View(model); 
         }
 

@@ -128,15 +128,13 @@
 	var refreshUrl = '@Url.Action()';
 
 	for(var i = 0; i < data.length; i++)
+	for(var j = data[i].length-1; j >= 0; j--)
 	{
-		for(var j = data[i].length-1; j >= 0; j--)
-		{
-			if($.inArray(data[i][j].Source, calcsOnChart) < 0)   
-			{
-				data[i].splice(j, 1);                
-			}
-		}        
-	}
+		if($.inArray(data[i][j].Source, calcsOnChart) < 0)   
+        {
+			data[i].splice(j, 1);                
+		}
+	}        
 
 	$(document).ready(function () {
 

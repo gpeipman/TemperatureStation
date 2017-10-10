@@ -1,8 +1,4 @@
-﻿//function updateWindow() {
-//    frontPageChart();
-//}
-
-var frontPageChart = function () {
+﻿var frontPageChart = function () {
     var margin = { top: 20, right: 20, bottom: 30, left: 50 };
     //var margin = { top: 0, right: 0, bottom: 0, left: 0 };
     //var width = $('.col-md-6').width() - margin.left - margin.right;
@@ -23,34 +19,39 @@ var frontPageChart = function () {
     $('#chartLegend').empty('li');
     var valuelines = [];
 
-    for (var i = 0; i < data[0].length; i++) {
+    // find data with biggest number of attributes
+    var dataIndex = 0;
+    var dataAttrs = data[0].length;
+    for (var i = 1; i < data.length; i++) {
+        if (data[i].length > dataAttrs)
+        {
+            dataIndex = i;
+            dataAttrs = data[i].length;
+        }
+    }
+
+    for (var i = 0; i < data[dataIndex].length; i++) {
+        
         var valueline = d3.line()
             .x(function (d) { return x(d.date); })
             .y(function (d) { return y(d['value' + i]); });
 
         var legendItem = "<span style='background-color:" + (strokes[i] || 'black') + "'>";
-        legendItem += '</span> ' + data[0][i].Source;
+        legendItem += '</span> ' + data[dataIndex][i].Source;
         $('#chartLegend').append('<li>' + legendItem + '</li>');
         valuelines.push(valueline);
     }
-
-    // append the svg obgect to the body of the page
-    // appends a 'group' element to 'svg'
-    // moves the 'group' element to the top left margin
-    //d3.select('#chartContainer').select('svg').remove();    
+ 
     d3.select('#chartContainer').select('div').remove();
 
     var svg = d3.select('#chartContainer')
         .append("div")
         .classed("svg-container", true)
         .append("svg")
-        //.attr("width", width + margin.left + margin.right)
-        //.attr("height", height + margin.top + margin.bottom)
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("transform",
-        "translate(" + margin.left + "," + margin.top + ")");
+        .attr("transform","translate(" + margin.left + "," + margin.top + ")");
 
     data.forEach(function (d) {
         var date = new Date();
@@ -59,6 +60,11 @@ var frontPageChart = function () {
 
         for (var i = 0; i < d.length; i++) {
             d['value' + i] = +d[i].Value;
+        }
+        // fill missing values with nulls
+        for (var i = d.length; i < dataAttrs; i++)
+        {
+            d['value' + i] = null;
         }
     });
 
