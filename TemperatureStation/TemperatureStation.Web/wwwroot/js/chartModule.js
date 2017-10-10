@@ -118,12 +118,17 @@
 
     for (var i = 0; i < dates.length; i++)
     {
+        // first date is usually not shown on chart and line is drawn threrfore left from Y-axis
+        if (i == 0) {
+            continue;
+        }
+
         var date = dates[i];
         svg.append("line")
             .attr("x1", x(date))  //<<== change your code here
-            .attr("y1", y(0) - 395)
+            .attr("y1", 0)
             .attr("x2", x(date))  //<<== and here
-            .attr("y2", height - 440 - margin.top - margin.bottom)
+            .attr("y2", height + margin.top - margin.bottom + 10)
             .style("stroke-width", 1)
             .style("stroke", "green")
             .style("fill", "none");
