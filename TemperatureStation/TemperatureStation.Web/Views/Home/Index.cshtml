@@ -29,8 +29,11 @@
         <div id="chartContainer"></div>
         <ul id="chartLegend"></ul>
         <div style="float:right;margin-right:20px">
-            <strong>Date range:</strong> @Model.ChartData.Select(d => d.Key).Min().ToShortDateString() - 
-            @Model.ChartData.Select(d => d.Key).Max().ToShortDateString()
+            @if (Model.ChartData.Count() > 0)
+            {
+                <strong>Date range:</strong> @Model.ChartData.Select(d => d.Key).Min().ToShortDateString() 
+                <text>-</text> @Model.ChartData.Select(d => d.Key).Max().ToShortDateString()
+}
         </div>
     </div>
     <div style="float:left; min-width:30%; padding-left:30px; padding-right:15px;">
