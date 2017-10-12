@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Data.Queries;
@@ -41,7 +44,12 @@ namespace TemperatureStation.Web.Data
         public DbSet<Calculator> Calculators { get; set; }
         public DbSet<MeasurementStats> MeasurementStats { get; set; }
 
-        public PagedResult<IGrouping<DateTime, Reading>> GetReadings(ReadingsQuery query)
+        public IList<IGrouping<DateTime, ReadingViewModel>> GetReadings(ReadingsQuery query)
+        {
+            return GetReadingsPaged(query).Results;
+        }
+
+        public PagedResult<IGrouping<DateTime, ReadingViewModel>> GetReadingsPaged(ReadingsQuery query)
         {
             var datesPaged = Readings.Where(r => r.Measurement.Id == query.MeasurementId &&
                                             (query.FromTime == null || r.ReadingTime >= query.FromTime) &&
@@ -65,10 +73,13 @@ namespace TemperatureStation.Web.Data
                                             )
                                     .OrderByIf(r => r.ReadingTime, () => query.Ascending)
                                     .OrderBy(r => r.Name)
+                                    .ToList()
+                                    .AsQueryable()
+                                    .ProjectTo<ReadingViewModel>()
                                     .GroupBy(r => r.ReadingTime)
                                     .ToList();
 
-            var result = new PagedResult<IGrouping<DateTime, Reading>>();
+            var result = new PagedResult<IGrouping<DateTime, ReadingViewModel>>();
             result.CurrentPage = datesPaged.CurrentPage;
             result.PageCount = datesPaged.PageCount;
             result.PageSize = datesPaged.PageSize;

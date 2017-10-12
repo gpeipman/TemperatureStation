@@ -1,3 +1,5762 @@
-﻿{
-
-}
+﻿[
+  [
+    {
+      "Id": 19826,
+      "ReadingTime": "2017-10-11T21:05:45.437",
+      "Value": 12.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 19827,
+      "ReadingTime": "2017-10-11T21:05:45.437",
+      "Value": 21.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19828,
+      "ReadingTime": "2017-10-11T21:05:45.437",
+      "Value": 7.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19829,
+      "ReadingTime": "2017-10-11T21:10:45.45",
+      "Value": 10.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 19830,
+      "ReadingTime": "2017-10-11T21:10:45.45",
+      "Value": 21.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19831,
+      "ReadingTime": "2017-10-11T21:10:45.45",
+      "Value": 7.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19832,
+      "ReadingTime": "2017-10-11T21:15:45.453",
+      "Value": 10.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 19833,
+      "ReadingTime": "2017-10-11T21:15:45.453",
+      "Value": 21.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19834,
+      "ReadingTime": "2017-10-11T21:15:45.453",
+      "Value": 7.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19835,
+      "ReadingTime": "2017-10-11T21:20:45.467",
+      "Value": 10.625,
+      "Name": "Air"
+    },
+    {
+      "Id": 19836,
+      "ReadingTime": "2017-10-11T21:20:45.467",
+      "Value": 21.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19837,
+      "ReadingTime": "2017-10-11T21:20:45.467",
+      "Value": 7.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19838,
+      "ReadingTime": "2017-10-11T21:25:45.483",
+      "Value": 10.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 19839,
+      "ReadingTime": "2017-10-11T21:25:45.483",
+      "Value": 21.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19840,
+      "ReadingTime": "2017-10-11T21:25:45.483",
+      "Value": 7.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19841,
+      "ReadingTime": "2017-10-11T21:30:45.507",
+      "Value": 10.625,
+      "Name": "Air"
+    },
+    {
+      "Id": 19842,
+      "ReadingTime": "2017-10-11T21:30:45.507",
+      "Value": 21.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19843,
+      "ReadingTime": "2017-10-11T21:30:45.507",
+      "Value": 7.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19844,
+      "ReadingTime": "2017-10-11T21:35:45.513",
+      "Value": 10.5625,
+      "Name": "Air"
+    },
+    {
+      "Id": 19845,
+      "ReadingTime": "2017-10-11T21:35:45.513",
+      "Value": 20.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19846,
+      "ReadingTime": "2017-10-11T21:35:45.513",
+      "Value": 7.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19847,
+      "ReadingTime": "2017-10-11T21:40:45.517",
+      "Value": 10.4375,
+      "Name": "Air"
+    },
+    {
+      "Id": 19848,
+      "ReadingTime": "2017-10-11T21:40:45.517",
+      "Value": 20.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19849,
+      "ReadingTime": "2017-10-11T21:40:45.517",
+      "Value": 7.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19850,
+      "ReadingTime": "2017-10-11T21:45:45.537",
+      "Value": 10.9375,
+      "Name": "Air"
+    },
+    {
+      "Id": 19851,
+      "ReadingTime": "2017-10-11T21:45:45.537",
+      "Value": 20.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19852,
+      "ReadingTime": "2017-10-11T21:45:45.537",
+      "Value": 7.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19853,
+      "ReadingTime": "2017-10-11T21:50:45.553",
+      "Value": 10.625,
+      "Name": "Air"
+    },
+    {
+      "Id": 19854,
+      "ReadingTime": "2017-10-11T21:50:45.553",
+      "Value": 20.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19855,
+      "ReadingTime": "2017-10-11T21:50:45.553",
+      "Value": 7.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19856,
+      "ReadingTime": "2017-10-11T21:55:45.567",
+      "Value": 10.625,
+      "Name": "Air"
+    },
+    {
+      "Id": 19857,
+      "ReadingTime": "2017-10-11T21:55:45.567",
+      "Value": 20.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19858,
+      "ReadingTime": "2017-10-11T21:55:45.567",
+      "Value": 7.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19859,
+      "ReadingTime": "2017-10-11T22:00:45.573",
+      "Value": 10.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 19860,
+      "ReadingTime": "2017-10-11T22:00:45.573",
+      "Value": 20.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19861,
+      "ReadingTime": "2017-10-11T22:00:45.573",
+      "Value": 7.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19862,
+      "ReadingTime": "2017-10-11T22:05:45.573",
+      "Value": 10.625,
+      "Name": "Air"
+    },
+    {
+      "Id": 19863,
+      "ReadingTime": "2017-10-11T22:05:45.573",
+      "Value": 20.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19864,
+      "ReadingTime": "2017-10-11T22:05:45.573",
+      "Value": 7.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19865,
+      "ReadingTime": "2017-10-11T22:20:45.597",
+      "Value": 10.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 19866,
+      "ReadingTime": "2017-10-11T22:20:45.597",
+      "Value": 20.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19867,
+      "ReadingTime": "2017-10-11T22:20:45.597",
+      "Value": 7.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19868,
+      "ReadingTime": "2017-10-11T22:25:45.61",
+      "Value": 10.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 19869,
+      "ReadingTime": "2017-10-11T22:25:45.61",
+      "Value": 19.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19870,
+      "ReadingTime": "2017-10-11T22:25:45.61",
+      "Value": 7.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19871,
+      "ReadingTime": "2017-10-11T22:30:45.623",
+      "Value": 10.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 19872,
+      "ReadingTime": "2017-10-11T22:30:45.623",
+      "Value": 19.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19873,
+      "ReadingTime": "2017-10-11T22:30:45.623",
+      "Value": 7.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19874,
+      "ReadingTime": "2017-10-11T22:35:45.64",
+      "Value": 10.5,
+      "Name": "Air"
+    },
+    {
+      "Id": 19875,
+      "ReadingTime": "2017-10-11T22:35:45.64",
+      "Value": 19.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19876,
+      "ReadingTime": "2017-10-11T22:35:45.64",
+      "Value": 7.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19877,
+      "ReadingTime": "2017-10-11T22:40:45.66",
+      "Value": 10.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 19878,
+      "ReadingTime": "2017-10-11T22:40:45.66",
+      "Value": 19.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19879,
+      "ReadingTime": "2017-10-11T22:40:45.66",
+      "Value": 7.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19880,
+      "ReadingTime": "2017-10-11T22:45:45.64",
+      "Value": 10.25,
+      "Name": "Air"
+    },
+    {
+      "Id": 19881,
+      "ReadingTime": "2017-10-11T22:45:45.64",
+      "Value": 19.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19882,
+      "ReadingTime": "2017-10-11T22:45:45.64",
+      "Value": 7.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19883,
+      "ReadingTime": "2017-10-11T22:50:45.657",
+      "Value": 10.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 19884,
+      "ReadingTime": "2017-10-11T22:50:45.657",
+      "Value": 19.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19885,
+      "ReadingTime": "2017-10-11T22:50:45.657",
+      "Value": 7.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19886,
+      "ReadingTime": "2017-10-11T22:55:45.673",
+      "Value": 10.25,
+      "Name": "Air"
+    },
+    {
+      "Id": 19887,
+      "ReadingTime": "2017-10-11T22:55:45.673",
+      "Value": 19.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19888,
+      "ReadingTime": "2017-10-11T22:55:45.673",
+      "Value": 7.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19889,
+      "ReadingTime": "2017-10-11T23:00:45.677",
+      "Value": 10.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 19890,
+      "ReadingTime": "2017-10-11T23:00:45.677",
+      "Value": 19.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19891,
+      "ReadingTime": "2017-10-11T23:00:45.677",
+      "Value": 7.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19892,
+      "ReadingTime": "2017-10-11T23:05:45.68",
+      "Value": 10.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 19893,
+      "ReadingTime": "2017-10-11T23:05:45.68",
+      "Value": 19.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19894,
+      "ReadingTime": "2017-10-11T23:05:45.68",
+      "Value": 7.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19895,
+      "ReadingTime": "2017-10-11T23:10:45.69",
+      "Value": 10.25,
+      "Name": "Air"
+    },
+    {
+      "Id": 19896,
+      "ReadingTime": "2017-10-11T23:10:45.69",
+      "Value": 19.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19897,
+      "ReadingTime": "2017-10-11T23:10:45.69",
+      "Value": 7.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19898,
+      "ReadingTime": "2017-10-11T23:15:45.693",
+      "Value": 10.25,
+      "Name": "Air"
+    },
+    {
+      "Id": 19899,
+      "ReadingTime": "2017-10-11T23:15:45.693",
+      "Value": 19.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19900,
+      "ReadingTime": "2017-10-11T23:15:45.693",
+      "Value": 7.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19901,
+      "ReadingTime": "2017-10-11T23:20:45.703",
+      "Value": 10.0,
+      "Name": "Air"
+    },
+    {
+      "Id": 19902,
+      "ReadingTime": "2017-10-11T23:20:45.703",
+      "Value": 18.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19903,
+      "ReadingTime": "2017-10-11T23:20:45.703",
+      "Value": 7.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19904,
+      "ReadingTime": "2017-10-11T23:25:45.71",
+      "Value": 10.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 19905,
+      "ReadingTime": "2017-10-11T23:25:45.71",
+      "Value": 18.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19906,
+      "ReadingTime": "2017-10-11T23:25:45.71",
+      "Value": 7.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19907,
+      "ReadingTime": "2017-10-11T23:30:45.723",
+      "Value": 10.0625,
+      "Name": "Air"
+    },
+    {
+      "Id": 19908,
+      "ReadingTime": "2017-10-11T23:30:45.723",
+      "Value": 18.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19909,
+      "ReadingTime": "2017-10-11T23:30:45.723",
+      "Value": 7.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19910,
+      "ReadingTime": "2017-10-11T23:35:45.933",
+      "Value": 10.0,
+      "Name": "Air"
+    },
+    {
+      "Id": 19911,
+      "ReadingTime": "2017-10-11T23:35:45.933",
+      "Value": 18.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19912,
+      "ReadingTime": "2017-10-11T23:35:45.933",
+      "Value": 7.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19913,
+      "ReadingTime": "2017-10-11T23:40:45.73",
+      "Value": 9.9375,
+      "Name": "Air"
+    },
+    {
+      "Id": 19914,
+      "ReadingTime": "2017-10-11T23:40:45.73",
+      "Value": 18.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19915,
+      "ReadingTime": "2017-10-11T23:40:45.73",
+      "Value": 7.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19916,
+      "ReadingTime": "2017-10-11T23:45:45.747",
+      "Value": 9.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 19917,
+      "ReadingTime": "2017-10-11T23:45:45.747",
+      "Value": 18.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19918,
+      "ReadingTime": "2017-10-11T23:45:45.747",
+      "Value": 7.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19919,
+      "ReadingTime": "2017-10-11T23:50:45.757",
+      "Value": 10.0625,
+      "Name": "Air"
+    },
+    {
+      "Id": 19920,
+      "ReadingTime": "2017-10-11T23:50:45.757",
+      "Value": 18.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19921,
+      "ReadingTime": "2017-10-11T23:50:45.757",
+      "Value": 7.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19922,
+      "ReadingTime": "2017-10-11T23:55:45.77",
+      "Value": 9.9375,
+      "Name": "Air"
+    },
+    {
+      "Id": 19923,
+      "ReadingTime": "2017-10-11T23:55:45.77",
+      "Value": 18.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19924,
+      "ReadingTime": "2017-10-11T23:55:45.77",
+      "Value": 7.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19925,
+      "ReadingTime": "2017-10-12T00:00:45.77",
+      "Value": 10.0,
+      "Name": "Air"
+    },
+    {
+      "Id": 19926,
+      "ReadingTime": "2017-10-12T00:00:45.77",
+      "Value": 18.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19927,
+      "ReadingTime": "2017-10-12T00:00:45.77",
+      "Value": 7.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19928,
+      "ReadingTime": "2017-10-12T00:05:45.777",
+      "Value": 9.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 19929,
+      "ReadingTime": "2017-10-12T00:05:45.777",
+      "Value": 18.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19930,
+      "ReadingTime": "2017-10-12T00:05:45.777",
+      "Value": 6.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19931,
+      "ReadingTime": "2017-10-12T00:10:45.79",
+      "Value": 9.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 19932,
+      "ReadingTime": "2017-10-12T00:10:45.79",
+      "Value": 18.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19933,
+      "ReadingTime": "2017-10-12T00:10:45.79",
+      "Value": 6.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19934,
+      "ReadingTime": "2017-10-12T00:15:45.793",
+      "Value": 9.6875,
+      "Name": "Air"
+    },
+    {
+      "Id": 19935,
+      "ReadingTime": "2017-10-12T00:15:45.793",
+      "Value": 18.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19936,
+      "ReadingTime": "2017-10-12T00:15:45.793",
+      "Value": 6.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19937,
+      "ReadingTime": "2017-10-12T00:20:45.807",
+      "Value": 9.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 19938,
+      "ReadingTime": "2017-10-12T00:20:45.807",
+      "Value": 17.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19939,
+      "ReadingTime": "2017-10-12T00:20:45.807",
+      "Value": 6.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19940,
+      "ReadingTime": "2017-10-12T00:25:45.807",
+      "Value": 9.6875,
+      "Name": "Air"
+    },
+    {
+      "Id": 19941,
+      "ReadingTime": "2017-10-12T00:25:45.807",
+      "Value": 17.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19942,
+      "ReadingTime": "2017-10-12T00:25:45.807",
+      "Value": 6.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19943,
+      "ReadingTime": "2017-10-12T00:30:45.82",
+      "Value": 9.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 19944,
+      "ReadingTime": "2017-10-12T00:30:45.82",
+      "Value": 17.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19945,
+      "ReadingTime": "2017-10-12T00:30:45.82",
+      "Value": 6.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19946,
+      "ReadingTime": "2017-10-12T00:35:45.833",
+      "Value": 9.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 19947,
+      "ReadingTime": "2017-10-12T00:35:45.833",
+      "Value": 17.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19948,
+      "ReadingTime": "2017-10-12T00:35:45.833",
+      "Value": 6.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19949,
+      "ReadingTime": "2017-10-12T00:40:45.837",
+      "Value": 9.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 19950,
+      "ReadingTime": "2017-10-12T00:40:45.837",
+      "Value": 17.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19951,
+      "ReadingTime": "2017-10-12T00:40:45.837",
+      "Value": 6.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19952,
+      "ReadingTime": "2017-10-12T00:45:45.847",
+      "Value": 9.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 19953,
+      "ReadingTime": "2017-10-12T00:45:45.847",
+      "Value": 17.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19954,
+      "ReadingTime": "2017-10-12T00:45:45.847",
+      "Value": 6.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19955,
+      "ReadingTime": "2017-10-12T00:50:45.86",
+      "Value": 9.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 19956,
+      "ReadingTime": "2017-10-12T00:50:45.86",
+      "Value": 17.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19957,
+      "ReadingTime": "2017-10-12T00:50:45.86",
+      "Value": 6.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19958,
+      "ReadingTime": "2017-10-12T00:55:45.87",
+      "Value": 9.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 19959,
+      "ReadingTime": "2017-10-12T00:55:45.87",
+      "Value": 17.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19960,
+      "ReadingTime": "2017-10-12T00:55:45.87",
+      "Value": 6.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19961,
+      "ReadingTime": "2017-10-12T01:00:45.877",
+      "Value": 9.5,
+      "Name": "Air"
+    },
+    {
+      "Id": 19962,
+      "ReadingTime": "2017-10-12T01:00:45.877",
+      "Value": 17.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19963,
+      "ReadingTime": "2017-10-12T01:00:45.877",
+      "Value": 6.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19964,
+      "ReadingTime": "2017-10-12T01:05:45.887",
+      "Value": 9.5,
+      "Name": "Air"
+    },
+    {
+      "Id": 19965,
+      "ReadingTime": "2017-10-12T01:05:45.887",
+      "Value": 17.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19966,
+      "ReadingTime": "2017-10-12T01:05:45.887",
+      "Value": 5.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19967,
+      "ReadingTime": "2017-10-12T01:10:45.9",
+      "Value": 9.5625,
+      "Name": "Air"
+    },
+    {
+      "Id": 19968,
+      "ReadingTime": "2017-10-12T01:10:45.9",
+      "Value": 17.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19969,
+      "ReadingTime": "2017-10-12T01:10:45.9",
+      "Value": 5.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19970,
+      "ReadingTime": "2017-10-12T01:15:45.913",
+      "Value": 9.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 19971,
+      "ReadingTime": "2017-10-12T01:15:45.913",
+      "Value": 17.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19972,
+      "ReadingTime": "2017-10-12T01:15:45.913",
+      "Value": 5.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19973,
+      "ReadingTime": "2017-10-12T01:20:45.93",
+      "Value": 8.9375,
+      "Name": "Air"
+    },
+    {
+      "Id": 19974,
+      "ReadingTime": "2017-10-12T01:20:45.93",
+      "Value": 17.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19975,
+      "ReadingTime": "2017-10-12T01:20:45.93",
+      "Value": 5.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19976,
+      "ReadingTime": "2017-10-12T01:25:45.94",
+      "Value": 8.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 19977,
+      "ReadingTime": "2017-10-12T01:25:45.94",
+      "Value": 17.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19978,
+      "ReadingTime": "2017-10-12T01:25:45.94",
+      "Value": 5.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19979,
+      "ReadingTime": "2017-10-12T01:30:45.947",
+      "Value": 8.5625,
+      "Name": "Air"
+    },
+    {
+      "Id": 19980,
+      "ReadingTime": "2017-10-12T01:30:45.947",
+      "Value": 16.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19981,
+      "ReadingTime": "2017-10-12T01:30:45.947",
+      "Value": 5.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19982,
+      "ReadingTime": "2017-10-12T01:35:45.97",
+      "Value": 8.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 19983,
+      "ReadingTime": "2017-10-12T01:35:45.97",
+      "Value": 16.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19984,
+      "ReadingTime": "2017-10-12T01:35:45.97",
+      "Value": 5.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19985,
+      "ReadingTime": "2017-10-12T01:40:45.967",
+      "Value": 8.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 19986,
+      "ReadingTime": "2017-10-12T01:40:45.967",
+      "Value": 16.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19987,
+      "ReadingTime": "2017-10-12T01:40:45.967",
+      "Value": 5.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19988,
+      "ReadingTime": "2017-10-12T01:45:45.98",
+      "Value": 8.625,
+      "Name": "Air"
+    },
+    {
+      "Id": 19989,
+      "ReadingTime": "2017-10-12T01:45:45.98",
+      "Value": 16.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19990,
+      "ReadingTime": "2017-10-12T01:45:45.98",
+      "Value": 5.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19991,
+      "ReadingTime": "2017-10-12T01:50:45.98",
+      "Value": 8.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 19992,
+      "ReadingTime": "2017-10-12T01:50:45.98",
+      "Value": 16.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19993,
+      "ReadingTime": "2017-10-12T01:50:45.98",
+      "Value": 5.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19994,
+      "ReadingTime": "2017-10-12T01:55:45.99",
+      "Value": 8.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 19995,
+      "ReadingTime": "2017-10-12T01:55:45.99",
+      "Value": 16.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19996,
+      "ReadingTime": "2017-10-12T01:55:45.99",
+      "Value": 5.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 19997,
+      "ReadingTime": "2017-10-12T02:00:46.007",
+      "Value": 8.4375,
+      "Name": "Air"
+    },
+    {
+      "Id": 19998,
+      "ReadingTime": "2017-10-12T02:00:46.007",
+      "Value": 16.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 19999,
+      "ReadingTime": "2017-10-12T02:00:46.007",
+      "Value": 5.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20000,
+      "ReadingTime": "2017-10-12T02:05:46.017",
+      "Value": 8.5,
+      "Name": "Air"
+    },
+    {
+      "Id": 20001,
+      "ReadingTime": "2017-10-12T02:05:46.017",
+      "Value": 16.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20002,
+      "ReadingTime": "2017-10-12T02:05:46.017",
+      "Value": 3.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20003,
+      "ReadingTime": "2017-10-12T02:10:46.027",
+      "Value": 8.25,
+      "Name": "Air"
+    },
+    {
+      "Id": 20004,
+      "ReadingTime": "2017-10-12T02:10:46.027",
+      "Value": 16.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20005,
+      "ReadingTime": "2017-10-12T02:10:46.027",
+      "Value": 3.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20006,
+      "ReadingTime": "2017-10-12T02:15:46.03",
+      "Value": 8.4375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20007,
+      "ReadingTime": "2017-10-12T02:15:46.03",
+      "Value": 16.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20008,
+      "ReadingTime": "2017-10-12T02:15:46.03",
+      "Value": 3.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20009,
+      "ReadingTime": "2017-10-12T02:20:46.037",
+      "Value": 8.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20010,
+      "ReadingTime": "2017-10-12T02:20:46.037",
+      "Value": 16.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20011,
+      "ReadingTime": "2017-10-12T02:20:46.037",
+      "Value": 3.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20012,
+      "ReadingTime": "2017-10-12T02:25:46.047",
+      "Value": 8.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20013,
+      "ReadingTime": "2017-10-12T02:25:46.047",
+      "Value": 16.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20014,
+      "ReadingTime": "2017-10-12T02:25:46.047",
+      "Value": 3.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20015,
+      "ReadingTime": "2017-10-12T02:30:46.067",
+      "Value": 7.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20016,
+      "ReadingTime": "2017-10-12T02:30:46.067",
+      "Value": 16.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20017,
+      "ReadingTime": "2017-10-12T02:30:46.067",
+      "Value": 3.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20018,
+      "ReadingTime": "2017-10-12T02:35:46.083",
+      "Value": 7.5,
+      "Name": "Air"
+    },
+    {
+      "Id": 20019,
+      "ReadingTime": "2017-10-12T02:35:46.083",
+      "Value": 15.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20020,
+      "ReadingTime": "2017-10-12T02:35:46.083",
+      "Value": 3.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20021,
+      "ReadingTime": "2017-10-12T02:40:46.097",
+      "Value": 7.25,
+      "Name": "Air"
+    },
+    {
+      "Id": 20022,
+      "ReadingTime": "2017-10-12T02:40:46.097",
+      "Value": 15.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20023,
+      "ReadingTime": "2017-10-12T02:40:46.097",
+      "Value": 3.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20024,
+      "ReadingTime": "2017-10-12T02:45:46.113",
+      "Value": 7.5,
+      "Name": "Air"
+    },
+    {
+      "Id": 20025,
+      "ReadingTime": "2017-10-12T02:45:46.113",
+      "Value": 15.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20026,
+      "ReadingTime": "2017-10-12T02:45:46.113",
+      "Value": 3.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20027,
+      "ReadingTime": "2017-10-12T02:50:46.13",
+      "Value": 7.5,
+      "Name": "Air"
+    },
+    {
+      "Id": 20028,
+      "ReadingTime": "2017-10-12T02:50:46.13",
+      "Value": 15.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20029,
+      "ReadingTime": "2017-10-12T02:50:46.13",
+      "Value": 3.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20030,
+      "ReadingTime": "2017-10-12T02:55:46.14",
+      "Value": 7.5625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20031,
+      "ReadingTime": "2017-10-12T02:55:46.14",
+      "Value": 15.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20032,
+      "ReadingTime": "2017-10-12T02:55:46.14",
+      "Value": 3.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20033,
+      "ReadingTime": "2017-10-12T03:00:46.157",
+      "Value": 7.4375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20034,
+      "ReadingTime": "2017-10-12T03:00:46.157",
+      "Value": 15.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20035,
+      "ReadingTime": "2017-10-12T03:00:46.157",
+      "Value": 3.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20036,
+      "ReadingTime": "2017-10-12T03:05:46.177",
+      "Value": 7.5,
+      "Name": "Air"
+    },
+    {
+      "Id": 20037,
+      "ReadingTime": "2017-10-12T03:05:46.177",
+      "Value": 15.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20038,
+      "ReadingTime": "2017-10-12T03:05:46.177",
+      "Value": 3.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20039,
+      "ReadingTime": "2017-10-12T03:10:46.177",
+      "Value": 7.5625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20040,
+      "ReadingTime": "2017-10-12T03:10:46.177",
+      "Value": 15.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20041,
+      "ReadingTime": "2017-10-12T03:10:46.177",
+      "Value": 3.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20042,
+      "ReadingTime": "2017-10-12T03:15:46.177",
+      "Value": 7.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20043,
+      "ReadingTime": "2017-10-12T03:15:46.177",
+      "Value": 15.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20044,
+      "ReadingTime": "2017-10-12T03:15:46.177",
+      "Value": 3.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20045,
+      "ReadingTime": "2017-10-12T03:20:46.187",
+      "Value": 7.25,
+      "Name": "Air"
+    },
+    {
+      "Id": 20046,
+      "ReadingTime": "2017-10-12T03:20:46.187",
+      "Value": 15.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20047,
+      "ReadingTime": "2017-10-12T03:20:46.187",
+      "Value": 3.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20048,
+      "ReadingTime": "2017-10-12T03:25:46.197",
+      "Value": 7.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20049,
+      "ReadingTime": "2017-10-12T03:25:46.197",
+      "Value": 15.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20050,
+      "ReadingTime": "2017-10-12T03:25:46.197",
+      "Value": 3.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20051,
+      "ReadingTime": "2017-10-12T03:30:46.21",
+      "Value": 7.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20052,
+      "ReadingTime": "2017-10-12T03:30:46.21",
+      "Value": 15.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20053,
+      "ReadingTime": "2017-10-12T03:30:46.21",
+      "Value": 3.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20054,
+      "ReadingTime": "2017-10-12T03:35:46.223",
+      "Value": 7.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20055,
+      "ReadingTime": "2017-10-12T03:35:46.223",
+      "Value": 15.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20056,
+      "ReadingTime": "2017-10-12T03:35:46.223",
+      "Value": 3.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20057,
+      "ReadingTime": "2017-10-12T03:40:46.233",
+      "Value": 7.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20058,
+      "ReadingTime": "2017-10-12T03:40:46.233",
+      "Value": 15.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20059,
+      "ReadingTime": "2017-10-12T03:40:46.233",
+      "Value": 3.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20060,
+      "ReadingTime": "2017-10-12T03:45:46.247",
+      "Value": 7.25,
+      "Name": "Air"
+    },
+    {
+      "Id": 20061,
+      "ReadingTime": "2017-10-12T03:45:46.247",
+      "Value": 14.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20062,
+      "ReadingTime": "2017-10-12T03:45:46.247",
+      "Value": 3.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20063,
+      "ReadingTime": "2017-10-12T03:50:46.26",
+      "Value": 6.9375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20064,
+      "ReadingTime": "2017-10-12T03:50:46.26",
+      "Value": 14.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20065,
+      "ReadingTime": "2017-10-12T03:50:46.26",
+      "Value": 3.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20066,
+      "ReadingTime": "2017-10-12T03:55:46.273",
+      "Value": 7.625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20067,
+      "ReadingTime": "2017-10-12T03:55:46.273",
+      "Value": 14.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20068,
+      "ReadingTime": "2017-10-12T03:55:46.273",
+      "Value": 3.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20069,
+      "ReadingTime": "2017-10-12T04:00:46.277",
+      "Value": 7.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20070,
+      "ReadingTime": "2017-10-12T04:00:46.277",
+      "Value": 14.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20071,
+      "ReadingTime": "2017-10-12T04:00:46.277",
+      "Value": 3.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20072,
+      "ReadingTime": "2017-10-12T04:05:46.28",
+      "Value": 7.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20073,
+      "ReadingTime": "2017-10-12T04:05:46.28",
+      "Value": 14.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20074,
+      "ReadingTime": "2017-10-12T04:05:46.28",
+      "Value": 3.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20075,
+      "ReadingTime": "2017-10-12T04:10:46.293",
+      "Value": 7.0,
+      "Name": "Air"
+    },
+    {
+      "Id": 20076,
+      "ReadingTime": "2017-10-12T04:10:46.293",
+      "Value": 14.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20077,
+      "ReadingTime": "2017-10-12T04:10:46.293",
+      "Value": 3.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20078,
+      "ReadingTime": "2017-10-12T04:15:46.313",
+      "Value": 6.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20079,
+      "ReadingTime": "2017-10-12T04:15:46.313",
+      "Value": 14.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20080,
+      "ReadingTime": "2017-10-12T04:15:46.313",
+      "Value": 3.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20081,
+      "ReadingTime": "2017-10-12T04:20:46.307",
+      "Value": 6.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20082,
+      "ReadingTime": "2017-10-12T04:20:46.307",
+      "Value": 14.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20083,
+      "ReadingTime": "2017-10-12T04:20:46.307",
+      "Value": 3.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20084,
+      "ReadingTime": "2017-10-12T04:25:46.323",
+      "Value": 6.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20085,
+      "ReadingTime": "2017-10-12T04:25:46.323",
+      "Value": 14.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20086,
+      "ReadingTime": "2017-10-12T04:25:46.323",
+      "Value": 3.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20087,
+      "ReadingTime": "2017-10-12T04:30:46.347",
+      "Value": 6.625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20088,
+      "ReadingTime": "2017-10-12T04:30:46.347",
+      "Value": 14.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20089,
+      "ReadingTime": "2017-10-12T04:30:46.347",
+      "Value": 3.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20090,
+      "ReadingTime": "2017-10-12T04:35:46.37",
+      "Value": 6.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20091,
+      "ReadingTime": "2017-10-12T04:35:46.37",
+      "Value": 14.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20092,
+      "ReadingTime": "2017-10-12T04:35:46.37",
+      "Value": 3.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20093,
+      "ReadingTime": "2017-10-12T04:40:46.38",
+      "Value": 7.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20094,
+      "ReadingTime": "2017-10-12T04:40:46.38",
+      "Value": 14.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20095,
+      "ReadingTime": "2017-10-12T04:40:46.38",
+      "Value": 3.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20096,
+      "ReadingTime": "2017-10-12T04:45:46.383",
+      "Value": 7.0,
+      "Name": "Air"
+    },
+    {
+      "Id": 20097,
+      "ReadingTime": "2017-10-12T04:45:46.383",
+      "Value": 14.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20098,
+      "ReadingTime": "2017-10-12T04:45:46.383",
+      "Value": 3.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20099,
+      "ReadingTime": "2017-10-12T04:50:46.4",
+      "Value": 7.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20100,
+      "ReadingTime": "2017-10-12T04:50:46.4",
+      "Value": 14.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20101,
+      "ReadingTime": "2017-10-12T04:50:46.4",
+      "Value": 3.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20102,
+      "ReadingTime": "2017-10-12T04:55:46.417",
+      "Value": 7.25,
+      "Name": "Air"
+    },
+    {
+      "Id": 20103,
+      "ReadingTime": "2017-10-12T04:55:46.417",
+      "Value": 14.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20104,
+      "ReadingTime": "2017-10-12T04:55:46.417",
+      "Value": 3.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20105,
+      "ReadingTime": "2017-10-12T05:00:46.433",
+      "Value": 7.4375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20106,
+      "ReadingTime": "2017-10-12T05:00:46.433",
+      "Value": 14.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20107,
+      "ReadingTime": "2017-10-12T05:00:46.433",
+      "Value": 3.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20108,
+      "ReadingTime": "2017-10-12T05:05:46.433",
+      "Value": 7.9375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20109,
+      "ReadingTime": "2017-10-12T05:05:46.433",
+      "Value": 13.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20110,
+      "ReadingTime": "2017-10-12T05:05:46.433",
+      "Value": 4.6,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20111,
+      "ReadingTime": "2017-10-12T05:10:46.447",
+      "Value": 7.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20112,
+      "ReadingTime": "2017-10-12T05:10:46.447",
+      "Value": 13.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20113,
+      "ReadingTime": "2017-10-12T05:10:46.447",
+      "Value": 4.6,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20114,
+      "ReadingTime": "2017-10-12T05:15:46.463",
+      "Value": 7.5625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20115,
+      "ReadingTime": "2017-10-12T05:15:46.463",
+      "Value": 13.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20116,
+      "ReadingTime": "2017-10-12T05:15:46.463",
+      "Value": 4.6,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20117,
+      "ReadingTime": "2017-10-12T05:20:46.48",
+      "Value": 7.4375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20118,
+      "ReadingTime": "2017-10-12T05:20:46.48",
+      "Value": 13.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20119,
+      "ReadingTime": "2017-10-12T05:20:46.48",
+      "Value": 4.6,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20120,
+      "ReadingTime": "2017-10-12T05:25:46.497",
+      "Value": 7.6875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20121,
+      "ReadingTime": "2017-10-12T05:25:46.497",
+      "Value": 13.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20122,
+      "ReadingTime": "2017-10-12T05:25:46.497",
+      "Value": 4.6,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20123,
+      "ReadingTime": "2017-10-12T05:30:46.507",
+      "Value": 7.625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20124,
+      "ReadingTime": "2017-10-12T05:30:46.507",
+      "Value": 13.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20125,
+      "ReadingTime": "2017-10-12T05:30:46.507",
+      "Value": 4.6,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20126,
+      "ReadingTime": "2017-10-12T05:35:46.517",
+      "Value": 7.6875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20127,
+      "ReadingTime": "2017-10-12T05:35:46.517",
+      "Value": 13.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20128,
+      "ReadingTime": "2017-10-12T05:35:46.517",
+      "Value": 4.6,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20129,
+      "ReadingTime": "2017-10-12T05:40:46.527",
+      "Value": 7.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20130,
+      "ReadingTime": "2017-10-12T05:40:46.527",
+      "Value": 13.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20131,
+      "ReadingTime": "2017-10-12T05:40:46.527",
+      "Value": 4.6,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20132,
+      "ReadingTime": "2017-10-12T05:45:46.557",
+      "Value": 7.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20133,
+      "ReadingTime": "2017-10-12T05:45:46.557",
+      "Value": 13.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20134,
+      "ReadingTime": "2017-10-12T05:45:46.557",
+      "Value": 4.6,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20135,
+      "ReadingTime": "2017-10-12T05:50:46.56",
+      "Value": 7.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 20136,
+      "ReadingTime": "2017-10-12T05:50:46.56",
+      "Value": 13.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20137,
+      "ReadingTime": "2017-10-12T05:50:46.56",
+      "Value": 4.6,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20138,
+      "ReadingTime": "2017-10-12T05:55:46.583",
+      "Value": 7.6875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20139,
+      "ReadingTime": "2017-10-12T05:55:46.583",
+      "Value": 13.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20140,
+      "ReadingTime": "2017-10-12T05:55:46.583",
+      "Value": 4.6,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20141,
+      "ReadingTime": "2017-10-12T06:00:46.583",
+      "Value": 8.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20142,
+      "ReadingTime": "2017-10-12T06:00:46.583",
+      "Value": 13.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20143,
+      "ReadingTime": "2017-10-12T06:00:46.583",
+      "Value": 4.6,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20144,
+      "ReadingTime": "2017-10-12T07:01:54.22",
+      "Value": 7.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20145,
+      "ReadingTime": "2017-10-12T07:01:54.22",
+      "Value": 12.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20146,
+      "ReadingTime": "2017-10-12T07:01:54.22",
+      "Value": 5.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20147,
+      "ReadingTime": "2017-10-12T07:06:54.17",
+      "Value": 7.9375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20148,
+      "ReadingTime": "2017-10-12T07:06:54.17",
+      "Value": 12.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20149,
+      "ReadingTime": "2017-10-12T07:06:54.17",
+      "Value": 5.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20150,
+      "ReadingTime": "2017-10-12T07:11:54.177",
+      "Value": 7.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20151,
+      "ReadingTime": "2017-10-12T07:11:54.177",
+      "Value": 12.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20152,
+      "ReadingTime": "2017-10-12T07:11:54.177",
+      "Value": 5.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20153,
+      "ReadingTime": "2017-10-12T07:16:54.19",
+      "Value": 7.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20154,
+      "ReadingTime": "2017-10-12T07:16:54.19",
+      "Value": 12.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20155,
+      "ReadingTime": "2017-10-12T07:16:54.19",
+      "Value": 5.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20156,
+      "ReadingTime": "2017-10-12T07:21:54.193",
+      "Value": 7.625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20157,
+      "ReadingTime": "2017-10-12T07:21:54.193",
+      "Value": 12.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20158,
+      "ReadingTime": "2017-10-12T07:21:54.193",
+      "Value": 5.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20159,
+      "ReadingTime": "2017-10-12T07:26:54.207",
+      "Value": 7.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 20160,
+      "ReadingTime": "2017-10-12T07:26:54.207",
+      "Value": 12.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20161,
+      "ReadingTime": "2017-10-12T07:26:54.207",
+      "Value": 5.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20162,
+      "ReadingTime": "2017-10-12T07:31:54.217",
+      "Value": 7.9375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20163,
+      "ReadingTime": "2017-10-12T07:31:54.217",
+      "Value": 12.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20164,
+      "ReadingTime": "2017-10-12T07:31:54.217",
+      "Value": 5.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20165,
+      "ReadingTime": "2017-10-12T07:36:54.233",
+      "Value": 7.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20166,
+      "ReadingTime": "2017-10-12T07:36:54.233",
+      "Value": 12.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20167,
+      "ReadingTime": "2017-10-12T07:36:54.233",
+      "Value": 5.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20168,
+      "ReadingTime": "2017-10-12T07:41:54.237",
+      "Value": 7.6875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20169,
+      "ReadingTime": "2017-10-12T07:41:54.237",
+      "Value": 12.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20170,
+      "ReadingTime": "2017-10-12T07:41:54.237",
+      "Value": 5.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20171,
+      "ReadingTime": "2017-10-12T07:46:54.237",
+      "Value": 7.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 20172,
+      "ReadingTime": "2017-10-12T07:46:54.237",
+      "Value": 12.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20173,
+      "ReadingTime": "2017-10-12T07:46:54.237",
+      "Value": 5.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20174,
+      "ReadingTime": "2017-10-12T07:51:54.243",
+      "Value": 7.625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20175,
+      "ReadingTime": "2017-10-12T07:51:54.243",
+      "Value": 12.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20176,
+      "ReadingTime": "2017-10-12T07:51:54.243",
+      "Value": 5.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20177,
+      "ReadingTime": "2017-10-12T07:56:54.257",
+      "Value": 7.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 20178,
+      "ReadingTime": "2017-10-12T07:56:54.257",
+      "Value": 12.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20179,
+      "ReadingTime": "2017-10-12T07:56:54.257",
+      "Value": 5.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20180,
+      "ReadingTime": "2017-10-12T08:01:54.267",
+      "Value": 7.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20181,
+      "ReadingTime": "2017-10-12T08:01:54.267",
+      "Value": 12.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20182,
+      "ReadingTime": "2017-10-12T08:01:54.267",
+      "Value": 5.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20183,
+      "ReadingTime": "2017-10-12T08:06:54.267",
+      "Value": 7.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20184,
+      "ReadingTime": "2017-10-12T08:06:54.267",
+      "Value": 12.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20185,
+      "ReadingTime": "2017-10-12T08:06:54.267",
+      "Value": 5.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20186,
+      "ReadingTime": "2017-10-12T08:11:54.27",
+      "Value": 7.6875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20187,
+      "ReadingTime": "2017-10-12T08:11:54.27",
+      "Value": 12.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20188,
+      "ReadingTime": "2017-10-12T08:11:54.27",
+      "Value": 5.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20189,
+      "ReadingTime": "2017-10-12T08:16:54.28",
+      "Value": 7.6875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20190,
+      "ReadingTime": "2017-10-12T08:16:54.28",
+      "Value": 12.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20191,
+      "ReadingTime": "2017-10-12T08:16:54.28",
+      "Value": 5.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20192,
+      "ReadingTime": "2017-10-12T08:21:54.293",
+      "Value": 7.6875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20193,
+      "ReadingTime": "2017-10-12T08:21:54.293",
+      "Value": 12.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20194,
+      "ReadingTime": "2017-10-12T08:21:54.293",
+      "Value": 5.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20195,
+      "ReadingTime": "2017-10-12T08:26:54.31",
+      "Value": 7.6875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20196,
+      "ReadingTime": "2017-10-12T08:26:54.31",
+      "Value": 12.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20197,
+      "ReadingTime": "2017-10-12T08:26:54.31",
+      "Value": 5.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20198,
+      "ReadingTime": "2017-10-12T08:31:54.313",
+      "Value": 7.625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20199,
+      "ReadingTime": "2017-10-12T08:31:54.313",
+      "Value": 12.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20200,
+      "ReadingTime": "2017-10-12T08:31:54.313",
+      "Value": 5.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20201,
+      "ReadingTime": "2017-10-12T08:36:54.323",
+      "Value": 7.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20202,
+      "ReadingTime": "2017-10-12T08:36:54.323",
+      "Value": 12.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20203,
+      "ReadingTime": "2017-10-12T08:36:54.323",
+      "Value": 5.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20204,
+      "ReadingTime": "2017-10-12T08:41:54.323",
+      "Value": 7.6875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20205,
+      "ReadingTime": "2017-10-12T08:41:54.323",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20206,
+      "ReadingTime": "2017-10-12T08:41:54.323",
+      "Value": 5.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20207,
+      "ReadingTime": "2017-10-12T08:46:54.347",
+      "Value": 7.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20208,
+      "ReadingTime": "2017-10-12T08:46:54.347",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20209,
+      "ReadingTime": "2017-10-12T08:46:54.347",
+      "Value": 5.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20210,
+      "ReadingTime": "2017-10-12T08:51:54.347",
+      "Value": 7.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20211,
+      "ReadingTime": "2017-10-12T08:51:54.347",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20212,
+      "ReadingTime": "2017-10-12T08:51:54.347",
+      "Value": 5.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20213,
+      "ReadingTime": "2017-10-12T08:56:54.353",
+      "Value": 8.0625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20214,
+      "ReadingTime": "2017-10-12T08:56:54.353",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20215,
+      "ReadingTime": "2017-10-12T08:56:54.353",
+      "Value": 5.7,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20216,
+      "ReadingTime": "2017-10-12T09:01:54.36",
+      "Value": 7.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20217,
+      "ReadingTime": "2017-10-12T09:01:54.36",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20218,
+      "ReadingTime": "2017-10-12T09:01:54.36",
+      "Value": 6.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20219,
+      "ReadingTime": "2017-10-12T09:06:54.373",
+      "Value": 7.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20220,
+      "ReadingTime": "2017-10-12T09:06:54.373",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20221,
+      "ReadingTime": "2017-10-12T09:06:54.373",
+      "Value": 6.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20222,
+      "ReadingTime": "2017-10-12T09:11:54.38",
+      "Value": 7.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 20223,
+      "ReadingTime": "2017-10-12T09:11:54.38",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20224,
+      "ReadingTime": "2017-10-12T09:11:54.38",
+      "Value": 6.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20225,
+      "ReadingTime": "2017-10-12T09:16:54.387",
+      "Value": 8.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20226,
+      "ReadingTime": "2017-10-12T09:16:54.387",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20227,
+      "ReadingTime": "2017-10-12T09:16:54.387",
+      "Value": 6.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20228,
+      "ReadingTime": "2017-10-12T09:21:54.397",
+      "Value": 8.0,
+      "Name": "Air"
+    },
+    {
+      "Id": 20229,
+      "ReadingTime": "2017-10-12T09:21:54.397",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20230,
+      "ReadingTime": "2017-10-12T09:21:54.397",
+      "Value": 6.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20231,
+      "ReadingTime": "2017-10-12T09:26:54.41",
+      "Value": 7.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20232,
+      "ReadingTime": "2017-10-12T09:26:54.41",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20233,
+      "ReadingTime": "2017-10-12T09:26:54.41",
+      "Value": 6.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20234,
+      "ReadingTime": "2017-10-12T09:31:54.423",
+      "Value": 7.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20235,
+      "ReadingTime": "2017-10-12T09:31:54.423",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20236,
+      "ReadingTime": "2017-10-12T09:31:54.423",
+      "Value": 6.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20237,
+      "ReadingTime": "2017-10-12T09:36:54.44",
+      "Value": 7.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20238,
+      "ReadingTime": "2017-10-12T09:36:54.44",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20239,
+      "ReadingTime": "2017-10-12T09:36:54.44",
+      "Value": 6.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20240,
+      "ReadingTime": "2017-10-12T09:41:54.457",
+      "Value": 7.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20241,
+      "ReadingTime": "2017-10-12T09:41:54.457",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20242,
+      "ReadingTime": "2017-10-12T09:41:54.457",
+      "Value": 6.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20243,
+      "ReadingTime": "2017-10-12T09:46:54.473",
+      "Value": 8.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20244,
+      "ReadingTime": "2017-10-12T09:46:54.473",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20245,
+      "ReadingTime": "2017-10-12T09:46:54.473",
+      "Value": 6.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20246,
+      "ReadingTime": "2017-10-12T09:51:54.487",
+      "Value": 8.0,
+      "Name": "Air"
+    },
+    {
+      "Id": 20247,
+      "ReadingTime": "2017-10-12T09:51:54.487",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20248,
+      "ReadingTime": "2017-10-12T09:51:54.487",
+      "Value": 6.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20249,
+      "ReadingTime": "2017-10-12T09:56:54.5",
+      "Value": 8.0,
+      "Name": "Air"
+    },
+    {
+      "Id": 20250,
+      "ReadingTime": "2017-10-12T09:56:54.5",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20251,
+      "ReadingTime": "2017-10-12T09:56:54.5",
+      "Value": 6.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20252,
+      "ReadingTime": "2017-10-12T10:01:54.513",
+      "Value": 8.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20253,
+      "ReadingTime": "2017-10-12T10:01:54.513",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20254,
+      "ReadingTime": "2017-10-12T10:01:54.513",
+      "Value": 6.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20255,
+      "ReadingTime": "2017-10-12T10:06:54.533",
+      "Value": 8.0625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20256,
+      "ReadingTime": "2017-10-12T10:06:54.533",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20257,
+      "ReadingTime": "2017-10-12T10:06:54.533",
+      "Value": 6.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20258,
+      "ReadingTime": "2017-10-12T10:11:54.54",
+      "Value": 8.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20259,
+      "ReadingTime": "2017-10-12T10:11:54.54",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20260,
+      "ReadingTime": "2017-10-12T10:11:54.54",
+      "Value": 6.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20261,
+      "ReadingTime": "2017-10-12T10:16:54.563",
+      "Value": 8.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20262,
+      "ReadingTime": "2017-10-12T10:16:54.563",
+      "Value": 11.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20263,
+      "ReadingTime": "2017-10-12T10:16:54.563",
+      "Value": 6.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20264,
+      "ReadingTime": "2017-10-12T10:21:54.57",
+      "Value": 8.25,
+      "Name": "Air"
+    },
+    {
+      "Id": 20265,
+      "ReadingTime": "2017-10-12T10:21:54.57",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20266,
+      "ReadingTime": "2017-10-12T10:21:54.57",
+      "Value": 6.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20267,
+      "ReadingTime": "2017-10-12T10:26:54.583",
+      "Value": 8.25,
+      "Name": "Air"
+    },
+    {
+      "Id": 20268,
+      "ReadingTime": "2017-10-12T10:26:54.583",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20269,
+      "ReadingTime": "2017-10-12T10:26:54.583",
+      "Value": 6.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20270,
+      "ReadingTime": "2017-10-12T10:31:54.583",
+      "Value": 8.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20271,
+      "ReadingTime": "2017-10-12T10:31:54.583",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20272,
+      "ReadingTime": "2017-10-12T10:31:54.583",
+      "Value": 6.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20273,
+      "ReadingTime": "2017-10-12T10:36:54.583",
+      "Value": 8.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20274,
+      "ReadingTime": "2017-10-12T10:36:54.583",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20275,
+      "ReadingTime": "2017-10-12T10:36:54.583",
+      "Value": 6.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20276,
+      "ReadingTime": "2017-10-12T10:41:54.587",
+      "Value": 8.4375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20277,
+      "ReadingTime": "2017-10-12T10:41:54.587",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20278,
+      "ReadingTime": "2017-10-12T10:41:54.587",
+      "Value": 6.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20279,
+      "ReadingTime": "2017-10-12T10:46:54.607",
+      "Value": 8.5625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20280,
+      "ReadingTime": "2017-10-12T10:46:54.607",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20281,
+      "ReadingTime": "2017-10-12T10:46:54.607",
+      "Value": 6.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20282,
+      "ReadingTime": "2017-10-12T10:51:54.623",
+      "Value": 8.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20283,
+      "ReadingTime": "2017-10-12T10:51:54.623",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20284,
+      "ReadingTime": "2017-10-12T10:51:54.623",
+      "Value": 6.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20285,
+      "ReadingTime": "2017-10-12T10:56:54.627",
+      "Value": 8.6875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20286,
+      "ReadingTime": "2017-10-12T10:56:54.627",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20287,
+      "ReadingTime": "2017-10-12T10:56:54.627",
+      "Value": 6.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20288,
+      "ReadingTime": "2017-10-12T11:01:54.643",
+      "Value": 8.625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20289,
+      "ReadingTime": "2017-10-12T11:01:54.643",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20290,
+      "ReadingTime": "2017-10-12T11:01:54.643",
+      "Value": 7.5,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20291,
+      "ReadingTime": "2017-10-12T11:06:54.653",
+      "Value": 8.5625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20292,
+      "ReadingTime": "2017-10-12T11:06:54.653",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20293,
+      "ReadingTime": "2017-10-12T11:06:54.653",
+      "Value": 7.5,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20294,
+      "ReadingTime": "2017-10-12T11:11:54.673",
+      "Value": 8.6875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20295,
+      "ReadingTime": "2017-10-12T11:11:54.673",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20296,
+      "ReadingTime": "2017-10-12T11:11:54.673",
+      "Value": 7.5,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20297,
+      "ReadingTime": "2017-10-12T11:16:54.677",
+      "Value": 9.0,
+      "Name": "Air"
+    },
+    {
+      "Id": 20298,
+      "ReadingTime": "2017-10-12T11:16:54.677",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20299,
+      "ReadingTime": "2017-10-12T11:16:54.677",
+      "Value": 7.5,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20300,
+      "ReadingTime": "2017-10-12T11:21:54.693",
+      "Value": 8.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 20301,
+      "ReadingTime": "2017-10-12T11:21:54.693",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20302,
+      "ReadingTime": "2017-10-12T11:21:54.693",
+      "Value": 7.5,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20303,
+      "ReadingTime": "2017-10-12T11:26:54.707",
+      "Value": 8.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 20304,
+      "ReadingTime": "2017-10-12T11:26:54.707",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20305,
+      "ReadingTime": "2017-10-12T11:26:54.707",
+      "Value": 7.5,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20306,
+      "ReadingTime": "2017-10-12T11:31:54.717",
+      "Value": 8.6875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20307,
+      "ReadingTime": "2017-10-12T11:31:54.717",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20308,
+      "ReadingTime": "2017-10-12T11:31:54.717",
+      "Value": 7.5,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20309,
+      "ReadingTime": "2017-10-12T11:36:54.73",
+      "Value": 8.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 20310,
+      "ReadingTime": "2017-10-12T11:36:54.73",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20311,
+      "ReadingTime": "2017-10-12T11:36:54.73",
+      "Value": 7.5,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20312,
+      "ReadingTime": "2017-10-12T11:41:54.74",
+      "Value": 8.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 20313,
+      "ReadingTime": "2017-10-12T11:41:54.74",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20314,
+      "ReadingTime": "2017-10-12T11:41:54.74",
+      "Value": 7.5,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20315,
+      "ReadingTime": "2017-10-12T11:46:54.747",
+      "Value": 8.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20316,
+      "ReadingTime": "2017-10-12T11:46:54.747",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20317,
+      "ReadingTime": "2017-10-12T11:46:54.747",
+      "Value": 7.5,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20318,
+      "ReadingTime": "2017-10-12T11:51:54.757",
+      "Value": 8.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20319,
+      "ReadingTime": "2017-10-12T11:51:54.757",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20320,
+      "ReadingTime": "2017-10-12T11:51:54.757",
+      "Value": 7.5,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20321,
+      "ReadingTime": "2017-10-12T11:56:54.777",
+      "Value": 8.9375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20322,
+      "ReadingTime": "2017-10-12T11:56:54.777",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20323,
+      "ReadingTime": "2017-10-12T11:56:54.777",
+      "Value": 7.5,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20324,
+      "ReadingTime": "2017-10-12T12:01:54.793",
+      "Value": 9.0625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20325,
+      "ReadingTime": "2017-10-12T12:01:54.793",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20326,
+      "ReadingTime": "2017-10-12T12:01:54.793",
+      "Value": 7.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20327,
+      "ReadingTime": "2017-10-12T12:06:54.81",
+      "Value": 9.0,
+      "Name": "Air"
+    },
+    {
+      "Id": 20328,
+      "ReadingTime": "2017-10-12T12:06:54.81",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20329,
+      "ReadingTime": "2017-10-12T12:06:54.81",
+      "Value": 7.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20330,
+      "ReadingTime": "2017-10-12T12:11:54.817",
+      "Value": 9.0625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20331,
+      "ReadingTime": "2017-10-12T12:11:54.817",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20332,
+      "ReadingTime": "2017-10-12T12:11:54.817",
+      "Value": 7.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20333,
+      "ReadingTime": "2017-10-12T12:16:54.833",
+      "Value": 9.0625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20334,
+      "ReadingTime": "2017-10-12T12:16:54.833",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20335,
+      "ReadingTime": "2017-10-12T12:16:54.833",
+      "Value": 7.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20336,
+      "ReadingTime": "2017-10-12T12:21:54.843",
+      "Value": 9.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20337,
+      "ReadingTime": "2017-10-12T12:21:54.843",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20338,
+      "ReadingTime": "2017-10-12T12:21:54.843",
+      "Value": 7.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20339,
+      "ReadingTime": "2017-10-12T12:26:54.853",
+      "Value": 9.0625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20340,
+      "ReadingTime": "2017-10-12T12:26:54.853",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20341,
+      "ReadingTime": "2017-10-12T12:26:54.853",
+      "Value": 7.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20342,
+      "ReadingTime": "2017-10-12T12:31:54.87",
+      "Value": 9.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20343,
+      "ReadingTime": "2017-10-12T12:31:54.87",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20344,
+      "ReadingTime": "2017-10-12T12:31:54.87",
+      "Value": 7.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20345,
+      "ReadingTime": "2017-10-12T12:36:54.87",
+      "Value": 9.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20346,
+      "ReadingTime": "2017-10-12T12:36:54.87",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20347,
+      "ReadingTime": "2017-10-12T12:36:54.87",
+      "Value": 7.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20348,
+      "ReadingTime": "2017-10-12T12:41:54.877",
+      "Value": 9.25,
+      "Name": "Air"
+    },
+    {
+      "Id": 20349,
+      "ReadingTime": "2017-10-12T12:41:54.877",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20350,
+      "ReadingTime": "2017-10-12T12:41:54.877",
+      "Value": 7.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20351,
+      "ReadingTime": "2017-10-12T12:46:54.877",
+      "Value": 9.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20352,
+      "ReadingTime": "2017-10-12T12:46:54.877",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20353,
+      "ReadingTime": "2017-10-12T12:46:54.877",
+      "Value": 7.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20354,
+      "ReadingTime": "2017-10-12T12:51:54.89",
+      "Value": 9.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20355,
+      "ReadingTime": "2017-10-12T12:51:54.89",
+      "Value": 11.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20356,
+      "ReadingTime": "2017-10-12T12:51:54.89",
+      "Value": 7.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20357,
+      "ReadingTime": "2017-10-12T12:56:54.903",
+      "Value": 9.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20358,
+      "ReadingTime": "2017-10-12T12:56:54.903",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20359,
+      "ReadingTime": "2017-10-12T12:56:54.903",
+      "Value": 7.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20360,
+      "ReadingTime": "2017-10-12T13:01:54.91",
+      "Value": 9.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20361,
+      "ReadingTime": "2017-10-12T13:01:54.91",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20362,
+      "ReadingTime": "2017-10-12T13:01:54.91",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20363,
+      "ReadingTime": "2017-10-12T13:06:54.923",
+      "Value": 9.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20364,
+      "ReadingTime": "2017-10-12T13:06:54.923",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20365,
+      "ReadingTime": "2017-10-12T13:06:54.923",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20366,
+      "ReadingTime": "2017-10-12T13:11:54.94",
+      "Value": 9.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20367,
+      "ReadingTime": "2017-10-12T13:11:54.94",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20368,
+      "ReadingTime": "2017-10-12T13:11:54.94",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20369,
+      "ReadingTime": "2017-10-12T13:16:54.963",
+      "Value": 9.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20370,
+      "ReadingTime": "2017-10-12T13:16:54.963",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20371,
+      "ReadingTime": "2017-10-12T13:16:54.963",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20372,
+      "ReadingTime": "2017-10-12T13:21:54.97",
+      "Value": 9.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20373,
+      "ReadingTime": "2017-10-12T13:21:54.97",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20374,
+      "ReadingTime": "2017-10-12T13:21:54.97",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20375,
+      "ReadingTime": "2017-10-12T13:26:54.977",
+      "Value": 9.4375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20376,
+      "ReadingTime": "2017-10-12T13:26:54.977",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20377,
+      "ReadingTime": "2017-10-12T13:26:54.977",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20378,
+      "ReadingTime": "2017-10-12T13:31:54.993",
+      "Value": 9.25,
+      "Name": "Air"
+    },
+    {
+      "Id": 20379,
+      "ReadingTime": "2017-10-12T13:31:54.993",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20380,
+      "ReadingTime": "2017-10-12T13:31:54.993",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20381,
+      "ReadingTime": "2017-10-12T13:36:54.997",
+      "Value": 9.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20382,
+      "ReadingTime": "2017-10-12T13:36:54.997",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20383,
+      "ReadingTime": "2017-10-12T13:36:54.997",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20384,
+      "ReadingTime": "2017-10-12T13:41:55.01",
+      "Value": 9.25,
+      "Name": "Air"
+    },
+    {
+      "Id": 20385,
+      "ReadingTime": "2017-10-12T13:41:55.01",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20386,
+      "ReadingTime": "2017-10-12T13:41:55.01",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20387,
+      "ReadingTime": "2017-10-12T13:46:55.027",
+      "Value": 9.4375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20388,
+      "ReadingTime": "2017-10-12T13:46:55.027",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20389,
+      "ReadingTime": "2017-10-12T13:46:55.027",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20390,
+      "ReadingTime": "2017-10-12T13:51:55.03",
+      "Value": 9.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20391,
+      "ReadingTime": "2017-10-12T13:51:55.03",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20392,
+      "ReadingTime": "2017-10-12T13:51:55.03",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20393,
+      "ReadingTime": "2017-10-12T13:56:55.043",
+      "Value": 9.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20394,
+      "ReadingTime": "2017-10-12T13:56:55.043",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20395,
+      "ReadingTime": "2017-10-12T13:56:55.043",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20396,
+      "ReadingTime": "2017-10-12T14:01:55.053",
+      "Value": 9.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20397,
+      "ReadingTime": "2017-10-12T14:01:55.053",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20398,
+      "ReadingTime": "2017-10-12T14:01:55.053",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20399,
+      "ReadingTime": "2017-10-12T14:06:55.053",
+      "Value": 9.25,
+      "Name": "Air"
+    },
+    {
+      "Id": 20400,
+      "ReadingTime": "2017-10-12T14:06:55.053",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20401,
+      "ReadingTime": "2017-10-12T14:06:55.053",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20402,
+      "ReadingTime": "2017-10-12T14:11:55.077",
+      "Value": 9.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20403,
+      "ReadingTime": "2017-10-12T14:11:55.077",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20404,
+      "ReadingTime": "2017-10-12T14:11:55.077",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20405,
+      "ReadingTime": "2017-10-12T14:16:55.08",
+      "Value": 9.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20406,
+      "ReadingTime": "2017-10-12T14:16:55.08",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20407,
+      "ReadingTime": "2017-10-12T14:16:55.08",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20408,
+      "ReadingTime": "2017-10-12T14:21:55.09",
+      "Value": 9.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20409,
+      "ReadingTime": "2017-10-12T14:21:55.09",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20410,
+      "ReadingTime": "2017-10-12T14:21:55.09",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20411,
+      "ReadingTime": "2017-10-12T14:26:55.103",
+      "Value": 9.25,
+      "Name": "Air"
+    },
+    {
+      "Id": 20412,
+      "ReadingTime": "2017-10-12T14:26:55.103",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20413,
+      "ReadingTime": "2017-10-12T14:26:55.103",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20414,
+      "ReadingTime": "2017-10-12T14:31:55.117",
+      "Value": 9.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20415,
+      "ReadingTime": "2017-10-12T14:31:55.117",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20416,
+      "ReadingTime": "2017-10-12T14:31:55.117",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20417,
+      "ReadingTime": "2017-10-12T14:36:55.117",
+      "Value": 9.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20418,
+      "ReadingTime": "2017-10-12T14:36:55.117",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20419,
+      "ReadingTime": "2017-10-12T14:36:55.117",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20420,
+      "ReadingTime": "2017-10-12T14:41:55.13",
+      "Value": 9.25,
+      "Name": "Air"
+    },
+    {
+      "Id": 20421,
+      "ReadingTime": "2017-10-12T14:41:55.13",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20422,
+      "ReadingTime": "2017-10-12T14:41:55.13",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20423,
+      "ReadingTime": "2017-10-12T14:46:55.143",
+      "Value": 9.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20424,
+      "ReadingTime": "2017-10-12T14:46:55.143",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20425,
+      "ReadingTime": "2017-10-12T14:46:55.143",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20426,
+      "ReadingTime": "2017-10-12T14:51:55.143",
+      "Value": 9.4375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20427,
+      "ReadingTime": "2017-10-12T14:51:55.143",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20428,
+      "ReadingTime": "2017-10-12T14:51:55.143",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20429,
+      "ReadingTime": "2017-10-12T14:56:55.153",
+      "Value": 9.25,
+      "Name": "Air"
+    },
+    {
+      "Id": 20430,
+      "ReadingTime": "2017-10-12T14:56:55.153",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20431,
+      "ReadingTime": "2017-10-12T14:56:55.153",
+      "Value": 8.3,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20432,
+      "ReadingTime": "2017-10-12T15:01:55.15",
+      "Value": 9.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20433,
+      "ReadingTime": "2017-10-12T15:01:55.15",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20434,
+      "ReadingTime": "2017-10-12T15:01:55.15",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20435,
+      "ReadingTime": "2017-10-12T15:06:55.16",
+      "Value": 9.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20436,
+      "ReadingTime": "2017-10-12T15:06:55.16",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20437,
+      "ReadingTime": "2017-10-12T15:06:55.16",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20438,
+      "ReadingTime": "2017-10-12T15:11:55.18",
+      "Value": 9.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20439,
+      "ReadingTime": "2017-10-12T15:11:55.18",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20440,
+      "ReadingTime": "2017-10-12T15:11:55.18",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20441,
+      "ReadingTime": "2017-10-12T15:16:55.19",
+      "Value": 9.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20442,
+      "ReadingTime": "2017-10-12T15:16:55.19",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20443,
+      "ReadingTime": "2017-10-12T15:16:55.19",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20444,
+      "ReadingTime": "2017-10-12T15:21:55.193",
+      "Value": 9.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20445,
+      "ReadingTime": "2017-10-12T15:21:55.193",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20446,
+      "ReadingTime": "2017-10-12T15:21:55.193",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20447,
+      "ReadingTime": "2017-10-12T15:26:55.213",
+      "Value": 9.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20448,
+      "ReadingTime": "2017-10-12T15:26:55.213",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20449,
+      "ReadingTime": "2017-10-12T15:26:55.213",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20450,
+      "ReadingTime": "2017-10-12T15:31:55.227",
+      "Value": 9.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20451,
+      "ReadingTime": "2017-10-12T15:31:55.227",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20452,
+      "ReadingTime": "2017-10-12T15:31:55.227",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20453,
+      "ReadingTime": "2017-10-12T15:36:55.24",
+      "Value": 9.4375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20454,
+      "ReadingTime": "2017-10-12T15:36:55.24",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20455,
+      "ReadingTime": "2017-10-12T15:36:55.24",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20456,
+      "ReadingTime": "2017-10-12T15:41:55.25",
+      "Value": 9.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20457,
+      "ReadingTime": "2017-10-12T15:41:55.25",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20458,
+      "ReadingTime": "2017-10-12T15:41:55.25",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20459,
+      "ReadingTime": "2017-10-12T15:46:55.27",
+      "Value": 9.25,
+      "Name": "Air"
+    },
+    {
+      "Id": 20460,
+      "ReadingTime": "2017-10-12T15:46:55.27",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20461,
+      "ReadingTime": "2017-10-12T15:46:55.27",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20462,
+      "ReadingTime": "2017-10-12T15:51:55.287",
+      "Value": 9.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20463,
+      "ReadingTime": "2017-10-12T15:51:55.287",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20464,
+      "ReadingTime": "2017-10-12T15:51:55.287",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20465,
+      "ReadingTime": "2017-10-12T15:56:55.287",
+      "Value": 9.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20466,
+      "ReadingTime": "2017-10-12T15:56:55.287",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20467,
+      "ReadingTime": "2017-10-12T15:56:55.287",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20468,
+      "ReadingTime": "2017-10-12T16:01:55.3",
+      "Value": 9.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20469,
+      "ReadingTime": "2017-10-12T16:01:55.3",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20470,
+      "ReadingTime": "2017-10-12T16:01:55.3",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20471,
+      "ReadingTime": "2017-10-12T16:06:55.307",
+      "Value": 9.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20472,
+      "ReadingTime": "2017-10-12T16:06:55.307",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20473,
+      "ReadingTime": "2017-10-12T16:06:55.307",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20474,
+      "ReadingTime": "2017-10-12T16:11:55.323",
+      "Value": 9.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20475,
+      "ReadingTime": "2017-10-12T16:11:55.323",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20476,
+      "ReadingTime": "2017-10-12T16:11:55.323",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20477,
+      "ReadingTime": "2017-10-12T16:16:55.343",
+      "Value": 9.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20478,
+      "ReadingTime": "2017-10-12T16:16:55.343",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20479,
+      "ReadingTime": "2017-10-12T16:16:55.343",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20480,
+      "ReadingTime": "2017-10-12T16:21:55.347",
+      "Value": 9.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20481,
+      "ReadingTime": "2017-10-12T16:21:55.347",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20482,
+      "ReadingTime": "2017-10-12T16:21:55.347",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20483,
+      "ReadingTime": "2017-10-12T16:26:55.353",
+      "Value": 9.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20484,
+      "ReadingTime": "2017-10-12T16:26:55.353",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20485,
+      "ReadingTime": "2017-10-12T16:26:55.353",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20486,
+      "ReadingTime": "2017-10-12T16:31:55.36",
+      "Value": 9.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20487,
+      "ReadingTime": "2017-10-12T16:31:55.36",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20488,
+      "ReadingTime": "2017-10-12T16:31:55.36",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20489,
+      "ReadingTime": "2017-10-12T16:36:55.373",
+      "Value": 9.0625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20490,
+      "ReadingTime": "2017-10-12T16:36:55.373",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20491,
+      "ReadingTime": "2017-10-12T16:36:55.373",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20492,
+      "ReadingTime": "2017-10-12T16:41:55.377",
+      "Value": 9.0,
+      "Name": "Air"
+    },
+    {
+      "Id": 20493,
+      "ReadingTime": "2017-10-12T16:41:55.377",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20494,
+      "ReadingTime": "2017-10-12T16:41:55.377",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20495,
+      "ReadingTime": "2017-10-12T16:46:55.38",
+      "Value": 9.0,
+      "Name": "Air"
+    },
+    {
+      "Id": 20496,
+      "ReadingTime": "2017-10-12T16:46:55.38",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20497,
+      "ReadingTime": "2017-10-12T16:46:55.38",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20498,
+      "ReadingTime": "2017-10-12T16:51:55.38",
+      "Value": 8.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20499,
+      "ReadingTime": "2017-10-12T16:51:55.38",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20500,
+      "ReadingTime": "2017-10-12T16:51:55.38",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20501,
+      "ReadingTime": "2017-10-12T16:56:55.38",
+      "Value": 9.4375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20502,
+      "ReadingTime": "2017-10-12T16:56:55.38",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20503,
+      "ReadingTime": "2017-10-12T16:56:55.38",
+      "Value": 8.2,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20504,
+      "ReadingTime": "2017-10-12T17:06:55.393",
+      "Value": 8.9375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20505,
+      "ReadingTime": "2017-10-12T17:06:55.393",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20506,
+      "ReadingTime": "2017-10-12T17:06:55.393",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20507,
+      "ReadingTime": "2017-10-12T17:11:55.403",
+      "Value": 8.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20508,
+      "ReadingTime": "2017-10-12T17:11:55.403",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20509,
+      "ReadingTime": "2017-10-12T17:11:55.403",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20510,
+      "ReadingTime": "2017-10-12T17:16:55.413",
+      "Value": 8.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 20511,
+      "ReadingTime": "2017-10-12T17:16:55.413",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20512,
+      "ReadingTime": "2017-10-12T17:16:55.413",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20513,
+      "ReadingTime": "2017-10-12T17:21:55.427",
+      "Value": 8.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 20514,
+      "ReadingTime": "2017-10-12T17:21:55.427",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20515,
+      "ReadingTime": "2017-10-12T17:21:55.427",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20516,
+      "ReadingTime": "2017-10-12T17:26:55.427",
+      "Value": 8.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 20517,
+      "ReadingTime": "2017-10-12T17:26:55.427",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20518,
+      "ReadingTime": "2017-10-12T17:26:55.427",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20519,
+      "ReadingTime": "2017-10-12T17:31:55.443",
+      "Value": 9.0,
+      "Name": "Air"
+    },
+    {
+      "Id": 20520,
+      "ReadingTime": "2017-10-12T17:31:55.443",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20521,
+      "ReadingTime": "2017-10-12T17:31:55.443",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20522,
+      "ReadingTime": "2017-10-12T17:36:55.453",
+      "Value": 8.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20523,
+      "ReadingTime": "2017-10-12T17:36:55.453",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20524,
+      "ReadingTime": "2017-10-12T17:36:55.453",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20525,
+      "ReadingTime": "2017-10-12T17:41:55.463",
+      "Value": 8.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20526,
+      "ReadingTime": "2017-10-12T17:41:55.463",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20527,
+      "ReadingTime": "2017-10-12T17:41:55.463",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20528,
+      "ReadingTime": "2017-10-12T17:46:55.467",
+      "Value": 8.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 20529,
+      "ReadingTime": "2017-10-12T17:46:55.467",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20530,
+      "ReadingTime": "2017-10-12T17:46:55.467",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20531,
+      "ReadingTime": "2017-10-12T17:51:55.467",
+      "Value": 8.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20532,
+      "ReadingTime": "2017-10-12T17:51:55.467",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20533,
+      "ReadingTime": "2017-10-12T17:51:55.467",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20534,
+      "ReadingTime": "2017-10-12T17:56:55.473",
+      "Value": 8.6875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20535,
+      "ReadingTime": "2017-10-12T17:56:55.473",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20536,
+      "ReadingTime": "2017-10-12T17:56:55.473",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20537,
+      "ReadingTime": "2017-10-12T18:01:55.487",
+      "Value": 8.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 20538,
+      "ReadingTime": "2017-10-12T18:01:55.487",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20539,
+      "ReadingTime": "2017-10-12T18:01:55.487",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20540,
+      "ReadingTime": "2017-10-12T18:06:55.497",
+      "Value": 8.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 20541,
+      "ReadingTime": "2017-10-12T18:06:55.497",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20542,
+      "ReadingTime": "2017-10-12T18:06:55.497",
+      "Value": 7.9,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20543,
+      "ReadingTime": "2017-10-12T18:11:55.513",
+      "Value": 8.6875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20544,
+      "ReadingTime": "2017-10-12T18:11:55.513",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20545,
+      "ReadingTime": "2017-10-12T18:11:55.513",
+      "Value": 7.9,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20546,
+      "ReadingTime": "2017-10-12T18:16:55.517",
+      "Value": 8.6875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20547,
+      "ReadingTime": "2017-10-12T18:16:55.517",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20548,
+      "ReadingTime": "2017-10-12T18:16:55.517",
+      "Value": 7.9,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20549,
+      "ReadingTime": "2017-10-12T18:21:55.537",
+      "Value": 8.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 20550,
+      "ReadingTime": "2017-10-12T18:21:55.537",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20551,
+      "ReadingTime": "2017-10-12T18:21:55.537",
+      "Value": 7.9,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20552,
+      "ReadingTime": "2017-10-12T18:26:55.537",
+      "Value": 8.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20553,
+      "ReadingTime": "2017-10-12T18:26:55.537",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20554,
+      "ReadingTime": "2017-10-12T18:26:55.537",
+      "Value": 7.9,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20555,
+      "ReadingTime": "2017-10-12T18:31:55.557",
+      "Value": 8.6875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20556,
+      "ReadingTime": "2017-10-12T18:31:55.557",
+      "Value": 10.5,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20557,
+      "ReadingTime": "2017-10-12T18:31:55.557",
+      "Value": 7.9,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20558,
+      "ReadingTime": "2017-10-12T18:36:55.557",
+      "Value": 8.75,
+      "Name": "Air"
+    },
+    {
+      "Id": 20559,
+      "ReadingTime": "2017-10-12T18:36:55.557",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20560,
+      "ReadingTime": "2017-10-12T18:36:55.557",
+      "Value": 7.9,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20561,
+      "ReadingTime": "2017-10-12T18:41:55.567",
+      "Value": 8.9375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20562,
+      "ReadingTime": "2017-10-12T18:41:55.567",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20563,
+      "ReadingTime": "2017-10-12T18:41:55.567",
+      "Value": 7.9,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20564,
+      "ReadingTime": "2017-10-12T18:46:55.573",
+      "Value": 8.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20565,
+      "ReadingTime": "2017-10-12T18:46:55.573",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20566,
+      "ReadingTime": "2017-10-12T18:46:55.573",
+      "Value": 7.9,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20567,
+      "ReadingTime": "2017-10-12T18:51:55.597",
+      "Value": 8.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20568,
+      "ReadingTime": "2017-10-12T18:51:55.597",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20569,
+      "ReadingTime": "2017-10-12T18:51:55.597",
+      "Value": 7.9,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20570,
+      "ReadingTime": "2017-10-12T18:56:55.597",
+      "Value": 8.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20571,
+      "ReadingTime": "2017-10-12T18:56:55.597",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20572,
+      "ReadingTime": "2017-10-12T18:56:55.597",
+      "Value": 7.9,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20573,
+      "ReadingTime": "2017-10-12T19:01:55.607",
+      "Value": 8.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20574,
+      "ReadingTime": "2017-10-12T19:01:55.607",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20575,
+      "ReadingTime": "2017-10-12T19:01:55.607",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20576,
+      "ReadingTime": "2017-10-12T19:06:55.617",
+      "Value": 8.8125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20577,
+      "ReadingTime": "2017-10-12T19:06:55.617",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20578,
+      "ReadingTime": "2017-10-12T19:06:55.617",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20579,
+      "ReadingTime": "2017-10-12T19:11:55.627",
+      "Value": 8.9375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20580,
+      "ReadingTime": "2017-10-12T19:11:55.627",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20581,
+      "ReadingTime": "2017-10-12T19:11:55.627",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20582,
+      "ReadingTime": "2017-10-12T19:16:55.633",
+      "Value": 9.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20583,
+      "ReadingTime": "2017-10-12T19:16:55.633",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20584,
+      "ReadingTime": "2017-10-12T19:16:55.633",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20585,
+      "ReadingTime": "2017-10-12T19:26:55.653",
+      "Value": 9.0,
+      "Name": "Air"
+    },
+    {
+      "Id": 20586,
+      "ReadingTime": "2017-10-12T19:26:55.653",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20587,
+      "ReadingTime": "2017-10-12T19:26:55.653",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20588,
+      "ReadingTime": "2017-10-12T19:31:55.66",
+      "Value": 9.0,
+      "Name": "Air"
+    },
+    {
+      "Id": 20589,
+      "ReadingTime": "2017-10-12T19:31:55.66",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20590,
+      "ReadingTime": "2017-10-12T19:31:55.66",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20591,
+      "ReadingTime": "2017-10-12T19:36:55.677",
+      "Value": 8.9375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20592,
+      "ReadingTime": "2017-10-12T19:36:55.677",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20593,
+      "ReadingTime": "2017-10-12T19:36:55.677",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20594,
+      "ReadingTime": "2017-10-12T19:41:55.683",
+      "Value": 9.0,
+      "Name": "Air"
+    },
+    {
+      "Id": 20595,
+      "ReadingTime": "2017-10-12T19:41:55.683",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20596,
+      "ReadingTime": "2017-10-12T19:41:55.683",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20597,
+      "ReadingTime": "2017-10-12T19:46:55.7",
+      "Value": 9.0625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20598,
+      "ReadingTime": "2017-10-12T19:46:55.7",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20599,
+      "ReadingTime": "2017-10-12T19:46:55.7",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20600,
+      "ReadingTime": "2017-10-12T19:51:55.713",
+      "Value": 9.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20601,
+      "ReadingTime": "2017-10-12T19:51:55.713",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20602,
+      "ReadingTime": "2017-10-12T19:51:55.713",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20603,
+      "ReadingTime": "2017-10-12T19:56:55.727",
+      "Value": 9.0625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20604,
+      "ReadingTime": "2017-10-12T19:56:55.727",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20605,
+      "ReadingTime": "2017-10-12T19:56:55.727",
+      "Value": 8.1,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20606,
+      "ReadingTime": "2017-10-12T20:01:55.74",
+      "Value": 9.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20607,
+      "ReadingTime": "2017-10-12T20:01:55.74",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20608,
+      "ReadingTime": "2017-10-12T20:01:55.74",
+      "Value": 8.4,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20609,
+      "ReadingTime": "2017-10-12T20:06:55.75",
+      "Value": 9.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20610,
+      "ReadingTime": "2017-10-12T20:06:55.75",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20611,
+      "ReadingTime": "2017-10-12T20:06:55.75",
+      "Value": 8.4,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20612,
+      "ReadingTime": "2017-10-12T20:11:55.757",
+      "Value": 9.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20613,
+      "ReadingTime": "2017-10-12T20:11:55.757",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20614,
+      "ReadingTime": "2017-10-12T20:11:55.757",
+      "Value": 8.4,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20615,
+      "ReadingTime": "2017-10-12T20:16:55.763",
+      "Value": 9.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20616,
+      "ReadingTime": "2017-10-12T20:16:55.763",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20617,
+      "ReadingTime": "2017-10-12T20:16:55.763",
+      "Value": 8.4,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20618,
+      "ReadingTime": "2017-10-12T20:21:55.767",
+      "Value": 9.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20619,
+      "ReadingTime": "2017-10-12T20:21:55.767",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20620,
+      "ReadingTime": "2017-10-12T20:21:55.767",
+      "Value": 8.4,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20621,
+      "ReadingTime": "2017-10-12T20:26:55.77",
+      "Value": 9.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20622,
+      "ReadingTime": "2017-10-12T20:26:55.77",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20623,
+      "ReadingTime": "2017-10-12T20:26:55.77",
+      "Value": 8.4,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20624,
+      "ReadingTime": "2017-10-12T20:31:55.787",
+      "Value": 9.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20625,
+      "ReadingTime": "2017-10-12T20:31:55.787",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20626,
+      "ReadingTime": "2017-10-12T20:31:55.787",
+      "Value": 8.4,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20627,
+      "ReadingTime": "2017-10-12T20:36:55.797",
+      "Value": 9.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20628,
+      "ReadingTime": "2017-10-12T20:36:55.797",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20629,
+      "ReadingTime": "2017-10-12T20:36:55.797",
+      "Value": 8.4,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20630,
+      "ReadingTime": "2017-10-12T20:41:55.8",
+      "Value": 9.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20631,
+      "ReadingTime": "2017-10-12T20:41:55.8",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20632,
+      "ReadingTime": "2017-10-12T20:41:55.8",
+      "Value": 8.4,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20633,
+      "ReadingTime": "2017-10-12T20:46:55.817",
+      "Value": 9.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20634,
+      "ReadingTime": "2017-10-12T20:46:55.817",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20635,
+      "ReadingTime": "2017-10-12T20:46:55.817",
+      "Value": 8.4,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20636,
+      "ReadingTime": "2017-10-12T20:51:55.827",
+      "Value": 9.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20637,
+      "ReadingTime": "2017-10-12T20:51:55.827",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20638,
+      "ReadingTime": "2017-10-12T20:51:55.827",
+      "Value": 8.4,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20639,
+      "ReadingTime": "2017-10-12T20:56:55.83",
+      "Value": 9.5,
+      "Name": "Air"
+    },
+    {
+      "Id": 20640,
+      "ReadingTime": "2017-10-12T20:56:55.83",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20641,
+      "ReadingTime": "2017-10-12T20:56:55.83",
+      "Value": 8.4,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20642,
+      "ReadingTime": "2017-10-12T21:01:55.873",
+      "Value": 9.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20643,
+      "ReadingTime": "2017-10-12T21:01:55.873",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20644,
+      "ReadingTime": "2017-10-12T21:01:55.873",
+      "Value": 9.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20645,
+      "ReadingTime": "2017-10-12T21:06:55.86",
+      "Value": 9.5,
+      "Name": "Air"
+    },
+    {
+      "Id": 20646,
+      "ReadingTime": "2017-10-12T21:06:55.86",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20647,
+      "ReadingTime": "2017-10-12T21:06:55.86",
+      "Value": 9.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20648,
+      "ReadingTime": "2017-10-12T21:31:55.9",
+      "Value": 10.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20649,
+      "ReadingTime": "2017-10-12T21:31:55.9",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20650,
+      "ReadingTime": "2017-10-12T21:31:55.9",
+      "Value": 9.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20651,
+      "ReadingTime": "2017-10-12T21:36:55.907",
+      "Value": 9.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20652,
+      "ReadingTime": "2017-10-12T21:36:55.907",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20653,
+      "ReadingTime": "2017-10-12T21:36:55.907",
+      "Value": 9.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20654,
+      "ReadingTime": "2017-10-12T21:41:55.923",
+      "Value": 9.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20655,
+      "ReadingTime": "2017-10-12T21:41:55.923",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20656,
+      "ReadingTime": "2017-10-12T21:41:55.923",
+      "Value": 9.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20657,
+      "ReadingTime": "2017-10-12T21:46:55.93",
+      "Value": 9.875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20658,
+      "ReadingTime": "2017-10-12T21:46:55.93",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20659,
+      "ReadingTime": "2017-10-12T21:46:55.93",
+      "Value": 9.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20660,
+      "ReadingTime": "2017-10-12T21:51:55.943",
+      "Value": 9.9375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20661,
+      "ReadingTime": "2017-10-12T21:51:55.943",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20662,
+      "ReadingTime": "2017-10-12T21:51:55.943",
+      "Value": 9.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20663,
+      "ReadingTime": "2017-10-12T21:56:55.947",
+      "Value": 9.9375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20664,
+      "ReadingTime": "2017-10-12T21:56:55.947",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20665,
+      "ReadingTime": "2017-10-12T21:56:55.947",
+      "Value": 9.0,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20666,
+      "ReadingTime": "2017-10-12T22:01:55.95",
+      "Value": 10.0,
+      "Name": "Air"
+    },
+    {
+      "Id": 20667,
+      "ReadingTime": "2017-10-12T22:01:55.95",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20668,
+      "ReadingTime": "2017-10-12T22:01:55.95",
+      "Value": 9.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20669,
+      "ReadingTime": "2017-10-12T22:06:55.957",
+      "Value": 10.0625,
+      "Name": "Air"
+    },
+    {
+      "Id": 20670,
+      "ReadingTime": "2017-10-12T22:06:55.957",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20671,
+      "ReadingTime": "2017-10-12T22:06:55.957",
+      "Value": 9.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20672,
+      "ReadingTime": "2017-10-12T22:11:55.967",
+      "Value": 10.125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20673,
+      "ReadingTime": "2017-10-12T22:11:55.967",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20674,
+      "ReadingTime": "2017-10-12T22:11:55.967",
+      "Value": 9.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20675,
+      "ReadingTime": "2017-10-12T22:16:55.977",
+      "Value": 10.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20676,
+      "ReadingTime": "2017-10-12T22:16:55.977",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20677,
+      "ReadingTime": "2017-10-12T22:16:55.977",
+      "Value": 9.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20678,
+      "ReadingTime": "2017-10-12T22:21:55.987",
+      "Value": 10.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20679,
+      "ReadingTime": "2017-10-12T22:21:55.987",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20680,
+      "ReadingTime": "2017-10-12T22:21:55.987",
+      "Value": 9.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20681,
+      "ReadingTime": "2017-10-12T22:26:56",
+      "Value": 10.1875,
+      "Name": "Air"
+    },
+    {
+      "Id": 20682,
+      "ReadingTime": "2017-10-12T22:26:56",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20683,
+      "ReadingTime": "2017-10-12T22:26:56",
+      "Value": 9.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20684,
+      "ReadingTime": "2017-10-12T22:31:56.017",
+      "Value": 10.375,
+      "Name": "Air"
+    },
+    {
+      "Id": 20685,
+      "ReadingTime": "2017-10-12T22:31:56.017",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20686,
+      "ReadingTime": "2017-10-12T22:31:56.017",
+      "Value": 9.8,
+      "Name": "EMHI current weather"
+    }
+  ],
+  [
+    {
+      "Id": 20687,
+      "ReadingTime": "2017-10-12T22:36:56.03",
+      "Value": 10.3125,
+      "Name": "Air"
+    },
+    {
+      "Id": 20688,
+      "ReadingTime": "2017-10-12T22:36:56.03",
+      "Value": 10.0,
+      "Name": "Beer"
+    },
+    {
+      "Id": 20689,
+      "ReadingTime": "2017-10-12T22:36:56.03",
+      "Value": 9.8,
+      "Name": "EMHI current weather"
+    }
+  ]
+]

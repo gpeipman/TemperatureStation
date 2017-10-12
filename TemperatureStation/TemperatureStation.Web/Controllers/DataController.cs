@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Calculators;
 using TemperatureStation.Web.Data;
 using TemperatureStation.Web.Data.Queries;
-using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Models.DataViewModels;
 
 namespace TemperatureStation.Web.Controllers
@@ -32,8 +30,7 @@ namespace TemperatureStation.Web.Controllers
                                         .FirstOrDefault(m => m.Id == id);
 
             var query = new ReadingsQuery { MeasurementId = id, Page = page, PageSize = 10 };
-            model.Data = _context.GetReadings(query);
-
+            model.Data = _context.GetReadingsPaged(query);
             model.Labels = _calcProvider.GetTypes()
                                         .Where(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>() != null)
                                         .Select(t => new

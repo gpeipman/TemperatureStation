@@ -23,7 +23,7 @@ p.chartTooltip {
     position: absolute;
     text-align: center;
     width: 120px;
-    height: 38px;
+    /*height: 38px;*/
     padding: 5px;
     font: 12px sans-serif;
     background: lightsteelblue;

@@ -10,7 +10,7 @@ namespace TemperatureStation.Web.Models.DataViewModels
     {
         public Measurement Measurement { get; set; }
         public IDictionary<string, string> Labels { get; set; }
-        public PagedResult<IGrouping<DateTime, Reading>> Data { get; set; }
+        public PagedResult<IGrouping<DateTime, ReadingViewModel>> Data { get; set; }
 
         public string GetLabel(string name)
         {

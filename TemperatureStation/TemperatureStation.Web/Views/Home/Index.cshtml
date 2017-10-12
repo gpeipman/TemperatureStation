@@ -25,6 +25,7 @@
 </div>
 @Html.Partial("_IndexIndicators")
 <div class="row margin-bottom-40">    
+    <button value="Load new readings" onclick="LoadNewReadings()"></button>
     <div style="display:block; overflow:auto; min-width:70%;float:left;">
         <div id="chartContainer"></div>
         <ul id="chartLegend"></ul>
@@ -37,7 +38,7 @@
         </div>
     </div>
     <div style="float:left; min-width:30%; padding-left:30px; padding-right:15px;">
-        <table class="table" style="float:left">
+        <table class="table" style="float:left" id="readingsTable">
             <thead>
                 <tr>
                     <th>Time</th>
@@ -47,7 +48,7 @@
                     }
                     @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
                     {
-                        if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
+                        if (Model.Readings.Count(r => r.Count(g => g.Name == calc.Name) > 0) > 0)
                         {
                             <th>@Model.Labels[calc.Name]</th>
                         }
@@ -61,13 +62,13 @@
                     <td>@readingsGroup.Key.ToString("HH:mm")</td>
                     @foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
                     {
-                        <td>@readingsGroup.FirstOrDefault(r => r.Source == sensorRole.RoleName)?.Value</td>
+                        <td>@readingsGroup.FirstOrDefault(r => r.Name == sensorRole.RoleName)?.Value</td>
                     }
                     @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
                     {
-                        if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
+                        if (Model.Readings.Count(r => r.Count(g => g.Name == calc.Name) > 0) > 0)
                         {
-                            var val = readingsGroup.FirstOrDefault(r => r.Source == calc.Name)?.Value;
+                            var val = readingsGroup.FirstOrDefault(r => r.Name == calc.Name)?.Value;
                             if (val == null)
                             {
                                 <td></td>
@@ -93,7 +94,7 @@
                     }
                     @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
                     {
-                        if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
+                        if (Model.Readings.Count(r => r.Count(g => g.Name == calc.Name) > 0) > 0)
                         {
                         <th>@Model.Calculators[calc.Name].DisplayValue(Model.Statistics[calc.Name].Item1)</th>
                         }
@@ -110,7 +111,7 @@
                     }
                     @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
                     {
-                        if (Model.Readings.Count(r => r.Count(g => g.Source == calc.Name) > 0) > 0)
+                        if (Model.Readings.Count(r => r.Count(g => g.Name == calc.Name) > 0) > 0)
                         {
                         <th>@Model.Calculators[calc.Name].DisplayValue(Model.Statistics[calc.Name].Item2)</th>
                         }
@@ -121,19 +122,26 @@
     </div>
 </div>
 
+<p class="chartTooltip" style="display:none">
+    <div class="readingDate" />
+</p>
+
 @section scripts {
 <script src="@Url.Content("~/js/chartModule.js")"></script>
 <script type="text/javascript">	
-	var offset = @TimeZoneInfo.Local.BaseUtcOffset.TotalHours;
-	var data = @Html.Raw(JsonConvert.SerializeObject(Model.ChartData));
+    var offset = @TimeZoneInfo.Local.BaseUtcOffset.TotalHours;    
+    var data = @Html.Raw(JsonConvert.SerializeObject(Model.ChartData));
 	var strokes = ['blue','red','green','brown','orange','yellow','pink'];
 	var calcsOnChart = @Html.Raw(JsonConvert.SerializeObject(Model.CalculatorsOnChart));
-	var refreshUrl = '@Url.Action()';
-
+    var refreshUrl = '@Url.Action()';
+    var measurementId = '@Model.Measurement?.Id';
+    var chart = null;
+    var labelMappings = @Html.Raw(JsonConvert.SerializeObject(Model.Labels));
+    
 	for(var i = 0; i < data.length; i++)
 	for(var j = data[i].length-1; j >= 0; j--)
 	{
-		if($.inArray(data[i][j].Source, calcsOnChart) < 0)   
+		if($.inArray(data[i][j].Name, calcsOnChart) < 0)   
         {
 			data[i].splice(j, 1);                
 		}
@@ -141,10 +149,12 @@
 
 	$(document).ready(function () {
 
-		if(data.length > 0)
-		{
-			frontPageChart();
-		}
+		//if(data.length > 0)
+		//{
+		//	chart = frontPageChart();
+		//}
+
+        frontPageChart();
 
         window.addEventListener('resize', function (event) {
             console.log("Resize!");
@@ -159,10 +169,40 @@
 			document.location.href = refreshUrl + '?measurementId=' + measurementId;
 		})
 
-		setTimeout(function() {
-			var measurementId = $('#MeasurementId').val();
-			document.location.href = refreshUrl + '?measurementId=' + measurementId + '&tmp=' + new Date().getTime();
-		}, 5*60*1000);
-	});
+		//setTimeout(function() {
+		//	var measurementId = $('#MeasurementId').val();
+		//	document.location.href = refreshUrl + '?measurementId=' + measurementId + '&tmp=' + new Date().getTime();
+		//}, 5*60*1000);
+
+        setInterval(function () { LoadNewReadings(); }, 5*60*1000);
+    });
+    var formatTableTime = d3.timeFormat("%H:%M");
+
+    function LoadNewReadings()
+    {
+        var date = new Date(data[data.length - 1][0].ReadingTime);
+        var url = apiRoute + 'GetNewReadings?';
+        url += 'newerThan=' + date.toISOString();
+        url += '&measurementId=' + measurementId;
+        url += '&rowCount=1000';
+        console.log('updating data: ' + date.toISOString());
+        $.post(url, function (newData) {
+            for (var i = 0; i < newData.length; i++) {
+                var d = new Date(newData[i][0].ReadingTime);
+                var row = '<tr>';
+                row += '<td>' + formatTableTime(d) + '</td>';
+
+                for (var j = 0; j < newData[i].length; j++) {
+                    row += '<td>' + newData[i][j].Value + '</td>';
+                }
+                data.push(newData[i]);
+
+                row += '</tr>';
+            }
+            $(row).prependTo('#readingsTable > tbody');
+
+            frontPageChart();
+        });
+    }
 </script>
 }

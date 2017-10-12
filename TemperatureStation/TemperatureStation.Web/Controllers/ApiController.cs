@@ -5,8 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using TemperatureStation.Web.Calculators;
 using TemperatureStation.Web.Data;
+using TemperatureStation.Web.Data.Queries;
 using TemperatureStation.Web.Extensions;
 using SharedModels = TemperatureStation.Shared.Models;
 
@@ -139,14 +141,15 @@ namespace TemperatureStation.Web.Controllers
 
         public IActionResult GetNewReadings([FromQuery]DateTime newerThan, [FromQuery]int measurementId,  [FromQuery]int rowCount)
         {
-            if (!IsDeviceKeyValid())
-            {
-                return BadRequest();
-            }
+            //if (!IsDeviceKeyValid())
+            //{
+            //    return BadRequest();
+            //}
 
-            var results = _dataContext.GetReadings(measurementId, newerThan, rowCount);
+            var query = new ReadingsQuery { MeasurementId = measurementId, NewerThan = newerThan, PageSize = int.MaxValue };
+            var results = _dataContext.GetReadings(query);
 
-            return Json(results);
+            return Content(JsonConvert.SerializeObject(results), "application/json");
         }
 
         [NonAction]
