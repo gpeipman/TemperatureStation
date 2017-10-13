@@ -57,7 +57,7 @@
 
     var margin = { top: 20, right: 20, bottom: 30, left: 50 };
     var width = $('#chartContainer').width() - margin.left - margin.right;
-    var height = $('#chartContainer').width() / 1.5 - margin.top - margin.bottom;
+    var height = $('#chartContainer').width() / 2 - margin.top - margin.bottom;
     var parseTime = d3.timeParse("%Y-%m-%dT%H:%M:%S.%L");
     bisectDate = d3.bisector(function (d) { return d.date; }).left;
     //d3.select(window).on('resize.updatesvg', updateWindow);
@@ -219,10 +219,11 @@
             if (labelMappings[name])
                 name = labelMappings[name];
 
+            readingsText += '<span style="color:' + strokes[j] + '">';
             readingsText += name;
             readingsText += ': ';
             readingsText += d['value' + j];
-            readingsText += '<br />';
+            readingsText += '</span><br />';
         }
 
         div.select(".chartTooltipReadings").html(readingsText);

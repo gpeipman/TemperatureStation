@@ -25,7 +25,6 @@
 </div>
 @Html.Partial("_IndexIndicators")
 <div class="row margin-bottom-40">    
-    <button value="Load new readings" onclick="LoadNewReadings()"></button>
     <div style="display:block; overflow:auto; min-width:70%;float:left;">
         <div id="chartContainer"></div>
         <ul id="chartLegend"></ul>
@@ -169,12 +168,7 @@
 			document.location.href = refreshUrl + '?measurementId=' + measurementId;
 		})
 
-		//setTimeout(function() {
-		//	var measurementId = $('#MeasurementId').val();
-		//	document.location.href = refreshUrl + '?measurementId=' + measurementId + '&tmp=' + new Date().getTime();
-		//}, 5*60*1000);
-
-        setInterval(function () { LoadNewReadings(); }, 5*60*1000);
+        setInterval(function () { LoadNewReadings(); }, 1*60*1000);
     });
     var formatTableTime = d3.timeFormat("%H:%M");
 
@@ -184,7 +178,8 @@
         var url = apiRoute + 'GetNewReadings?';
         url += 'newerThan=' + date.toISOString();
         url += '&measurementId=' + measurementId;
-        url += '&rowCount=1000';
+        url += '&rowCount=1000&tmp=' + new Date().getTime();
+
         console.log('updating data: ' + date.toISOString());
         $.post(url, function (newData) {
             for (var i = 0; i < newData.length; i++) {
