@@ -7,7 +7,14 @@ label {
     stroke: black;
     stroke-width: 1px;
 }
-
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 0%; /* aspect ratio */
+    vertical-align: top;
+    overflow: hidden;
+}
 #chartLegend {
     float:left;
     list-style:none;

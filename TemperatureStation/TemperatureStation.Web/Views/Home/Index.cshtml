@@ -1,19 +1,12 @@
 ﻿@model HomeViewModel
 <style>
-    .svg-container {
-        display: inline-block;
-        position: relative;
-        width: 100%;
-        padding-bottom: 0%; /* aspect ratio */
-        vertical-align: top;
-        overflow: hidden;
-    }
-    .svg-content-responsive {
+    
+    /*.svg-content-responsive {
         display: inline-block;
         position: absolute;
         top: 0px;
         left: 0;
-    }
+    }*/
 </style>
 <div class="row">
 	<div class="col-md-6 col-sm-6">
@@ -31,9 +24,21 @@
         <div style="float:right;margin-right:20px">
             @if (Model.ChartData.Count() > 0)
             {
-                <strong>Date range:</strong> @Model.ChartData.Select(d => d.Key).Min().ToShortDateString() 
-                <text>-</text> @Model.ChartData.Select(d => d.Key).Max().ToShortDateString()
-}
+                <div style="display:inline-block;vertical-align:top">
+                    <strong>Date range:</strong>
+                </div>
+                <div style="text-align:center;display:inline-block;vertical-align:top">
+                    @Model.ChartData.Select(d => d.Key).Min().ToShortDateString() <br />
+                    @Model.ChartData.Select(d => d.Key).Min().ToShortTimeString()
+                </div>
+                <div style="display:inline-block;vertical-align:top"> - </div>
+                <div style="text-align:center;display:inline-block">
+                    @Model.ChartData.Select(d => d.Key).Max().ToShortDateString() <br />
+                    @Model.ChartData.Select(d => d.Key).Max().ToShortTimeString()
+                </div>
+                @*<strong>Date range:</strong> @Model.ChartData.Select(d => d.Key).Min().ToShortDateString() 
+                <text>-</text> @Model.ChartData.Select(d => d.Key).Max().ToShortDateString()*@
+            }
         </div>
     </div>
     <div style="float:left; min-width:30%; padding-left:30px; padding-right:15px;">
@@ -193,8 +198,10 @@
                 data.push(newData[i]);
 
                 row += '</tr>';
+
+                $(row).prependTo('#readingsTable > tbody');
+                $('#readingsTable > tbody tr:last').remove();
             }
-            $(row).prependTo('#readingsTable > tbody');
 
             frontPageChart();
         });
