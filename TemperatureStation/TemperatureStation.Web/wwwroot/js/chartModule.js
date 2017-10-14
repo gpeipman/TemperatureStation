@@ -39,16 +39,16 @@
     };
 
     _self.transformReading = function (d) {
-        var date = new Date();
-        date.setTime(Date.parse(d[0].ReadingTime) - 60 * 60 * 1000 * offset);
+
+        var date = new Date(Date.parse(d.Value[0].ReadingTime + 'Z'));
         d.date = date;
 
-        for (var i = 0; i < d.length; i++) {
-            d['value' + i] = +d[i].Value;
+        for (var i = 0; i < d.Value.length; i++) {
+            d['value' + i] = d.Value[i].Value;
         }
 
         // fill missing values with nulls
-        for (var i = d.length; i < dataAttrs; i++) {
+        for (var i = d.Value.length; i < dataAttrs; i++) {
             d['value' + i] = null;
         }
 
@@ -70,23 +70,23 @@
 
     // find data with biggest number of attributes
     var dataIndex = 0;
-    var dataAttrs = data[0].length;
+    var dataAttrs = data[0].Value.length;
     for (var i = 1; i < data.length; i++) {
-        if (data[i].length > dataAttrs)
+        if (data[i].Value.length > dataAttrs)
         {
             dataIndex = i;
-            dataAttrs = data[i].length;
+            dataAttrs = data[i].Value.length;
         }
     }
 
-    for (var i = 0; i < data[dataIndex].length; i++) {
+    for (var i = 0; i < data[dataIndex].Value.length; i++) {
         
         var valueline = d3.line()
             .curve(d3.curveMonotoneX)
             .x(function (d) { return x(d.date); })
             .y(function (d) { return y(d['value' + i]); });
 
-        var name = data[dataIndex][i].Name;
+        var name = data[dataIndex].Value[i].Name;
         if (labelMappings[name])
             name = labelMappings[name];
         var legendItem = "<span style='background-color:" + (strokes[i] || 'black') + "'>";
@@ -193,7 +193,9 @@
         .on("mousemove", mousemove);
 
     function mousemove() {
-
+        if (data.length < 2) {
+            return;
+        }
         var x0 = x.invert(d3.mouse(this)[0]),
             i = bisectDate(data, x0, 1),
             d0 = data[i - 1],
@@ -213,9 +215,9 @@
         div.select(".chartTooltipTime").html(formatTooltipTime(d.date));
 
         var readingsText = '';
-        for (var j = 0; j < d.length; j++)
+        for (var j = 0; j < d.Value.length; j++)
         {
-            var name = data[dataIndex][j].Name;
+            var name = data[dataIndex].Value[j].Name;
             if (labelMappings[name])
                 name = labelMappings[name];
 
@@ -248,7 +250,7 @@
     var dates = [];
 
     for (var i = 0; i < data.length; i++) {
-        var date = new Date(data[i][0].ReadingTime);
+        var date = new Date(data[i].Value[0].ReadingTime + 'Z');
         date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
         if (!dates.containsDate(date)) {
             dates.push(date);

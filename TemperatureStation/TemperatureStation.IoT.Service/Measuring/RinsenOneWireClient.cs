@@ -24,7 +24,7 @@ namespace TemperatureStation.IoT.Service.Measuring
             }
 
             var result = new SensorReadings();
-            result.ReadingTime = DateTime.Now;
+            result.ReadingTime = DateTime.UtcNow;
 
             foreach(var device in _devices)
             {

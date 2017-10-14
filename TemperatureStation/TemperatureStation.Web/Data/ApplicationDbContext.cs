@@ -44,12 +44,12 @@ namespace TemperatureStation.Web.Data
         public DbSet<Calculator> Calculators { get; set; }
         public DbSet<MeasurementStats> MeasurementStats { get; set; }
 
-        public IList<IGrouping<DateTime, ReadingViewModel>> GetReadings(ReadingsQuery query)
+        public IList<KeyValuePair<DateTime, IList<ReadingViewModel>>> GetReadings(ReadingsQuery query)
         {
             return GetReadingsPaged(query).Results;
         }
 
-        public PagedResult<IGrouping<DateTime, ReadingViewModel>> GetReadingsPaged(ReadingsQuery query)
+        public PagedResult<KeyValuePair<DateTime, IList<ReadingViewModel>>> GetReadingsPaged(ReadingsQuery query)
         {
             var datesPaged = Readings.Where(r => r.Measurement.Id == query.MeasurementId &&
                                             (query.FromTime == null || r.ReadingTime >= query.FromTime) &&
@@ -66,20 +66,23 @@ namespace TemperatureStation.Web.Data
             var measurement = Measurements.Include(m => m.SensorRoles)
                                           .Include(m => m.Calculators)
                                           .FirstOrDefault(m => m.Id == query.MeasurementId);
-
+            
             var grouped = Readings.Where(r =>
                                             (r.Measurement.Id == query.MeasurementId)
                                             && (dates == null || dates.Contains(r.ReadingTime))
                                             )
                                     .OrderByIf(r => r.ReadingTime, () => query.Ascending)
-                                    .OrderBy(r => r.Name)
                                     .ToList()
                                     .AsQueryable()
                                     .ProjectTo<ReadingViewModel>()
                                     .GroupBy(r => r.ReadingTime)
+                                    .Select(g => new KeyValuePair<DateTime, IList<ReadingViewModel>> (
+                                        g.Key,
+                                        g.OrderBy(r => r.Name).ToList()
+                                    ))
                                     .ToList();
 
-            var result = new PagedResult<IGrouping<DateTime, ReadingViewModel>>();
+            var result = new PagedResult<KeyValuePair<DateTime, IList<ReadingViewModel>>>();
             result.CurrentPage = datesPaged.CurrentPage;
             result.PageCount = datesPaged.PageCount;
             result.PageSize = datesPaged.PageSize;

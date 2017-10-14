@@ -1,4 +1,11 @@
 ﻿@model HomeViewModel
+@{ 
+    var jsonSettings = new JsonSerializerSettings()
+    {
+        DateFormatHandling = DateFormatHandling.IsoDateFormat,
+        DateTimeZoneHandling = DateTimeZoneHandling.Utc
+    };
+}
 <style>
     
     /*.svg-content-responsive {
@@ -50,7 +57,7 @@
                     }
                     @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
                     {
-                        if (Model.Readings.Count(r => r.Count(g => g.Name == calc.Name) > 0) > 0)
+                        if (Model.Readings.Count(r => r.Value.Count(g => g.Name == calc.Name) > 0) > 0)
                         {
                             <th>@Model.Labels[calc.Name]</th>
                         }
@@ -58,31 +65,6 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var readingsGroup in Model.Readings)
-                {
-                <tr>
-                    <td>@readingsGroup.Key.ToString("HH:mm")</td>
-                    @foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
-                    {
-                        <td>@readingsGroup.FirstOrDefault(r => r.Name == sensorRole.RoleName)?.Value</td>
-                    }
-                    @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
-                    {
-                        if (Model.Readings.Count(r => r.Count(g => g.Name == calc.Name) > 0) > 0)
-                        {
-                            var val = readingsGroup.FirstOrDefault(r => r.Name == calc.Name)?.Value;
-                            if (val == null)
-                            {
-                                <td></td>
-                            }
-                            else
-                            {
-                                <td>@Model.Calculators[calc.Name].DisplayValue(val.Value)</td>
-                            }
-                        }
-                    }
-                </tr>
-            }
             </tbody>
             <tfoot>
                 <tr>
@@ -96,7 +78,7 @@
                     }
                     @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
                     {
-                        if (Model.Readings.Count(r => r.Count(g => g.Name == calc.Name) > 0) > 0)
+                        if (Model.Readings.Count(r => r.Value.Count(g => g.Name == calc.Name) > 0) > 0)
                         {
                         <th>@Model.Calculators[calc.Name].DisplayValue(Model.Statistics[calc.Name].Item1)</th>
                         }
@@ -113,7 +95,7 @@
                     }
                     @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
                     {
-                        if (Model.Readings.Count(r => r.Count(g => g.Name == calc.Name) > 0) > 0)
+                        if (Model.Readings.Count(r => r.Value.Count(g => g.Name == calc.Name) > 0) > 0)
                         {
                         <th>@Model.Calculators[calc.Name].DisplayValue(Model.Statistics[calc.Name].Item2)</th>
                         }
@@ -130,33 +112,50 @@
 
 @section scripts {
 <script src="@Url.Content("~/js/chartModule.js")"></script>
-<script type="text/javascript">	
-    var offset = @TimeZoneInfo.Local.BaseUtcOffset.TotalHours;    
+<script type="text/javascript">
+    var offset = new Date().getTimezoneOffset() * (-1);
     var data = @Html.Raw(JsonConvert.SerializeObject(Model.ChartData));
 	var strokes = ['blue','red','green','brown','orange','yellow','pink'];
-	var calcsOnChart = @Html.Raw(JsonConvert.SerializeObject(Model.CalculatorsOnChart));
+	var calcsOnChart = @Html.Raw(JsonConvert.SerializeObject(Model.CalculatorsOnChart, jsonSettings));
     var refreshUrl = '@Url.Action()';
     var measurementId = '@Model.Measurement?.Id';
     var chart = null;
     var labelMappings = @Html.Raw(JsonConvert.SerializeObject(Model.Labels));
-    
+
 	for(var i = 0; i < data.length; i++)
 	for(var j = data[i].length-1; j >= 0; j--)
 	{
-		if($.inArray(data[i][j].Name, calcsOnChart) < 0)   
+		if($.inArray(data[i].Va[j].Name, calcsOnChart) < 0)
         {
-			data[i].splice(j, 1);                
+			data[i].splice(j, 1);
 		}
-	}        
+	}
 
 	$(document).ready(function () {
 
-		//if(data.length > 0)
-		//{
-		//	chart = frontPageChart();
-		//}
+		if(data.length > 0)
+		{
+            chart = frontPageChart();
 
-        frontPageChart();
+            // fill front-page table
+            for (var i = data.length - 1; i >= data.length - 10; i--) {
+                var d = data[i];
+                var row = '<tr>';
+                row += '<td>' + formatTableTime(d.date) + '</td>';
+
+                for (var j = 0; j < d.Value.length; j++) {
+                    //newData[i][j].date = d;
+                    row += '<td>' + d.Value[j].Value + '</td>';
+                }
+                row += '</tr>';
+
+                $(row).appendTo('#readingsTable > tbody');
+
+                if (i <= 0) { 
+                    break;
+                }
+            }
+		}
 
         window.addEventListener('resize', function (event) {
             console.log("Resize!");
@@ -174,10 +173,10 @@
         setInterval(function () { LoadNewReadings(); }, 1*60*1000);
     });
     var formatTableTime = d3.timeFormat("%H:%M");
-
+    console.log("Offset: " + offset);
     function LoadNewReadings()
     {
-        var date = new Date(data[data.length - 1][0].ReadingTime);
+        var date = new Date(data[data.length - 1].Value[0].ReadingTime);
         var url = apiRoute + 'GetNewReadings?';
         url += 'newerThan=' + date.toISOString();
         url += '&measurementId=' + measurementId;
@@ -186,15 +185,14 @@
         console.log('updating data: ' + date.toISOString());
         $.post(url, function (newData) {
             for (var i = 0; i < newData.length; i++) {
-                var d = new Date(newData[i][0].ReadingTime);
+                var d = new Date(Date.parse(newData[i].Value[0].ReadingTime + 'Z'));
+                
                 var row = '<tr>';
                 row += '<td>' + formatTableTime(d) + '</td>';
 
-                for (var j = 0; j < newData[i].length; j++) {
-                    d = new Date(newData[i][j].ReadingTime);
-                    d.setTime(d.getTime() + 60 * 60 * 1000 * offset);
-                    newData[i][j].ReadingTime = d;
-                    row += '<td>' + newData[i][j].Value + '</td>';
+                for (var j = 0; j < newData[i].Value.length; j++) {
+                    newData[i].date = d;
+                    row += '<td>' + newData[i].Value[j].Value + '</td>';
                 }
                 data.push(newData[i]);
 

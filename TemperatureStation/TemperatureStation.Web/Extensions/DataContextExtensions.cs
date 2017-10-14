@@ -8,13 +8,13 @@ namespace TemperatureStation.Web.Extensions
 {
     public static class DataContextExtensions
     {
-        public static IQueryable<T> OrderByIf<T, TKey>(this IQueryable<T> query, Expression<Func<T, TKey>> expression, Func<bool?> orderAction)
+        public static IOrderedQueryable<T> OrderByIf<T, TKey>(this IQueryable<T> query, Expression<Func<T, TKey>> expression, Func<bool?> orderAction) where T : class
         {
             var actionValue = orderAction();
 
             if(actionValue == null)
             {
-                return query;
+                return query.OrderBy(r => (T)null);
             }
 
             if(actionValue.Value)

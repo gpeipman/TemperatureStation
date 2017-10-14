@@ -10,8 +10,8 @@ namespace TemperatureStation.Web.Models
     public class HomeViewModel
     {
         public Measurement Measurement { get; set; }
-        public IEnumerable<IGrouping<DateTime, ReadingViewModel>> Readings { get; set; }
-        public IEnumerable<IGrouping<DateTime, ReadingViewModel>> ChartData { get; set; }
+        public IList<KeyValuePair<DateTime, IList<ReadingViewModel>>> Readings { get; set; }
+        public IList<KeyValuePair<DateTime, IList<ReadingViewModel>>> ChartData { get; set; }
         public string[] CalculatorsOnChart { get; set; }
         public IDictionary<string,string> Labels { get; set; }
         public IDictionary<string, ICalculator> Calculators { get; set; }
@@ -20,7 +20,7 @@ namespace TemperatureStation.Web.Models
 
         public HomeViewModel()
         {
-            Readings = new List<IGrouping<DateTime, ReadingViewModel>>();
+            Readings = new List<KeyValuePair<DateTime, IList<ReadingViewModel>>>();
             CalculatorsOnChart = new string[] { };
             Labels = new Dictionary<string, string>();
             Measurements = new List<SelectListItem>();
