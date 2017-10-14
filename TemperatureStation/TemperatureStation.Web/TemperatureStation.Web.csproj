@@ -27,7 +27,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Twitter" Version="2.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.0-alpha2-final" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
@@ -55,7 +54,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.0.0" />
-    <PackageReference Include="BundlerMinifier.Core" Version="2.5.357" />
+    <PackageReference Include="BundlerMinifier.Core" Version="2.6.362" />
     <PackageReference Include="AutoMapper" Version="6.1.1" />
     <PackageReference Include="Npgsql" Version="3.2.5" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.0.0" />
@@ -73,7 +72,7 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
-    <DotNetCliToolReference Include="BundlerMinifier.Core" Version="2.5.357" /> 
+    <DotNetCliToolReference Include="BundlerMinifier.Core" Version="2.6.362" /> 
   </ItemGroup>
 
   <ItemGroup>
