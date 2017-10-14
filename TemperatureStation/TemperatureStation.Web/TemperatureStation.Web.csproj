@@ -78,6 +78,7 @@
 
   <ItemGroup>
     <Folder Include="Files\" />
+    <Folder Include="Logs\" />
     <Folder Include="wwwroot\assets\plugins\" />
   </ItemGroup>
 

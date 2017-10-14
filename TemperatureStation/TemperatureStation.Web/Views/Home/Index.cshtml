@@ -36,8 +36,6 @@
                     @Model.ChartData.Select(d => d.Key).Max().ToShortDateString() <br />
                     @Model.ChartData.Select(d => d.Key).Max().ToShortTimeString()
                 </div>
-                @*<strong>Date range:</strong> @Model.ChartData.Select(d => d.Key).Min().ToShortDateString() 
-                <text>-</text> @Model.ChartData.Select(d => d.Key).Max().ToShortDateString()*@
             }
         </div>
     </div>
@@ -193,6 +191,9 @@
                 row += '<td>' + formatTableTime(d) + '</td>';
 
                 for (var j = 0; j < newData[i].length; j++) {
+                    d = new Date(newData[i][j].ReadingTime);
+                    d.setTime(d.getTime() + 60 * 60 * 1000 * offset);
+                    newData[i][j].ReadingTime = d;
                     row += '<td>' + newData[i][j].Value + '</td>';
                 }
                 data.push(newData[i]);
