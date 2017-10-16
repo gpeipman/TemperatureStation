@@ -6,15 +6,6 @@
         DateTimeZoneHandling = DateTimeZoneHandling.Utc
     };
 }
-<style>
-    
-    /*.svg-content-responsive {
-        display: inline-block;
-        position: absolute;
-        top: 0px;
-        left: 0;
-    }*/
-</style>
 <div class="row">
 	<div class="col-md-6 col-sm-6">
 		<h1>@Model.Measurement.Name</h1>
@@ -39,7 +30,7 @@
                     @Model.ChartData.Select(d => d.Key).Min().ToShortTimeString()
                 </div>
                 <div style="display:inline-block;vertical-align:top"> - </div>
-                <div style="text-align:center;display:inline-block">
+                <div style="text-align:center;display:inline-block;vertical-align:top">
                     @Model.ChartData.Select(d => d.Key).Max().ToShortDateString() <br />
                     @Model.ChartData.Select(d => d.Key).Max().ToShortTimeString()
                 </div>

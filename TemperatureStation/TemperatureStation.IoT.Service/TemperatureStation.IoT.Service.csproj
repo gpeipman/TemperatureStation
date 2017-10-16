@@ -101,6 +101,7 @@
   <ItemGroup>
     <Compile Include="Logging\ApplicationInsightsLogger.cs" />
     <Compile Include="Logging\FallbackLogger.cs" />
+    <Compile Include="Logging\FileLogger.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\SyslogLogger.cs" />
     <Compile Include="Logging\SyslogLogLevel.cs" />

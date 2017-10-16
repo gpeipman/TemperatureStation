@@ -22,7 +22,7 @@ namespace TemperatureStation.IoT.Service
             _deferral = taskInstance.GetDeferral();
             taskInstance.Canceled += TaskInstance_Canceled;
 
-            _logger = new SyslogLogger();
+            _logger = new FallbackLogger(new SyslogLogger(), new FileLogger());
             _logger.Info("Starting weather station service");
 
             try
