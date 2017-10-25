@@ -18,7 +18,7 @@
                     }
                     @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
                     {
-                        if (Model.Data.Results.Count(r => r.Count(g => g.Name == calc.Name) > 0) > 0)
+                        if (Model.Data.Results.Count(r => r.Value.Count(g => g.Name == calc.Name) > 0) > 0)
                         {
                             <th>@Model.Labels[calc.Name]</th>
                         }
@@ -30,7 +30,7 @@
                 {
                     <tr>
                         <td>@readingGroup.Key</td>
-                        @foreach (var label in readingGroup)
+                        @foreach (var label in readingGroup.Value)
                         {
                             <td>@label.Value</td>
                         }
