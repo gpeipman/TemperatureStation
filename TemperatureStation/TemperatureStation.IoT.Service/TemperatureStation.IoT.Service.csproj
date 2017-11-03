@@ -146,7 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TemperatureStation.Shared\TemperatureStation.Shared.csproj">
-      <Project>{9c8729bf-e7a9-40e9-ba9f-b26ee4dd34d1}</Project>
+      <Project>{39750224-9828-430e-b909-4fee0966c10e}</Project>
       <Name>TemperatureStation.Shared</Name>
     </ProjectReference>
   </ItemGroup>

@@ -9,7 +9,7 @@ namespace TemperatureStation.IoT.Service.Reporting
 {
     internal class WebReportingClient : IReportingClient
     {
-        private const string ServiceAddress = "http://metalcenter:8081/api/";
+        private const string ServiceAddress = "http://192.168.1.2:8081/api/";
         private const string DeviceKey = "LongAndComplexKey";
 
         private ILogger _logger;

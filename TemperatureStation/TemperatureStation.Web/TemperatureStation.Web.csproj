@@ -11,7 +11,7 @@
     <OutputType>Exe</OutputType>
     <PackageId>TemperatureStation.Web</PackageId>
     <UserSecretsId>aspnet-TemperatureStation.Web-d6c7266d-767f-4df0-b22e-24b65ee52679</UserSecretsId>
-    <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;netstandard1.5;portable-net45+win8</PackageTargetFallback>
+    <!--PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;netstandard1.5;portable-net45+win8</PackageTargetFallback-->
     <Version>0.0.8</Version>
   </PropertyGroup>
 
@@ -19,7 +19,6 @@
     <None Update="wwwroot\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
-    <ProjectReference Include="..\TemperatureStation.Shared\TemperatureStation.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -79,6 +78,10 @@
     <Folder Include="Files\" />
     <Folder Include="Logs\" />
     <Folder Include="wwwroot\assets\plugins\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TemperatureStation.Shared\TemperatureStation.Shared.csproj" />
   </ItemGroup>
 
 </Project>
