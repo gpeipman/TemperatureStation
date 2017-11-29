@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TemperatureStation.Web.Calculators;
 using TemperatureStation.Web.Data;
+using TemperatureStation.Web.Data.Queries;
 using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Models;
 
@@ -28,10 +29,6 @@ namespace TemperatureStation.Web.Controllers
 
         public async Task<IActionResult> Index(int? measurementId)
         {
-            var calc = _calcProvider.GetCalculators().FirstOrDefault(c => c.Key.ToLower().Contains("emhi"));
-            calc.Value.SetParameters("Tallinn-Harku");
-            var x = calc.Value.Calculate(null, null);
-
             _pageContext.Title = "Home";
             _pageContext.ActiveMenu = "Home";
 
@@ -44,10 +41,7 @@ namespace TemperatureStation.Web.Controllers
             {
                 return View("IndexGuest");
             }
-
-
-            _dataContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            
+           
             var model = new HomeViewModel();
             model.Measurement = await _dataContext.Measurements
                                                   .Include(m => m.SensorRoles)
@@ -60,11 +54,12 @@ namespace TemperatureStation.Web.Controllers
                 return View("IndexEmpty");
             }
 
-            model.Readings = _dataContext.GetReadings(model.Measurement.Id, null, 10)
-                                         .OrderByDescending(r => r.Key)
-                                         .ToList();
+            var query = new ReadingsQuery { MeasurementId = model.Measurement.Id, PageSize = 10  };
+            model.Readings = _dataContext.GetReadings(query);
 
-            model.ChartData = _dataContext.GetReadings(model.Measurement.Id, null, 10000);
+            query = new ReadingsQuery { MeasurementId = model.Measurement.Id, Ascending = true, PageSize = int.MaxValue };
+            model.ChartData = _dataContext.GetReadings(query);
+
             var showOnChart = _calcProvider.GetTypes()
                                             .Where(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>() != null)
                                             .Where(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().ShowOnChart)
@@ -74,21 +69,14 @@ namespace TemperatureStation.Web.Controllers
             model.CalculatorsOnChart = showOnChart.ToArray();
 
             var labels = _calcProvider.GetTypes()
-                                            .Where(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>() != null)
-                                            .Select(t => new
-                                            {
-                                                Label = t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().DisplayLabel,
-                                                Name = t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().Name
-                                            })
-                                            .ToDictionary(k => k.Name, e => e.Label);
+                                        .Where(t => t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>() != null)
+                                        .Select(t => new
+                                        {
+                                            Label = t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().DisplayLabel,
+                                            Name = t.GetTypeInfo().GetCustomAttribute<CalculatorAttribute>().Name
+                                        })
+                                        .ToDictionary(k => k.Name, e => e.Label ?? e.Name);
 
-            foreach (var key in labels.Keys.ToList())
-            {
-                if(string.IsNullOrEmpty(labels[key]))
-                {
-                    labels[key] = key;
-                }
-            }
             model.Labels = labels;
             model.Calculators = _calcProvider.GetCalculators();
             model.Statistics = _dataContext.GetMeasurementStats(model.Measurement.Id);
@@ -102,7 +90,6 @@ namespace TemperatureStation.Web.Controllers
                                                  Selected = (m.Id == model.Measurement.Id)
                                              })
                                              .ToList();
-
             return View(model); 
         }
 

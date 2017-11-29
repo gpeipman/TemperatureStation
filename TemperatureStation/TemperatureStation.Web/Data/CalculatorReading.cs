@@ -6,5 +6,10 @@ namespace TemperatureStation.Web.Data
     {
         [Required]
         public Calculator Calculator { get; set; }
+
+        public override string Name
+        {
+            get { return Calculator?.Name; }
+        }
     }
 }

@@ -1,5 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using TemperatureStation.Web.Data.Queries;
+using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Models;
 
 namespace TemperatureStation.Web.Data
@@ -37,5 +44,52 @@ namespace TemperatureStation.Web.Data
         public DbSet<Calculator> Calculators { get; set; }
         public DbSet<MeasurementStats> MeasurementStats { get; set; }
 
+        public IList<KeyValuePair<DateTime, IList<ReadingViewModel>>> GetReadings(ReadingsQuery query)
+        {
+            return GetReadingsPaged(query).Results;
+        }
+
+        public PagedResult<KeyValuePair<DateTime, IList<ReadingViewModel>>> GetReadingsPaged(ReadingsQuery query)
+        {
+            var datesPaged = Readings.Where(r => r.Measurement.Id == query.MeasurementId &&
+                                            (query.FromTime == null || r.ReadingTime >= query.FromTime) &&
+                                            (query.ToTime == null || r.ReadingTime <= query.ToTime) &&
+                                            (query.NewerThan == null || r.ReadingTime > query.NewerThan))
+                                 .OrderByIf(r => r.ReadingTime, () => query.Ascending)
+                                 .Select(r => r.ReadingTime)
+                                 .Distinct()
+                                 .GetPaged(query.Page, query.PageSize);
+            var dates = datesPaged.Results;
+
+            // Make sure readings get SensorRole and Calculator loaded automatically
+            // It's practically caching them for grouping query
+            var measurement = Measurements.Include(m => m.SensorRoles)
+                                          .Include(m => m.Calculators)
+                                          .FirstOrDefault(m => m.Id == query.MeasurementId);
+            
+            var grouped = Readings.Where(r =>
+                                            (r.Measurement.Id == query.MeasurementId)
+                                            && (dates == null || dates.Contains(r.ReadingTime))
+                                            )
+                                    .OrderByIf(r => r.ReadingTime, () => query.Ascending)
+                                    .ToList()
+                                    .AsQueryable()
+                                    .ProjectTo<ReadingViewModel>()
+                                    .GroupBy(r => r.ReadingTime)
+                                    .Select(g => new KeyValuePair<DateTime, IList<ReadingViewModel>> (
+                                        g.Key,
+                                        g.OrderBy(r => r.Name).ToList()
+                                    ))
+                                    .ToList();
+
+            var result = new PagedResult<KeyValuePair<DateTime, IList<ReadingViewModel>>>();
+            result.CurrentPage = datesPaged.CurrentPage;
+            result.PageCount = datesPaged.PageCount;
+            result.PageSize = datesPaged.PageSize;
+            result.RowCount = datesPaged.RowCount;
+            result.Results = grouped;
+
+            return result;
+        }
     }
 }

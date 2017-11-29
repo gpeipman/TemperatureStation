@@ -1,19 +1,4 @@
 ﻿@model HomeViewModel
-<style>
-    .indicator {
-        border: 1px solid black;
-        float: left;
-        font-size: 20pt;
-        margin-bottom: 10px;
-        margin-right:10px;
-        padding: 10px;
-        text-align:center;
-    }
-    .indicator-label {
-        font-size: 10px;
-        text-align: center
-    }
-</style>
 <div class="row">
     <div class="col-lg-12" style="margin-left:15px">
         @if (Model.Measurement.CoolingRate.HasValue)

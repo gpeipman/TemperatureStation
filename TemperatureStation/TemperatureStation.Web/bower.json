@@ -6,12 +6,12 @@
     "jquery": "3.2.1",
     "jquery-validation": "1.17.0",
     "jquery-validation-unobtrusive": "3.2.6",
-    "d3": "v4.10.2"
+    "d3": "v4.11.0"
   },
   "resolutions": {
     "jquery": "3.2.1",
     "bootstrap": "v3.3.7",
     "jquery-validation": "1.17.0",
-    "d3": "v4.10.2"
+    "d3": "v4.11.0"
   }
 }

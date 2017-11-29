@@ -6,5 +6,10 @@ namespace TemperatureStation.Web.Data
     {
         [Required]
         public SensorRole SensorRole { get; set; }
+
+        public override string Name
+        {
+            get { return SensorRole?.RoleName; }
+        }
     }
 }

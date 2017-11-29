@@ -14,6 +14,9 @@ namespace TemperatureStation.Web.Data
 
         public string ReadingType { get; set; }
 
+        [NotMapped]
+        public abstract string Name { get; }
+
         public double Value { get; set; }
         
         [Required]

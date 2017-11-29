@@ -1,5 +1,4 @@
-﻿using System.IO;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -15,7 +14,7 @@ using TemperatureStation.Web.Extensions;
 using TemperatureStation.Web.Extensions.Storage;
 using TemperatureStation.Web.Models;
 using TemperatureStation.Web.Models.MeasurementViewModels;
-using TemperatureStation.Web.Services;
+//using TemperatureStation.Web.Services;
 
 namespace TemperatureStation.Web
 {
@@ -103,22 +102,23 @@ namespace TemperatureStation.Web
                 });
             }
 
+            var siteSettings = new SiteSettings();
+            siteSettings.FrontPageRefreshMethod = Configuration.GetValue("FrontPageRefreshMethod", "AJAX").ToLower();
+
             var emhiSettings = new EmhiCalculatorSettings();
             emhiSettings.ObservationsUrl = Configuration.GetValue("EmhiCalculatorSettings:ObservationsUrl", "");
             emhiSettings.RefreshInterval = Configuration.GetValue("EmhiCalculatorSettings:RefreshInterval", 60);
 
             services.AddRouting(opt => { opt.LowercaseUrls = true; });
             services.AddMvc();
-
             
             services.AddScoped<IFileClient, LocalFileClient>();
             services.AddSingleton(emhiSettings);
             services.AddSingleton<ICalculatorProvider, CalculatorProvider>();
             services.AddCalculators();
-            services.AddTransient<IEmailSender, AuthMessageSender>();
-            services.AddTransient<ISmsSender, AuthMessageSender>();
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddScoped<PageContext, PageContext>();
+            services.AddSingleton<SiteSettings>(siteSettings);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -186,23 +186,10 @@ namespace TemperatureStation.Web
                 cfg.CreateMap<SensorRole, SensorRoleViewModel>();
                 cfg.CreateMap<SensorRole, SensorRoleEditViewModel>();
                 cfg.CreateMap<SensorReading, ReadingViewModel>()
-                   .ForMember(r => r.Source, m => m.MapFrom(r => r.SensorRole.RoleName));
+                   .ForMember(r => r.Name, m => m.MapFrom(r => r.SensorRole.RoleName));
                 cfg.CreateMap<CalculatorReading, ReadingViewModel>()
-                   .ForMember(r => r.Source, m => m.MapFrom(r => r.Calculator.Name));
-                cfg.CreateMap<Reading, ReadingViewModel>()
-                   .ForMember(r => r.Source, m => m.ResolveUsing(r =>
-                   {
-                       if (r is SensorReading)
-                       {
-                           return ((SensorReading)r).SensorRole.RoleName;
-                       }
-                       else if (r is CalculatorReading)
-                       {
-                           return ((CalculatorReading)r).Calculator.Name;
-                       }
-
-                       return "<unknown>";
-                   }));
+                   .ForMember(r => r.Name, m => m.MapFrom(r => r.Calculator.Name));
+            cfg.CreateMap<Reading, ReadingViewModel>();
                 cfg.CreateMap<Calculator, CalculatorEditViewModel>();
                 cfg.CreateMap<CalculatorEditViewModel, Calculator>()
                    .ForMember(m => m.Id, m => m.Ignore())

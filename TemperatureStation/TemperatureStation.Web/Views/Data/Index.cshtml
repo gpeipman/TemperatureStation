@@ -1,0 +1,48 @@
+﻿@model DataViewModel
+@{
+    ViewData["Title"] = "Data";
+}
+
+<div class="row margin-bottom-40">
+    <div class="col-md-12 col-sm-12">
+
+        <h1>Data for "@Model.Measurement.Name"</h1>
+
+        <table class="table" style="width:unset ">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    @foreach (var sensorRole in Model.Measurement.SensorRoles.OrderBy(r => r.RoleName))
+                    {
+                        <th>@sensorRole.RoleName</th>
+                    }
+                    @foreach (var calc in Model.Measurement.Calculators.OrderBy(r => r.Name))
+                    {
+                        if (Model.Data.Results.Count(r => r.Value.Count(g => g.Name == calc.Name) > 0) > 0)
+                        {
+                            <th>@Model.Labels[calc.Name]</th>
+                        }
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var readingGroup in Model.Data.Results)
+                {
+                    <tr>
+                        <td>@readingGroup.Key</td>
+                        @foreach (var label in readingGroup.Value)
+                        {
+                            <td>@label.Value</td>
+                        }
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@readingGroup.Key">Edit</a> |
+                            <a asp-action="Delete" asp-route-id="@readingGroup.Key">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        @(await Component.InvokeAsync<PagerViewComponent>(Model.Data))
+    </div>
+</div>

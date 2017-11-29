@@ -1,73 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using TemperatureStation.Web.Data;
-using TemperatureStation.Web.Models;
 
 namespace TemperatureStation.Web.Extensions
 {
     public static class DataContextExtensions
     {
-        public static IEnumerable<IGrouping<DateTime,ReadingViewModel>> GetReadings(this ApplicationDbContext context, int? measurementId, DateTime? newerThan, int? rowCount, bool groupForHours=true)
+        public static IOrderedQueryable<T> OrderByIf<T, TKey>(this IQueryable<T> query, Expression<Func<T, TKey>> expression, Func<bool?> orderAction) where T : class
         {
-            DateTime[] dates = null;
-            IQueryable<DateTime> datesQuery;
+            var actionValue = orderAction();
 
-            datesQuery = context.Readings
-                                .Where(r =>
-                                        (measurementId == null || r.Measurement.Id == measurementId)
-                                        && (newerThan == null || r.ReadingTime > newerThan))
-                                .OrderByDescending(r => r.ReadingTime)
-                                .Select(r => r.ReadingTime)
-                                .Distinct();
-
-            if (rowCount.HasValue && rowCount.Value > 0)
+            if(actionValue == null)
             {
-                datesQuery = datesQuery.Take(rowCount.Value);
+                return query.OrderBy(r => (T)null);
             }
 
-            dates = datesQuery.ToArray();
+            if(actionValue.Value)
+            {
+                return query.OrderBy(expression);
+            }
 
-            var readings1 = context.SensorReadings
-                                        .Where(r =>
-                                                (measurementId == null || r.Measurement.Id == measurementId)
-                                               && (dates == null || dates.Contains(r.ReadingTime))
-                                               )
-                                        .OrderByDescending(r => r.ReadingTime)
-                                        .Select(r => new ReadingViewModel
-                                        {
-                                            Id = r.Id,
-                                            ReadingTime = r.ReadingTime,
-                                            Source = r.SensorRole.RoleName,
-                                            Value = r.Value
-                                        })
-                                        .ToList();
-
-            var readings2 = context.CalculatorReadings
-                                        .Where(r =>
-                                                (measurementId == null || r.Measurement.Id == measurementId)
-                                               && (dates == null || dates.Contains(r.ReadingTime))
-                                               )
-                                        .OrderByDescending(r => r.ReadingTime)
-                                        .Select(r => new ReadingViewModel
-                                        {
-                                            Id = r.Id,
-                                            ReadingTime = r.ReadingTime,
-                                            Source = r.Calculator.Name,
-                                            Value = r.Value
-                                        })
-                                        .ToList();
-
-            readings1.AddRange(readings2);
-            readings1 = readings1.OrderByDescending(r => r.ReadingTime)
-                                 .OrderBy(r => r.Source)
-                                 .ToList();
-
-            var grouped = readings1.OrderBy(r => r.ReadingTime)
-                                   .GroupBy(r => r.ReadingTime);
-
-            return grouped;
+            return query.OrderByDescending(expression);
         }
 
         public static IDictionary<string, Tuple<double, double>> GetMeasurementStats(this ApplicationDbContext context, int measurementId)
