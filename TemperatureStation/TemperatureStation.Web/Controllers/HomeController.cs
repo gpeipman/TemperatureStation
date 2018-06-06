@@ -29,6 +29,12 @@ namespace TemperatureStation.Web.Controllers
 
         public async Task<IActionResult> Index(int? measurementId)
         {
+            var readings = _dataContext.Readings
+                        .Include(sr => (sr as SensorReading).SensorRole)
+                        .Include(sr => (sr as CalculatorReading).Calculator)
+                        .Take(10)
+                        .ToList();
+
             _pageContext.Title = "Home";
             _pageContext.ActiveMenu = "Home";
 
