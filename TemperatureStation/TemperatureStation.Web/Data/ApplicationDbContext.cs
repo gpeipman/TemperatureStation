@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -42,7 +41,6 @@ namespace TemperatureStation.Web.Data
         public DbSet<CalculatorReading> CalculatorReadings { get; set; }
         public DbSet<SensorReading> SensorReadings { get; set; }
         public DbSet<Calculator> Calculators { get; set; }
-        public DbSet<MeasurementStats> MeasurementStats { get; set; }
 
         public IList<KeyValuePair<DateTime, IList<ReadingViewModel>>> GetReadings(ReadingsQuery query)
         {
@@ -66,10 +64,20 @@ namespace TemperatureStation.Web.Data
             var measurement = Measurements.Include(m => m.SensorRoles)
                                           .Include(m => m.Calculators)
                                           .FirstOrDefault(m => m.Id == query.MeasurementId);
+
+            var minDate = DateTime.MinValue;
+            var maxDate = DateTime.MaxValue;
+
+            if (dates.Any())
+            {
+                minDate = dates.Min(d => d);
+                maxDate = dates.Max(d => d);
+            }
             
             var grouped = Readings.Where(r =>
                                             (r.Measurement.Id == query.MeasurementId)
-                                            && (dates == null || dates.Contains(r.ReadingTime))
+                                            //&& (dates == null || dates.Contains(r.ReadingTime))
+                                            && (dates == null || (r.ReadingTime >= minDate && r.ReadingTime <= maxDate))
                                             )
                                     .OrderByIf(r => r.ReadingTime, () => query.Ascending)
                                     .ToList()

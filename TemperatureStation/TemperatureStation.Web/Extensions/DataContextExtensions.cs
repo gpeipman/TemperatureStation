@@ -27,39 +27,31 @@ namespace TemperatureStation.Web.Extensions
 
         public static IDictionary<string, Tuple<double, double>> GetMeasurementStats(this ApplicationDbContext context, int measurementId)
         {
-            // NB!
-            // Until EF Core starts supporting GROUP BY the code here uses special view in database for
-            // sensor and calculator stats
+            var stats1 = context.SensorReadings
+                                .Where(r => r.Measurement.Id == measurementId)
+                                .GroupBy(r => r.SensorRole.RoleName)
+                                .Select(r => new MeasurementStats
+                                {
+                                    Name = r.Key,
+                                    MeasurementId = measurementId,
+                                    Min = r.Min(s => s.Value),
+                                    Max = r.Max(s => s.Value)
+                                })
+                                .ToList();
 
+            var stats2 = context.CalculatorReadings
+                                .Where(r => r.Measurement.Id == measurementId)
+                                .GroupBy(r => r.Calculator.Name)
+                                .Select(r => new MeasurementStats
+                                {
+                                    Name = r.Key,
+                                    MeasurementId = measurementId,
+                                    Min = r.Min(s => s.Value),
+                                    Max = r.Max(s => s.Value)
+                                })
+                                .ToList();
 
-
-            //var stats1 = context.SensorReadings
-            //                    .Where(r => r.Measurement.Id == measurementId)
-            //                    .GroupBy(r => r.SensorRole.RoleName)
-            //                    .Select(r => new SensorStats
-            //                    {
-            //                        Name = r.Key,
-            //                        MeasurementId = measurementId,
-            //                        Min = r.Min(s => s.Value),
-            //                        Max = r.Max(s => s.Value)
-            //                    })
-            //                    .ToList();
-
-            //var stats2 = context.CalculatorReadings
-            //                    .Where(r => r.Measurement.Id == measurementId)
-            //                    .GroupBy(r => r.Calculator.Name)
-            //                    .Select(r => new SensorStats
-            //                    {
-            //                        Name = r.Key,
-            //                        MeasurementId = measurementId,
-            //                        Min = r.Min(s => s.Value),
-            //                        Max = r.Max(s => s.Value)
-            //                    })
-            //                    .ToList();
-
-            //stats1.AddRange(stats2);
-
-            var stats1 = context.MeasurementStats.Where(s => s.MeasurementId == measurementId).ToList();
+            stats1.AddRange(stats2);
 
             return stats1.ToDictionary(k => k.Name, v => new Tuple<double, double>(v.Min, v.Max));
         }
